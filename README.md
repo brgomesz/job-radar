@@ -5,11 +5,11 @@
 # 📡 JobRadar iOS
 ### Monitor automatizado de vagas para iOS Developer
 
-![Python](https://img.shields.io/badge/Python-3.11-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3.12-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![Playwright](https://img.shields.io/badge/Playwright-Scraping-2EAD33?style=for-the-badge&logo=playwright&logoColor=white)
-![SQLite](https://img.shields.io/badge/SQLite-Banco%20versionado-07405E?style=for-the-badge&logo=sqlite&logoColor=white)
+![Supabase](https://img.shields.io/badge/Supabase-Postgres-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-Cron-2088FF?style=for-the-badge&logo=githubactions&logoColor=white)
-![Tests](https://img.shields.io/badge/testes-73%20passing-success?style=for-the-badge)
+![Tests](https://img.shields.io/badge/testes-358%20passing-success?style=for-the-badge)
 ![Status](https://img.shields.io/badge/status-em%20produção-success?style=for-the-badge)
 
 Fork mantido por [Ronan Rodrigo](https://github.com/ronanrodrigo), a partir do projeto de Liliam Kezia Oliveira Souza.
@@ -24,13 +24,12 @@ Fork mantido por [Ronan Rodrigo](https://github.com/ronanrodrigo), a partir do p
 
 ## 📄 Resumo executivo
 
-Entre 07 e 15 de agosto, o sistema já processou **1.052 vagas únicas**, sem intervenção manual nenhuma — mas os números também expõem os riscos reais da arquitetura atual:
+O radar mantém vagas em um banco Supabase compartilhado entre o coletor e o painel, sem depender de commits de um arquivo SQLite para preservar o histórico.
 
 | Achado | Número |
 |---|---|
-| 📊 Vagas processadas (deduplicadas) | **1.052** |
-| 🔗 Concentração numa única fonte (LinkedIn) | **89,5%** |
-| 🧪 Testes automatizados (CI a cada push) | **73** |
+| 📊 Vagas migradas para produção | **1.350** |
+| 🧪 Testes automatizados (CI a cada push) | **358** |
 | 🌎 Fontes monitoradas em paralelo | **8** |
 | ⏱️ Frequência de checagem | **a cada 3h** |
 | 💰 Custo de infraestrutura | **R$ 0** |
@@ -72,9 +71,9 @@ Vaga de alta relevância chega na hora, com motivo da aprovação, nível e link
 
 - **Filtro em 3 níveis de confiança:** cargo inequívoco passa sozinho; cargo ambíguo (ex: "Business Analyst") só conta com qualificador de dados junto no título; ferramenta (ex: "Power BI") só conta com palavra de cargo junto — nada aprova por palavra-chave solta.
 - **Score de relevância sem ML:** 5 sinais conhecidos (cargo, ferramenta, senioridade, mercado, idioma), pesos calibrados contra o histórico real do banco, não chutados.
-- **Zero infraestrutura:** GitHub Actions como motor de cron, SQLite como banco — versionado no próprio Git, o histórico de vagas já vistas *é* o commit.
+- **Persistência compartilhada:** GitHub Actions como motor de cron e Supabase Postgres como fonte de verdade; SQLite fica para desenvolvimento e migração local.
 - **Resiliente:** nunca marca vaga como "vista" sem confirmar que a notificação saiu; alerta automático se metade das fontes falhar num ciclo; heartbeat diário confirmando que o robô ainda está de pé.
-- **73 testes automatizados em CI:** cada caso documenta um bug real já corrigido nesta base — não é cenário hipotético, é regressão registrada.
+- **358 testes automatizados em CI:** filtros iOS, painel, SQLite e o contrato HTTP do Supabase são verificados a cada push.
 
 ## 📁 Estrutura do repositório
 
@@ -87,7 +86,9 @@ obradar/
 ├── job.py ← Job, filtro, score de relevância
 ├── relatorio_precisao.py ← aprovadas/notificadas por fonte e por semana
 ├── database/
-│ └── database.py ← SQLite: dedup, fila de digest, metadados
+│ ├── database.py ← fachada de persistência e SQLite local
+│ └── supabase.py ← adaptador PostgREST de produção
+├── dashboard/ ← painel Flask privado
 ├── notifier/
 │ └── telegram.py ← notificação individual, digest, botão 👍/👎
 ├── scrapers/ ← um módulo por fonte (LinkedIn, Gupy, Indeed...)
@@ -126,9 +127,9 @@ Os testes cobrem a camada de filtro, o Telegram, o painel, SQLite e o contrato H
 
 ## Operação em produção
 
-O fluxo de produção é: **GitHub Actions (a cada 3h) → JobRadar → Supabase Postgres ← painel Flask na Vercel**. Assim robô e painel usam a mesma base; SQLite fica reservado ao desenvolvimento local.
+O fluxo de produção é: **GitHub Actions (a cada 3h) → JobRadar → Supabase Postgres ← painel Flask na Vercel**. Assim robô e painel usam a mesma base; SQLite fica reservado ao desenvolvimento local. O painel publicado está em [job-radar-ios.vercel.app](https://job-radar-ios.vercel.app).
 
-1. Crie um projeto Supabase e aplique a migration em `supabase/migrations/`.
+1. No projeto Supabase, aplique a migration em `supabase/migrations/`. As tabelas criadas usam o prefixo `job_radar_`, permitindo compartilhá-lo com outros produtos.
 2. Importe o histórico com `python scripts/migrar_sqlite_para_supabase.py --dry-run`; revise a contagem e execute sem `--dry-run`.
 3. No GitHub, configure `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`, `SUPABASE_URL` e `SUPABASE_SERVICE_ROLE_KEY` como secrets.
 4. Importe o repositório na Vercel e configure `JOBRADAR_STORAGE=supabase`, `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `DASHBOARD_SECRET_KEY` e `DASHBOARD_PASSWORD`.
