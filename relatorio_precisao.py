@@ -29,18 +29,10 @@ qualidade da vaga vs. funil de candidatura), não valem soma.
 """
 
 import argparse
-import sqlite3
 from collections import defaultdict
 from datetime import datetime
 
-from core.config import DB_PATH
-from database.database import iniciar_db
-
-
-def _carregar_linhas(conn) -> list[tuple[str, str, str | None]]:
-    return conn.execute(
-        "SELECT site, encontrada_em, feedback FROM vagas_vistas"
-    ).fetchall()
+from database.database import iniciar_db, obter_linhas_relatorio
 
 
 def _taxa(positivas: int, base: int) -> str:
@@ -135,11 +127,7 @@ def main():
     # da migração, não é original da tabela).
     iniciar_db()
 
-    conn = sqlite3.connect(DB_PATH)
-    try:
-        linhas = _carregar_linhas(conn)
-    finally:
-        conn.close()
+    linhas = obter_linhas_relatorio()
 
     if not linhas:
         print("Banco vazio -- nada pra medir ainda.")

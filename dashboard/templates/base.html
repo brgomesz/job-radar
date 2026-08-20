@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}JobRadar iOS{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
+  </head>
+  <body>
+    <header class="masthead">
+      <a class="brand" href="{{ url_for('inicio') }}"><span>JR</span> JobRadar <em>iOS</em></a>
+      {% if session.get('dashboard_autenticado') %}
+      <form method="post" action="{{ url_for('sair') }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+        <button class="quiet" type="submit">Sair</button>
+      </form>
+      {% endif %}
+    </header>
+    <main>
+      {% with mensagens = get_flashed_messages(with_categories=true) %}
+        {% for categoria, mensagem in mensagens %}
+        <p class="flash {{ categoria }}" role="status">{{ mensagem }}</p>
+        {% endfor %}
+      {% endwith %}
+      {% block content %}{% endblock %}
+    </main>
+  </body>
+</html>

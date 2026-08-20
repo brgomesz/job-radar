@@ -1,0 +1,1 @@
+"""Painel operacional do JobRadar."""
