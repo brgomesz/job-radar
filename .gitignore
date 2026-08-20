@@ -9,3 +9,5 @@ data/*.db-wal
 data/*.db-shm
 supabase/.temp/
 _to_delete/
+.vercel
+.env*
