@@ -46,27 +46,27 @@ def _requisicao(metodo: str, tabela: str, *, params=None, json=None, headers=Non
 
 
 def verificar_conexao():
-    _requisicao("GET", "metadados", params={"select": "chave", "limit": "1"})
+    _requisicao("GET", "job_radar_metadados", params={"select": "chave", "limit": "1"})
 
 
 def ja_vista(job) -> bool:
     for coluna, valor in (("id", job.id), ("chave_secundaria", job.chave_secundaria)):
-        if _requisicao("GET", "vagas_vistas", params={"select": "id", coluna: f"eq.{valor}", "limit": "1"}):
+        if _requisicao("GET", "job_radar_vagas", params={"select": "id", coluna: f"eq.{valor}", "limit": "1"}):
             return True
     return False
 
 
 def obter_metadado(chave: str) -> str | None:
-    linhas = _requisicao("GET", "metadados", params={"select": "valor", "chave": f"eq.{chave}", "limit": "1"})
+    linhas = _requisicao("GET", "job_radar_metadados", params={"select": "valor", "chave": f"eq.{chave}", "limit": "1"})
     return linhas[0]["valor"] if linhas else None
 
 
 def definir_metadado(chave: str, valor: str):
-    _requisicao("POST", "metadados", json={"chave": chave, "valor": valor}, headers={"Prefer": "resolution=merge-duplicates,return=minimal"})
+    _requisicao("POST", "job_radar_metadados", json={"chave": chave, "valor": valor}, headers={"Prefer": "resolution=merge-duplicates,return=minimal"})
 
 
 def salvar_vaga(job, perfil_chave: str = "", digest_pendente: bool = False, exploratoria: bool = False):
-    _requisicao("POST", "vagas_vistas", json={
+    _requisicao("POST", "job_radar_vagas", json={
         "id": job.id, "titulo": job.titulo, "empresa": job.empresa, "local": job.local,
         "link": job.link, "site": job.site, "chave_secundaria": job.chave_secundaria,
         "publicado_em": job.publicado_em, "modalidade": job.modalidade, "relevancia": job.relevancia,
@@ -77,15 +77,15 @@ def salvar_vaga(job, perfil_chave: str = "", digest_pendente: bool = False, expl
 
 def definir_situacao(id_ou_link: str, situacao: str):
     for coluna in ("id", "link"):
-        _requisicao("PATCH", "vagas_vistas", params={coluna: f"eq.{id_ou_link}"}, json={"situacao": situacao}, headers={"Prefer": "return=minimal"})
+        _requisicao("PATCH", "job_radar_vagas", params={coluna: f"eq.{id_ou_link}"}, json={"situacao": situacao}, headers={"Prefer": "return=minimal"})
 
 
 def definir_feedback(job_id: str, feedback: str):
-    _requisicao("PATCH", "vagas_vistas", params={"id": f"eq.{job_id}"}, json={"feedback": feedback}, headers={"Prefer": "return=minimal"})
+    _requisicao("PATCH", "job_radar_vagas", params={"id": f"eq.{job_id}"}, json={"feedback": feedback}, headers={"Prefer": "return=minimal"})
 
 
 def obter_vagas_pendentes_digest(perfil_chave: str) -> list[tuple]:
-    linhas = _requisicao("GET", "vagas_vistas", params={
+    linhas = _requisicao("GET", "job_radar_vagas", params={
         "select": "titulo,empresa,link,relevancia,exploratoria", "perfil": f"eq.{perfil_chave}",
         "digest_pendente": "is.true", "order": "relevancia.desc,encontrada_em.asc",
     })
@@ -93,7 +93,7 @@ def obter_vagas_pendentes_digest(perfil_chave: str) -> list[tuple]:
 
 
 def marcar_digest_enviado(perfil_chave: str):
-    _requisicao("PATCH", "vagas_vistas", params={"perfil": f"eq.{perfil_chave}", "digest_pendente": "is.true"}, json={"digest_pendente": False}, headers={"Prefer": "return=minimal"})
+    _requisicao("PATCH", "job_radar_vagas", params={"perfil": f"eq.{perfil_chave}", "digest_pendente": "is.true"}, json={"digest_pendente": False}, headers={"Prefer": "return=minimal"})
 
 
 def listar_vagas(perfil: str = "", situacao: str = "", site: str = "", busca: str = "", limite: int = 100) -> list[dict]:
@@ -108,18 +108,18 @@ def listar_vagas(perfil: str = "", situacao: str = "", site: str = "", busca: st
         busca_segura = re.sub(r"[^\wÀ-ÿ -]", "", busca, flags=re.UNICODE).strip()
         if busca_segura:
             params["or"] = f"(titulo.ilike.*{busca_segura}*,empresa.ilike.*{busca_segura}*)"
-    return _requisicao("GET", "vagas_vistas", params=params)
+    return _requisicao("GET", "job_radar_vagas", params=params)
 
 
 def resumo_painel() -> dict:
-    linhas = _requisicao("GET", "dashboard_resumo", params={"select": "*"})
+    linhas = _requisicao("GET", "job_radar_dashboard_resumo", params={"select": "*"})
     return linhas[0] if linhas else {"total": 0, "novas": 0, "candidaturas": 0, "ultima": None}
 
 
 def opcoes_filtro_painel(coluna: str) -> list[str]:
     if coluna not in {"perfil", "site"}:
         raise ValueError(f"Coluna de filtro inválida: {coluna}")
-    view = "dashboard_perfis" if coluna == "perfil" else "dashboard_sites"
+    view = "job_radar_dashboard_perfis" if coluna == "perfil" else "job_radar_dashboard_sites"
     linhas = _requisicao("GET", view, params={"select": "valor", "order": "valor"})
     return [linha["valor"] for linha in linhas]
 
@@ -130,7 +130,7 @@ def obter_linhas_relatorio() -> list[tuple[str, str, str | None]]:
     offset = 0
     while True:
         pagina = _requisicao(
-            "GET", "vagas_vistas",
+            "GET", "job_radar_vagas",
             params={"select": "site,encontrada_em,feedback", "limit": str(limite), "offset": str(offset)},
         )
         linhas.extend(pagina)

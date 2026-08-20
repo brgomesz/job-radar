@@ -40,7 +40,7 @@ def test_salvar_vaga_usa_upsert_que_ignora_duplicata(monkeypatch):
     supabase.salvar_vaga(vaga, "ios", digest_pendente=True)
 
     args, kwargs = chamadas[0]
-    assert args[:2] == ("POST", "https://abc.supabase.co/rest/v1/vagas_vistas")
+    assert args[:2] == ("POST", "https://abc.supabase.co/rest/v1/job_radar_vagas")
     assert kwargs["json"]["perfil"] == "ios"
     assert kwargs["json"]["digest_pendente"] is True
     assert kwargs["headers"]["Prefer"] == "resolution=ignore-duplicates,return=minimal"

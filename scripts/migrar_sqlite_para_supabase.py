@@ -51,12 +51,12 @@ def main():
 
     for lote in _em_lotes(vagas):
         supabase._requisicao(
-            "POST", "vagas_vistas", json=lote,
+            "POST", "job_radar_vagas", json=lote,
             headers={"Prefer": "resolution=merge-duplicates,return=minimal"},
         )
     for lote in _em_lotes(metadados):
         supabase._requisicao(
-            "POST", "metadados", json=lote,
+            "POST", "job_radar_metadados", json=lote,
             headers={"Prefer": "resolution=merge-duplicates,return=minimal"},
         )
     print("Migração concluída.")
