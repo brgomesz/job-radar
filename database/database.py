@@ -176,6 +176,10 @@ def iniciar_db():
             "CREATE INDEX IF NOT EXISTS idx_vagas_chave_secundaria "
             "ON vagas_vistas (chave_secundaria)"
         )
+        conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_vagas_painel "
+            "ON vagas_vistas (perfil, situacao, encontrada_em DESC)"
+        )
         # Tabela chave/valor genérica — usada hoje só pra guardar a data do
         # último heartbeat diário (ver notifier/telegram.py e main.py), mas
         # serve pra qualquer estado simples que precise sobreviver entre
@@ -316,3 +320,156 @@ def marcar_digest_enviado(perfil_chave: str):
             "UPDATE vagas_vistas SET digest_pendente = 0 WHERE perfil = ? AND digest_pendente = 1",
             (perfil_chave,),
         )
+
+
+def listar_vagas(
+    perfil: str = "", situacao: str = "", site: str = "", busca: str = "", limite: int = 100
+) -> list[dict]:
+    """Lista vagas para o painel operacional, da mais recente para a mais antiga.
+
+    Filtros são opcionais e todos os valores entram como parâmetros SQL, nunca
+    interpolados na query. O limite também é limitado para que uma requisição
+    do painel não tente carregar o histórico inteiro.
+    """
+    filtros: list[str] = []
+    valores: list[object] = []
+    if perfil:
+        filtros.append("perfil = ?")
+        valores.append(perfil)
+    if situacao:
+        filtros.append("situacao = ?")
+        valores.append(situacao)
+    if site:
+        filtros.append("site = ?")
+        valores.append(site)
+    if busca:
+        filtros.append("(titulo LIKE ? OR empresa LIKE ?)")
+        termo = f"%{busca}%"
+        valores.extend([termo, termo])
+
+    where = f"WHERE {' AND '.join(filtros)}" if filtros else ""
+    limite = max(1, min(limite, 250))
+    with _conectar() as conn:
+        conn.row_factory = sqlite3.Row
+        cursor = conn.execute(
+            f"""
+            SELECT id, titulo, empresa, local, link, site, encontrada_em,
+                   publicado_em, modalidade, relevancia, perfil,
+                   digest_pendente, exploratoria, situacao, feedback
+            FROM vagas_vistas
+            {where}
+            ORDER BY encontrada_em DESC
+            LIMIT ?
+            """,
+            [*valores, limite],
+        )
+        return [dict(linha) for linha in cursor.fetchall()]
+
+
+def resumo_painel() -> dict:
+    """Indicadores pequenos para a tela inicial do painel."""
+    with _conectar() as conn:
+        total = conn.execute("SELECT COUNT(*) FROM vagas_vistas").fetchone()[0]
+        novas = conn.execute("SELECT COUNT(*) FROM vagas_vistas WHERE situacao = 'nova'").fetchone()[0]
+        candidaturas = conn.execute(
+            "SELECT COUNT(*) FROM vagas_vistas WHERE situacao IN ('candidatei', 'entrevista', 'proposta')"
+        ).fetchone()[0]
+        ultima = conn.execute("SELECT MAX(encontrada_em) FROM vagas_vistas").fetchone()[0]
+        return {"total": total, "novas": novas, "candidaturas": candidaturas, "ultima": ultima}
+
+
+def opcoes_filtro_painel(coluna: str) -> list[str]:
+    """Valores disponíveis para os filtros do painel (perfil ou fonte)."""
+    if coluna not in {"perfil", "site"}:
+        raise ValueError(f"Coluna de filtro inválida: {coluna}")
+    with _conectar() as conn:
+        cursor = conn.execute(
+            f"SELECT DISTINCT {coluna} FROM vagas_vistas WHERE {coluna} IS NOT NULL AND {coluna} != '' ORDER BY {coluna}"
+        )
+        return [linha[0] for linha in cursor.fetchall()]
+
+
+# A API pública do módulo permanece estável; a seleção do backend acontece
+# somente aqui. SQLite continua sendo o padrão para desenvolvimento e testes.
+_sqlite_iniciar_db = iniciar_db
+_sqlite_ja_vista = ja_vista
+_sqlite_obter_metadado = obter_metadado
+_sqlite_definir_metadado = definir_metadado
+_sqlite_salvar_vaga = salvar_vaga
+_sqlite_definir_situacao = definir_situacao
+_sqlite_definir_feedback = definir_feedback
+_sqlite_obter_vagas_pendentes_digest = obter_vagas_pendentes_digest
+_sqlite_marcar_digest_enviado = marcar_digest_enviado
+_sqlite_listar_vagas = listar_vagas
+_sqlite_resumo_painel = resumo_painel
+_sqlite_opcoes_filtro_painel = opcoes_filtro_painel
+
+
+def _usar_supabase() -> bool:
+    return os.getenv("JOBRADAR_STORAGE", "sqlite").lower() == "supabase"
+
+
+def _supabase():
+    from database import supabase
+    return supabase
+
+
+def iniciar_db():
+    if _usar_supabase():
+        return _supabase().verificar_conexao()
+    return _sqlite_iniciar_db()
+
+
+def ja_vista(job) -> bool:
+    return _supabase().ja_vista(job) if _usar_supabase() else _sqlite_ja_vista(job)
+
+
+def obter_metadado(chave: str) -> str | None:
+    return _supabase().obter_metadado(chave) if _usar_supabase() else _sqlite_obter_metadado(chave)
+
+
+def definir_metadado(chave: str, valor: str):
+    return _supabase().definir_metadado(chave, valor) if _usar_supabase() else _sqlite_definir_metadado(chave, valor)
+
+
+def salvar_vaga(job, perfil_chave: str = "", digest_pendente: bool = False, exploratoria: bool = False):
+    if _usar_supabase():
+        return _supabase().salvar_vaga(job, perfil_chave, digest_pendente, exploratoria)
+    return _sqlite_salvar_vaga(job, perfil_chave, digest_pendente, exploratoria)
+
+
+def definir_situacao(id_ou_link: str, situacao: str):
+    return _supabase().definir_situacao(id_ou_link, situacao) if _usar_supabase() else _sqlite_definir_situacao(id_ou_link, situacao)
+
+
+def definir_feedback(job_id: str, feedback: str):
+    return _supabase().definir_feedback(job_id, feedback) if _usar_supabase() else _sqlite_definir_feedback(job_id, feedback)
+
+
+def obter_vagas_pendentes_digest(perfil_chave: str) -> list[tuple]:
+    return _supabase().obter_vagas_pendentes_digest(perfil_chave) if _usar_supabase() else _sqlite_obter_vagas_pendentes_digest(perfil_chave)
+
+
+def marcar_digest_enviado(perfil_chave: str):
+    return _supabase().marcar_digest_enviado(perfil_chave) if _usar_supabase() else _sqlite_marcar_digest_enviado(perfil_chave)
+
+
+def listar_vagas(perfil: str = "", situacao: str = "", site: str = "", busca: str = "", limite: int = 100) -> list[dict]:
+    if _usar_supabase():
+        return _supabase().listar_vagas(perfil, situacao, site, busca, limite)
+    return _sqlite_listar_vagas(perfil, situacao, site, busca, limite)
+
+
+def resumo_painel() -> dict:
+    return _supabase().resumo_painel() if _usar_supabase() else _sqlite_resumo_painel()
+
+
+def opcoes_filtro_painel(coluna: str) -> list[str]:
+    return _supabase().opcoes_filtro_painel(coluna) if _usar_supabase() else _sqlite_opcoes_filtro_painel(coluna)
+
+
+def obter_linhas_relatorio() -> list[tuple[str, str, str | None]]:
+    if _usar_supabase():
+        return _supabase().obter_linhas_relatorio()
+    with _conectar() as conn:
+        return conn.execute("SELECT site, encontrada_em, feedback FROM vagas_vistas").fetchall()

@@ -44,6 +44,22 @@ from core.config_intl import (
     MERCADOS_REMOTO_ACEITOS_INTL,
     IDIOMAS_EXIGIDOS_INTL,
 )
+from core.config_ios import (
+    CIDADES_IOS,
+    FERRAMENTAS_IOS_TITULO,
+    KEYWORDS_IOS,
+    KEYWORDS_IOS_AMBIGUO,
+    KEYWORDS_IOS_FORTE,
+    LOCATIONS_LINKEDIN_CIDADES_IOS,
+    LOCATIONS_LINKEDIN_IOS,
+    LOCATIONS_LINKEDIN_REMOTO_APENAS_IOS,
+    MERCADOS_REMOTO_ACEITOS_IOS,
+    QUALIFICADORES_CARGO_IOS,
+    QUALIFICADORES_IOS,
+    TERMOS_BUSCA_IOS,
+    TERMOS_POR_CICLO_IOS,
+    TERMOS_PRIORITARIOS_IOS,
+)
 from core.job import RegrasFiltro
 from scrapers.catho import CathoScraper
 from scrapers.geekhunter import GeekHunterScraper
@@ -291,7 +307,55 @@ PERFIL_INTL = Perfil(
     max_scrapers_concorrentes=3,
 )
 
+
+_REGRAS_IOS = RegrasFiltro(
+    keywords_forte=KEYWORDS_IOS_FORTE,
+    keywords_ambiguo=KEYWORDS_IOS_AMBIGUO,
+    qualificadores_dados=QUALIFICADORES_IOS,
+    ferramentas_titulo=FERRAMENTAS_IOS_TITULO,
+    qualificadores_cargo=QUALIFICADORES_CARGO_IOS,
+    cidades=CIDADES_IOS,
+    mercados_remoto_aceitos=MERCADOS_REMOTO_ACEITOS_IOS,
+)
+
+# Reaproveita fontes brasileiras, mas passa a configuração de localização
+# explicitamente para não herdar as cidades e mercados do perfil Dados/BI.
+_SCRAPERS_IOS = [
+    DefinicaoScraper(GupyScraper, FREQUENCIA_ALTA),
+    DefinicaoScraper(
+        LinkedInScraper,
+        FREQUENCIA_ALTA,
+        {
+            "locations": LOCATIONS_LINKEDIN_IOS,
+            "locations_remoto_apenas": LOCATIONS_LINKEDIN_REMOTO_APENAS_IOS,
+            "locations_cidades_presencial": LOCATIONS_LINKEDIN_CIDADES_IOS,
+        },
+    ),
+    DefinicaoScraper(SolidesScraper, FREQUENCIA_ALTA),
+    DefinicaoScraper(CathoScraper, FREQUENCIA_BAIXA),
+    DefinicaoScraper(GeekHunterScraper, FREQUENCIA_BAIXA),
+    DefinicaoScraper(Jobs99Scraper, FREQUENCIA_BAIXA),
+    DefinicaoScraper(SeniorScraper, FREQUENCIA_BAIXA),
+]
+
+PERFIL_IOS = Perfil(
+    chave="ios",
+    nome="iOS",
+    palavras_monitoradas=KEYWORDS_IOS,
+    paises_pesquisados=LOCATIONS_LINKEDIN_IOS,
+    regras=_REGRAS_IOS,
+    regras_eixo_secundario=None,
+    eixo_secundario_ativo=False,
+    eixo_secundario_rotulo="",
+    termos_busca=TERMOS_BUSCA_IOS,
+    termos_por_ciclo=TERMOS_POR_CICLO_IOS,
+    termos_prioritarios=TERMOS_PRIORITARIOS_IOS,
+    definicao_scrapers=_SCRAPERS_IOS,
+    max_scrapers_concorrentes=4,
+)
+
 PERFIS = {
+    PERFIL_IOS.chave: PERFIL_IOS,
     PERFIL_BR.chave: PERFIL_BR,
     PERFIL_INTL.chave: PERFIL_INTL,
 }

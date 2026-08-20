@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Entrar · JobRadar iOS{% endblock %}
+{% block content %}
+<section class="login-shell">
+  <p class="eyebrow">PAINEL PRIVADO</p>
+  <h1>Acompanhe o pulso<br>do mercado iOS.</h1>
+  <form class="login-form" method="post">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+    <label for="senha">Senha do painel</label>
+    <input id="senha" type="password" name="senha" required autofocus>
+    <button type="submit">Entrar no radar</button>
+  </form>
+</section>
+{% endblock %}

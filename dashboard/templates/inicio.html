@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="intro">
+  <div><p class="eyebrow">CENTRAL DE ACOMPANHAMENTO</p><h1>Vagas, sem ruído.</h1></div>
+  <p>Atualize o que aconteceu depois do alerta. O robô continua encontrando; você decide o próximo passo.</p>
+</section>
+
+<section class="metrics" aria-label="Resumo do radar">
+  <article><small>no radar</small><strong>{{ resumo.total }}</strong></article>
+  <article><small>pedem atenção</small><strong>{{ resumo.novas }}</strong></article>
+  <article><small>em movimento</small><strong>{{ resumo.candidaturas }}</strong></article>
+  <article><small>última leitura</small><strong class="date">{{ resumo.ultima or '—' }}</strong></article>
+</section>
+
+<form class="filters" method="get">
+  <input name="busca" value="{{ filtros.busca }}" placeholder="Cargo ou empresa">
+  <select name="perfil"><option value="">Todos os perfis</option>{% for perfil in perfis %}<option value="{{ perfil }}" {% if filtros.perfil == perfil %}selected{% endif %}>{{ perfil }}</option>{% endfor %}</select>
+  <select name="site"><option value="">Todas as fontes</option>{% for site in sites %}<option value="{{ site }}" {% if filtros.site == site %}selected{% endif %}>{{ site }}</option>{% endfor %}</select>
+  <select name="situacao"><option value="">Todas as situações</option>{% for situacao in situacoes %}<option value="{{ situacao }}" {% if filtros.situacao == situacao %}selected{% endif %}>{{ situacao }}</option>{% endfor %}</select>
+  <button type="submit">Filtrar</button>
+</form>
+
+{% with mensagens = get_flashed_messages(with_categories=true) %}{% for categoria, mensagem in mensagens %}<p class="flash {{ categoria }}">{{ mensagem }}</p>{% endfor %}{% endwith %}
+
+<section class="job-list">
+  <div class="list-head"><span>Vaga</span><span>Fonte</span><span>Situação</span></div>
+  {% for vaga in vagas %}
+  <article class="job-card">
+    <div class="job-main"><a href="{{ vaga.link }}" target="_blank" rel="noreferrer">{{ vaga.titulo }}</a><p>{{ vaga.empresa }} · {{ vaga.local }} · {{ vaga.modalidade or 'modalidade não informada' }}</p></div>
+    <div class="source"><b>{{ vaga.site }}</b><small>{{ vaga.encontrada_em }}</small></div>
+    <form method="post" action="{{ url_for('atualizar_situacao', job_id=vaga.id) }}"><input type="hidden" name="csrf_token" value="{{ csrf_token }}"><select name="situacao" aria-label="Situação de {{ vaga.titulo }}">{% for situacao in situacoes %}<option value="{{ situacao }}" {% if vaga.situacao == situacao %}selected{% endif %}>{{ situacao }}</option>{% endfor %}</select><button type="submit">Salvar</button></form>
+  </article>
+  {% else %}
+  <div class="empty"><h2>Nenhuma vaga neste recorte.</h2><p>Altere os filtros ou aguarde o próximo ciclo do robô.</p></div>
+  {% endfor %}
+</section>
+{% endblock %}

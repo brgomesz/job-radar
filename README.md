@@ -2,8 +2,8 @@
 
 <!-- ![JobRadar](assets/cover.png) -->
 
-# 📡 JobRadar
-### Monitor Automatizado de Vagas de Dados & BI
+# 📡 JobRadar iOS
+### Monitor automatizado de vagas para iOS Developer
 
 ![Python](https://img.shields.io/badge/Python-3.11-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![Playwright](https://img.shields.io/badge/Playwright-Scraping-2EAD33?style=for-the-badge&logo=playwright&logoColor=white)
@@ -12,7 +12,7 @@
 ![Tests](https://img.shields.io/badge/testes-73%20passing-success?style=for-the-badge)
 ![Status](https://img.shields.io/badge/status-em%20produção-success?style=for-the-badge)
 
-**Autora:** Liliam Kezia Oliveira Souza
+Fork mantido por [Ronan Rodrigo](https://github.com/ronanrodrigo), a partir do projeto de Liliam Kezia Oliveira Souza.
 
 </div>
 
@@ -20,7 +20,7 @@
 
 ## 💎 Proposta de valor
 
-> Em cidade pequena, vaga boa de Dados/BI aparece pouco e some rápido — quem checa o board duas vezes por dia perde pra quem checou na primeira hora. **JobRadar** é um sistema de monitoramento contínuo que substitui essa checagem manual: varre **8 fontes** a cada **3 horas**, filtra por cargo/cidade/mercado/idioma com três níveis de confiança, pontua cada vaga por relevância e notifica no Telegram — rodando de graça, sem servidor próprio, 24 horas por dia.
+> O JobRadar iOS monitora fontes de vagas a cada três horas, reconhece títulos iOS com regras explícitas, envia alertas no Telegram e oferece um painel privado para acompanhar candidaturas.
 
 ## 📄 Resumo executivo
 
@@ -113,7 +113,7 @@ python -m playwright install chromium
 Criar `.env` na raiz com `TELEGRAM_BOT_TOKEN` e `TELEGRAM_CHAT_ID` (via [@BotFather](https://t.me/BotFather)), depois:
 
 ```bash
-python main.py --perfil brasil internacional --once
+python main.py --perfil ios --once
 ```
 
 ## 🧪 Testes
@@ -122,7 +122,21 @@ python main.py --perfil brasil internacional --once
 pytest tests/ -v
 ```
 
-73 casos parametrizados, cobrindo a camada de filtro, o parsing de callback do Telegram e o relatório de precisão — todos rodando automaticamente a cada push via GitHub Actions.
+Os testes cobrem a camada de filtro, o Telegram, o painel, SQLite e o contrato HTTP do adaptador Supabase.
+
+## Operação em produção
+
+O fluxo de produção é: **GitHub Actions (a cada 3h) → JobRadar → Supabase Postgres ← painel Flask na Vercel**. Assim robô e painel usam a mesma base; SQLite fica reservado ao desenvolvimento local.
+
+1. Crie um projeto Supabase e aplique a migration em `supabase/migrations/`.
+2. Importe o histórico com `python scripts/migrar_sqlite_para_supabase.py --dry-run`; revise a contagem e execute sem `--dry-run`.
+3. No GitHub, configure `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`, `SUPABASE_URL` e `SUPABASE_SERVICE_ROLE_KEY` como secrets.
+4. Importe o repositório na Vercel e configure `JOBRADAR_STORAGE=supabase`, `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `DASHBOARD_SECRET_KEY` e `DASHBOARD_PASSWORD`.
+5. Faça o deploy. A Vercel detecta `app.py` como a aplicação Flask.
+
+Para abrir o painel localmente, execute `flask --app dashboard.app run --port 5050`.
+
+Nunca exponha `SUPABASE_SERVICE_ROLE_KEY` no navegador, JavaScript ou Git.
 
 ---
 
