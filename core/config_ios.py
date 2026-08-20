@@ -47,22 +47,21 @@ TERMOS_BUSCA_IOS = sorted(set(k.lower() for k in KEYWORDS_IOS) | set(TERMOS_IOS_
 TERMOS_PRIORITARIOS_IOS = ["ios developer", "desenvolvedor ios", "ios engineer"]
 TERMOS_POR_CICLO_IOS = 8
 
-# Remoto em território brasileiro é aceito de qualquer cidade. As demais
-# cidades cobrem vagas híbridas/presenciais nos principais polos de tecnologia
-# e podem ser ajustadas sem tocar a lógica do filtro.
+# Aceita vagas remotas no Brasil e no exterior. Para modalidade presencial ou
+# híbrida, a única cidade de interesse é Joinville.
 CIDADES_IOS = [
     "Remoto",
-    "São Paulo",
-    "Rio de Janeiro",
-    "Belo Horizonte",
-    "Curitiba",
-    "Florianópolis",
-    "Porto Alegre",
-    "Recife",
-    "Brasília",
+    "Joinville",
 ]
 
-MERCADOS_REMOTO_ACEITOS_IOS = ["Brasil"]
+# None preserva vagas remotas sem limitação de país: Brasil e mercado
+# internacional. A restrição geográfica só continua valendo para vagas não
+# remotas, via CIDADES_IOS.
+MERCADOS_REMOTO_ACEITOS_IOS = None
 LOCATIONS_LINKEDIN_IOS = ["Brasil"]
-LOCATIONS_LINKEDIN_REMOTO_APENAS_IOS: list[str] = []
+# Países internacionais consultados no LinkedIn somente com o filtro nativo
+# de remoto. We Work Remotely complementa a cobertura global.
+LOCATIONS_LINKEDIN_REMOTO_APENAS_IOS = [
+    "Spain", "Portugal", "Mexico", "Colombia", "Argentina", "Chile",
+]
 LOCATIONS_LINKEDIN_CIDADES_IOS = [cidade for cidade in CIDADES_IOS if cidade != "Remoto"]
