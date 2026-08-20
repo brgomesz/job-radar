@@ -336,6 +336,7 @@ _SCRAPERS_IOS = [
     DefinicaoScraper(GeekHunterScraper, FREQUENCIA_BAIXA),
     DefinicaoScraper(Jobs99Scraper, FREQUENCIA_BAIXA),
     DefinicaoScraper(SeniorScraper, FREQUENCIA_BAIXA),
+    DefinicaoScraper(WeWorkRemotelyIntlScraper, FREQUENCIA_ALTA),
 ]
 
 PERFIL_IOS = Perfil(
