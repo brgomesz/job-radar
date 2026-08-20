@@ -2,6 +2,7 @@
 
 import os
 import secrets
+import time
 from functools import wraps
 
 from flask import Flask, abort, flash, redirect, render_template, request, session, url_for
@@ -14,6 +15,8 @@ from database.database import (
 )
 
 SITUACOES = ("nova", "candidatei", "entrevista", "proposta", "descartada")
+MAX_TENTATIVAS_LOGIN = 5
+JANELA_TENTATIVAS_LOGIN_SEGUNDOS = 15 * 60
 
 
 def create_app(config: dict | None = None) -> Flask:
@@ -27,6 +30,7 @@ def create_app(config: dict | None = None) -> Flask:
     )
     if config:
         app.config.update(config)
+    app.extensions["tentativas_login"] = {}
 
     if os.getenv("VERCEL_ENV") and not app.config.get("TESTING"):
         if app.config["SECRET_KEY"] == "desenvolvimento-sem-segredo" or not app.config["DASHBOARD_PASSWORD"]:
@@ -54,6 +58,20 @@ def create_app(config: dict | None = None) -> Flask:
     def csrf_valido() -> bool:
         return secrets.compare_digest(session.get("csrf_token", ""), request.form.get("csrf_token", ""))
 
+    def tentativas_do_cliente() -> list[float]:
+        """Mantém uma contenção simples por instância para tentativas de login.
+
+        A proteção de borda da Vercel continua recomendada em produção; esta
+        camada evita tentativas ilimitadas mesmo quando a aplicação é acessada
+        diretamente.
+        """
+        endereco = request.remote_addr or "desconhecido"
+        agora = time.monotonic()
+        tentativas = app.extensions["tentativas_login"].get(endereco, [])
+        tentativas = [momento for momento in tentativas if agora - momento < JANELA_TENTATIVAS_LOGIN_SEGUNDOS]
+        app.extensions["tentativas_login"][endereco] = tentativas
+        return tentativas
+
     @app.get("/login")
     def login():
         if not app.config["DASHBOARD_PASSWORD"]:
@@ -64,11 +82,17 @@ def create_app(config: dict | None = None) -> Flask:
     def autenticar():
         if not csrf_valido():
             abort(400)
+        tentativas = tentativas_do_cliente()
+        if len(tentativas) >= MAX_TENTATIVAS_LOGIN:
+            flash("Muitas tentativas. Aguarde alguns minutos antes de tentar novamente.", "erro")
+            return redirect(url_for("login"))
         if secrets.compare_digest(request.form.get("senha", ""), app.config["DASHBOARD_PASSWORD"]):
             session["dashboard_autenticado"] = True
+            app.extensions["tentativas_login"].pop(request.remote_addr or "desconhecido", None)
             proxima = request.args.get("next", "")
             destino = proxima if proxima.startswith("/") and not proxima.startswith("//") else url_for("inicio")
             return redirect(destino)
+        tentativas.append(time.monotonic())
         flash("Senha inválida.", "erro")
         return redirect(url_for("login"))
 

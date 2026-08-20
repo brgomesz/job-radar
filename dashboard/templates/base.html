@@ -16,6 +16,13 @@
       </form>
       {% endif %}
     </header>
-    <main>{% block content %}{% endblock %}</main>
+    <main>
+      {% with mensagens = get_flashed_messages(with_categories=true) %}
+        {% for categoria, mensagem in mensagens %}
+        <p class="flash {{ categoria }}" role="status">{{ mensagem }}</p>
+        {% endfor %}
+      {% endwith %}
+      {% block content %}{% endblock %}
+    </main>
   </body>
 </html>

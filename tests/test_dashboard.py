@@ -66,3 +66,20 @@ def test_login_nao_redireciona_para_dominio_externo():
         "/login?next=//atacante.example", data={"senha": "senha-forte", "csrf_token": token}
     )
     assert resposta.headers["Location"].endswith("/")
+
+
+def test_login_limita_tentativas_por_cliente():
+    app = create_app({"TESTING": True, "SECRET_KEY": "teste", "DASHBOARD_PASSWORD": "senha-forte"})
+    cliente = app.test_client()
+    for _ in range(5):
+        cliente.get("/login")
+        with cliente.session_transaction() as sessao:
+            token = sessao["csrf_token"]
+        cliente.post("/login", data={"senha": "errada", "csrf_token": token})
+
+    cliente.get("/login")
+    with cliente.session_transaction() as sessao:
+        token = sessao["csrf_token"]
+    resposta = cliente.post("/login", data={"senha": "senha-forte", "csrf_token": token}, follow_redirects=True)
+
+    assert b"Muitas tentativas" in resposta.data
