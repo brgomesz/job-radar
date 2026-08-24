@@ -60,6 +60,23 @@ from core.config_dev import (
     LOCATIONS_LINKEDIN_DEV,
     LOCATIONS_LINKEDIN_CIDADES_DEV,
 )
+from core.config_adm import (
+    KEYWORDS_CARGO_FORTE_ADM,
+    KEYWORDS_CARGO_AMBIGUO_ADM,
+    QUALIFICADORES_AREA_ADM,
+    FERRAMENTAS_TITULO_ADM,
+    QUALIFICADORES_CARGO_ADM,
+    AREAS_EXCLUIDAS_ADM,
+    NIVEIS_EXCLUIDOS_ADM,
+    NIVEIS_ALVO_ADM,
+    CIDADES_ADM,
+    MERCADOS_REMOTO_ACEITOS_ADM,
+    TERMOS_BUSCA_ADM,
+    TERMOS_PRIORITARIOS_ADM,
+    TERMOS_POR_CICLO_ADM,
+    LOCATIONS_LINKEDIN_ADM,
+    LOCATIONS_LINKEDIN_CIDADES_ADM,
+)
 from core.job import RegrasFiltro
 from scrapers.catho import CathoScraper
 from scrapers.geekhunter import GeekHunterScraper
@@ -378,8 +395,70 @@ PERFIL_DEV = Perfil(
     max_scrapers_concorrentes=4,
 )
 
+# Perfil administrativo/financeiro/RH — ver core/config_adm.py pra origem
+# de cada lista. Segundo perfil de pessoa real deste fork (o outro é o
+# dev): os dois rodam na mesma execução e notificam no MESMO Telegram,
+# distinguidos pela linha "Perfil:" da notificação (ver notificar_vaga).
+#
+# Usa as três regras opcionais de RegrasFiltro:
+#   - stacks_excluidas (aqui: áreas excluídas) — "Analista de Processos" é
+#     cargo dela, mas "Analista de Processos Industriais"/"de Software" não
+#     é; Joinville é polo industrial, esse é o falso positivo mais provável.
+#   - niveis_excluidos — estágio e júnior fora; liderança continua entrando.
+#   - niveis_alvo — Pleno E Sênior pontuam o teto (no padrão global, Sênior
+#     valeria -2 e metade do que ela procura cairia no ranking).
+_REGRAS_ADM = RegrasFiltro(
+    keywords_forte=KEYWORDS_CARGO_FORTE_ADM,
+    keywords_ambiguo=KEYWORDS_CARGO_AMBIGUO_ADM,
+    qualificadores_dados=QUALIFICADORES_AREA_ADM,
+    ferramentas_titulo=FERRAMENTAS_TITULO_ADM,
+    qualificadores_cargo=QUALIFICADORES_CARGO_ADM,
+    cidades=CIDADES_ADM,
+    mercados_remoto_aceitos=MERCADOS_REMOTO_ACEITOS_ADM,
+    stacks_excluidas=AREAS_EXCLUIDAS_ADM,
+    niveis_excluidos=NIVEIS_EXCLUIDOS_ADM,
+    niveis_alvo=NIVEIS_ALVO_ADM,
+)
+
+# Portais generalistas, que é onde vaga administrativa/financeira/RH de
+# fato mora. GeekHunter e WeWorkRemotely ficam FORA: as duas são fonte de
+# vaga de tecnologia, rodariam termo administrativo pra devolver nada.
+# Catho e Sólides sobem pra FREQUENCIA_ALTA aqui (no perfil de dados são
+# de baixa, por rendimento medido abaixo de 1%): o rendimento delas foi
+# medido contra termo de dados/BI, e as duas são justamente portais fortes
+# em vaga administrativa. Rever quando houver medição deste perfil.
+_SCRAPERS_ADM = [
+    DefinicaoScraper(LinkedInScraper, FREQUENCIA_ALTA, {
+        "locations": LOCATIONS_LINKEDIN_ADM,
+        "locations_remoto_apenas": [],
+        "locations_cidades_presencial": LOCATIONS_LINKEDIN_CIDADES_ADM,
+    }),
+    DefinicaoScraper(GupyScraper, FREQUENCIA_ALTA),
+    DefinicaoScraper(CathoScraper, FREQUENCIA_ALTA),
+    DefinicaoScraper(SolidesScraper, FREQUENCIA_ALTA),
+    DefinicaoScraper(Jobs99Scraper, FREQUENCIA_BAIXA),
+    DefinicaoScraper(SeniorScraper, FREQUENCIA_BAIXA),
+]
+
+PERFIL_ADM = Perfil(
+    chave="admin",
+    nome="Administrativo/Financeiro",
+    palavras_monitoradas=KEYWORDS_CARGO_FORTE_ADM,
+    paises_pesquisados=None,
+    regras=_REGRAS_ADM,
+    regras_eixo_secundario=None,
+    eixo_secundario_ativo=False,
+    eixo_secundario_rotulo="",
+    termos_busca=TERMOS_BUSCA_ADM,
+    termos_por_ciclo=TERMOS_POR_CICLO_ADM,
+    termos_prioritarios=TERMOS_PRIORITARIOS_ADM,
+    definicao_scrapers=_SCRAPERS_ADM,
+    max_scrapers_concorrentes=4,
+)
+
 PERFIS = {
     PERFIL_BR.chave: PERFIL_BR,
     PERFIL_INTL.chave: PERFIL_INTL,
     PERFIL_DEV.chave: PERFIL_DEV,
+    PERFIL_ADM.chave: PERFIL_ADM,
 }

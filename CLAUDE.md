@@ -19,10 +19,17 @@ globais da conta, em ~/.claude/CLAUDE.md — não são repetidas aqui.
 O motor (`main.py`) roda perfis selecionáveis por `--perfil`; cada perfil é
 só DADO (`core/config*.py` + `core/perfis.py`), não lógica duplicada.
 
-- `dev` — perfil do usuário (Bruno): full-stack com foco back-end
-  Node/TypeScript, remoto ou presencial/híbrido em Joinville/SC, nível
-  pleno apenas. Configuração em `core/config_dev.py`.
+Dois perfis rodam em produção (cron), os dois notificando no MESMO chat do
+Telegram, distinguidos pela linha `Perfil:` da notificação:
+
+- `dev` — Bruno: full-stack com foco back-end Node/TypeScript, remoto ou
+  presencial/híbrido em Joinville/SC, nível pleno apenas.
+  Config em `core/config_dev.py`.
+- `admin` — Ana Julia: administrativo, financeiro, fiscal e RH/DP, remoto
+  ou Joinville/SC, pleno e sênior. Config em `core/config_adm.py`.
+
 - `brasil` / `internacional` — perfis de Dados/BI da autora original do
-  projeto.
+  projeto. Continuam no código e rodáveis à mão, mas FORA do cron: não
+  devem voltar pro workflow sem pedido explícito.
 
 Ao mexer em regra de filtro, rodar `pytest tests/ -v` antes de commitar.

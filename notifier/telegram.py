@@ -102,7 +102,7 @@ def _linha_aviso_antiga(job) -> str:
     return f"⚠️ <b>Postada {job.publicado_em_legivel}</b> — pode já estar preenchida.\n"
 
 
-def notificar_vaga(job) -> bool:
+def notificar_vaga(job, rotulo_perfil: str = "") -> bool:
     # TODO (Fase 3): incluir aqui a % de compatibilidade com o currículo,
     # calculada por IA, quando essa etapa for implementada.
     #
@@ -110,9 +110,18 @@ def notificar_vaga(job) -> bool:
     # expõe — ver Job.publicado_em / extrair_data_publicacao em job.py).
     linha_publicacao = f"<b>Publicada:</b> {job.publicado_em_legivel}\n" if job.publicado_em else ""
     linha_modalidade = f"<b>Modalidade:</b> {job.modalidade}\n" if job.modalidade else ""
+    # MEDIDO: o digest diário sempre disse de qual perfil era a lista (ver
+    # enviar_digest/montar_digest), mas a notificação IMEDIATA não dizia
+    # nada — enquanto todos os perfis eram da mesma área dava pra deduzir
+    # pelo cargo. Com dois perfis de áreas diferentes no mesmo chat (dev e
+    # admin, pessoas diferentes), "Analista Financeiro Pleno" chegando sem
+    # rótulo é uma vaga sem dono aparente. Default vazio mantém o
+    # comportamento antigo pra qualquer chamador que não passe o rótulo.
+    linha_perfil = f"<b>Perfil:</b> {rotulo_perfil}\n" if rotulo_perfil else ""
     texto = (
         f"🚨 <b>Nova vaga encontrada!</b>\n\n"
         f"{_linha_aviso_antiga(job)}"
+        f"{linha_perfil}"
         f"<b>Relevância:</b> {_linha_relevancia(job.relevancia)}\n"
         f"<b>Motivo:</b> {job.motivo}\n"
         f"<b>Empresa:</b> {job.empresa}\n"

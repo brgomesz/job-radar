@@ -1043,6 +1043,23 @@ class RegrasFiltro:
     # descartá-las por omissão esvaziaria o radar (ver _detectar_senioridade).
     # None/vazio = não filtra por nível (comportamento de antes deste campo).
     niveis_excluidos: list[str] | None = None
+    # Níveis que o perfil considera ALVO na hora de pontuar (não de
+    # filtrar — quem filtra é niveis_excluidos acima). None = usa o padrão
+    # global _NIVEIS_SENIORIDADE_ALVO ({Júnior, Pleno}), calibrado contra o
+    # histórico do perfil de dados.
+    #
+    # Existe porque esse padrão global embute a preferência de UMA pessoa:
+    # "Sênior" vale -2 lá. No perfil admin, que aceita pleno E sênior, essa
+    # penalidade rebaixava justamente metade do que a pessoa procura —
+    # "Analista Financeiro Sênior" caía pro digest com score baixo enquanto
+    # a mesma vaga sem nível declarado pontuava mais. Com o alvo declarado
+    # por perfil, cada radar pontua a faixa que ele de fato quer.
+    #
+    # O grupo "acima do alvo" (-2) é derivado: é o global menos o que este
+    # perfil declarou como alvo. Assim declarar "Sênior" como alvo tira ele
+    # da penalidade automaticamente, sem precisar manter duas listas em
+    # sincronia.
+    niveis_alvo: list[str] | None = None
 
 
 @dataclass
@@ -1537,10 +1554,17 @@ class Job:
 
         pontos_ferramenta = _PESO_FERRAMENTA if av.bate_ferramenta else 0
 
+        # Alvo declarado pelo perfil, quando houver (ver niveis_alvo em
+        # RegrasFiltro); senão, o padrão global. "Acima do alvo" é sempre o
+        # global MENOS o alvo deste perfil — declarar "Sênior" como alvo já
+        # tira ele da penalidade, sem segunda lista pra manter em sincronia.
+        niveis_alvo = set(regras.niveis_alvo) if regras.niveis_alvo else _NIVEIS_SENIORIDADE_ALVO
+        niveis_acima = _NIVEIS_SENIORIDADE_ACIMA_DO_ALVO - niveis_alvo
+
         nivel = self.senioridade
-        if nivel in _NIVEIS_SENIORIDADE_ALVO:
+        if nivel in niveis_alvo:
             pontos_senioridade = _PESO_SENIORIDADE_ALVO
-        elif nivel in _NIVEIS_SENIORIDADE_ACIMA_DO_ALVO:
+        elif nivel in niveis_acima:
             pontos_senioridade = _PESO_SENIORIDADE_ACIMA_DO_ALVO
         elif nivel == "Não especificado" or nivel.startswith("Nível "):
             pontos_senioridade = _PESO_SENIORIDADE_NEUTRA
