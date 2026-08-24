@@ -24,7 +24,18 @@ jobs:
     # paginação e a passada dupla do LinkedIn) e ainda fica abaixo do
     # intervalo do cron (3h), então um run truncado nunca empilha em cima
     # do próximo agendado.
-    timeout-minutes: 150
+    #
+    # 150 -> 170 quando o perfil dev entrou como terceiro perfil da mesma
+    # execução. O perfil dev é o mais barato dos três por ciclo (13 termos
+    # contra 15 do brasil, e o LinkedIn dele roda 3 buscas por termo contra
+    # 16 do perfil brasil — 1 país x 2 passadas + 1 cidade, ver
+    # _SCRAPERS_DEV em core/perfis.py), mas ainda assim é tempo somado em
+    # cima de um ciclo que já media 1h30-2h. 170 mantém a folga abaixo do
+    # cron de 3h. NÃO MEDIDO ainda com os três perfis juntos: se o run
+    # começar a bater no teto, o ajuste certo é tirar perfil da linha de
+    # comando abaixo (o dev sozinho cabe folgado), não subir isto pra perto
+    # de 180 — aí um run atrasado empilharia no próximo agendado.
+    timeout-minutes: 170
     steps:
       - name: Checkout do repositório
         uses: actions/checkout@v4
@@ -48,7 +59,7 @@ jobs:
         # pipeline internacional nunca rodou de verdade em produção. Agora é
         # um projeto só com dois perfis selecionáveis (ver core/perfis.py); os
         # dois rodam na mesma execução/commit, um após o outro.
-        run: python main.py --perfil brasil internacional --once
+        run: python main.py --perfil dev brasil internacional --once
 
       - name: Salvar vagas já vistas (evita notificação duplicada)
         run: |

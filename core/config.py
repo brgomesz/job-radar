@@ -384,7 +384,13 @@ INTERVALO_MINUTOS = int(os.getenv("INTERVALO_MINUTOS", 180))
 # com o pedido ("vaga de score alto na hora, resto agrupado"); 6 deixava
 # 74% imediata (pouca redução de ruído); 8 deixava só 2% (digest com
 # praticamente tudo, quase nenhuma vaga "excelente" se destacando na hora).
-LIMIAR_DIGEST_IMEDIATO = 7
+# Baixado de 7 pra 6 por decisão do usuário junto com a entrada do perfil
+# dev: com o filtro de nível ("pleno apenas") e a lista de stacks excluídas
+# barrando antes, o volume que chega em 6 é menor do que era quando o
+# limiar foi calibrado — a distribuição medida (67% em 6) valia pro perfil
+# de dados, sem nenhum desses dois cortes. O valor é global aos três
+# perfis: os perfis de dados também passam a notificar na hora em 6.
+LIMIAR_DIGEST_IMEDIATO = 6
 
 # Hora UTC a partir da qual o digest diário pode sair (uma vez por perfil,
 # por dia — ver _enviar_digest_diario em main.py). A regra é "ainda não

@@ -44,6 +44,22 @@ from core.config_intl import (
     MERCADOS_REMOTO_ACEITOS_INTL,
     IDIOMAS_EXIGIDOS_INTL,
 )
+from core.config_dev import (
+    KEYWORDS_CARGO_FORTE_DEV,
+    KEYWORDS_CARGO_AMBIGUO_DEV,
+    QUALIFICADORES_STACK_DEV,
+    FERRAMENTAS_TITULO_DEV,
+    QUALIFICADORES_CARGO_DEV,
+    STACKS_EXCLUIDAS_DEV,
+    NIVEIS_EXCLUIDOS_DEV,
+    CIDADES_DEV,
+    MERCADOS_REMOTO_ACEITOS_DEV,
+    TERMOS_BUSCA_DEV,
+    TERMOS_PRIORITARIOS_DEV,
+    TERMOS_POR_CICLO_DEV,
+    LOCATIONS_LINKEDIN_DEV,
+    LOCATIONS_LINKEDIN_CIDADES_DEV,
+)
 from core.job import RegrasFiltro
 from scrapers.catho import CathoScraper
 from scrapers.geekhunter import GeekHunterScraper
@@ -291,7 +307,79 @@ PERFIL_INTL = Perfil(
     max_scrapers_concorrentes=3,
 )
 
+# Perfil dev full-stack (foco back-end Node/TypeScript) — ver
+# core/config_dev.py pra origem de cada lista.
+#
+# Duas regras que os outros perfis não usam entram aqui (ambas opcionais em
+# RegrasFiltro, então nada muda pra brasil/internacional):
+#   - stacks_excluidas: o cargo forte deste perfil é genérico
+#     ("Desenvolvedor Back-end"), porque vaga real raramente traz stack no
+#     título; essa lista é o contrapeso que barra Java/.NET/PHP/mobile.
+#   - niveis_excluidos: "pleno apenas" pedido pelo usuário — júnior,
+#     estágio, sênior e liderança nem notificam. Vaga sem nível declarado
+#     continua entrando.
+#
+# Sem eixo secundário: o usuário não pediu presencial fora de Joinville, e
+# eixo desligado é o estado dos outros dois perfis também.
+_REGRAS_DEV = RegrasFiltro(
+    keywords_forte=KEYWORDS_CARGO_FORTE_DEV,
+    keywords_ambiguo=KEYWORDS_CARGO_AMBIGUO_DEV,
+    qualificadores_dados=QUALIFICADORES_STACK_DEV,
+    ferramentas_titulo=FERRAMENTAS_TITULO_DEV,
+    qualificadores_cargo=QUALIFICADORES_CARGO_DEV,
+    cidades=CIDADES_DEV,
+    mercados_remoto_aceitos=MERCADOS_REMOTO_ACEITOS_DEV,
+    stacks_excluidas=STACKS_EXCLUIDAS_DEV,
+    niveis_excluidos=NIVEIS_EXCLUIDOS_DEV,
+)
+
+# GeekHunter e WeWorkRemotely sobem pra FREQUENCIA_ALTA aqui (no perfil de
+# dados as duas são de baixa frequência, por rendimento medido abaixo de
+# 1%): as duas são fonte de vaga de TECNOLOGIA, que é exatamente o que este
+# perfil procura — o rendimento delas foi medido contra termo de dados/BI,
+# não contra "desenvolvedor node". Rebaixar/promover de novo quando houver
+# medição própria deste perfil.
+#
+# Catho, Sólides, 99Jobs e Senior ficam em baixa frequência: são portais
+# generalistas, mesmo custo por termo e sem sinal de que rendam mais aqui.
+# Indeed continua fora (ver MEDIDO em _SCRAPERS_BR — era o gargalo do
+# ciclo, com rendimento perto de zero).
+_SCRAPERS_DEV = [
+    DefinicaoScraper(LinkedInScraper, FREQUENCIA_ALTA, {
+        "locations": LOCATIONS_LINKEDIN_DEV,
+        # Sem passada de "remoto apenas" em outros países: vaga remota
+        # internacional chega pela WeWorkRemotely, sem multiplicar o custo
+        # do LinkedIn por país.
+        "locations_remoto_apenas": [],
+        "locations_cidades_presencial": LOCATIONS_LINKEDIN_CIDADES_DEV,
+    }),
+    DefinicaoScraper(GupyScraper, FREQUENCIA_ALTA),
+    DefinicaoScraper(GeekHunterScraper, FREQUENCIA_ALTA),
+    DefinicaoScraper(WeWorkRemotelyIntlScraper, FREQUENCIA_ALTA),
+    DefinicaoScraper(SolidesScraper, FREQUENCIA_BAIXA),
+    DefinicaoScraper(Jobs99Scraper, FREQUENCIA_BAIXA),
+    DefinicaoScraper(CathoScraper, FREQUENCIA_BAIXA),
+    DefinicaoScraper(SeniorScraper, FREQUENCIA_BAIXA),
+]
+
+PERFIL_DEV = Perfil(
+    chave="dev",
+    nome="Dev Full-Stack",
+    palavras_monitoradas=KEYWORDS_CARGO_FORTE_DEV + KEYWORDS_CARGO_AMBIGUO_DEV,
+    paises_pesquisados=None,
+    regras=_REGRAS_DEV,
+    regras_eixo_secundario=None,
+    eixo_secundario_ativo=False,
+    eixo_secundario_rotulo="",
+    termos_busca=TERMOS_BUSCA_DEV,
+    termos_por_ciclo=TERMOS_POR_CICLO_DEV,
+    termos_prioritarios=TERMOS_PRIORITARIOS_DEV,
+    definicao_scrapers=_SCRAPERS_DEV,
+    max_scrapers_concorrentes=4,
+)
+
 PERFIS = {
     PERFIL_BR.chave: PERFIL_BR,
     PERFIL_INTL.chave: PERFIL_INTL,
+    PERFIL_DEV.chave: PERFIL_DEV,
 }

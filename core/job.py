@@ -527,6 +527,11 @@ _UF_DA_CIDADE = {
     # (MG), "Fortaleza dos Nogueiras" (MA) e "Fortaleza dos Valos" (RS).
     # Medido: sem esta linha, as três passavam.
     "fortaleza": "ce",
+    # Cidade do perfil dev (ver core/config_dev.py). Só uma homônima real
+    # ("Joinville" na França), que nunca chega aqui com UF brasileira — mas
+    # a entrada mantém a guarda simétrica com as outras cidades aceitas:
+    # local que declare outra UF junto do nome não passa.
+    "joinville": "sc",
 }
 
 
@@ -1001,6 +1006,43 @@ class RegrasFiltro:
     # mercado hispanofalante-lusófono explicitamente. None = não checa
     # (BR não precisa — fonte já é 100% brasileira/portuguesa).
     idiomas_exigidos: list[str] | None = None
+    # Stack de OUTRA linguagem/ecossistema no título. Nasceu com o perfil
+    # dev (ver core/config_dev.py): lá o cargo forte precisa ser genérico
+    # ("Desenvolvedor Back-end", "Full Stack Developer"), porque a maioria
+    # das vagas não põe a stack no título — exigir stack junto, como faz
+    # keywords_ambiguo, jogaria fora justamente as vagas mais comuns. O
+    # preço de aceitar o cargo genérico é que "Desenvolvedor Back-end Java"
+    # entra igual, e essa é a vaga que o usuário do perfil NÃO quer.
+    #
+    # A regra é uma rejeição, não uma aprovação: título que nomeia uma
+    # stack desta lista é descartado, a menos que ele TAMBÉM nomeie uma
+    # ferramenta de `ferramentas_titulo` (a stack do próprio usuário) —
+    # "Desenvolvedor Full Stack (Node + Python)" continua passando, porque
+    # Python ali é complemento, não substituto.
+    #
+    # A checagem da stack própria roda no título com os termos excluídos
+    # JÁ REMOVIDOS. Sem isso, "Desenvolvedor React Native" se auto-perdoava:
+    # "react native" está na lista de excluídas, mas "react" (stack própria)
+    # aparece DENTRO dele, então o perdão disparava sempre — mobile passaria
+    # em cima de uma regra escrita pra barrar mobile. Removendo o trecho
+    # excluído antes de procurar a stack própria, sobra "desenvolvedor", que
+    # não tem stack nenhuma, e a vaga é rejeitada como deveria.
+    #
+    # None/vazio = não checa nada (comportamento dos perfis brasil e
+    # internacional, que não passam este campo).
+    stacks_excluidas: list[str] | None = None
+    # Níveis de senioridade (mesmos rótulos de Job.senioridade) que o perfil
+    # rejeita de saída. Até aqui senioridade só PONTUAVA (ver
+    # pontuar_relevancia) — a vaga sempre chegava, só mais abaixo no
+    # ranking. Existe porque "quero vaga de pleno" pode significar as duas
+    # coisas, e o perfil dev pediu a versão forte: júnior/estágio/sênior/
+    # liderança não devem nem notificar.
+    #
+    # Só bate em nível DECLARADO no título: "Não especificado" e "Nível
+    # I/II/III" nunca são excluídos — a maioria das vagas não diz o nível, e
+    # descartá-las por omissão esvaziaria o radar (ver _detectar_senioridade).
+    # None/vazio = não filtra por nível (comportamento de antes deste campo).
+    niveis_excluidos: list[str] | None = None
 
 
 @dataclass
@@ -1274,6 +1316,40 @@ class Job:
         """
         return self._avaliar(regras).aprovada
 
+    def _rejeitada_por_stack(self, regras: RegrasFiltro, titulo_norm: str) -> bool:
+        """Título nomeia stack de outro ecossistema, sem nomear a do próprio
+        usuário junto — ver stacks_excluidas em RegrasFiltro."""
+        if not regras.stacks_excluidas:
+            return False
+
+        excluidas_no_titulo = [
+            _normalizar(s) for s in regras.stacks_excluidas
+            if _contem_termo(_normalizar(s), titulo_norm)
+        ]
+        if not excluidas_no_titulo:
+            return False
+
+        # Tira do título o que já foi reconhecido como stack de fora, pra
+        # "react" dentro de "react native" não valer como stack própria (ver
+        # o MEDIDO em stacks_excluidas).
+        titulo_restante = titulo_norm
+        for excluida in excluidas_no_titulo:
+            titulo_restante = re.sub(
+                rf"(?<!\w){re.escape(excluida)}(?!\w)", " ", titulo_restante
+            )
+
+        return not any(
+            _contem_termo(_normalizar(f), titulo_restante)
+            for f in regras.ferramentas_titulo
+        )
+
+    def _rejeitada_por_nivel(self, regras: RegrasFiltro) -> bool:
+        """Nível declarado no título está na lista de excluídos do perfil —
+        ver niveis_excluidos em RegrasFiltro."""
+        if not regras.niveis_excluidos:
+            return False
+        return self.senioridade in regras.niveis_excluidos
+
     def _avaliar(self, regras: RegrasFiltro) -> _Avaliacao:
         """Faz a conta completa uma vez só — combina_com() e
         pontuar_relevancia() leem o mesmo resultado, em vez de cada um
@@ -1300,6 +1376,16 @@ class Job:
             _contem_termo(_normalizar(q), titulo_norm, aceitar_plural=True)
             for q in regras.qualificadores_cargo
         )
+
+        # Rejeição por stack de outro ecossistema e por nível declarado (ver
+        # stacks_excluidas/niveis_excluidos em RegrasFiltro). Zeram os três
+        # sinais de cargo em vez de só derrubar `aprovada`: quem lê o
+        # resultado depois (pontuar_relevancia, motivo_aprovacao,
+        # rejeitada_so_pelo_cargo) reconstrói "bateu cargo?" a partir deles,
+        # então deixar os sinais ligados numa vaga rejeitada faria um método
+        # discordar do outro sobre a mesma vaga.
+        if self._rejeitada_por_stack(regras, titulo_norm) or self._rejeitada_por_nivel(regras):
+            bate_forte = bate_ambiguo = bate_ferramenta = False
 
         bate_keyword = bate_forte or bate_ambiguo or bate_ferramenta
 
