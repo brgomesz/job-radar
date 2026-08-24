@@ -22,11 +22,11 @@ só DADO (`core/config*.py` + `core/perfis.py`), não lógica duplicada.
 Dois perfis rodam em produção (cron), os dois notificando no MESMO chat do
 Telegram, distinguidos pela linha `Perfil:` da notificação:
 
-- `dev` — Bruno: full-stack com foco back-end Node/TypeScript, remoto ou
+- `dev` — full-stack com foco back-end Node/TypeScript, remoto ou
   presencial/híbrido em Joinville/SC, nível pleno apenas.
   Config em `core/config_dev.py`.
-- `admin` — Ana Julia: administrativo, financeiro, fiscal e RH/DP, remoto
-  ou Joinville/SC, pleno e sênior. Config em `core/config_adm.py`.
+- `admin` — administrativo, financeiro, fiscal e RH/DP, remoto ou
+  Joinville/SC, pleno e sênior. Config em `core/config_adm.py`.
 
 - `brasil` / `internacional` — perfis de Dados/BI da autora original do
   projeto. Continuam no código e rodáveis à mão, mas FORA do cron: não
