@@ -25,17 +25,19 @@ jobs:
     # intervalo do cron (3h), então um run truncado nunca empilha em cima
     # do próximo agendado.
     #
-    # 150 -> 170 quando o perfil dev entrou como terceiro perfil da mesma
-    # execução. O perfil dev é o mais barato dos três por ciclo (13 termos
-    # contra 15 do brasil, e o LinkedIn dele roda 3 buscas por termo contra
-    # 16 do perfil brasil — 1 país x 2 passadas + 1 cidade, ver
-    # _SCRAPERS_DEV em core/perfis.py), mas ainda assim é tempo somado em
-    # cima de um ciclo que já media 1h30-2h. 170 mantém a folga abaixo do
-    # cron de 3h. NÃO MEDIDO ainda com os três perfis juntos: se o run
-    # começar a bater no teto, o ajuste certo é tirar perfil da linha de
-    # comando abaixo (o dev sozinho cabe folgado), não subir isto pra perto
-    # de 180 — aí um run atrasado empilharia no próximo agendado.
-    timeout-minutes: 170
+    # Só o perfil dev roda em produção. brasil e internacional (Dados/BI,
+    # da autora original do projeto) continuam no código e rodáveis por
+    # linha de comando, mas ficam fora do cron: o usuário deste fork quer
+    # só o radar dele, e cada perfil a mais é tempo de ciclo somado sem
+    # retorno pra ele.
+    #
+    # 150 sobra com folga grande nesse arranjo: o perfil dev é o mais
+    # barato dos três (13 termos por ciclo contra 15 do brasil, e o
+    # LinkedIn dele roda 3 buscas por termo contra 16 do perfil brasil —
+    # 1 país x 2 passadas + 1 cidade, ver _SCRAPERS_DEV em
+    # core/perfis.py). Voltar a somar perfil na linha de comando abaixo é
+    # o que pede revisar este número.
+    timeout-minutes: 150
     steps:
       - name: Checkout do repositório
         uses: actions/checkout@v4
@@ -54,12 +56,13 @@ jobs:
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        # Antes disso só o perfil Brasil rodava aqui — main_intl.py existia
-        # no repositório mas nunca foi chamado pelo workflow, então o
-        # pipeline internacional nunca rodou de verdade em produção. Agora é
-        # um projeto só com dois perfis selecionáveis (ver core/perfis.py); os
-        # dois rodam na mesma execução/commit, um após o outro.
-        run: python main.py --perfil dev brasil internacional --once
+        # Um projeto só, com perfis selecionáveis (ver core/perfis.py).
+        # Aqui roda apenas `dev`: brasil e internacional são os perfis de
+        # Dados/BI da autora original e não interessam ao dono deste fork —
+        # continuam existindo e podem ser rodados à mão
+        # (`python main.py --perfil brasil --once`), mas não notificam mais
+        # no Telegram dele.
+        run: python main.py --perfil dev --once
 
       - name: Salvar vagas já vistas (evita notificação duplicada)
         run: |
