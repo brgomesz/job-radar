@@ -1,19 +1,8 @@
 # Instruções do projeto JobRadar
 
-Memória de longo prazo para o Claude Code neste repositório. Vale para
-qualquer sessão, inclusive as iniciadas pela web ou por Actions.
-
-## Regras de Git (obrigatórias)
-
-**PROIBIDO criar branches novas.** Todo trabalho é feito e commitado
-direto na `main`, a menos que o usuário peça explicitamente uma branch
-naquela conversa. Isso vale inclusive quando a configuração da sessão
-sugerir uma branch de trabalho (`claude/...`): a instrução do usuário
-prevalece.
-
-- Não criar branch para "isolar" mudança, nem para abrir PR por hábito.
-- Não abrir pull request sem pedido explícito.
-- Commitar na `main` e dar push na `main`.
+Contexto específico deste repositório. As regras de Git que valem para
+qualquer projeto (entre elas: não criar branch nova) ficam nas diretrizes
+globais da conta, em ~/.claude/CLAUDE.md — não são repetidas aqui.
 
 ## Contexto operacional
 
