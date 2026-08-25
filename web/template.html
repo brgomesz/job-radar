@@ -3,6 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- A página é servida pelo GitHub Pages de um repositório público: quem
+     tem o link entra, e não existe versão com senha fora do Enterprise.
+     O que dá pra impedir é ela ser ENCONTRADA por quem não tem o link.
+     noindex tira dos buscadores; noarchive impede cópia em cache; nofollow
+     evita que os links de vaga daqui virem rastro pra cá. robots.txt não
+     serviria: em project page o arquivo lido é o da raiz do domínio
+     (brgomesz.github.io/robots.txt), fora do controle deste repositório. -->
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
 <title>Radar de Vagas</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
