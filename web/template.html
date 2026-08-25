@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Radar de Vagas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --ground:#F5F7F4; --surface:#FFFFFF; --surface-2:#EFF2EE;
+  --ink:#141917; --ink-2:#3C4644; --muted:#61706C; --line:#DCE2DD;
+  --dev:#0C6B63; --dev-soft:#E2F0EE;
+  --adm:#9A5716; --adm-soft:#F6EBDE;
+  --hot:#164E45; --shadow:0 1px 2px rgba(20,25,23,.06),0 8px 24px rgba(20,25,23,.05);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#0E1312; --surface:#161C1A; --surface-2:#1D2523;
+    --ink:#E9EFEC; --ink-2:#C2CDC9; --muted:#8FA09B; --line:#27302E;
+    --dev:#4FB0A5; --dev-soft:#12312D;
+    --adm:#D89950; --adm-soft:#33240F;
+    --hot:#7FD4C7; --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0E1312; --surface:#161C1A; --surface-2:#1D2523;
+  --ink:#E9EFEC; --ink-2:#C2CDC9; --muted:#8FA09B; --line:#27302E;
+  --dev:#4FB0A5; --dev-soft:#12312D;
+  --adm:#D89950; --adm-soft:#33240F;
+  --hot:#7FD4C7; --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3);
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--ground); color:var(--ink);
+  font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:15px; line-height:1.5; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1080px; margin:0 auto; padding:32px 20px 72px}
+header{display:flex; flex-direction:column; gap:6px; margin-bottom:24px}
+.eyebrow{
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--muted);
+}
+h1{
+  font-family:Archivo,system-ui,sans-serif; font-weight:700; font-size:clamp(28px,4.5vw,40px);
+  letter-spacing:-.02em; margin:0; text-wrap:balance;
+}
+.sub{color:var(--ink-2); max-width:62ch; margin:0}
+.stats{display:flex; flex-wrap:wrap; gap:10px; margin:22px 0 18px}
+.stat{
+  background:var(--surface); border:1px solid var(--line); border-radius:10px;
+  padding:10px 14px; display:flex; flex-direction:column; gap:2px; min-width:104px;
+}
+.stat b{
+  font-family:"IBM Plex Mono",monospace; font-size:20px; font-weight:600;
+  font-variant-numeric:tabular-nums; line-height:1.1;
+}
+.stat span{font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+.bar{
+  position:sticky; top:0; z-index:5; background:var(--ground);
+  padding:12px 0 14px; border-bottom:1px solid var(--line);
+  display:flex; flex-wrap:wrap; gap:16px; align-items:flex-end;
+}
+.field{display:flex; flex-direction:column; gap:6px}
+.field>span{font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted)}
+.seg{display:flex; border:1px solid var(--line); border-radius:8px; overflow:hidden; background:var(--surface)}
+.seg button{
+  appearance:none; border:0; background:transparent; color:var(--ink-2);
+  font:inherit; font-size:13px; padding:7px 13px; cursor:pointer; white-space:nowrap;
+}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button[aria-pressed="true"]{background:var(--surface-2); color:var(--ink); font-weight:600}
+.seg button:focus-visible{outline:2px solid var(--dev); outline-offset:-2px}
+input[type=search]{
+  font:inherit; padding:7px 11px; border-radius:8px; border:1px solid var(--line);
+  background:var(--surface); color:var(--ink); min-width:210px;
+}
+input[type=search]:focus-visible{outline:2px solid var(--dev); outline-offset:-1px}
+.count{margin-left:auto; font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--muted); padding-bottom:8px}
+ol{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px}
+li{
+  background:var(--surface); border:1px solid var(--line); border-radius:10px;
+  display:grid; grid-template-columns:52px 1fr auto; gap:0 16px; padding:13px 16px;
+  align-items:start; box-shadow:var(--shadow);
+}
+li[hidden]{display:none}
+.score{
+  grid-row:1/3; font-family:"IBM Plex Mono",monospace; font-weight:600; font-size:18px;
+  font-variant-numeric:tabular-nums; display:flex; flex-direction:column; align-items:center;
+  gap:2px; padding-top:2px; color:var(--muted);
+}
+.score em{font-style:normal; font-size:9px; letter-spacing:.1em; text-transform:uppercase}
+li[data-hot="1"] .score{color:var(--hot)}
+.title{margin:0; font-size:15px; font-weight:600; line-height:1.35; text-wrap:balance}
+.title a{color:var(--ink); text-decoration:none; background-image:linear-gradient(var(--line),var(--line));
+  background-size:100% 1px; background-position:0 1.15em; background-repeat:no-repeat}
+.title a:hover,.title a:focus-visible{color:var(--dev); background-image:linear-gradient(var(--dev),var(--dev))}
+.meta{
+  grid-column:2/4; display:flex; flex-wrap:wrap; gap:6px 14px; margin-top:5px;
+  font-size:12.5px; color:var(--muted);
+}
+.meta b{color:var(--ink-2); font-weight:600}
+.tag{
+  grid-row:1; font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:.08em;
+  text-transform:uppercase; padding:3px 8px; border-radius:999px; white-space:nowrap; align-self:start;
+}
+li[data-p="dev"] .tag{background:var(--dev-soft); color:var(--dev)}
+li[data-p="admin"] .tag{background:var(--adm-soft); color:var(--adm)}
+.empty{padding:48px 8px; text-align:center; color:var(--muted)}
+footer{margin-top:36px; padding-top:18px; border-top:1px solid var(--line); color:var(--muted); font-size:12.5px}
+footer code{font-family:"IBM Plex Mono",monospace; color:var(--ink-2)}
+@media (max-width:620px){
+  li{grid-template-columns:44px 1fr; gap:0 12px}
+  .tag{grid-column:2; grid-row:3; justify-self:start; margin-top:7px}
+  .meta{grid-column:2}
+  .count{margin-left:0; width:100%}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <p class="eyebrow">JobRadar &middot; atualizado __ATUALIZADO__</p>
+  <h1>Radar de Vagas</h1>
+  <p class="sub">Tudo que os dois radares já acharam, do mais relevante pro menos. A página se regenera a cada ciclo do robô — o Telegram avisa o que é urgente, aqui fica o histórico inteiro.</p>
+</header>
+
+<div class="stats" id="stats"></div>
+
+<div class="bar">
+  <label class="field"><span>Perfil</span>
+    <span class="seg" id="segPerfil">
+      <button type="button" data-v="todos">Os dois</button>
+      <button type="button" data-v="dev">Dev</button>
+      <button type="button" data-v="admin">Administrativo</button>
+    </span>
+  </label>
+  <label class="field"><span>Nota mínima</span>
+    <span class="seg" id="segNota">
+      <button type="button" data-v="9">9</button>
+      <button type="button" data-v="8">8+</button>
+      <button type="button" data-v="7">7+</button>
+      <button type="button" data-v="0">Tudo</button>
+    </span>
+  </label>
+  <label class="field"><span>Buscar</span>
+    <input type="search" id="busca" placeholder="cargo, empresa, cidade…" autocomplete="off">
+  </label>
+  <p class="count" id="count"></p>
+</div>
+
+<ol id="lista"></ol>
+<p class="empty" id="vazio" hidden>Nenhuma vaga com esses filtros.</p>
+
+<footer>
+  <p>Nota 9 é o teto da escala: cargo forte + ferramenta no título + nível declarado + mercado confirmado. O que derruba a nota quase sempre é o anúncio incompleto, não a vaga ruim — “Remoto” sem dizer o país custa 1 ponto, título sem o nível custa 1.</p>
+  <p>Fonte: <code>data/jobs.db</code>, versionado no repositório. Links vão direto para o anúncio original — alguns podem já ter sido preenchidos.</p>
+</footer>
+</div>
+
+<script>
+const VAGAS = __DADOS__;
+const $ = (id) => document.getElementById(id);
+const estado = { perfil: "todos", nota: 8, busca: "" };
+try {
+  const salvo = JSON.parse(localStorage.getItem("jobradar-filtros") || "null");
+  if (salvo && typeof salvo === "object") Object.assign(estado, salvo);
+} catch (e) { /* sem storage: segue com o padrão */ }
+
+const NOMES = { dev: "Dev", admin: "Administrativo" };
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+$("stats").innerHTML = [
+  ["Vagas guardadas", VAGAS.length],
+  ["Nota 9", VAGAS.filter((v) => v.r === 9).length],
+  ["Nota 8+", VAGAS.filter((v) => v.r >= 8).length],
+  ["Perfil dev", VAGAS.filter((v) => v.p === "dev").length],
+  ["Administrativo", VAGAS.filter((v) => v.p === "admin").length],
+].map(([rot, n]) => `<div class="stat"><b>${n}</b><span>${rot}</span></div>`).join("");
+
+$("lista").innerHTML = VAGAS.map((v) => {
+  const meta = [
+    `<b>${esc(v.e)}</b>`,
+    esc(v.l),
+    v.m ? esc(v.m) : "",
+    esc(v.s),
+    v.pub ? esc(v.pub) : "",
+  ].filter(Boolean).join("</span><span>");
+  return `<li data-p="${v.p}" data-r="${v.r}" data-hot="${v.r >= 8 ? 1 : 0}"
+    data-busca="${esc((v.t + " " + v.e + " " + v.l).toLowerCase())}">
+    <span class="score">${v.r}<em>nota</em></span>
+    <p class="title"><a href="${esc(v.u)}" target="_blank" rel="noopener noreferrer">${esc(v.t)}</a></p>
+    <span class="tag">${NOMES[v.p]}</span>
+    <p class="meta"><span>${meta}</span></p>
+  </li>`;
+}).join("");
+
+const itens = Array.from(document.querySelectorAll("#lista li"));
+
+function pintarSegmento(id, valor) {
+  for (const b of $(id).children) b.setAttribute("aria-pressed", String(b.dataset.v === valor));
+}
+
+function aplicar() {
+  const termo = estado.busca.trim().toLowerCase();
+  let visiveis = 0;
+  for (const li of itens) {
+    const ok =
+      (estado.perfil === "todos" || li.dataset.p === estado.perfil) &&
+      Number(li.dataset.r) >= estado.nota &&
+      (!termo || li.dataset.busca.includes(termo));
+    li.hidden = !ok;
+    if (ok) visiveis++;
+  }
+  $("count").textContent = `${visiveis} de ${VAGAS.length} vagas`;
+  $("vazio").hidden = visiveis > 0;
+  pintarSegmento("segPerfil", estado.perfil);
+  pintarSegmento("segNota", String(estado.nota));
+  try { localStorage.setItem("jobradar-filtros", JSON.stringify(estado)); } catch (e) { /* ok */ }
+}
+
+$("segPerfil").addEventListener("click", (ev) => {
+  const b = ev.target.closest("button"); if (!b) return;
+  estado.perfil = b.dataset.v; aplicar();
+});
+$("segNota").addEventListener("click", (ev) => {
+  const b = ev.target.closest("button"); if (!b) return;
+  estado.nota = Number(b.dataset.v); aplicar();
+});
+$("busca").addEventListener("input", (ev) => { estado.busca = ev.target.value; aplicar(); });
+$("busca").value = estado.busca;
+aplicar();
+
+</script>
+</body>
+</html>

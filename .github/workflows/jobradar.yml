@@ -117,14 +117,29 @@ jobs:
             git reset --hard origin/main
 
             cp "${RUNNER_TEMP:-/tmp}/jobs.db" data/jobs.db
-            git add data/jobs.db
+
+            # A página pública (GitHub Pages) é REGENERADA a partir do
+            # banco, não carregada do run anterior — por isso roda aqui
+            # dentro do laço, depois do reset --hard: o HTML sempre reflete
+            # exatamente o jobs.db que está sendo commitado junto, mesmo
+            # quando o push é recusado e o laço repete contra um estado
+            # remoto novo.
+            #
+            # Efeito conhecido: a página carimba a hora da geração, então
+            # ela muda em TODO ciclo e o "nada novo pra commitar" abaixo
+            # praticamente não dispara mais. É de propósito — o carimbo é
+            # prova de vida do robô: página com hora de 3h atrás significa
+            # que o ciclo rodou, mesmo num ciclo sem vaga nova nenhuma.
+            python -m web.gerar
+
+            git add data/jobs.db docs/index.html
 
             if git diff --cached --quiet; then
               echo "Nada novo pra commitar."
               exit 0
             fi
 
-            git commit -m "chore: atualiza vagas vistas [skip ci]"
+            git commit -m "chore: atualiza vagas vistas e página [skip ci]"
 
             if git push; then
               exit 0

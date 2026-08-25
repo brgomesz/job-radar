@@ -13,6 +13,10 @@ globais da conta, em ~/.claude/CLAUDE.md — não são repetidas aqui.
   a execução em andamento.
 - `.env` (token e chat_id do Telegram) é ignorado pelo Git e nunca deve ser
   commitado. As credenciais de produção vivem em Secrets do repositório.
+- `docs/index.html` é GERADO (`python -m web.gerar`), nunca editado à mão:
+  o workflow o regenera a partir do `jobs.db` a cada ciclo e o GitHub
+  Pages o serve. Pra mudar o visual da página, mexer em
+  `web/template.html`.
 
 ## Perfis de busca
 
