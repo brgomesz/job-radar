@@ -1060,6 +1060,21 @@ class RegrasFiltro:
     # da penalidade automaticamente, sem precisar manter duas listas em
     # sincronia.
     niveis_alvo: list[str] | None = None
+    # Termo que rejeita o título de forma INCONDICIONAL — sem perdão
+    # nenhum, em qualquer combinação. É a diferença pra stacks_excluidas
+    # logo acima, que perdoa quando a ferramenta/stack própria aparece
+    # junto: aqui não existe "a menos que".
+    #
+    # MEDIDO: o usuário do perfil admin pediu pra tirar vaga de fiscal e
+    # tributário. Tirar as palavras das listas de cargo e de qualificador
+    # não bastava — "Analista Fiscal Protheus" continuava entrando pela
+    # regra de ferramenta+cargo (Protheus é ERP que ela usa, "analista" é
+    # palavra de cargo), e é justamente assim que muita vaga fiscal é
+    # anunciada em empresa que roda ERP. Rejeição condicional não resolve
+    # "não quero isso de jeito nenhum"; esta resolve.
+    #
+    # None/vazio = não checa nada.
+    titulos_excluidos: list[str] | None = None
 
 
 @dataclass
@@ -1333,6 +1348,17 @@ class Job:
         """
         return self._avaliar(regras).aprovada
 
+    def _rejeitada_por_titulo(self, regras: RegrasFiltro, titulo_norm: str) -> bool:
+        """Título contém termo que o perfil rejeita incondicionalmente —
+        ver titulos_excluidos em RegrasFiltro. Sem perdão por ferramenta,
+        ao contrário de _rejeitada_por_stack."""
+        if not regras.titulos_excluidos:
+            return False
+        return any(
+            _contem_termo(_normalizar(t), titulo_norm, aceitar_plural=True)
+            for t in regras.titulos_excluidos
+        )
+
     def _rejeitada_por_stack(self, regras: RegrasFiltro, titulo_norm: str) -> bool:
         """Título nomeia stack de outro ecossistema, sem nomear a do próprio
         usuário junto — ver stacks_excluidas em RegrasFiltro."""
@@ -1401,7 +1427,11 @@ class Job:
         # rejeitada_so_pelo_cargo) reconstrói "bateu cargo?" a partir deles,
         # então deixar os sinais ligados numa vaga rejeitada faria um método
         # discordar do outro sobre a mesma vaga.
-        if self._rejeitada_por_stack(regras, titulo_norm) or self._rejeitada_por_nivel(regras):
+        if (
+            self._rejeitada_por_titulo(regras, titulo_norm)
+            or self._rejeitada_por_stack(regras, titulo_norm)
+            or self._rejeitada_por_nivel(regras)
+        ):
             bate_forte = bate_ambiguo = bate_ferramenta = False
 
         bate_keyword = bate_forte or bate_ambiguo or bate_ferramenta

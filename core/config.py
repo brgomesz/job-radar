@@ -384,26 +384,24 @@ INTERVALO_MINUTOS = int(os.getenv("INTERVALO_MINUTOS", 180))
 # com o pedido ("vaga de score alto na hora, resto agrupado"); 6 deixava
 # 74% imediata (pouca redução de ruído); 8 deixava só 2% (digest com
 # praticamente tudo, quase nenhuma vaga "excelente" se destacando na hora).
-# 6 -> 9 a pedido do usuário, valendo pros dois perfis em produção.
+# 6 -> 9 -> 8, valendo pros dois perfis em produção (dev e admin).
 #
-# 9 é o TETO real dos perfis dev e admin, não um valor no meio da escala:
-# cargo forte (3) + ferramenta no título (2) + senioridade alvo (2) +
-# mercado confirmado (2) = 9. O ponto de idioma, que levaria a 10, só
-# existe em perfil com idiomas_exigidos — nenhum dos dois tem. Ou seja, a
-# notificação imediata passa a exigir que a vaga acerte TODOS os sinais ao
-# mesmo tempo: o título tem que trazer cargo forte E a ferramenta/stack E
-# o nível, e o anúncio tem que declarar o mercado.
+# MEDIDO na prática: com 6, o primeiro ciclo dos perfis novos mandou mais
+# de 200 notificações e virou ilegível. 9 é o TETO real destes perfis
+# (cargo forte 3 + ferramenta no título 2 + senioridade alvo 2 + mercado
+# confirmado 2; o décimo ponto, idioma, só existe em perfil com
+# idiomas_exigidos, que nenhum dos dois tem) — exigia acerto simultâneo de
+# TODOS os sinais e corria risco de nunca disparar.
 #
-# Consequência esperada, dita antes de virar surpresa: quase nada chega na
-# hora. Na única medição que existe nesta base (305 vagas do perfil de
-# dados) a faixa 9-10 ficou vazia. O resto NÃO se perde — cai no digest
-# diário, que continua saindo todo dia (ver _enviar_digest_diario em
-# main.py) com a lista ranqueada.
+# 8 dispensa exatamente um sinal. Na prática o que costuma faltar é
+# informação do anúncio, não qualidade da vaga: "Remoto" sem dizer o país
+# custa 1 ponto, título sem o nível custa 1, título sem citar a
+# stack/ferramenta custa 2. Então 8 continua exigindo vaga bem anunciada,
+# sem exigir o anúncio perfeito.
 #
-# Se ficar silencioso demais, 8 é o próximo degrau: dispensa um único
-# sinal (tipicamente o mercado declarado, que depende da fonte escrever
-# "Remoto - Brasil" em vez de só "Remoto").
-LIMIAR_DIGEST_IMEDIATO = 9
+# O que fica abaixo NÃO se perde: cai no digest diário ranqueado (ver
+# _enviar_digest_diario em main.py).
+LIMIAR_DIGEST_IMEDIATO = 8
 
 # Hora UTC a partir da qual o digest diário pode sair (uma vez por perfil,
 # por dia — ver _enviar_digest_diario em main.py). A regra é "ainda não

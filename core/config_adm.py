@@ -41,12 +41,15 @@ KEYWORDS_CARGO_FORTE_ADM = [
     "Coordenadora Financeira",
     "Supervisor Financeiro",
     "Supervisora Financeira",
-    # --- Fiscal e contábil
-    "Analista Fiscal",
+    # --- Contábil
+    #
+    # Fiscal e tributário saíram a pedido da usuária: "Analista Fiscal",
+    # "Analista Tributário/Tributária" e "Assistente Fiscal" eram daqui.
+    # Contábil FICA (não foi pedido pra sair) -- e é por isso que "fiscal"
+    # e "tributário" precisaram virar TITULOS_EXCLUIDOS_ADM em vez de só
+    # sumirem desta lista: sem a rejeição incondicional, "Analista
+    # Contábil e Fiscal" continuaria entrando pelo lado contábil.
     "Analista Contábil",
-    "Analista Tributário",
-    "Analista Tributária",
-    "Assistente Fiscal",
     "Assistente Contábil",
     # --- Administrativo
     "Analista Administrativo",
@@ -121,11 +124,8 @@ QUALIFICADORES_AREA_ADM = [
     "finanças",
     "administrativo",
     "administrativa",
-    "fiscal",
     "contábil",
     "contabil",
-    "tributário",
-    "tributaria",
     "controladoria",
     "tesouraria",
     "faturamento",
@@ -182,16 +182,28 @@ QUALIFICADORES_CARGO_ADM = [
     "gerente",
 ]
 
-# Área de fora que usa o mesmo vocabulário de cargo: título que nomeia uma
-# destas é descartado, a menos que também nomeie uma FERRAMENTAS_TITULO_ADM
-# (ver stacks_excluidas em core/job.py).
+# Rejeição INCONDICIONAL por termo no título (ver titulos_excluidos em
+# core/job.py): nenhum destes passa, em nenhuma combinação.
 #
-# Motivo concreto: "processos" e "pessoas" são qualificadores válidos da
-# área dela, mas aparecem em vaga de tecnologia e de produção industrial
-# com sentido completamente diferente ("Analista de Processos de Software",
-# "Analista de Processos Industriais" — Joinville é polo industrial, esse
-# é o falso positivo mais provável do radar dela).
-AREAS_EXCLUIDAS_ADM = [
+# Duas coisas na mesma lista, pelo mesmo motivo:
+#
+# 1. ÁREA DE FORA que usa o mesmo vocabulário de cargo. "processos" e
+#    "pessoas" são qualificadores válidos da área dela, mas aparecem em
+#    vaga de tecnologia e de produção industrial com sentido completamente
+#    diferente ("Analista de Processos de Software", "Analista de Processos
+#    Industriais" — Joinville é polo industrial, esse é o falso positivo
+#    mais provável do radar dela).
+#
+# 2. FISCAL E TRIBUTÁRIO, tirados a pedido da usuária.
+#
+# Por que incondicional, e não a regra com perdão (stacks_excluidas, que o
+# perfil dev usa): lá o perdão existe porque "Full Stack (Node + Python)" é
+# vaga boa apesar do Python. Aqui não há caso equivalente — nenhuma vaga
+# que ela queira nomeia "sistemas"/"industrial"/"marketing" no título. O
+# perdão só abria brecha, e das duas piores maneiras: "Analista Fiscal
+# Protheus" (fiscal, que ela não quer) e "Analista de Sistemas Protheus"
+# (TI) passariam os dois, porque o ERP no título perdoava a área.
+TITULOS_EXCLUIDOS_ADM = [
     "sistemas",
     "software",
     "desenvolvimento de software",
@@ -222,6 +234,10 @@ AREAS_EXCLUIDAS_ADM = [
     "engenharia",
     "laboratório",
     "enfermagem",
+    # Pedido da usuária (item 2 acima)
+    "fiscal",
+    "tributário",
+    "tributária",
 ]
 
 # "Pleno / Sênior" pedido pela usuária: estágio, trainee e júnior nem
@@ -258,12 +274,11 @@ TERMOS_PRIORITARIOS_ADM = [
     "analista financeiro",
     "analista administrativo",
     "analista de rh",
-    "analista fiscal",
+    "analista de departamento pessoal",
 ]
 
 TERMOS_BUSCA_ADM = TERMOS_PRIORITARIOS_ADM + [
     "analista contábil",
-    "analista de departamento pessoal",
     "analista de folha de pagamento",
     "analista de recrutamento e seleção",
     "analista de contas a pagar",

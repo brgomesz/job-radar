@@ -66,7 +66,7 @@ from core.config_adm import (
     QUALIFICADORES_AREA_ADM,
     FERRAMENTAS_TITULO_ADM,
     QUALIFICADORES_CARGO_ADM,
-    AREAS_EXCLUIDAS_ADM,
+    TITULOS_EXCLUIDOS_ADM,
     NIVEIS_EXCLUIDOS_ADM,
     NIVEIS_ALVO_ADM,
     CIDADES_ADM,
@@ -401,9 +401,14 @@ PERFIL_DEV = Perfil(
 # distinguidos pela linha "Perfil:" da notificação (ver notificar_vaga).
 #
 # Usa as três regras opcionais de RegrasFiltro:
-#   - stacks_excluidas (aqui: áreas excluídas) — "Analista de Processos" é
-#     cargo dela, mas "Analista de Processos Industriais"/"de Software" não
-#     é; Joinville é polo industrial, esse é o falso positivo mais provável.
+#   - titulos_excluidos — rejeição incondicional. Cobre área de fora que
+#     usa o mesmo vocabulário ("Analista de Processos" é cargo dela,
+#     "Analista de Processos Industriais" não é; Joinville é polo
+#     industrial) e mais fiscal/tributário, tirados a pedido dela. É a
+#     versão SEM perdão da regra: diferente do perfil dev, aqui não existe
+#     vaga boa que nomeie uma dessas no título, e o perdão por ferramenta
+#     só deixaria passar "Analista Fiscal Protheus" e "Analista de
+#     Sistemas Protheus".
 #   - niveis_excluidos — estágio e júnior fora; liderança continua entrando.
 #   - niveis_alvo — Pleno E Sênior pontuam o teto (no padrão global, Sênior
 #     valeria -2 e metade do que ela procura cairia no ranking).
@@ -415,7 +420,7 @@ _REGRAS_ADM = RegrasFiltro(
     qualificadores_cargo=QUALIFICADORES_CARGO_ADM,
     cidades=CIDADES_ADM,
     mercados_remoto_aceitos=MERCADOS_REMOTO_ACEITOS_ADM,
-    stacks_excluidas=AREAS_EXCLUIDAS_ADM,
+    titulos_excluidos=TITULOS_EXCLUIDOS_ADM,
     niveis_excluidos=NIVEIS_EXCLUIDOS_ADM,
     niveis_alvo=NIVEIS_ALVO_ADM,
 )

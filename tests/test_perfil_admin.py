@@ -40,9 +40,10 @@ CASOS_CARGO = [
     ("contas-a-pagar", "Analista de Contas a Pagar", True),
     ("tesouraria", "Analista de Tesouraria", True),
     ("controladoria", "Analista de Controladoria", True),
-    # Fiscal / contábil
-    ("fiscal", "Analista Fiscal", True),
+    # Contábil fica; fiscal e tributário saíram a pedido da usuária.
     ("contabil", "Analista Contábil", True),
+    ("fiscal-barra", "Analista Fiscal", False),
+    ("tributario-barra", "Analista Tributário", False),
     # Administrativo
     ("administrativo", "Analista Administrativo", True),
     ("contratos", "Analista de Contratos", True),
@@ -81,10 +82,10 @@ def test_cargo_perfil_admin(nome, titulo, esperado):
 
 
 # ---------------------------------------------------------------------------
-# Áreas excluídas: o falso positivo mais provável deste radar
+# Títulos excluídos: área de fora + fiscal/tributário, sem perdão
 # ---------------------------------------------------------------------------
 
-CASOS_AREA = [
+CASOS_TITULO_EXCLUIDO = [
     # "Analista de Processos" é cargo dela; com "Industriais" junto, não é.
     ("processos-sozinho-passa", "Analista de Processos", True),
     ("processos-industriais-barra", "Analista de Processos Industriais", False),
@@ -96,16 +97,21 @@ CASOS_AREA = [
     ("coordenador-qualidade-barra", "Coordenador de Qualidade", False),
     ("analista-comercial-barra", "Analista Comercial", False),
     ("analista-logistica-barra", "Analista de Logística", False),
-    # Sistema de gestão no título perdoa a área excluída: quem pede
-    # "Analista Fiscal Protheus" está falando do ERP, não de TI.
-    ("fiscal-com-erp-passa", "Analista Fiscal Protheus", True),
+    # A rejeição é INCONDICIONAL: o ERP no título não salva. Estes dois
+    # são exatamente o que passaria se a regra tivesse perdão por
+    # ferramenta, e são os dois casos que a usuária não quer ver.
+    ("fiscal-com-erp-barra", "Analista Fiscal Protheus", False),
+    ("sistemas-com-erp-barra", "Analista de Sistemas Protheus", False),
+    # ERP sozinho, sem área de fora, continua entrando normalmente.
+    ("financeiro-com-erp-passa", "Analista Financeiro Protheus", True),
 ]
 
 
 @pytest.mark.parametrize(
-    "nome,titulo,esperado", CASOS_AREA, ids=[c[0] for c in CASOS_AREA]
+    "nome,titulo,esperado", CASOS_TITULO_EXCLUIDO,
+    ids=[c[0] for c in CASOS_TITULO_EXCLUIDO],
 )
-def test_areas_excluidas(nome, titulo, esperado):
+def test_titulos_excluidos(nome, titulo, esperado):
     assert _job(titulo).combina_com(PERFIL_ADM.regras) == esperado
 
 

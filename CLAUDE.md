@@ -25,8 +25,9 @@ Telegram, distinguidos pela linha `Perfil:` da notificação:
 - `dev` — full-stack com foco back-end Node/TypeScript, remoto ou
   presencial/híbrido em Joinville/SC, nível pleno apenas.
   Config em `core/config_dev.py`.
-- `admin` — administrativo, financeiro, fiscal e RH/DP, remoto ou
-  Joinville/SC, pleno e sênior. Config em `core/config_adm.py`.
+- `admin` — administrativo, financeiro, contábil e RH/DP, remoto ou
+  Joinville/SC, pleno e sênior. Fiscal e tributário foram excluídos a
+  pedido da usuária. Config em `core/config_adm.py`.
 
 - `brasil` / `internacional` — perfis de Dados/BI da autora original do
   projeto. Continuam no código e rodáveis à mão, mas FORA do cron: não
