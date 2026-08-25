@@ -75,6 +75,10 @@ h1{
   padding:12px 0 14px; border-bottom:1px solid var(--line);
   display:flex; flex-wrap:wrap; gap:16px; align-items:flex-end;
 }
+.controles{display:flex; flex-wrap:wrap; gap:16px; align-items:flex-end}
+/* O botão "Filtros" só existe no celular — no desktop os seis controles
+   cabem na barra sem atrapalhar. */
+.toggle{display:none}
 .field{display:flex; flex-direction:column; gap:6px}
 .field>span{font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted)}
 .seg{display:flex; flex-wrap:wrap; border:1px solid var(--line); border-radius:8px; overflow:hidden; background:var(--surface)}
@@ -128,7 +132,59 @@ footer code{font-family:"IBM Plex Mono",monospace; color:var(--ink-2)}
   li{grid-template-columns:44px 1fr; gap:0 12px}
   .tag{grid-column:2; grid-row:3; justify-self:start; margin-top:7px}
   .meta{grid-column:2}
-  .count{margin-left:0; width:100%}
+
+  /* MEDIDO em celular: os seis controles empilhados ocupavam ~80% da tela
+     e sobrava uma vaga e meia abaixo da dobra. No celular a barra vira um
+     painel recolhido: fechada, ela é uma linha só (botão + contador) e a
+     lista começa logo abaixo. */
+  /* Antes da barra virar painel, o topo já gastava metade da tela: título
+     grande, parágrafo de três linhas e seis cartões de número em três
+     fileiras. No celular a página é ferramenta, não apresentação — o
+     parágrafo sai e os números viram uma fileira só, que rola. */
+  .wrap{padding:18px 16px 56px}
+  header{gap:3px; margin-bottom:14px}
+  .eyebrow{font-size:10px}
+  .sub{display:none}
+  .stats{flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none; margin:0 0 12px; gap:8px}
+  .stats::-webkit-scrollbar{display:none}
+  .stat{flex:0 0 auto; min-width:0; padding:8px 12px; gap:1px}
+  .stat b{font-size:17px}
+  .stat span{font-size:10px}
+
+  .bar{padding:10px 0; gap:10px; align-items:center}
+  .toggle{
+    display:inline-flex; align-items:center; gap:7px; appearance:none;
+    font:inherit; font-size:13px; cursor:pointer; padding:8px 13px;
+    border:1px solid var(--line); border-radius:8px;
+    background:var(--surface); color:var(--ink-2);
+  }
+  .toggle::after{content:"▾"; font-size:11px; color:var(--muted)}
+  .bar.aberta .toggle::after{content:"▴"}
+  .toggle:focus-visible{outline:2px solid var(--dev); outline-offset:1px}
+  .badge{
+    background:var(--dev); color:var(--surface); border-radius:999px;
+    font-size:11px; font-weight:600; min-width:17px; height:17px;
+    display:inline-flex; align-items:center; justify-content:center; padding:0 5px;
+  }
+  /* Sem isto o badge aparece com "0": o atributo hidden do HTML vale
+     display:none, mas a regra de classe acima é mais específica e ganha.
+     Pego num print de celular, não pelo teste — o teste só perguntava se
+     o elemento tinha o atributo, não se ele sumia da tela. */
+  .badge[hidden]{display:none}
+  .controles{display:none; width:100%; flex-direction:column; gap:11px}
+  .bar.aberta .controles{display:flex}
+
+  /* Cada grupo rola na horizontal em vez de quebrar linha: "Marcadas" tem
+     cinco botões e sozinho comia duas linhas da tela. */
+  .seg{flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none}
+  .seg::-webkit-scrollbar{display:none}
+  .seg button{padding:7px 12px; font-size:13px}
+  .field>span{font-size:10px}
+  input[type=search]{width:100%; min-width:0}
+  .count{margin-left:auto; padding-bottom:0; white-space:nowrap}
+  .limpar{width:100%; align-self:stretch}
+  .marcas{gap:5px}
+  .marca{padding:7px 10px; font-size:12px}
 }
 /* Marcações do usuário (👍 / 👎 / enviei) — ver ESTADO em script.
    Ficam no localStorage do navegador, chaveadas pelo LINK da vaga: o link é
@@ -166,14 +222,18 @@ li[data-enviei="1"]{border-left:3px solid var(--adm); padding-left:14px}
 <body>
 <div class="wrap">
 <header>
-  <p class="eyebrow">JobRadar &middot; atualizado 25/08/2026 às 17:17</p>
+  <p class="eyebrow">JobRadar &middot; atualizado 25/08/2026 às 17:21</p>
   <h1>Radar de Vagas</h1>
   <p class="sub">Tudo que os radares já acharam, do mais relevante pro menos. A página se regenera a cada ciclo do robô — o Telegram avisa o que é urgente, aqui fica o histórico inteiro.</p>
 </header>
 
 <div class="stats" id="stats"></div>
 
-<div class="bar">
+<div class="bar" id="bar">
+  <button type="button" class="toggle" id="toggleFiltros" aria-expanded="false">
+    Filtros<span class="badge" id="badge" hidden></span>
+  </button>
+  <div class="controles" id="controles">
   <label class="field"><span>Perfil</span>
     <span class="seg" id="segPerfil">
       <button type="button" data-v="todos">Todos</button>
@@ -216,6 +276,7 @@ li[data-enviei="1"]{border-left:3px solid var(--adm); padding-left:14px}
   <label class="field"><span>Buscar</span>
     <input type="search" id="busca" placeholder="cargo, empresa, cidade…" autocomplete="off">
   </label>
+  </div>
   <p class="count" id="count"></p>
   <button type="button" id="limpar" class="limpar" hidden>Limpar filtros</button>
 </div>
@@ -415,7 +476,12 @@ function aplicar() {
   pintarSegmento("segOrdem", estado.ordem);
   // O botão só aparece quando há o que limpar: com seis controles na
   // barra, é fácil esquecer um filtro ligado e achar que a lista secou.
-  $("limpar").hidden = Object.keys(PADRAO).every((k) => estado[k] === PADRAO[k]);
+  const alterados = Object.keys(PADRAO).filter((k) => estado[k] !== PADRAO[k]).length;
+  $("limpar").hidden = alterados === 0;
+  // No celular a barra fica FECHADA por padrão, então o badge é a única
+  // pista de que existe filtro ligado escondido ali dentro.
+  $("badge").hidden = alterados === 0;
+  $("badge").textContent = String(alterados);
   contarStats();
   gravarJSON(CHAVE_FILTROS, estado);
 }
@@ -453,6 +519,10 @@ $("segPeriodo").addEventListener("click", (ev) => {
 $("segOrdem").addEventListener("click", (ev) => {
   const b = ev.target.closest("button"); if (!b) return;
   estado.ordem = b.dataset.v; aplicar();
+});
+$("toggleFiltros").addEventListener("click", () => {
+  const aberta = $("bar").classList.toggle("aberta");
+  $("toggleFiltros").setAttribute("aria-expanded", String(aberta));
 });
 $("limpar").addEventListener("click", () => {
   Object.assign(estado, PADRAO);
