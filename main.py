@@ -6,7 +6,12 @@ from collections import Counter
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import date, datetime, timezone
 
-from core.config import DIGEST_HORA_UTC, INTERVALO_MINUTOS, LIMIAR_DIGEST_IMEDIATO
+from core.config import (
+    DIGEST_DIARIO_ATIVO,
+    DIGEST_HORA_UTC,
+    INTERVALO_MINUTOS,
+    LIMIAR_DIGEST_IMEDIATO,
+)
 from database.database import (
     BancoVazioSuspeito,
     definir_metadado,
@@ -165,6 +170,22 @@ def _enviar_digest_diario(perfil: Perfil):
     horário exato que pode não voltar a bater certo (ex: workflow atrasado
     pelo GitHub Actions naquele dia).
     """
+    if not DIGEST_DIARIO_ATIVO:
+        # Desligado (ver DIGEST_DIARIO_ATIVO em config.py): a fila é
+        # esvaziada mesmo assim, sem enviar. Deixá-la crescer só criaria
+        # uma bomba-relógio — religar o digest meses depois despejaria
+        # milhares de vagas antigas de uma vez, a maioria já preenchida.
+        # A vaga continua no banco e na página; o que se perde aqui é só
+        # o direito de virar mensagem, que é o efeito pretendido.
+        pendentes = obter_vagas_pendentes_digest(perfil.chave)
+        if pendentes:
+            marcar_digest_enviado(perfil.chave)
+            logger.info(
+                f"[{perfil.nome}] Digest diário desligado: {len(pendentes)} vaga(s) "
+                "ficam só na página."
+            )
+        return
+
     chave = f"digest_ultimo_dia_{perfil.chave}"
     agora = datetime.now(timezone.utc)
     # Dia em UTC, não date.today() (que é o dia LOCAL da máquina). A hora

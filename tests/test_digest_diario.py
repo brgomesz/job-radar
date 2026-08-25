@@ -53,6 +53,13 @@ def cenario(monkeypatch):
     # da usuaria, nao regra do codigo). O valor real tem teste proprio, no
     # fim do arquivo.
     monkeypatch.setattr(main, "DIGEST_HORA_UTC", 0)
+    # O digest está DESLIGADO em produção (ver DIGEST_DIARIO_ATIVO em
+    # config.py) — a página pública assumiu o papel dele. Os testes
+    # abaixo cobrem a LÓGICA do digest, que continua tendo que estar
+    # certa pra quando/se ele for religado, então o cenário liga a
+    # chave. O comportamento com a chave desligada é testado à parte,
+    # no fim do arquivo.
+    monkeypatch.setattr(main, "DIGEST_DIARIO_ATIVO", True)
     monkeypatch.setattr(main, "obter_vagas_pendentes_digest",
                         lambda p: [("Analista de Dados", "Empresa", "https://x/1", 6, 0)])
     return estado
@@ -242,3 +249,28 @@ def test_prioritario_fora_da_lista_de_busca_e_ignorado(metadados):
 def test_todos_prioritarios_e_nenhum_rodizio(metadados):
     perfil = _PerfilFalso(["a", "b"], por_ciclo=3, prioritarios=["a", "b"])
     assert main._proximo_bloco_termos(perfil) == ["a", "b"]
+
+
+# ---------------------------------------------------------------------------
+# Chave desligada: o estado do dia a dia em produção
+# ---------------------------------------------------------------------------
+
+def test_desligado_nao_manda_mensagem_mas_esvazia_a_fila(cenario, monkeypatch):
+    """Sem isso a fila cresceria pra sempre e religar o digest meses
+    depois despejaria milhares de vagas antigas de uma vez."""
+    monkeypatch.setattr(main, "DIGEST_DIARIO_ATIVO", False)
+
+    _rodar(monkeypatch, hora_utc=1)
+
+    assert cenario["enviadas"] == []
+    assert cenario["marcou_enviado"] == [PERFIL_BR.chave]
+
+
+def test_desligado_com_fila_vazia_nao_faz_nada(cenario, monkeypatch):
+    monkeypatch.setattr(main, "DIGEST_DIARIO_ATIVO", False)
+    monkeypatch.setattr(main, "obter_vagas_pendentes_digest", lambda p: [])
+
+    _rodar(monkeypatch, hora_utc=1)
+
+    assert cenario["enviadas"] == []
+    assert cenario["marcou_enviado"] == []

@@ -13,6 +13,10 @@ globais da conta, em ~/.claude/CLAUDE.md — não são repetidas aqui.
   a execução em andamento.
 - `.env` (token e chat_id do Telegram) é ignorado pelo Git e nunca deve ser
   commitado. As credenciais de produção vivem em Secrets do repositório.
+- Divisão de entrega: o Telegram manda só o que é urgente (nota >=
+  `LIMIAR_DIGEST_IMEDIATO`); a página pública tem TODAS as vagas. O digest
+  diário está desligado (`DIGEST_DIARIO_ATIVO`) — chegou a mandar 115 vagas
+  num dia só, e a página faz esse papel melhor.
 - `docs/index.html` é GERADO (`python -m web.gerar`), nunca editado à mão:
   o workflow o regenera a partir do `jobs.db` a cada ciclo e o GitHub
   Pages o serve. Pra mudar o visual da página, mexer em

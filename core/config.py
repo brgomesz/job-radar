@@ -423,6 +423,25 @@ LIMIAR_DIGEST_IMEDIATO = 8
 # seguinte do mesmo dia UTC serve de recuperação.
 DIGEST_HORA_UTC = 9
 
+# Digest diário no Telegram: DESLIGADO.
+#
+# Ele existia como a metade "não urgente" da entrega: nota alta chegava na
+# hora, o resto vinha agrupado uma vez por dia. Medido em produção: o
+# resumo saiu com 115 vagas num único dia só do perfil admin — volume que
+# o usuário não conseguiu ler, que é exatamente o oposto do que um resumo
+# deveria resolver.
+#
+# Quem assumiu esse papel foi a página pública (ver web/gerar.py): mesma
+# lista, ranqueada, filtrável por nota e perfil, regenerada a cada ciclo e
+# sem depender de mensagem nenhuma sobreviver no chat. Com ela no ar, o
+# Telegram fica só com o alerta do que é urgente (>= LIMIAR_DIGEST_
+# IMEDIATO), que é o que ele faz bem.
+#
+# A vaga abaixo do limiar NÃO se perde nem para de ser processada: ela
+# continua sendo filtrada, pontuada, salva e dedupada igual — só não vira
+# mensagem. Religar é trocar este valor pra True.
+DIGEST_DIARIO_ATIVO = False
+
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "")
 TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID", "")
 
