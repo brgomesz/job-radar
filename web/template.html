@@ -126,6 +126,29 @@ footer code{font-family:"IBM Plex Mono",monospace; color:var(--ink-2)}
   .meta{grid-column:2}
   .count{margin-left:0; width:100%}
 }
+/* Marcações do usuário (👍 / 👎 / enviei) — ver ESTADO em script.
+   Ficam no localStorage do navegador, chaveadas pelo LINK da vaga: o link é
+   o que sobrevive à regeneração da página a cada ciclo (id de banco não
+   aparece no HTML, e título/empresa mudam de grafia entre fontes). */
+.marcas{grid-column:2/4; display:flex; gap:6px; align-items:center; margin-top:9px; flex-wrap:wrap}
+.marca{
+  appearance:none; font:inherit; font-size:12.5px; line-height:1; cursor:pointer;
+  border:1px solid var(--line); background:var(--surface); color:var(--muted);
+  border-radius:999px; padding:6px 11px; display:inline-flex; align-items:center; gap:6px;
+}
+.marca:hover{border-color:var(--muted); color:var(--ink-2)}
+.marca:focus-visible{outline:2px solid var(--dev); outline-offset:1px}
+.marca[aria-pressed="true"]{font-weight:600}
+.marca.sim[aria-pressed="true"]{background:var(--dev-soft); border-color:var(--dev); color:var(--dev)}
+.marca.nao[aria-pressed="true"]{background:var(--surface-2); border-color:var(--muted); color:var(--ink-2)}
+.marca.enviei[aria-pressed="true"]{background:var(--adm-soft); border-color:var(--adm); color:var(--adm)}
+/* Descartada continua na lista, mas recuada: some com um filtro, não com
+   um delete — mudar de ideia sobre uma vaga é comum. */
+li[data-interesse="nao"]{opacity:.5}
+li[data-interesse="nao"]:hover,li[data-interesse="nao"]:focus-within{opacity:1}
+li[data-interesse="sim"]{border-color:var(--dev)}
+li[data-enviei="1"]{border-left:3px solid var(--adm); padding-left:14px}
+@media (max-width:620px){ .marcas{grid-column:2} }
 @media (prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important}}
 </style>
 </head>
@@ -155,6 +178,14 @@ footer code{font-family:"IBM Plex Mono",monospace; color:var(--ink-2)}
       <button type="button" data-v="0">Tudo</button>
     </span>
   </label>
+  <label class="field"><span>Marcadas</span>
+    <span class="seg" id="segMarca">
+      <button type="button" data-v="tudo">Tudo</button>
+      <button type="button" data-v="sim">Interessam</button>
+      <button type="button" data-v="enviei">Enviadas</button>
+      <button type="button" data-v="pendente">A avaliar</button>
+    </span>
+  </label>
   <label class="field"><span>Buscar</span>
     <input type="search" id="busca" placeholder="cargo, empresa, cidade…" autocomplete="off">
   </label>
@@ -167,50 +198,113 @@ footer code{font-family:"IBM Plex Mono",monospace; color:var(--ink-2)}
 <footer>
   <p>Nota 9 é o teto da escala: cargo forte + ferramenta no título + nível declarado + mercado confirmado. O que derruba a nota quase sempre é o anúncio incompleto, não a vaga ruim — “Remoto” sem dizer o país custa 1 ponto, título sem o nível custa 1.</p>
   <p>Fonte: <code>data/jobs.db</code>, versionado no repositório. Links vão direto para o anúncio original — alguns podem já ter sido preenchidos.</p>
+  <p>As marcações (👍 / 👎 / enviei) ficam guardadas <b>neste navegador</b> e sobrevivem à regeneração da página. Não sincronizam com outro aparelho nem com o Telegram.</p>
 </footer>
 </div>
 
 <script>
 const VAGAS = __DADOS__;
 const $ = (id) => document.getElementById(id);
-const estado = { perfil: "todos", nota: 8, busca: "" };
-try {
-  const salvo = JSON.parse(localStorage.getItem("jobradar-filtros") || "null");
-  if (salvo && typeof salvo === "object") Object.assign(estado, salvo);
-} catch (e) { /* sem storage: segue com o padrão */ }
-
 const NOMES = { dev: "Dev", admin: "Administrativo" };
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
-$("stats").innerHTML = [
-  ["Vagas guardadas", VAGAS.length],
-  ["Nota 9", VAGAS.filter((v) => v.r === 9).length],
-  ["Nota 8+", VAGAS.filter((v) => v.r >= 8).length],
-  ["Perfil dev", VAGAS.filter((v) => v.p === "dev").length],
-  ["Administrativo", VAGAS.filter((v) => v.p === "admin").length],
-].map(([rot, n]) => `<div class="stat"><b>${n}</b><span>${rot}</span></div>`).join("");
+// --- Marcações do usuário -------------------------------------------------
+// Guardadas por LINK da vaga, não por posição na lista: a página é
+// regenerada inteira a cada ciclo e a ordem muda quando entra vaga nova.
+// { "<link>": { i: "sim"|"nao"|null, e: true|false } }
+const CHAVE_MARCAS = "jobradar-marcas";
+const CHAVE_FILTROS = "jobradar-filtros";
 
+function lerJSON(chave, padrao) {
+  try {
+    const bruto = localStorage.getItem(chave);
+    return bruto ? JSON.parse(bruto) : padrao;
+  } catch (e) {
+    return padrao;  // aba anônima, site data bloqueado: segue sem lembrar
+  }
+}
+function gravarJSON(chave, valor) {
+  try { localStorage.setItem(chave, JSON.stringify(valor)); } catch (e) { /* ok */ }
+}
+
+const marcas = lerJSON(CHAVE_MARCAS, {});
+const estado = Object.assign(
+  { perfil: "todos", nota: 8, marca: "tudo", busca: "" },
+  lerJSON(CHAVE_FILTROS, null) || {}
+);
+
+const marcaDe = (link) => marcas[link] || { i: null, e: false };
+
+function marcarInteresse(link, valor) {
+  const m = marcaDe(link);
+  // Clicar de novo no mesmo botão desmarca — sem isso não há como desfazer
+  // um 👎 dado por engano a não ser marcando 👍, que é outra afirmação.
+  m.i = m.i === valor ? null : valor;
+  marcas[link] = m;
+  gravarJSON(CHAVE_MARCAS, marcas);
+}
+function marcarEnviei(link) {
+  const m = marcaDe(link);
+  m.e = !m.e;
+  marcas[link] = m;
+  gravarJSON(CHAVE_MARCAS, marcas);
+}
+
+// --- Render ---------------------------------------------------------------
 $("lista").innerHTML = VAGAS.map((v) => {
   const meta = [
-    `<b>${esc(v.e)}</b>`,
-    esc(v.l),
-    v.m ? esc(v.m) : "",
-    esc(v.s),
-    v.pub ? esc(v.pub) : "",
+    `<b>${esc(v.e)}</b>`, esc(v.l), v.m ? esc(v.m) : "", esc(v.s), v.pub ? esc(v.pub) : "",
   ].filter(Boolean).join("</span><span>");
-  return `<li data-p="${v.p}" data-r="${v.r}" data-hot="${v.r >= 8 ? 1 : 0}"
+  const link = esc(v.u);
+  return `<li data-p="${v.p}" data-r="${v.r}" data-hot="${v.r >= 8 ? 1 : 0}" data-link="${link}"
     data-busca="${esc((v.t + " " + v.e + " " + v.l).toLowerCase())}">
     <span class="score">${v.r}<em>nota</em></span>
-    <p class="title"><a href="${esc(v.u)}" target="_blank" rel="noopener noreferrer">${esc(v.t)}</a></p>
+    <p class="title"><a href="${link}" target="_blank" rel="noopener noreferrer">${esc(v.t)}</a></p>
     <span class="tag">${NOMES[v.p]}</span>
     <p class="meta"><span>${meta}</span></p>
+    <div class="marcas">
+      <button type="button" class="marca sim" data-acao="sim">👍 Interessa</button>
+      <button type="button" class="marca nao" data-acao="nao">👎 Não interessa</button>
+      <button type="button" class="marca enviei" data-acao="enviei">✓ Enviei currículo</button>
+    </div>
   </li>`;
 }).join("");
 
 const itens = Array.from(document.querySelectorAll("#lista li"));
 
+function pintarMarcas(li) {
+  const m = marcaDe(li.dataset.link);
+  li.dataset.interesse = m.i || "";
+  li.dataset.enviei = m.e ? "1" : "";
+  for (const b of li.querySelectorAll(".marca")) {
+    const ativo = b.dataset.acao === "enviei" ? m.e : m.i === b.dataset.acao;
+    b.setAttribute("aria-pressed", String(ativo));
+  }
+}
+itens.forEach(pintarMarcas);
+
 function pintarSegmento(id, valor) {
   for (const b of $(id).children) b.setAttribute("aria-pressed", String(b.dataset.v === valor));
+}
+
+function passaMarca(li) {
+  const m = marcaDe(li.dataset.link);
+  if (estado.marca === "sim") return m.i === "sim";
+  if (estado.marca === "enviei") return m.e === true;
+  // "A avaliar": o que ainda não recebeu nenhuma decisão sua.
+  if (estado.marca === "pendente") return !m.i && !m.e;
+  return true;
+}
+
+function contarStats() {
+  const vals = Object.values(marcas);
+  $("stats").innerHTML = [
+    ["Vagas guardadas", VAGAS.length],
+    ["Nota 8+", VAGAS.filter((v) => v.r >= 8).length],
+    ["Interessam", vals.filter((m) => m.i === "sim").length],
+    ["Currículo enviado", vals.filter((m) => m.e).length],
+    ["Descartadas", vals.filter((m) => m.i === "nao").length],
+  ].map(([rot, n]) => `<div class="stat"><b>${n}</b><span>${rot}</span></div>`).join("");
 }
 
 function aplicar() {
@@ -220,6 +314,7 @@ function aplicar() {
     const ok =
       (estado.perfil === "todos" || li.dataset.p === estado.perfil) &&
       Number(li.dataset.r) >= estado.nota &&
+      passaMarca(li) &&
       (!termo || li.dataset.busca.includes(termo));
     li.hidden = !ok;
     if (ok) visiveis++;
@@ -228,8 +323,24 @@ function aplicar() {
   $("vazio").hidden = visiveis > 0;
   pintarSegmento("segPerfil", estado.perfil);
   pintarSegmento("segNota", String(estado.nota));
-  try { localStorage.setItem("jobradar-filtros", JSON.stringify(estado)); } catch (e) { /* ok */ }
+  pintarSegmento("segMarca", estado.marca);
+  contarStats();
+  gravarJSON(CHAVE_FILTROS, estado);
 }
+
+// --- Eventos --------------------------------------------------------------
+// Delegação: os botões nascem no innerHTML acima e são centenas — um listener
+// só na lista, em vez de um por botão.
+$("lista").addEventListener("click", (ev) => {
+  const b = ev.target.closest(".marca"); if (!b) return;
+  const li = b.closest("li");
+  const link = li.dataset.link;
+  if (b.dataset.acao === "enviei") marcarEnviei(link); else marcarInteresse(link, b.dataset.acao);
+  pintarMarcas(li);
+  // Só re-filtra quando a marcação pode esconder a linha; senão a vaga
+  // sumiria debaixo do dedo no filtro "Tudo", que não é o que se espera.
+  if (estado.marca !== "tudo") aplicar(); else contarStats();
+});
 
 $("segPerfil").addEventListener("click", (ev) => {
   const b = ev.target.closest("button"); if (!b) return;
@@ -239,10 +350,13 @@ $("segNota").addEventListener("click", (ev) => {
   const b = ev.target.closest("button"); if (!b) return;
   estado.nota = Number(b.dataset.v); aplicar();
 });
+$("segMarca").addEventListener("click", (ev) => {
+  const b = ev.target.closest("button"); if (!b) return;
+  estado.marca = b.dataset.v; aplicar();
+});
 $("busca").addEventListener("input", (ev) => { estado.busca = ev.target.value; aplicar(); });
 $("busca").value = estado.busca;
 aplicar();
-
 </script>
 </body>
 </html>
