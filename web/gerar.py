@@ -40,6 +40,31 @@ ROTULOS = {"dev": "Dev", "admin": "Administrativo"}
 _FUSO_BR = timezone(timedelta(hours=-3))
 
 
+def _quando_entrou(bruto: str) -> str:
+    """`encontrada_em` (quando a vaga entrou no NOSSO banco) formatada no
+    horário de Brasília.
+
+    O banco guarda em UTC: a coluna usa CURRENT_TIMESTAMP do SQLite, que é
+    sempre UTC, e o robô roda em runner do GitHub, também em UTC. Mostrar o
+    valor cru na página daria uma hora 3h adiantada -- vaga achada às 7h da
+    manhã apareceria como 10h.
+
+    Não confundir com `publicado_em`, que é a data que a FONTE anuncia
+    (texto livre, formato de cada site). As duas aparecem na página, com
+    rótulo, porque respondem perguntas diferentes: "isso é novidade pra
+    mim?" e "esse anúncio é velho?".
+    """
+    if not bruto:
+        return ""
+    try:
+        quando = datetime.fromisoformat(bruto)
+    except ValueError:
+        return ""  # formato inesperado: melhor não mostrar nada do que mentir
+    if quando.tzinfo is None:
+        quando = quando.replace(tzinfo=timezone.utc)
+    return quando.astimezone(_FUSO_BR).strftime("%d/%m %H:%M")
+
+
 def carregar_vagas(db_path: str = "") -> list[dict]:
     """Vagas dos perfis em produção, da mais relevante pra menos.
 
@@ -74,7 +99,7 @@ def carregar_vagas(db_path: str = "") -> list[dict]:
             "r": l["relevancia"] or 0,
             "p": l["perfil"],
             "m": l["modalidade"] or "",
-            "d": (l["encontrada_em"] or "")[:10],
+            "d": _quando_entrou(l["encontrada_em"] or ""),
             "pub": l["publicado_em"] or "",
         }
         for l in linhas

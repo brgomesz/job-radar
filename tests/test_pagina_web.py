@@ -113,3 +113,37 @@ def test_banco_vazio_gera_pagina_valida(tmp_path):
     saida = tmp_path / "index.html"
     assert gerar(db, str(saida)) == 0
     assert "const VAGAS = [];" in saida.read_text(encoding="utf-8")
+
+
+# ---------------------------------------------------------------------------
+# "achada em": quando a vaga entrou no NOSSO banco
+# ---------------------------------------------------------------------------
+
+def test_hora_de_entrada_sai_no_fuso_de_brasilia(tmp_path):
+    """O banco guarda UTC (CURRENT_TIMESTAMP do SQLite + runner em UTC).
+    Sem converter, uma vaga achada às 7h da manhã apareceria como 10h."""
+    db = _banco(tmp_path, [_linha("Dev", quando="2026-08-25T10:12:00")])
+    assert carregar_vagas(db)[0]["d"] == "25/08 07:12"
+
+
+def test_formato_do_sqlite_com_espaco_tambem_converte(tmp_path):
+    """CURRENT_TIMESTAMP grava "YYYY-MM-DD HH:MM:SS", com espaço em vez de
+    T -- é o formato da maioria das linhas reais do banco."""
+    db = _banco(tmp_path, [_linha("Dev", quando="2026-08-25 00:30:00")])
+    assert carregar_vagas(db)[0]["d"] == "24/08 21:30"
+
+
+@pytest.mark.parametrize("bruto", ["", "ontem", "25/08/2026"])
+def test_data_ilegivel_vira_vazio_em_vez_de_erro(tmp_path, bruto):
+    """Melhor não mostrar nada do que mostrar hora errada -- e a página
+    inteira não pode quebrar por causa de uma linha estranha."""
+    db = _banco(tmp_path, [_linha("Dev", quando=bruto)])
+    assert carregar_vagas(db)[0]["d"] == ""
+
+
+def test_pagina_rotula_as_duas_datas(tmp_path):
+    """Sem rótulo viravam duas datas soltas na mesma linha."""
+    db = _banco(tmp_path, [_linha("Dev")])
+    pagina = montar_html(carregar_vagas(db))
+    assert "achada ${esc(v.d)}" in pagina or "achada" in pagina
+    assert "publicada" in pagina

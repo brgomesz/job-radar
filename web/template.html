@@ -252,8 +252,16 @@ function marcarEnviei(link) {
 
 // --- Render ---------------------------------------------------------------
 $("lista").innerHTML = VAGAS.map((v) => {
+  // "achada" é quando a vaga entrou no NOSSO banco; "publicada" é o que a
+  // fonte anuncia. Rotuladas porque juntas e sem rótulo viravam duas datas
+  // soltas na mesma linha, impossíveis de distinguir.
   const meta = [
-    `<b>${esc(v.e)}</b>`, esc(v.l), v.m ? esc(v.m) : "", esc(v.s), v.pub ? esc(v.pub) : "",
+    `<b>${esc(v.e)}</b>`,
+    esc(v.l),
+    v.m ? esc(v.m) : "",
+    esc(v.s),
+    v.d ? `achada ${esc(v.d)}` : "",
+    v.pub ? `publicada ${esc(v.pub)}` : "",
   ].filter(Boolean).join("</span><span>");
   const link = esc(v.u);
   return `<li data-p="${v.p}" data-r="${v.r}" data-hot="${v.r >= 8 ? 1 : 0}" data-link="${link}"
