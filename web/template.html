@@ -74,7 +74,7 @@ h1{
 }
 .field{display:flex; flex-direction:column; gap:6px}
 .field>span{font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted)}
-.seg{display:flex; border:1px solid var(--line); border-radius:8px; overflow:hidden; background:var(--surface)}
+.seg{display:flex; flex-wrap:wrap; border:1px solid var(--line); border-radius:8px; overflow:hidden; background:var(--surface)}
 .seg button{
   appearance:none; border:0; background:transparent; color:var(--ink-2);
   font:inherit; font-size:13px; padding:7px 13px; cursor:pointer; white-space:nowrap;
@@ -149,6 +149,13 @@ li[data-interesse="nao"]:hover,li[data-interesse="nao"]:focus-within{opacity:1}
 li[data-interesse="sim"]{border-color:var(--dev)}
 li[data-enviei="1"]{border-left:3px solid var(--adm); padding-left:14px}
 @media (max-width:620px){ .marcas{grid-column:2} }
+.limpar{
+  appearance:none; font:inherit; font-size:12.5px; cursor:pointer; align-self:flex-end;
+  border:1px solid var(--line); background:var(--surface); color:var(--muted);
+  border-radius:8px; padding:7px 12px; margin-bottom:1px;
+}
+.limpar:hover{border-color:var(--muted); color:var(--ink-2)}
+.limpar:focus-visible{outline:2px solid var(--dev); outline-offset:1px}
 @media (prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important}}
 </style>
 </head>
@@ -178,22 +185,38 @@ li[data-enviei="1"]{border-left:3px solid var(--adm); padding-left:14px}
       <button type="button" data-v="0">Tudo</button>
     </span>
   </label>
+  <label class="field"><span>Achadas</span>
+    <span class="seg" id="segPeriodo">
+      <button type="button" data-v="1">24h</button>
+      <button type="button" data-v="3">3 dias</button>
+      <button type="button" data-v="7">7 dias</button>
+      <button type="button" data-v="0">Sempre</button>
+    </span>
+  </label>
+  <label class="field"><span>Ordenar por</span>
+    <span class="seg" id="segOrdem">
+      <button type="button" data-v="relevancia">Relevância</button>
+      <button type="button" data-v="recentes">Mais recentes</button>
+    </span>
+  </label>
   <label class="field"><span>Marcadas</span>
     <span class="seg" id="segMarca">
       <button type="button" data-v="tudo">Tudo</button>
+      <button type="button" data-v="pendente">A avaliar</button>
+      <button type="button" data-v="a-enviar">A enviar</button>
       <button type="button" data-v="sim">Interessam</button>
       <button type="button" data-v="enviei">Enviadas</button>
-      <button type="button" data-v="pendente">A avaliar</button>
     </span>
   </label>
   <label class="field"><span>Buscar</span>
     <input type="search" id="busca" placeholder="cargo, empresa, cidade…" autocomplete="off">
   </label>
   <p class="count" id="count"></p>
+  <button type="button" id="limpar" class="limpar" hidden>Limpar filtros</button>
 </div>
 
 <ol id="lista"></ol>
-<p class="empty" id="vazio" hidden>Nenhuma vaga com esses filtros.</p>
+<p class="empty" id="vazio" hidden>Nenhuma vaga com esses filtros. Tente ampliar o período ou baixar a nota mínima.</p>
 
 <footer>
   <p>Nota 9 é o teto da escala: cargo forte + ferramenta no título + nível declarado + mercado confirmado. O que derruba a nota quase sempre é o anúncio incompleto, não a vaga ruim — “Remoto” sem dizer o país custa 1 ponto, título sem o nível custa 1.</p>
@@ -228,10 +251,11 @@ function gravarJSON(chave, valor) {
 }
 
 const marcas = lerJSON(CHAVE_MARCAS, {});
-const estado = Object.assign(
-  { perfil: "todos", nota: 8, marca: "tudo", busca: "" },
-  lerJSON(CHAVE_FILTROS, null) || {}
-);
+// Padrão: nota 8+, tudo que já foi achado, ordenado por relevância. É o
+// mesmo corte que o Telegram usa pra notificar, então a página abre
+// mostrando exatamente o que valeria um alerta.
+const PADRAO = { perfil: "todos", nota: 8, marca: "tudo", periodo: "0", ordem: "relevancia", busca: "" };
+const estado = Object.assign({}, PADRAO, lerJSON(CHAVE_FILTROS, null) || {});
 
 const marcaDe = (link) => marcas[link] || { i: null, e: false };
 
@@ -265,6 +289,7 @@ $("lista").innerHTML = VAGAS.map((v) => {
   ].filter(Boolean).join("</span><span>");
   const link = esc(v.u);
   return `<li data-p="${v.p}" data-r="${v.r}" data-hot="${v.r >= 8 ? 1 : 0}" data-link="${link}"
+    data-ts="${v.ts || 0}"
     data-busca="${esc((v.t + " " + v.e + " " + v.l).toLowerCase())}">
     <span class="score">${v.r}<em>nota</em></span>
     <p class="title"><a href="${link}" target="_blank" rel="noopener noreferrer">${esc(v.t)}</a></p>
@@ -279,6 +304,32 @@ $("lista").innerHTML = VAGAS.map((v) => {
 }).join("");
 
 const itens = Array.from(document.querySelectorAll("#lista li"));
+
+// Duas ordens fixas, calculadas uma vez. "Relevância" é a ordem que veio
+// do servidor (nota desc, empate desempatado pela mais recente); trocar de
+// ordenação só re-anexa os mesmos nós, sem recriar HTML.
+const ORDENS = {
+  relevancia: itens.slice(),
+  recentes: itens.slice().sort((a, b) => Number(b.dataset.ts) - Number(a.dataset.ts)),
+};
+let ordemAplicada = null;
+
+function ordenar() {
+  if (ordemAplicada === estado.ordem) return;
+  const frag = document.createDocumentFragment();
+  for (const li of ORDENS[estado.ordem] || ORDENS.relevancia) frag.appendChild(li);
+  $("lista").appendChild(frag);
+  ordemAplicada = estado.ordem;
+}
+
+// Corte do filtro "Achadas": epoch em segundos, ou null pra "Sempre".
+// Vaga sem data legível (ts 0) fica de fora de qualquer janela — dizer
+// que ela é das últimas 24h seria inventar.
+function corteDoPeriodo() {
+  const dias = Number(estado.periodo);
+  if (!dias) return null;
+  return Math.floor(Date.now() / 1000) - dias * 86400;
+}
 
 function pintarMarcas(li) {
   const m = marcaDe(li.dataset.link);
@@ -297,6 +348,11 @@ function pintarSegmento(id, valor) {
 
 function passaMarca(li) {
   const m = marcaDe(li.dataset.link);
+  // "A enviar" é a fila de trabalho: você já disse que interessa e ainda
+  // não mandou currículo. É o único filtro daqui que combina os dois
+  // marcadores, e o mais usado no dia a dia -- por isso fica antes de
+  // "Interessam", que inclui as já enviadas.
+  if (estado.marca === "a-enviar") return m.i === "sim" && !m.e;
   if (estado.marca === "sim") return m.i === "sim";
   if (estado.marca === "enviei") return m.e === true;
   // "A avaliar": o que ainda não recebeu nenhuma decisão sua.
@@ -309,6 +365,7 @@ function contarStats() {
   $("stats").innerHTML = [
     ["Vagas guardadas", VAGAS.length],
     ["Nota 8+", VAGAS.filter((v) => v.r >= 8).length],
+    ["A enviar", vals.filter((m) => m.i === "sim" && !m.e).length],
     ["Interessam", vals.filter((m) => m.i === "sim").length],
     ["Currículo enviado", vals.filter((m) => m.e).length],
     ["Descartadas", vals.filter((m) => m.i === "nao").length],
@@ -317,11 +374,15 @@ function contarStats() {
 
 function aplicar() {
   const termo = estado.busca.trim().toLowerCase();
+  const corte = corteDoPeriodo();
+  ordenar();
   let visiveis = 0;
   for (const li of itens) {
+    const ts = Number(li.dataset.ts);
     const ok =
       (estado.perfil === "todos" || li.dataset.p === estado.perfil) &&
       Number(li.dataset.r) >= estado.nota &&
+      (corte === null || (ts > 0 && ts >= corte)) &&
       passaMarca(li) &&
       (!termo || li.dataset.busca.includes(termo));
     li.hidden = !ok;
@@ -332,6 +393,11 @@ function aplicar() {
   pintarSegmento("segPerfil", estado.perfil);
   pintarSegmento("segNota", String(estado.nota));
   pintarSegmento("segMarca", estado.marca);
+  pintarSegmento("segPeriodo", estado.periodo);
+  pintarSegmento("segOrdem", estado.ordem);
+  // O botão só aparece quando há o que limpar: com seis controles na
+  // barra, é fácil esquecer um filtro ligado e achar que a lista secou.
+  $("limpar").hidden = Object.keys(PADRAO).every((k) => estado[k] === PADRAO[k]);
   contarStats();
   gravarJSON(CHAVE_FILTROS, estado);
 }
@@ -361,6 +427,19 @@ $("segNota").addEventListener("click", (ev) => {
 $("segMarca").addEventListener("click", (ev) => {
   const b = ev.target.closest("button"); if (!b) return;
   estado.marca = b.dataset.v; aplicar();
+});
+$("segPeriodo").addEventListener("click", (ev) => {
+  const b = ev.target.closest("button"); if (!b) return;
+  estado.periodo = b.dataset.v; aplicar();
+});
+$("segOrdem").addEventListener("click", (ev) => {
+  const b = ev.target.closest("button"); if (!b) return;
+  estado.ordem = b.dataset.v; aplicar();
+});
+$("limpar").addEventListener("click", () => {
+  Object.assign(estado, PADRAO);
+  $("busca").value = "";
+  aplicar();
 });
 $("busca").addEventListener("input", (ev) => { estado.busca = ev.target.value; aplicar(); });
 $("busca").value = estado.busca;

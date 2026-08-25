@@ -40,6 +40,23 @@ ROTULOS = {"dev": "Dev", "admin": "Administrativo"}
 _FUSO_BR = timezone(timedelta(hours=-3))
 
 
+def _instante(bruto: str) -> datetime | None:
+    """`encontrada_em` cru -> datetime com fuso, ou None se ilegível.
+
+    O banco guarda em UTC sem marcar o fuso (CURRENT_TIMESTAMP do SQLite),
+    e em dois formatos: com espaço ("2026-08-25 10:12:00", o do SQLite) e
+    com T ("2026-08-25T10:12:00", quando o Python grava). fromisoformat
+    aceita os dois; o que ele não faz é assumir UTC, daí o replace.
+    """
+    if not bruto:
+        return None
+    try:
+        quando = datetime.fromisoformat(bruto)
+    except ValueError:
+        return None
+    return quando.replace(tzinfo=timezone.utc) if quando.tzinfo is None else quando
+
+
 def _quando_entrou(bruto: str) -> str:
     """`encontrada_em` (quando a vaga entrou no NOSSO banco) formatada no
     horário de Brasília.
@@ -54,14 +71,9 @@ def _quando_entrou(bruto: str) -> str:
     rótulo, porque respondem perguntas diferentes: "isso é novidade pra
     mim?" e "esse anúncio é velho?".
     """
-    if not bruto:
-        return ""
-    try:
-        quando = datetime.fromisoformat(bruto)
-    except ValueError:
+    quando = _instante(bruto)
+    if quando is None:
         return ""  # formato inesperado: melhor não mostrar nada do que mentir
-    if quando.tzinfo is None:
-        quando = quando.replace(tzinfo=timezone.utc)
     return quando.astimezone(_FUSO_BR).strftime("%d/%m %H:%M")
 
 
@@ -100,6 +112,12 @@ def carregar_vagas(db_path: str = "") -> list[dict]:
             "p": l["perfil"],
             "m": l["modalidade"] or "",
             "d": _quando_entrou(l["encontrada_em"] or ""),
+            # Mesmo instante em epoch, pra página poder ORDENAR e filtrar
+            # por período. A string acima não serve pra isso: ela não tem
+            # ano ("25/08 07:12"), então comparar duas viradas de ano dá
+            # resultado errado, e ordenar texto não é ordenar tempo.
+            # 0 = sem data legível (fica fora dos filtros de período).
+            "ts": _epoch(l["encontrada_em"] or ""),
             "pub": l["publicado_em"] or "",
         }
         for l in linhas
@@ -120,6 +138,12 @@ def montar_html(vagas: list[dict], agora: datetime | None = None) -> str:
         .replace("__DADOS__", dados)
         .replace("__ATUALIZADO__", html.escape(agora.strftime("%d/%m/%Y às %H:%M")))
     )
+
+
+def _epoch(bruto: str) -> int:
+    """Segundos desde 1970 (UTC) — 0 quando a data não é legível."""
+    quando = _instante(bruto)
+    return int(quando.timestamp()) if quando else 0
 
 
 def gerar(db_path: str = "", saida: str = "") -> int:
