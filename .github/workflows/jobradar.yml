@@ -25,19 +25,20 @@ jobs:
     # intervalo do cron (3h), então um run truncado nunca empilha em cima
     # do próximo agendado.
     #
-    # Rodam aqui só os dois perfis de pessoas reais deste fork (dev e
-    # admin). brasil e internacional (Dados/BI, da autora original)
+    # Rodam aqui os três perfis de pessoas reais deste fork (dev, admin e
+    # agro). brasil e internacional (Dados/BI, da autora original)
     # continuam no código e rodáveis por linha de comando, mas ficam fora
     # do cron: cada perfil a mais é tempo de ciclo somado sem retorno.
     #
-    # 150 continua com folga nesse arranjo. Os dois perfis daqui são bem
-    # mais baratos por ciclo que o perfil brasil, contra o qual o número
-    # foi medido: 12-13 termos cada (contra 15) e, no LinkedIn, 3 buscas
-    # por termo (contra 16 — o perfil brasil roda 1 país x 2 passadas + 6
-    # países só-remoto + 8 cidades; estes rodam 1 país x 2 passadas + 1
-    # cidade, ver _SCRAPERS_DEV/_SCRAPERS_ADM em core/perfis.py).
-    # NÃO MEDIDO ainda com os dois juntos: somar um terceiro perfil aqui é
-    # o que pede revisar este número.
+    # MEDIDO: dev + admin juntos levaram 8min47 (run de 25/08 10:07). O
+    # perfil agro tem o mesmo formato de custo do admin (12 termos por
+    # ciclo, portais generalistas), com uma cidade a mais no LinkedIn — 3
+    # em vez de 1, ver LOCATIONS_LINKEDIN_CIDADES_AGRO. Estimativa de
+    # ciclo com os três: 15-20 min, bem dentro dos 150.
+    #
+    # Os três são baratos perto do perfil brasil, contra o qual este
+    # número foi calibrado: ele roda 15 termos e 16 buscas de LinkedIn por
+    # termo (1 país x 2 passadas + 6 países só-remoto + 8 cidades).
     timeout-minutes: 150
     steps:
       - name: Checkout do repositório
@@ -58,15 +59,16 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         # Um projeto só, com perfis selecionáveis (ver core/perfis.py).
-        # Aqui rodam os dois perfis de pessoas reais deste fork: `dev`
-        # (back-end Node/TypeScript) e `admin` (administrativo/financeiro/
-        # RH). Os dois notificam no MESMO chat do Telegram, distinguidos
-        # pela linha "Perfil:" da notificação (ver notificar_vaga).
+        # Aqui rodam os três perfis de pessoas reais deste fork: `dev`
+        # (back-end Node/TypeScript), `admin` (administrativo/financeiro/
+        # RH) e `agro` (agronomia, SC e PR). Os três notificam no MESMO
+        # chat do Telegram, distinguidos pela linha "Perfil:" da
+        # notificação (ver notificar_vaga).
         #
         # brasil e internacional são os perfis de Dados/BI da autora
         # original: continuam existindo e rodáveis à mão
         # (`python main.py --perfil brasil --once`), mas fora do cron.
-        run: python main.py --perfil dev admin --once
+        run: python main.py --perfil dev admin agro --once
 
       - name: Salvar vagas já vistas (evita notificação duplicada)
         run: |

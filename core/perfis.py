@@ -77,6 +77,23 @@ from core.config_adm import (
     LOCATIONS_LINKEDIN_ADM,
     LOCATIONS_LINKEDIN_CIDADES_ADM,
 )
+from core.config_agro import (
+    KEYWORDS_CARGO_FORTE_AGRO,
+    KEYWORDS_CARGO_AMBIGUO_AGRO,
+    QUALIFICADORES_AREA_AGRO,
+    FERRAMENTAS_TITULO_AGRO,
+    QUALIFICADORES_CARGO_AGRO,
+    TITULOS_EXCLUIDOS_AGRO,
+    NIVEIS_EXCLUIDOS_AGRO,
+    NIVEIS_ALVO_AGRO,
+    CIDADES_AGRO,
+    MERCADOS_REMOTO_ACEITOS_AGRO,
+    TERMOS_BUSCA_AGRO,
+    TERMOS_PRIORITARIOS_AGRO,
+    TERMOS_POR_CICLO_AGRO,
+    LOCATIONS_LINKEDIN_AGRO,
+    LOCATIONS_LINKEDIN_CIDADES_AGRO,
+)
 from core.job import RegrasFiltro
 from scrapers.catho import CathoScraper
 from scrapers.geekhunter import GeekHunterScraper
@@ -461,9 +478,67 @@ PERFIL_ADM = Perfil(
     max_scrapers_concorrentes=4,
 )
 
+# Perfil agronomia — ver core/config_agro.py pra origem de cada lista.
+# Terceira pessoa deste fork; notifica no mesmo Telegram, distinguido pela
+# linha "Perfil:".
+#
+# Como o admin, usa titulos_excluidos (rejeição incondicional) em vez de
+# stacks_excluidas: não existe vaga que ele queira nomeando "software" ou
+# "telecom" no título, então o perdão por ferramenta só abriria brecha.
+#
+# niveis_alvo largo (até Liderança) porque dois dos quatro cargos que ele
+# procura são de gerência — no padrão global, "Liderança" vale -2 e
+# rebaixaria justamente os alvos declarados.
+_REGRAS_AGRO = RegrasFiltro(
+    keywords_forte=KEYWORDS_CARGO_FORTE_AGRO,
+    keywords_ambiguo=KEYWORDS_CARGO_AMBIGUO_AGRO,
+    qualificadores_dados=QUALIFICADORES_AREA_AGRO,
+    ferramentas_titulo=FERRAMENTAS_TITULO_AGRO,
+    qualificadores_cargo=QUALIFICADORES_CARGO_AGRO,
+    cidades=CIDADES_AGRO,
+    mercados_remoto_aceitos=MERCADOS_REMOTO_ACEITOS_AGRO,
+    titulos_excluidos=TITULOS_EXCLUIDOS_AGRO,
+    niveis_excluidos=NIVEIS_EXCLUIDOS_AGRO,
+    niveis_alvo=NIVEIS_ALVO_AGRO,
+)
+
+# Portais generalistas, que é onde vaga de agro é anunciada. GeekHunter e
+# WeWorkRemotely ficam de fora pelo mesmo motivo do perfil admin: são
+# fonte de vaga de tecnologia e rodariam termo agronômico pra devolver
+# nada.
+_SCRAPERS_AGRO = [
+    DefinicaoScraper(LinkedInScraper, FREQUENCIA_ALTA, {
+        "locations": LOCATIONS_LINKEDIN_AGRO,
+        "locations_remoto_apenas": [],
+        "locations_cidades_presencial": LOCATIONS_LINKEDIN_CIDADES_AGRO,
+    }),
+    DefinicaoScraper(GupyScraper, FREQUENCIA_ALTA),
+    DefinicaoScraper(CathoScraper, FREQUENCIA_ALTA),
+    DefinicaoScraper(SolidesScraper, FREQUENCIA_ALTA),
+    DefinicaoScraper(Jobs99Scraper, FREQUENCIA_BAIXA),
+    DefinicaoScraper(SeniorScraper, FREQUENCIA_BAIXA),
+]
+
+PERFIL_AGRO = Perfil(
+    chave="agro",
+    nome="Agronomia",
+    palavras_monitoradas=KEYWORDS_CARGO_FORTE_AGRO,
+    paises_pesquisados=None,
+    regras=_REGRAS_AGRO,
+    regras_eixo_secundario=None,
+    eixo_secundario_ativo=False,
+    eixo_secundario_rotulo="",
+    termos_busca=TERMOS_BUSCA_AGRO,
+    termos_por_ciclo=TERMOS_POR_CICLO_AGRO,
+    termos_prioritarios=TERMOS_PRIORITARIOS_AGRO,
+    definicao_scrapers=_SCRAPERS_AGRO,
+    max_scrapers_concorrentes=4,
+)
+
 PERFIS = {
     PERFIL_BR.chave: PERFIL_BR,
     PERFIL_INTL.chave: PERFIL_INTL,
     PERFIL_DEV.chave: PERFIL_DEV,
     PERFIL_ADM.chave: PERFIL_ADM,
+    PERFIL_AGRO.chave: PERFIL_AGRO,
 }

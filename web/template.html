@@ -22,6 +22,7 @@
   --ink:#141917; --ink-2:#3C4644; --muted:#61706C; --line:#DCE2DD;
   --dev:#0C6B63; --dev-soft:#E2F0EE;
   --adm:#9A5716; --adm-soft:#F6EBDE;
+  --agro:#4A6B18; --agro-soft:#EAF1DE;
   --hot:#164E45; --shadow:0 1px 2px rgba(20,25,23,.06),0 8px 24px rgba(20,25,23,.05);
 }
 @media (prefers-color-scheme:dark){
@@ -30,6 +31,8 @@
     --ink:#E9EFEC; --ink-2:#C2CDC9; --muted:#8FA09B; --line:#27302E;
     --dev:#4FB0A5; --dev-soft:#12312D;
     --adm:#D89950; --adm-soft:#33240F;
+  --agro:#8FB84E; --agro-soft:#1E2A12;
+    --agro:#8FB84E; --agro-soft:#1E2A12;
     --hot:#7FD4C7; --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3);
   }
 }
@@ -117,6 +120,7 @@ li[data-hot="1"] .score{color:var(--hot)}
 }
 li[data-p="dev"] .tag{background:var(--dev-soft); color:var(--dev)}
 li[data-p="admin"] .tag{background:var(--adm-soft); color:var(--adm)}
+li[data-p="agro"] .tag{background:var(--agro-soft); color:var(--agro)}
 .empty{padding:48px 8px; text-align:center; color:var(--muted)}
 footer{margin-top:36px; padding-top:18px; border-top:1px solid var(--line); color:var(--muted); font-size:12.5px}
 footer code{font-family:"IBM Plex Mono",monospace; color:var(--ink-2)}
@@ -164,7 +168,7 @@ li[data-enviei="1"]{border-left:3px solid var(--adm); padding-left:14px}
 <header>
   <p class="eyebrow">JobRadar &middot; atualizado __ATUALIZADO__</p>
   <h1>Radar de Vagas</h1>
-  <p class="sub">Tudo que os dois radares já acharam, do mais relevante pro menos. A página se regenera a cada ciclo do robô — o Telegram avisa o que é urgente, aqui fica o histórico inteiro.</p>
+  <p class="sub">Tudo que os radares já acharam, do mais relevante pro menos. A página se regenera a cada ciclo do robô — o Telegram avisa o que é urgente, aqui fica o histórico inteiro.</p>
 </header>
 
 <div class="stats" id="stats"></div>
@@ -172,9 +176,10 @@ li[data-enviei="1"]{border-left:3px solid var(--adm); padding-left:14px}
 <div class="bar">
   <label class="field"><span>Perfil</span>
     <span class="seg" id="segPerfil">
-      <button type="button" data-v="todos">Os dois</button>
+      <button type="button" data-v="todos">Todos</button>
       <button type="button" data-v="dev">Dev</button>
       <button type="button" data-v="admin">Administrativo</button>
+      <button type="button" data-v="agro">Agronomia</button>
     </span>
   </label>
   <label class="field"><span>Nota mínima</span>
@@ -228,7 +233,7 @@ li[data-enviei="1"]{border-left:3px solid var(--adm); padding-left:14px}
 <script>
 const VAGAS = __DADOS__;
 const $ = (id) => document.getElementById(id);
-const NOMES = { dev: "Dev", admin: "Administrativo" };
+const NOMES = { dev: "Dev", admin: "Administrativo", agro: "Agronomia" };
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
 // --- Marcações do usuário -------------------------------------------------
@@ -360,15 +365,28 @@ function passaMarca(li) {
   return true;
 }
 
+// Link -> perfil, pra contar marcação por perfil. As marcações são
+// guardadas só por link (é o que sobrevive à regeneração da página), então
+// sozinhas elas não sabem de quem é a vaga.
+const PERFIL_DO_LINK = Object.fromEntries(VAGAS.map((v) => [v.u, v.p]));
+
 function contarStats() {
-  const vals = Object.values(marcas);
+  // Com um perfil selecionado, TODOS os números passam a ser daquele
+  // perfil. Misturar "vagas do Dev" com "interessam de todo mundo" no
+  // mesmo painel dava um número que não respondia pergunta nenhuma.
+  const doPerfil = (p) => estado.perfil === "todos" || p === estado.perfil;
+  const vagas = VAGAS.filter((v) => doPerfil(v.p));
+  const marcadas = Object.entries(marcas)
+    .filter(([link]) => doPerfil(PERFIL_DO_LINK[link]))
+    .map(([, m]) => m);
+
   $("stats").innerHTML = [
-    ["Vagas guardadas", VAGAS.length],
-    ["Nota 8+", VAGAS.filter((v) => v.r >= 8).length],
-    ["A enviar", vals.filter((m) => m.i === "sim" && !m.e).length],
-    ["Interessam", vals.filter((m) => m.i === "sim").length],
-    ["Currículo enviado", vals.filter((m) => m.e).length],
-    ["Descartadas", vals.filter((m) => m.i === "nao").length],
+    [estado.perfil === "todos" ? "Vagas guardadas" : `Vagas · ${NOMES[estado.perfil]}`, vagas.length],
+    ["Nota 8+", vagas.filter((v) => v.r >= 8).length],
+    ["A enviar", marcadas.filter((m) => m.i === "sim" && !m.e).length],
+    ["Interessam", marcadas.filter((m) => m.i === "sim").length],
+    ["Currículo enviado", marcadas.filter((m) => m.e).length],
+    ["Descartadas", marcadas.filter((m) => m.i === "nao").length],
   ].map(([rot, n]) => `<div class="stat"><b>${n}</b><span>${rot}</span></div>`).join("");
 }
 

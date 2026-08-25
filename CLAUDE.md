@@ -27,7 +27,7 @@ globais da conta, em ~/.claude/CLAUDE.md — não são repetidas aqui.
 O motor (`main.py`) roda perfis selecionáveis por `--perfil`; cada perfil é
 só DADO (`core/config*.py` + `core/perfis.py`), não lógica duplicada.
 
-Dois perfis rodam em produção (cron), os dois notificando no MESMO chat do
+Três perfis rodam em produção (cron), todos notificando no MESMO chat do
 Telegram, distinguidos pela linha `Perfil:` da notificação:
 
 - `dev` — full-stack com foco back-end Node/TypeScript, remoto ou
@@ -36,6 +36,11 @@ Telegram, distinguidos pela linha `Perfil:` da notificação:
 - `admin` — administrativo, financeiro, contábil e RH/DP, remoto ou
   Joinville/SC, pleno e sênior. Fiscal e tributário foram excluídos a
   pedido da usuária. Config em `core/config_adm.py`.
+
+- `agro` — agronomia: assistência técnica ao produtor rural, RTV,
+  qualidade em fertilizantes e produção em unidade de beneficiamento de
+  sementes. Santa Catarina e Paraná inteiros, com buscas dedicadas em
+  Joinville, Curitiba e Ponta Grossa. Config em `core/config_agro.py`.
 
 - `brasil` / `internacional` — perfis de Dados/BI da autora original do
   projeto. Continuam no código e rodáveis à mão, mas FORA do cron: não
