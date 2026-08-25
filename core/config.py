@@ -384,13 +384,26 @@ INTERVALO_MINUTOS = int(os.getenv("INTERVALO_MINUTOS", 180))
 # com o pedido ("vaga de score alto na hora, resto agrupado"); 6 deixava
 # 74% imediata (pouca redução de ruído); 8 deixava só 2% (digest com
 # praticamente tudo, quase nenhuma vaga "excelente" se destacando na hora).
-# Baixado de 7 pra 6 por decisão do usuário junto com a entrada do perfil
-# dev: com o filtro de nível ("pleno apenas") e a lista de stacks excluídas
-# barrando antes, o volume que chega em 6 é menor do que era quando o
-# limiar foi calibrado — a distribuição medida (67% em 6) valia pro perfil
-# de dados, sem nenhum desses dois cortes. O valor é global aos três
-# perfis: os perfis de dados também passam a notificar na hora em 6.
-LIMIAR_DIGEST_IMEDIATO = 6
+# 6 -> 9 a pedido do usuário, valendo pros dois perfis em produção.
+#
+# 9 é o TETO real dos perfis dev e admin, não um valor no meio da escala:
+# cargo forte (3) + ferramenta no título (2) + senioridade alvo (2) +
+# mercado confirmado (2) = 9. O ponto de idioma, que levaria a 10, só
+# existe em perfil com idiomas_exigidos — nenhum dos dois tem. Ou seja, a
+# notificação imediata passa a exigir que a vaga acerte TODOS os sinais ao
+# mesmo tempo: o título tem que trazer cargo forte E a ferramenta/stack E
+# o nível, e o anúncio tem que declarar o mercado.
+#
+# Consequência esperada, dita antes de virar surpresa: quase nada chega na
+# hora. Na única medição que existe nesta base (305 vagas do perfil de
+# dados) a faixa 9-10 ficou vazia. O resto NÃO se perde — cai no digest
+# diário, que continua saindo todo dia (ver _enviar_digest_diario em
+# main.py) com a lista ranqueada.
+#
+# Se ficar silencioso demais, 8 é o próximo degrau: dispensa um único
+# sinal (tipicamente o mercado declarado, que depende da fonte escrever
+# "Remoto - Brasil" em vez de só "Remoto").
+LIMIAR_DIGEST_IMEDIATO = 9
 
 # Hora UTC a partir da qual o digest diário pode sair (uma vez por perfil,
 # por dia — ver _enviar_digest_diario em main.py). A regra é "ainda não
