@@ -1,0 +1,57 @@
+name: Sondar fontes
+
+# Só manual. Esta é a bancada de fontes candidatas (ver
+# scripts/sondar_fontes.py): roda as fontes novas contra o site de verdade
+# e imprime o que elas trazem.
+#
+# NÃO grava no banco, NÃO notifica no Telegram e NÃO commita nada — por
+# isso pode rodar quantas vezes quiser sem risco pra produção. O ciclo de
+# verdade (jobradar.yml) continua intocado.
+#
+# Existe porque a sessão de desenvolvimento não alcança portal de vaga
+# nenhum (bloqueio de rede), mas o runner alcança. Fonte nova entra no
+# perfil só depois de aparecer com número aqui.
+on:
+  workflow_dispatch:
+    inputs:
+      fonte:
+        description: "Sondar só uma fonte (Vagas, InfoJobs, Trabalha, BNE). Vazio = todas."
+        required: false
+        default: ""
+      termos:
+        description: "Termos de busca, separados por vírgula. Vazio = um de cada perfil."
+        required: false
+        default: ""
+
+jobs:
+  sondar:
+    runs-on: ubuntu-latest
+    # Bem menor que o do ciclo: são 4 fontes x poucos termos. Se estourar,
+    # é sinal de que alguma fonte está pendurada, e isso já é resposta.
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Instalar dependências
+        run: |
+          pip install -r requirements.txt
+          python -m playwright install --with-deps chromium
+
+      - name: Sondar
+        run: |
+          ARGS=""
+          if [ -n "${{ inputs.fonte }}" ]; then
+            ARGS="$ARGS --fonte ${{ inputs.fonte }}"
+          fi
+          if [ -n "${{ inputs.termos }}" ]; then
+            IFS=',' read -ra TERMOS <<< "${{ inputs.termos }}"
+            ARGS="$ARGS --termos"
+            for t in "${TERMOS[@]}"; do
+              ARGS="$ARGS \"$(echo "$t" | xargs)\""
+            done
+          fi
+          eval python -m scripts.sondar_fontes $ARGS

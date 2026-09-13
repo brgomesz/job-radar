@@ -47,3 +47,19 @@ Telegram, distinguidos pela linha `Perfil:` da notificação:
   devem voltar pro workflow sem pedido explícito.
 
 Ao mexer em regra de filtro, rodar `pytest tests/ -v` antes de commitar.
+
+## Fontes de vaga
+
+- Fonte NOVA nunca entra direto num perfil. O caminho é: configurar em
+  `scrapers/nacionais.py` (sobre o `ScraperGenerico`), rodar a bancada
+  (workflow "Sondar fontes", ou `python -m scripts.sondar_fontes`) e
+  promover só a que trouxer vaga APROVADA. Fonte que traz vaga bruta mas
+  nenhuma aprovada funciona, só não serve a estes perfis.
+  `tests/test_scraper_generico.py` avisa se alguma candidata for ligada a
+  um perfil sem passar por isso.
+- Motivo: fonte ruim falha em SILÊNCIO (devolve zero e o ciclo segue
+  verde). Já aconteceu duas vezes — Trampos rendeu zero por 6 dias, e a
+  GeekHunter foi promovida por palpite e entregou 151 brutas / 0 aprovadas.
+- A sessão de desenvolvimento do Claude não alcança portal de vaga nenhum
+  (bloqueio de rede: 403 no CONNECT). Quem tem rede é o runner do GitHub —
+  por isso a bancada é um workflow, e não um script para rodar por aqui.
