@@ -148,6 +148,12 @@ def extrair_empresa(texto_card: str, titulo: str, local: str) -> str:
         # nome de empresa.
         if extrair_data_publicacao(limpa):
             continue
+        # MEDIDO na 1a sondagem: o InfoJobs devolveu "14 ago" como empresa em
+        # 53 de 54 vagas. extrair_data_publicacao não reconhece data solta
+        # nesse formato (sem "publicada em"), então ela passava. Linha curta
+        # que começa com número e traz mês abreviado é data, não empresa.
+        if re.match(r"^\d{1,2}[\s/.-]*(jan|fev|mar|abr|mai|jun|jul|ago|set|out|nov|dez)", norm):
+            continue
         # Rótulo de interface e faixa salarial também não são empresa.
         if re.search(r"r\$|salari|candidat|publicad|vagas?\b|ver vaga|efetivo|clt|pj\b|confidencial", norm):
             continue
@@ -164,6 +170,7 @@ class ScraperGenerico(BaseScraper):
 
     def __init__(self, termos_busca: list[str]):
         self.termos_busca = termos_busca
+        self.ultimas_ancoras: list[dict] = []
 
     def buscar_vagas(self) -> list[Job]:
         vagas: list[Job] = []
@@ -235,19 +242,35 @@ class ScraperGenerico(BaseScraper):
         if self.fonte.espera_extra_s:
             time.sleep(self.fonte.espera_extra_s)
 
-        return self.extrair_da_pagina(
-            pagina.eval_on_selector_all(
-                "a[href]",
-                """els => els.map(a => {
-                    const caixa = a.closest('article, li, [class*=card], [class*=vaga], [class*=job], div');
-                    return {
-                        href: a.getAttribute('href') || '',
-                        texto: (a.innerText || '').trim(),
-                        caixa: caixa ? (caixa.innerText || '').trim() : '',
-                    };
-                })""",
-            )
+        # MEDIDO na 1a sondagem (13/09): closest('...div') pegava o div
+        # imediato, que na maioria dos portais envolve SÓ o link. Resultado:
+        # `caixa` vinha igual ao título, cidade saía em 0% das 41 vagas do
+        # Vagas.com e nenhuma passava no filtro. O card não tem classe
+        # previsível, mas TEM tamanho previsível: sobe pelos ancestrais e
+        # fica com o maior texto que ainda cabe num card (até 600 chars) —
+        # acima disso já é a lista inteira ou a página.
+        ancoras = pagina.eval_on_selector_all(
+            "a[href]",
+            """els => els.map(a => {
+                let el = a, melhor = (a.innerText || '').trim();
+                for (let i = 0; i < 6; i++) {
+                    el = el.parentElement;
+                    if (!el) break;
+                    const texto = (el.innerText || '').trim();
+                    if (texto.length > 600) break;
+                    if (texto.length > melhor.length) melhor = texto;
+                }
+                return {
+                    href: a.getAttribute('href') || '',
+                    texto: (a.innerText || '').trim(),
+                    caixa: melhor,
+                };
+            })""",
         )
+        # Guardado pra sonda poder mostrar os hrefs reais quando o padrão de
+        # link não acerta nada — sem isso, "0 vagas" não diz o que corrigir.
+        self.ultimas_ancoras = ancoras
+        return self.extrair_da_pagina(ancoras)
 
     def extrair_da_pagina(self, ancoras: list[dict]) -> list[Job]:
         """Âncoras cruas -> vagas. Separado da navegação de propósito: é a

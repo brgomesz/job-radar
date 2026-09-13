@@ -47,14 +47,35 @@ def _amostra(vagas, n=3):
         print(f"        {v.empresa[:30]} | {v.local[:28]} | {v.modalidade or '—'} | {v.publicado_em or 'sem data'}")
 
 
+def _hrefs_encontrados(scraper, n=14):
+    """Amostra dos links que a página realmente tem.
+
+    É o que transforma "0 vagas" em conserto: com os hrefs na mão dá pra
+    escrever o padrao_link certo. Sem isso, zero é indistinguível de site
+    bloqueado.
+    """
+    vistos, amostra = set(), []
+    for a in getattr(scraper, "ultimas_ancoras", []):
+        href = (a.get("href") or "").split("?")[0]
+        # Âncora sem texto é menu/ícone; a de vaga sempre tem título.
+        if not href or href in vistos or len(a.get("texto", "")) < 5:
+            continue
+        vistos.add(href)
+        amostra.append(href)
+        if len(amostra) >= n:
+            break
+    return amostra
+
+
 def sondar(classe, termos, dump=False) -> dict:
     nome = classe.fonte.nome
     print(f"\n{'=' * 62}\n{nome}\n{'=' * 62}")
     print(f"  URL: {classe.fonte.url_busca}")
 
     inicio = time.time()
+    scraper = classe(termos_busca=termos)
     try:
-        vagas = classe(termos_busca=termos).buscar_vagas()
+        vagas = scraper.buscar_vagas()
     except Exception:
         print(f"  ❌ EXCEÇÃO — a fonte nem chegou a devolver lista:")
         print("     " + traceback.format_exc().strip().replace("\n", "\n     "))
@@ -67,11 +88,16 @@ def sondar(classe, termos, dump=False) -> dict:
         # Zero é o resultado que mais engana: pode ser bloqueio, seletor
         # errado ou padrão de link errado. Sem dizer qual, o relatório não
         # serve pra nada.
-        print("  ❌ ZERO vagas. Causas prováveis, na ordem:")
-        print("     1. padrao_link não bate com o href real do site")
-        print("     2. o site bloqueou o acesso automatizado")
-        print("     3. a busca não tem resultado pros termos usados")
-        print("     Rodar com --dump pra salvar o HTML e conferir.")
+        print(f"  ❌ ZERO vagas com o padrão {classe.fonte.padrao_link!r}.")
+        hrefs = _hrefs_encontrados(scraper)
+        if hrefs:
+            print(f"     A página TEM links ({len(scraper.ultimas_ancoras)} âncoras). Amostra:")
+            for h in hrefs:
+                print(f"       {h}")
+            print("     -> corrigir padrao_link em scrapers/nacionais.py")
+        else:
+            print("     A página não trouxe link nenhum: bloqueio de bot ou")
+            print("     conteúdo que só carrega depois de interação.")
         return {"nome": nome, "brutas": 0, "erro": False}
 
     com_local = sum(1 for v in vagas if v.local and v.local != "Não informado")
