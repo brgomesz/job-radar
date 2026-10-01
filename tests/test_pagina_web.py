@@ -147,3 +147,92 @@ def test_pagina_rotula_as_duas_datas(tmp_path):
     pagina = montar_html(carregar_vagas(db))
     assert "achada ${esc(v.d)}" in pagina or "achada" in pagina
     assert "publicada" in pagina
+
+
+# ---------------------------------------------------------------------------
+# Data de PUBLICAÇÃO (o que a fonte anuncia), para o filtro da página
+# ---------------------------------------------------------------------------
+
+from datetime import datetime, timedelta, timezone  # noqa: E402
+
+from web.gerar import _epoch_publicacao  # noqa: E402
+
+_REF = datetime(2026, 9, 13, 12, 0, tzinfo=timezone.utc)
+
+
+def _data(ts):
+    return datetime.fromtimestamp(ts, timezone.utc).strftime("%d/%m/%Y")
+
+
+CASOS_PUBLICACAO = [
+    # Formatos conferidos no banco real, um por fonte
+    ("iso-linkedin", "2026-07-22", "22/07/2026"),
+    ("gupy-com-ano", "Publicada em: 20/08/2026", "20/08/2026"),
+    ("gupy-sem-ano", "Publicada em 18/08", "18/08/2026"),
+    ("infojobs-dia-mes", "27 ago", "27/08/2026"),
+    ("por-extenso", "11 de agosto de 2026", "11/08/2026"),
+    # Relativas: contadas a partir de quando NÓS achamos a vaga
+    ("relativa-dias", "há 3 dias", "10/09/2026"),
+    ("relativa-semanas", "há 2 semanas", "30/08/2026"),
+    ("relativa-meses", "Há 1 mês", "14/08/2026"),
+    ("hoje", "hoje", "13/09/2026"),
+    ("ontem", "ontem", "12/09/2026"),
+]
+
+
+@pytest.mark.parametrize(
+    "nome,bruto,esperado", CASOS_PUBLICACAO, ids=[c[0] for c in CASOS_PUBLICACAO]
+)
+def test_epoch_publicacao(nome, bruto, esperado):
+    assert _data(_epoch_publicacao(bruto, _REF)) == esperado
+
+
+def test_data_sem_ano_na_virada_nao_vai_pro_futuro():
+    """Vaga achada em 02/janeiro dizendo "28/12" é de dezembro do ano
+    ANTERIOR. Assumir o ano da referência jogaria a publicação 11 meses
+    pra frente."""
+    ref = datetime(2026, 1, 2, tzinfo=timezone.utc)
+    assert _data(_epoch_publicacao("Publicada em 28/12", ref)) == "28/12/2025"
+
+
+def test_relativa_usa_quando_achamos_nao_agora():
+    """A página é regerada a cada ciclo. Calculando "há 2 dias" a partir de
+    agora, a MESMA vaga mudaria de data de publicação a cada regeração."""
+    antiga = datetime(2026, 1, 10, tzinfo=timezone.utc)
+    assert _data(_epoch_publicacao("há 2 dias", antiga)) == "08/01/2026"
+
+
+@pytest.mark.parametrize("bruto", ["", "em breve", "confira", "R$ 3.000"])
+def test_publicacao_ilegivel_vira_zero(bruto):
+    """0 deixa a vaga fora de qualquer janela do filtro — dizer que uma
+    vaga sem data é das últimas 24h seria inventar."""
+    assert _epoch_publicacao(bruto, _REF) == 0
+
+
+def test_carregar_vagas_traz_plataforma_e_data_de_publicacao(tmp_path):
+    """Os dois campos que os filtros novos consomem."""
+    db = _banco(tmp_path, [_linha("Dev")])
+    v = carregar_vagas(db)[0]
+    assert v["s"] == "LinkedIn"
+    assert v["pts"] > 0
+
+
+def test_pagina_tem_os_dois_filtros(tmp_path):
+    db = _banco(tmp_path, [_linha("Dev")])
+    pagina = montar_html(carregar_vagas(db))
+    assert 'id="selPlataforma"' in pagina
+    assert 'id="segPublicada"' in pagina
+
+
+@pytest.mark.parametrize("bruto,esperado", [
+    ("Publicada em: 01/10/2026", "01/10/2026"),
+    ("Publicada em 18/08", "18/08"),
+    ("publicado em: hoje", "hoje"),
+    ("2026-09-17", "2026-09-17"),
+    ("há 3 dias", "há 3 dias"),
+])
+def test_rotulo_publicacao_nao_duplica_a_palavra(bruto, esperado):
+    """A página escreve "publicada" antes do valor; a Gupy e a Sólides já
+    mandam "Publicada em:" embutido, e saía "publicada Publicada em:"."""
+    from web.gerar import _rotulo_publicacao
+    assert _rotulo_publicacao(bruto) == esperado

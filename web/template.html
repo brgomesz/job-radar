@@ -93,6 +93,12 @@ input[type=search]{
   font:inherit; padding:7px 11px; border-radius:8px; border:1px solid var(--line);
   background:var(--surface); color:var(--ink); min-width:210px;
 }
+select{
+  font:inherit; font-size:13px; padding:7px 11px; border-radius:8px;
+  border:1px solid var(--line); background:var(--surface); color:var(--ink);
+  cursor:pointer;
+}
+select:focus-visible{outline:2px solid var(--dev); outline-offset:-1px}
 input[type=search]:focus-visible{outline:2px solid var(--dev); outline-offset:-1px}
 .count{margin-left:auto; font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--muted); padding-bottom:8px}
 ol{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px}
@@ -181,6 +187,7 @@ footer code{font-family:"IBM Plex Mono",monospace; color:var(--ink-2)}
   .seg button{padding:7px 12px; font-size:13px}
   .field>span{font-size:10px}
   input[type=search]{width:100%; min-width:0}
+  select{width:100%}
   .count{margin-left:auto; padding-bottom:0; white-space:nowrap}
   .limpar{width:100%; align-self:stretch}
   .marcas{gap:5px}
@@ -258,10 +265,24 @@ li[data-enviei="1"]{border-left:3px solid var(--adm); padding-left:14px}
       <button type="button" data-v="0">Sempre</button>
     </span>
   </label>
+  <label class="field"><span>Publicada</span>
+    <span class="seg" id="segPublicada">
+      <button type="button" data-v="1">24h</button>
+      <button type="button" data-v="7">7 dias</button>
+      <button type="button" data-v="30">30 dias</button>
+      <button type="button" data-v="0">Sempre</button>
+    </span>
+  </label>
+  <label class="field"><span>Plataforma</span>
+    <select id="selPlataforma">
+      <option value="todas">Todas</option>
+    </select>
+  </label>
   <label class="field"><span>Ordenar por</span>
     <span class="seg" id="segOrdem">
       <button type="button" data-v="relevancia">Relevância</button>
       <button type="button" data-v="recentes">Mais recentes</button>
+      <button type="button" data-v="publicacao">Publicação</button>
     </span>
   </label>
   <label class="field"><span>Marcadas</span>
@@ -320,7 +341,10 @@ const marcas = lerJSON(CHAVE_MARCAS, {});
 // Padrão: nota 8+, tudo que já foi achado, ordenado por relevância. É o
 // mesmo corte que o Telegram usa pra notificar, então a página abre
 // mostrando exatamente o que valeria um alerta.
-const PADRAO = { perfil: "todos", nota: 8, marca: "tudo", periodo: "0", ordem: "relevancia", busca: "" };
+const PADRAO = {
+  perfil: "todos", nota: 8, marca: "tudo", periodo: "0",
+  publicada: "0", plataforma: "todas", ordem: "relevancia", busca: "",
+};
 const estado = Object.assign({}, PADRAO, lerJSON(CHAVE_FILTROS, null) || {});
 
 const marcaDe = (link) => marcas[link] || { i: null, e: false };
@@ -355,7 +379,7 @@ $("lista").innerHTML = VAGAS.map((v) => {
   ].filter(Boolean).join("</span><span>");
   const link = esc(v.u);
   return `<li data-p="${v.p}" data-r="${v.r}" data-hot="${v.r >= 8 ? 1 : 0}" data-link="${link}"
-    data-ts="${v.ts || 0}"
+    data-ts="${v.ts || 0}" data-pts="${v.pts || 0}" data-site="${esc(v.s)}"
     data-busca="${esc((v.t + " " + v.e + " " + v.l).toLowerCase())}">
     <span class="score">${v.r}<em>nota</em></span>
     <p class="title"><a href="${link}" target="_blank" rel="noopener noreferrer">${esc(v.t)}</a></p>
@@ -371,12 +395,26 @@ $("lista").innerHTML = VAGAS.map((v) => {
 
 const itens = Array.from(document.querySelectorAll("#lista li"));
 
+// A lista de plataformas sai dos DADOS, não de uma constante: fonte nova
+// que entre no radar aparece aqui sozinha, sem precisar mexer no template.
+const PLATAFORMAS = [...new Set(VAGAS.map((v) => v.s).filter(Boolean))].sort();
+$("selPlataforma").insertAdjacentHTML(
+  "beforeend",
+  PLATAFORMAS.map((s) => {
+    const n = VAGAS.filter((v) => v.s === s).length;
+    return `<option value="${esc(s)}">${esc(s)} (${n})</option>`;
+  }).join("")
+);
+
 // Duas ordens fixas, calculadas uma vez. "Relevância" é a ordem que veio
 // do servidor (nota desc, empate desempatado pela mais recente); trocar de
 // ordenação só re-anexa os mesmos nós, sem recriar HTML.
 const ORDENS = {
   relevancia: itens.slice(),
   recentes: itens.slice().sort((a, b) => Number(b.dataset.ts) - Number(a.dataset.ts)),
+  // Por data do ANÚNCIO. Vaga sem data legível vai pro fim, não pro topo:
+  // pts 0 ordenaria como 1970 em ordem crescente e como "mais nova" aqui.
+  publicacao: itens.slice().sort((a, b) => (Number(b.dataset.pts) || 0) - (Number(a.dataset.pts) || 0)),
 };
 let ordemAplicada = null;
 
@@ -391,10 +429,10 @@ function ordenar() {
 // Corte do filtro "Achadas": epoch em segundos, ou null pra "Sempre".
 // Vaga sem data legível (ts 0) fica de fora de qualquer janela — dizer
 // que ela é das últimas 24h seria inventar.
-function corteDoPeriodo() {
-  const dias = Number(estado.periodo);
-  if (!dias) return null;
-  return Math.floor(Date.now() / 1000) - dias * 86400;
+function corteDeJanela(dias) {
+  const n = Number(dias);
+  if (!n) return null;
+  return Math.floor(Date.now() / 1000) - n * 86400;
 }
 
 function pintarMarcas(li) {
@@ -453,15 +491,21 @@ function contarStats() {
 
 function aplicar() {
   const termo = estado.busca.trim().toLowerCase();
-  const corte = corteDoPeriodo();
+  const corte = corteDeJanela(estado.periodo);
+  const cortePub = corteDeJanela(estado.publicada);
   ordenar();
   let visiveis = 0;
   for (const li of itens) {
     const ts = Number(li.dataset.ts);
+    const pts = Number(li.dataset.pts);
     const ok =
       (estado.perfil === "todos" || li.dataset.p === estado.perfil) &&
       Number(li.dataset.r) >= estado.nota &&
       (corte === null || (ts > 0 && ts >= corte)) &&
+      // Vaga sem data de publicação legível (pts 0) fica fora de qualquer
+      // janela — mesma regra de "Achadas". São 9 em 2065 hoje.
+      (cortePub === null || (pts > 0 && pts >= cortePub)) &&
+      (estado.plataforma === "todas" || li.dataset.site === estado.plataforma) &&
       passaMarca(li) &&
       (!termo || li.dataset.busca.includes(termo));
     li.hidden = !ok;
@@ -474,6 +518,8 @@ function aplicar() {
   pintarSegmento("segMarca", estado.marca);
   pintarSegmento("segPeriodo", estado.periodo);
   pintarSegmento("segOrdem", estado.ordem);
+  pintarSegmento("segPublicada", estado.publicada);
+  $("selPlataforma").value = estado.plataforma;
   // O botão só aparece quando há o que limpar: com seis controles na
   // barra, é fácil esquecer um filtro ligado e achar que a lista secou.
   const alterados = Object.keys(PADRAO).filter((k) => estado[k] !== PADRAO[k]).length;
@@ -524,9 +570,17 @@ $("toggleFiltros").addEventListener("click", () => {
   const aberta = $("bar").classList.toggle("aberta");
   $("toggleFiltros").setAttribute("aria-expanded", String(aberta));
 });
+$("segPublicada").addEventListener("click", (ev) => {
+  const b = ev.target.closest("button"); if (!b) return;
+  estado.publicada = b.dataset.v; aplicar();
+});
+$("selPlataforma").addEventListener("change", (ev) => {
+  estado.plataforma = ev.target.value; aplicar();
+});
 $("limpar").addEventListener("click", () => {
   Object.assign(estado, PADRAO);
   $("busca").value = "";
+  $("selPlataforma").value = PADRAO.plataforma;
   aplicar();
 });
 $("busca").addEventListener("input", (ev) => { estado.busca = ev.target.value; aplicar(); });

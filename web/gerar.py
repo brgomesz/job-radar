@@ -17,6 +17,7 @@ filtrável, que não depende de mensagem nenhuma sobreviver).
 import html
 import json
 import os
+import re
 import sqlite3
 from datetime import datetime, timedelta, timezone
 
@@ -118,7 +119,11 @@ def carregar_vagas(db_path: str = "") -> list[dict]:
             # resultado errado, e ordenar texto não é ordenar tempo.
             # 0 = sem data legível (fica fora dos filtros de período).
             "ts": _epoch(l["encontrada_em"] or ""),
-            "pub": l["publicado_em"] or "",
+            "pub": _rotulo_publicacao(l["publicado_em"] or ""),
+            # Data de publicação em epoch, pra página filtrar por ela. É
+            # independente de "ts" (quando NÓS achamos): anúncio de julho
+            # pode ter entrado no banco ontem.
+            "pts": _epoch_publicacao(l["publicado_em"] or "", _instante(l["encontrada_em"] or "")),
         }
         for l in linhas
     ]
@@ -138,6 +143,106 @@ def montar_html(vagas: list[dict], agora: datetime | None = None) -> str:
         .replace("__DADOS__", dados)
         .replace("__ATUALIZADO__", html.escape(agora.strftime("%d/%m/%Y às %H:%M")))
     )
+
+
+# Formatos de `publicado_em` que as fontes de fato usam, conferidos no
+# banco: ISO do LinkedIn ("2026-07-22"), "Publicada em: 20/08/2026" e
+# "Publicada em 18/08" (sem ano) da Gupy/Sólides, "há N dias|semanas|
+# meses|anos" de várias, "hoje"/"ontem", e "27 ago" do InfoJobs.
+_PUB_ISO = re.compile(r"(\d{4})-(\d{2})-(\d{2})")
+_PUB_DMA = re.compile(r"(\d{1,2})/(\d{1,2})(?:/(\d{2,4}))?")
+_PUB_RELATIVA = re.compile(r"h[áa]\s+(\d+)\s*(dia|semana|m[êe]s|mes|ano)", re.I)
+_PUB_DIA_MES = re.compile(
+    r"(\d{1,2})\s*(?:de\s+)?(jan|fev|mar|abr|mai|jun|jul|ago|set|out|nov|dez)", re.I
+)
+_MESES = {m: i for i, m in enumerate(
+    ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"], 1
+)}
+_DIAS_POR_UNIDADE = {"dia": 1, "semana": 7, "mes": 30, "mês": 30, "mes_": 30, "ano": 365}
+
+
+def _epoch_publicacao(bruto: str, referencia: datetime | None) -> int:
+    """`publicado_em` (o que a FONTE anuncia) em epoch, ou 0 se ilegível.
+
+    Data relativa ("há 28 dias") é resolvida contra `referencia` — o
+    instante em que NÓS achamos a vaga —, não contra agora. A diferença
+    importa e cresce: uma vaga achada em agosto dizendo "há 2 dias" foi
+    publicada em agosto, e calcular isso a partir de hoje a jogaria semanas
+    pra frente. Como a página é regerada a cada ciclo, o valor calculado a
+    partir de agora também MUDARIA a cada regeração, para a mesma vaga.
+
+    0 (ilegível ou vazio) fica fora de qualquer janela do filtro: dizer que
+    uma vaga sem data é das últimas 24h seria inventar.
+    """
+    texto = (bruto or "").strip()
+    if not texto:
+        return 0
+    base = referencia or datetime.now(timezone.utc)
+
+    iso = _PUB_ISO.search(texto)
+    if iso:
+        try:
+            return int(datetime(*map(int, iso.groups()), tzinfo=timezone.utc).timestamp())
+        except ValueError:
+            return 0
+
+    rel = _PUB_RELATIVA.search(texto)
+    if rel:
+        unidade = _normalizar_unidade(rel.group(2))
+        return int((base - timedelta(days=int(rel.group(1)) * _DIAS_POR_UNIDADE[unidade])).timestamp())
+
+    norm = texto.lower()
+    if "hoje" in norm or "agora" in norm:
+        return int(base.timestamp())
+    if "ontem" in norm:
+        return int((base - timedelta(days=1)).timestamp())
+
+    dma = _PUB_DMA.search(texto)
+    if dma:
+        dia, mes, ano = dma.group(1), dma.group(2), dma.group(3)
+        return _montar_data(int(dia), int(mes), ano, base)
+
+    dia_mes = _PUB_DIA_MES.search(texto)
+    if dia_mes:
+        return _montar_data(int(dia_mes.group(1)), _MESES[dia_mes.group(2).lower()[:3]], None, base)
+
+    return 0
+
+
+def _normalizar_unidade(bruta: str) -> str:
+    u = bruta.lower()
+    return "mes" if u.startswith("m") else u
+
+
+def _montar_data(dia: int, mes: int, ano: str | None, base: datetime) -> int:
+    """Monta a data; sem ano, usa o que NÃO joga a publicação no futuro.
+
+    "Publicada em 18/08" não diz o ano. Assumir o ano da referência erra
+    na virada: vaga achada em 02/janeiro dizendo "28/12" é de dezembro do
+    ano anterior, não de dezembro do ano que vem.
+    """
+    if ano:
+        a = int(ano)
+        a += 2000 if a < 100 else 0
+    else:
+        a = base.year
+    try:
+        data = datetime(a, mes, dia, tzinfo=timezone.utc)
+    except ValueError:
+        return 0
+    if not ano and data > base + timedelta(days=1):
+        try:
+            data = datetime(a - 1, mes, dia, tzinfo=timezone.utc)
+        except ValueError:
+            return 0
+    return int(data.timestamp())
+
+
+def _rotulo_publicacao(bruto: str) -> str:
+    """Texto da data como vai pra página. Tira o "Publicada em:" que a Gupy
+    e a Sólides já trazem embutido — a página põe o rótulo "publicada"
+    antes do valor, e sem isso sai "publicada Publicada em: 01/10/2026"."""
+    return re.sub(r"^\s*publicad[oa]\s*(em)?\s*:?\s*", "", bruto or "", flags=re.I).strip()
 
 
 def _epoch(bruto: str) -> int:
