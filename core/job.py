@@ -937,8 +937,22 @@ _NIVEIS_SENIORIDADE = [
     ("Pleno", (r"pleno", r"pl\.?")),
     ("Sênior", (r"senior", r"sr\.?", r"sênior")),
     ("Especialista", (r"especialista", r"specialist")),
-    ("Liderança", (r"coordenador", r"coordenadora", r"gerente", r"manager", r"head")),
+    ("Liderança", (
+        r"coordenador", r"coordenadora", r"supervisor", r"supervisora",
+        r"gerente", r"manager", r"head",
+    )),
 ]
+
+
+def _sem_marcador_genero(titulo_norm: str) -> str:
+    """Tira o marcador de gênero entre parênteses ("coordenador(a)
+    administrativo(a)" -> "coordenador administrativo").
+
+    Anúncio brasileiro escreve assim com frequência, e o casamento de cargo
+    é por texto: sem isto, "Coordenador(a) Administrativo(a)" não bate
+    "Coordenador Administrativo" e cada cargo precisaria de mais uma
+    variante por palavra flexionada."""
+    return re.sub(r"(?<=\w)\((?:a|o|as|os)\)", "", titulo_norm)
 
 
 def _detectar_senioridade(titulo: str) -> str:
@@ -1397,7 +1411,7 @@ class Job:
         """Faz a conta completa uma vez só — combina_com() e
         pontuar_relevancia() leem o mesmo resultado, em vez de cada um
         recalcular por conta própria (ver MEDIDO em _Avaliacao)."""
-        titulo_norm = _normalizar(self.titulo)
+        titulo_norm = _sem_marcador_genero(_normalizar(self.titulo))
         local_norm = _normalizar(self.local)
         modalidade_norm = _normalizar(self.modalidade)
 
@@ -1675,4 +1689,4 @@ class Job:
         escopos_norm = {_normalizar(e) for e in escopos}
         if escopos_norm & mercados_aceitos_norm:
             return None
-        return escopos
+        return escopos

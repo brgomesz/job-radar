@@ -61,14 +61,16 @@ jobs:
         # Um projeto só, com perfis selecionáveis (ver core/perfis.py).
         # Aqui rodam os três perfis de pessoas reais deste fork: `dev`
         # (back-end Node/TypeScript), `admin` (administrativo/financeiro/
-        # RH) e `agro` (agronomia, SC e PR). Os três notificam no MESMO
+        # RH), `agro` (agronomia, SC e PR) e `analista` (coordenação/
+        # gerência adm-financeira e analista sênior/imobiliário). Os quatro
+        # notificam no MESMO
         # chat do Telegram, distinguidos pela linha "Perfil:" da
         # notificação (ver notificar_vaga).
         #
         # brasil e internacional são os perfis de Dados/BI da autora
         # original: continuam existindo e rodáveis à mão
         # (`python main.py --perfil brasil --once`), mas fora do cron.
-        run: python main.py --perfil dev admin agro --once
+        run: python main.py --perfil dev admin agro analista --once
 
       - name: Salvar vagas já vistas (evita notificação duplicada)
         run: |

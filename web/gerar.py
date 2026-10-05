@@ -31,12 +31,12 @@ SAIDA = os.path.join(_RAIZ, "docs", "index.html")
 # internacional e as vagas sem perfil, anteriores ao campo existir) são
 # do radar de Dados/BI da autora original e não têm o que fazer nesta
 # página — ficam no banco, fora da vitrine.
-PERFIS_NA_PAGINA = ("dev", "admin", "agro")
+PERFIS_NA_PAGINA = ("dev", "admin", "agro", "analista")
 
 # Rótulo por perfil. Não importado de core.perfis de propósito: aquele
 # módulo carrega todos os scrapers (e o Playwright junto), coisa que um
 # gerador de HTML não deveria arrastar só pra ler dois nomes.
-ROTULOS = {"dev": "Dev", "admin": "Administrativo", "agro": "Agronomia"}
+ROTULOS = {"dev": "Dev", "admin": "Administrativo", "agro": "Agronomia", "analista": "Analista"}
 
 _FUSO_BR = timezone(timedelta(hours=-3))
 

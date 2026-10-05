@@ -23,6 +23,7 @@
   --dev:#0C6B63; --dev-soft:#E2F0EE;
   --adm:#9A5716; --adm-soft:#F6EBDE;
   --agro:#4A6B18; --agro-soft:#EAF1DE;
+  --ana:#5B3F8C; --ana-soft:#EDE7F6;
   --hot:#164E45; --shadow:0 1px 2px rgba(20,25,23,.06),0 8px 24px rgba(20,25,23,.05);
 }
 @media (prefers-color-scheme:dark){
@@ -33,6 +34,7 @@
     --adm:#D89950; --adm-soft:#33240F;
   --agro:#8FB84E; --agro-soft:#1E2A12;
     --agro:#8FB84E; --agro-soft:#1E2A12;
+    --ana:#B39DDB; --ana-soft:#271E38;
     --hot:#7FD4C7; --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3);
   }
 }
@@ -41,6 +43,8 @@
   --ink:#E9EFEC; --ink-2:#C2CDC9; --muted:#8FA09B; --line:#27302E;
   --dev:#4FB0A5; --dev-soft:#12312D;
   --adm:#D89950; --adm-soft:#33240F;
+  --agro:#8FB84E; --agro-soft:#1E2A12;
+  --ana:#B39DDB; --ana-soft:#271E38;
   --hot:#7FD4C7; --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3);
 }
 *{box-sizing:border-box}
@@ -131,6 +135,7 @@ li[data-hot="1"] .score{color:var(--hot)}
 li[data-p="dev"] .tag{background:var(--dev-soft); color:var(--dev)}
 li[data-p="admin"] .tag{background:var(--adm-soft); color:var(--adm)}
 li[data-p="agro"] .tag{background:var(--agro-soft); color:var(--agro)}
+li[data-p="analista"] .tag{background:var(--ana-soft); color:var(--ana)}
 .empty{padding:48px 8px; text-align:center; color:var(--muted)}
 footer{margin-top:36px; padding-top:18px; border-top:1px solid var(--line); color:var(--muted); font-size:12.5px}
 footer code{font-family:"IBM Plex Mono",monospace; color:var(--ink-2)}
@@ -247,6 +252,7 @@ li[data-enviei="1"]{border-left:3px solid var(--adm); padding-left:14px}
       <button type="button" data-v="dev">Dev</button>
       <button type="button" data-v="admin">Administrativo</button>
       <button type="button" data-v="agro">Agronomia</button>
+      <button type="button" data-v="analista">Analista</button>
     </span>
   </label>
   <label class="field"><span>Nota mínima</span>
@@ -315,7 +321,7 @@ li[data-enviei="1"]{border-left:3px solid var(--adm); padding-left:14px}
 <script>
 const VAGAS = __DADOS__;
 const $ = (id) => document.getElementById(id);
-const NOMES = { dev: "Dev", admin: "Administrativo", agro: "Agronomia" };
+const NOMES = { dev: "Dev", admin: "Administrativo", agro: "Agronomia", analista: "Analista" };
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
 // --- Marcações do usuário -------------------------------------------------

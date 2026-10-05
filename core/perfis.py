@@ -77,6 +77,21 @@ from core.config_adm import (
     LOCATIONS_LINKEDIN_ADM,
     LOCATIONS_LINKEDIN_CIDADES_ADM,
 )
+from core.config_analista import (
+    KEYWORDS_CARGO_FORTE_ANALISTA,
+    KEYWORDS_CARGO_AMBIGUO_ANALISTA,
+    QUALIFICADORES_AREA_ANALISTA,
+    TITULOS_EXCLUIDOS_ANALISTA,
+    NIVEIS_EXCLUIDOS_ANALISTA,
+    NIVEIS_ALVO_ANALISTA,
+    CIDADES_ANALISTA,
+    MERCADOS_REMOTO_ACEITOS_ANALISTA,
+    TERMOS_BUSCA_ANALISTA,
+    TERMOS_PRIORITARIOS_ANALISTA,
+    TERMOS_POR_CICLO_ANALISTA,
+    LOCATIONS_LINKEDIN_ANALISTA,
+    LOCATIONS_LINKEDIN_CIDADES_ANALISTA,
+)
 from core.config_agro import (
     KEYWORDS_CARGO_FORTE_AGRO,
     KEYWORDS_CARGO_AMBIGUO_AGRO,
@@ -535,10 +550,59 @@ PERFIL_AGRO = Perfil(
     max_scrapers_concorrentes=4,
 )
 
+# Perfil Analista — ver core/config_analista.py. Mesma pessoa do admin,
+# outro recorte: coordenação/gerência/supervisão adm-financeira,
+# operações, contratos e sales ops; analista só com qualificador de nível
+# ou de setor no título. Mesmos portais e mesmas regras opcionais do
+# admin; a rota ferramenta+cargo fica desligada (listas vazias): o Sienge,
+# única ferramenta que interessa aqui, é qualificador de setor.
+_REGRAS_ANALISTA = RegrasFiltro(
+    keywords_forte=KEYWORDS_CARGO_FORTE_ANALISTA,
+    keywords_ambiguo=KEYWORDS_CARGO_AMBIGUO_ANALISTA,
+    qualificadores_dados=QUALIFICADORES_AREA_ANALISTA,
+    ferramentas_titulo=[],
+    qualificadores_cargo=[],
+    cidades=CIDADES_ANALISTA,
+    mercados_remoto_aceitos=MERCADOS_REMOTO_ACEITOS_ANALISTA,
+    titulos_excluidos=TITULOS_EXCLUIDOS_ANALISTA,
+    niveis_excluidos=NIVEIS_EXCLUIDOS_ANALISTA,
+    niveis_alvo=NIVEIS_ALVO_ANALISTA,
+)
+
+_SCRAPERS_ANALISTA = [
+    DefinicaoScraper(LinkedInScraper, FREQUENCIA_ALTA, {
+        "locations": LOCATIONS_LINKEDIN_ANALISTA,
+        "locations_remoto_apenas": [],
+        "locations_cidades_presencial": LOCATIONS_LINKEDIN_CIDADES_ANALISTA,
+    }),
+    DefinicaoScraper(GupyScraper, FREQUENCIA_ALTA),
+    DefinicaoScraper(CathoScraper, FREQUENCIA_ALTA),
+    DefinicaoScraper(SolidesScraper, FREQUENCIA_ALTA),
+    DefinicaoScraper(Jobs99Scraper, FREQUENCIA_BAIXA),
+    DefinicaoScraper(SeniorScraper, FREQUENCIA_BAIXA),
+]
+
+PERFIL_ANALISTA = Perfil(
+    chave="analista",
+    nome="Analista",
+    palavras_monitoradas=KEYWORDS_CARGO_FORTE_ANALISTA,
+    paises_pesquisados=None,
+    regras=_REGRAS_ANALISTA,
+    regras_eixo_secundario=None,
+    eixo_secundario_ativo=False,
+    eixo_secundario_rotulo="",
+    termos_busca=TERMOS_BUSCA_ANALISTA,
+    termos_por_ciclo=TERMOS_POR_CICLO_ANALISTA,
+    termos_prioritarios=TERMOS_PRIORITARIOS_ANALISTA,
+    definicao_scrapers=_SCRAPERS_ANALISTA,
+    max_scrapers_concorrentes=4,
+)
+
 PERFIS = {
     PERFIL_BR.chave: PERFIL_BR,
     PERFIL_INTL.chave: PERFIL_INTL,
     PERFIL_DEV.chave: PERFIL_DEV,
     PERFIL_ADM.chave: PERFIL_ADM,
     PERFIL_AGRO.chave: PERFIL_AGRO,
+    PERFIL_ANALISTA.chave: PERFIL_ANALISTA,
 }
