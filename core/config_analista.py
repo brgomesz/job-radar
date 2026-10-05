@@ -189,16 +189,16 @@ NIVEIS_ALVO_ANALISTA = [
     "Liderança",
 ]
 
+# Só Joinville, sem remoto (pedido da usuária em out/2026). O remoto
+# chegou a estar aqui, mas o que chegava por ele era quase tudo falso: o
+# filtro de remoto do LinkedIn (f_WT=2) devolve vaga presencial/híbrida
+# de qualquer cidade quando o termo tem pouca vaga remota de verdade, e o
+# scraper marca tudo dessa passada como "Remoto" (ver
+# scrapers/linkedin.py). No primeiro ciclo, 57 das 61 aprovadas eram
+# presenciais/híbridas em SP, Aracaju, Boa Vista, Brasília...
 CIDADES_ANALISTA = [
-    "Remoto",
     "Joinville",
 ]
-
-# Só Brasil: rotina administrativa e financeira segue legislação
-# nacional — vaga remota de outro país não se aproveita. Vaga
-# remota que não declara mercado continua passando (não há base pra
-# rejeitar).
-MERCADOS_REMOTO_ACEITOS_ANALISTA = ["Brasil"]
 
 TERMOS_PRIORITARIOS_ANALISTA = [
     "coordenador administrativo financeiro",
@@ -219,5 +219,9 @@ TERMOS_BUSCA_ANALISTA = TERMOS_PRIORITARIOS_ANALISTA + [
 
 TERMOS_POR_CICLO_ANALISTA = 8
 
-LOCATIONS_LINKEDIN_ANALISTA = ["Brazil"]
+# Sem passada nacional no LinkedIn: ela existe pra achar remoto (f_WT=2)
+# e vaga de cidade fora da lista, e nenhuma das duas serve mais a este
+# perfil. Só a busca por cidade (Joinville) roda. Os outros portais
+# continuam buscando nacional e o filtro de cidade separa Joinville.
+LOCATIONS_LINKEDIN_ANALISTA: list[str] = []
 LOCATIONS_LINKEDIN_CIDADES_ANALISTA = ["Joinville"]

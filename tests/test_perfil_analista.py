@@ -1,6 +1,6 @@
 """Testes do perfil analista (core/config_analista.py) — coordenação/gerência/
 supervisão administrativa e financeira, operações, contratos e sales ops;
-analista só com qualificador de nível ou de setor. Joinville ou remoto.
+analista só com qualificador de nível ou de setor. Só Joinville, sem remoto.
 
 O que este arquivo trava, além do óbvio "cargo certo entra":
 
@@ -22,7 +22,9 @@ from core.job import Job
 from core.perfis import PERFIL_ANALISTA, PERFIL_DEV
 
 
-def _job(titulo: str, local: str = "Remoto", modalidade: str = "Remoto") -> Job:
+def _job(
+    titulo: str, local: str = "Joinville, SC", modalidade: str = "Presencial"
+) -> Job:
     return Job(
         titulo=titulo, empresa="Teste", local=local,
         link="https://teste.invalido/vaga", site="Teste", modalidade=modalidade,
@@ -145,7 +147,7 @@ def test_titulos_excluidos(nome, titulo):
 # ---------------------------------------------------------------------------
 
 def _score(titulo: str) -> int:
-    return _job(titulo, local="Remoto (Brasil)").pontuar_relevancia(PERFIL_ANALISTA.regras)
+    return _job(titulo).pontuar_relevancia(PERFIL_ANALISTA.regras)
 
 
 def test_prioridade_pontua_acima_de_pleno():
@@ -179,11 +181,16 @@ def test_senior_continua_penalizado_no_perfil_dev():
 # Localização
 # ---------------------------------------------------------------------------
 
+# Remoto saiu do perfil (pedido da usuária): o que chegava como remoto
+# era, na maioria, vaga presencial que o filtro f_WT=2 do LinkedIn deixou
+# passar — o caso "linkedin-sp-marcado-remoto" é um deles, real.
 CASOS_LOCAL = [
-    ("remoto-passa", "Remoto", "Remoto", True),
-    ("remoto-brasil-passa", "Remoto (Curitiba, PR)", "Remoto", True),
     ("joinville-presencial-passa", "Joinville, SC", "Presencial", True),
     ("joinville-hibrido-passa", "Joinville, Santa Catarina, Brazil", "Híbrido", True),
+    ("joinville-remoto-passa", "Joinville, Santa Catarina, Brazil", "Remoto", True),
+    ("remoto-barra", "Remoto", "Remoto", False),
+    ("remoto-brasil-barra", "Remoto (Curitiba, PR)", "Remoto", False),
+    ("linkedin-sp-marcado-remoto", "São Paulo, São Paulo, Brazil", "Remoto", False),
     ("outra-cidade-barra", "Blumenau, SC", "Presencial", False),
     ("sao-paulo-barra", "São Paulo, SP", "Presencial", False),
     ("remoto-portugal-barra", "Remote - Portugal", "Remoto", False),
@@ -202,6 +209,18 @@ def test_local_perfil_analista(nome, local, modalidade, esperado):
 # ---------------------------------------------------------------------------
 # Termos de busca
 # ---------------------------------------------------------------------------
+
+def test_linkedin_so_busca_joinville():
+    """Sem a passada nacional (que traz a f_WT=2 "remota"): só a busca
+    por cidade, em Joinville."""
+    (linkedin,) = [
+        d for d in PERFIL_ANALISTA.definicao_scrapers
+        if d.classe.__name__ == "LinkedInScraper"
+    ]
+    assert linkedin.kwargs_extras["locations"] == []
+    assert linkedin.kwargs_extras["locations_remoto_apenas"] == []
+    assert linkedin.kwargs_extras["locations_cidades_presencial"] == ["Joinville"]
+
 
 def test_termos_de_busca():
     assert PERFIL_ANALISTA.termos_prioritarios == [
