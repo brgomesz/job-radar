@@ -140,7 +140,7 @@ def test_titulos_excluidos_barram_ti():
 CASOS_CRUZADOS = [
     ("vaga-agro", "Engenheiro Agrônomo", False, False, True),
     ("vaga-dev", "Desenvolvedor Back-end Node.js", True, False, False),
-    ("vaga-admin", "Analista Financeiro", False, True, False),
+    ("vaga-admin", "Analista Administrativo Financeiro", False, True, False),
 ]
 
 

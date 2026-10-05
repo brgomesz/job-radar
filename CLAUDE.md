@@ -33,9 +33,12 @@ Telegram, distinguidos pela linha `Perfil:` da notificação:
 - `dev` — full-stack com foco back-end Node/TypeScript, remoto ou
   presencial/híbrido em Joinville/SC, nível pleno apenas.
   Config em `core/config_dev.py`.
-- `admin` — administrativo, financeiro, contábil e RH/DP, remoto ou
-  Joinville/SC, pleno e sênior. Fiscal e tributário foram excluídos a
-  pedido da usuária. Config em `core/config_adm.py`.
+- `admin` — coordenação/gerência/supervisão administrativa e financeira,
+  operações, contratos e sales ops; analista só com qualificador de nível
+  (sênior/especialista) ou de setor (imobiliário, incorporadora,
+  construtora, comercial) no título. Remoto (Brasil) ou Joinville/SC.
+  Contábil, fiscal, tributário, controladoria, tesouraria, assistente,
+  auxiliar, júnior e estágio são excluídos a pedido da usuária. Config em `core/config_adm.py`.
 
 - `agro` — agronomia: assistência técnica ao produtor rural, RTV,
   qualidade em fertilizantes e produção em unidade de beneficiamento de

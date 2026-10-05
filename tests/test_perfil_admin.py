@@ -1,19 +1,19 @@
-"""Testes do perfil admin (core/config_adm.py) — administrativo,
-financeiro, fiscal e RH, Joinville ou remoto, pleno/sênior.
+"""Testes do perfil admin (core/config_adm.py) — coordenação/gerência/
+supervisão administrativa e financeira, operações, contratos e sales ops;
+analista só com qualificador de nível ou de setor. Joinville ou remoto.
 
 O que este arquivo trava, além do óbvio "cargo certo entra":
 
-  - o falso positivo mais provável deste radar: "processos" e "pessoas"
-    são qualificadores legítimos da área, mas existem com outro sentido em
-    vaga industrial e de TI (Joinville é polo industrial) — a lista de
-    áreas excluídas é o que separa os dois, e é fácil alguém afrouxar isso
-    sem perceber ao adicionar um cargo novo;
-  - "Assistente"/"Auxiliar" não podem virar porta de entrada: só os
-    títulos de assistente nomeados um a um entram, porque o resto é nível
-    abaixo do que ela já ocupa;
-  - Sênior pontua como ALVO neste perfil (no padrão global vale -2) — se
-    niveis_alvo parar de ser respeitado, metade do que ela procura cai no
-    ranking sem ninguém notar.
+  - analista genérico da área NÃO entra sozinho: "Analista Financeiro"
+    precisa de nível (sênior/especialista/III) ou setor (imobiliário,
+    incorporadora, comercial...) no título;
+  - a exclusão é incondicional: assistente, auxiliar, júnior, estágio,
+    contábil, fiscal, tributário, controladoria e tesouraria barram até
+    cargo forte;
+  - a área de fora com o mesmo vocabulário ("Gerente de Operações
+    Industriais", num polo industrial como Joinville) continua barrada;
+  - Sênior/Especialista/Liderança pontuam como ALVO (no padrão global
+    valem -2); Pleno é neutro.
 """
 
 import pytest
@@ -30,127 +30,142 @@ def _job(titulo: str, local: str = "Remoto", modalidade: str = "Remoto") -> Job:
 
 
 # ---------------------------------------------------------------------------
-# Cargo
+# Cargo forte: aprova sozinho
 # ---------------------------------------------------------------------------
 
-CASOS_CARGO = [
-    # Financeiro
-    ("financeiro", "Analista Financeiro", True),
-    ("financeira-feminino", "Analista Financeira", True),
-    ("contas-a-pagar", "Analista de Contas a Pagar", True),
-    ("tesouraria", "Analista de Tesouraria", True),
-    ("controladoria", "Analista de Controladoria", True),
-    # Contábil fica; fiscal e tributário saíram a pedido da usuária.
-    ("contabil", "Analista Contábil", True),
-    ("fiscal-barra", "Analista Fiscal", False),
-    ("tributario-barra", "Analista Tributário", False),
-    # Administrativo
-    ("administrativo", "Analista Administrativo", True),
-    ("contratos", "Analista de Contratos", True),
-    ("assistente-executivo", "Assistente Executiva", True),
-    ("coordenador-administrativo", "Coordenadora Administrativa", True),
-    # RH / DP (pós em Gestão de Pessoas)
-    ("rh", "Analista de RH", True),
-    ("recursos-humanos", "Analista de Recursos Humanos", True),
-    ("dp", "Analista de Departamento Pessoal", True),
-    ("folha", "Analista de Folha de Pagamento", True),
-    ("recrutamento", "Analista de Recrutamento e Seleção", True),
+CASOS_CARGO_FORTE = [
+    ("coord-adm-fin", "Coordenador Administrativo Financeiro"),
+    ("coord-adm-fin-fem", "Coordenadora Administrativa Financeira"),
+    ("coord-adm-fin-marcador", "Coordenador(a) Administrativo(a) Financeiro(a)"),
+    ("coord-adm", "Coordenadora Administrativa"),
+    ("coord-fin", "Coordenador Financeiro"),
+    ("coord-operacoes", "Coordenador de Operações"),
+    ("coord-contratos", "Coordenadora de Contratos"),
+    ("gerente-adm-fin", "Gerente Administrativo e Financeiro"),
+    ("gerente-adm", "Gerente Administrativa"),
+    ("gerente-fin", "Gerente Financeiro"),
+    ("gerente-operacoes", "Gerente de Operações"),
+    ("gerente-operacional", "Gerente Operacional"),
+    ("supervisor-adm", "Supervisor Administrativo"),
+    ("supervisora-fin", "Supervisora Financeira"),
+    ("analista-adm-fin", "Analista Administrativo Financeiro"),
+    ("analista-op-comerciais", "Analista de Operações Comerciais"),
+    ("sales-operations", "Sales Operations Analyst"),
+    ("sales-ops", "Sales Ops Specialist"),
+    ("gestor-contratos", "Gestora de Contratos"),
+]
 
-    # Cargo ambíguo: sozinho não entra, com a área junto entra.
-    ("analista-sozinho-nao", "Analista Pleno", False),
-    ("analista-com-area", "Analista Pleno - Financeiro", True),
-    ("coordenador-sozinho-nao", "Coordenador", False),
-    ("especialista-com-area", "Especialista em Departamento Pessoal", True),
 
-    # "Assistente" e "Auxiliar" não são porta de entrada — só os títulos
-    # nomeados um a um na lista forte entram.
-    ("auxiliar-generico-nao", "Auxiliar Administrativo", False),
-    ("assistente-generico-nao", "Assistente de Operações", False),
+@pytest.mark.parametrize(
+    "nome,titulo", CASOS_CARGO_FORTE, ids=[c[0] for c in CASOS_CARGO_FORTE]
+)
+def test_cargo_forte_aprova_sozinho(nome, titulo):
+    assert _job(titulo).combina_com(PERFIL_ADM.regras)
 
-    # Fora da área
+
+# ---------------------------------------------------------------------------
+# Cargo que só aprova com qualificador
+# ---------------------------------------------------------------------------
+
+CASOS_QUALIFICADOR = [
+    # Sozinho, não entra
+    ("adm-sozinho", "Analista Administrativo", False),
+    ("operacoes-sozinho", "Analista de Operações", False),
+    ("contratos-sozinho", "Analista de Contratos", False),
+    ("financeiro-sozinho", "Analista Financeiro", False),
+    ("processos-sozinho", "Analista de Processos", False),
+    ("planejamento-sozinho", "Analista de Planejamento", False),
+    ("financeiro-pleno", "Analista Financeiro Pleno", False),
+    # Com nível
+    ("financeiro-senior", "Analista Financeiro Sênior", True),
+    ("financeira-sr", "Analista Financeira Sr.", True),
+    ("adm-iii", "Analista Administrativo III", True),
+    ("contratos-especialista", "Analista de Contratos Especialista", True),
+    # Com setor
+    ("adm-imobiliaria", "Analista Administrativa - Imobiliária", True),
+    ("contratos-incorporadora", "Analista de Contratos (Incorporadora)", True),
+    ("processos-construtora", "Analista de Processos - Construtora", True),
+    ("planejamento-comercial", "Analista de Planejamento Comercial", True),
+    ("operacoes-vendas", "Analista de Operações de Vendas", True),
+    ("financeiro-real-estate", "Analista Financeiro Real Estate", True),
+    ("adm-sienge", "Analista Administrativo Sienge", True),
+    # Nível II não é sênior
+    ("financeiro-ii", "Analista Financeiro II", False),
+    # Fora do escopo
+    ("analista-generico", "Analista Pleno", False),
+    ("rh-saiu", "Analista de RH", False),
     ("dev-nao-entra", "Desenvolvedor Back-end", False),
-    ("dados-nao-entra", "Analista de Dados", False),
-    ("marketing-nao-entra", "Analista de Marketing", False),
+    ("marketing-nao-entra", "Analista de Marketing Sênior", False),
 ]
 
 
 @pytest.mark.parametrize(
-    "nome,titulo,esperado", CASOS_CARGO, ids=[c[0] for c in CASOS_CARGO]
+    "nome,titulo,esperado", CASOS_QUALIFICADOR, ids=[c[0] for c in CASOS_QUALIFICADOR]
 )
-def test_cargo_perfil_admin(nome, titulo, esperado):
+def test_cargo_com_qualificador(nome, titulo, esperado):
     assert _job(titulo).combina_com(PERFIL_ADM.regras) == esperado
 
 
 # ---------------------------------------------------------------------------
-# Títulos excluídos: área de fora + fiscal/tributário, sem perdão
+# Exclusões: incondicionais, barram até cargo forte
 # ---------------------------------------------------------------------------
 
-CASOS_TITULO_EXCLUIDO = [
-    # "Analista de Processos" é cargo dela; com "Industriais" junto, não é.
-    ("processos-sozinho-passa", "Analista de Processos", True),
-    ("processos-industriais-barra", "Analista de Processos Industriais", False),
-    ("processos-software-barra", "Analista de Processos de Software", False),
-    # "pessoas" idem
-    ("gestao-de-pessoas-passa", "Analista de Gestão de Pessoas", True),
-    # Cargo da área + área de fora no mesmo título
-    ("analista-financeiro-ti-barra", "Analista Financeiro de TI", False),
-    ("coordenador-qualidade-barra", "Coordenador de Qualidade", False),
-    ("analista-comercial-barra", "Analista Comercial", False),
-    ("analista-logistica-barra", "Analista de Logística", False),
-    # A rejeição é INCONDICIONAL: o ERP no título não salva. Estes dois
-    # são exatamente o que passaria se a regra tivesse perdão por
-    # ferramenta, e são os dois casos que a usuária não quer ver.
-    ("fiscal-com-erp-barra", "Analista Fiscal Protheus", False),
-    ("sistemas-com-erp-barra", "Analista de Sistemas Protheus", False),
-    # ERP sozinho, sem área de fora, continua entrando normalmente.
-    ("financeiro-com-erp-passa", "Analista Financeiro Protheus", True),
+CASOS_EXCLUIDO = [
+    ("estagio", "Estágio Administrativo Financeiro"),
+    ("estagiaria", "Estagiária - Coordenação de Contratos"),
+    ("trainee", "Trainee Gerente de Operações"),
+    ("jovem-aprendiz", "Jovem Aprendiz Administrativo"),
+    ("auxiliar", "Auxiliar Administrativo Financeiro"),
+    ("assistente", "Assistente de Coordenador Financeiro"),
+    ("junior", "Analista Administrativo Financeiro Júnior"),
+    ("jr", "Analista Administrativo Financeiro Jr"),
+    ("contabil", "Coordenador Financeiro e Contábil"),
+    ("contabilidade", "Gerente de Contabilidade e Financeiro"),
+    ("fiscal", "Coordenador Administrativo Fiscal"),
+    ("tributario", "Gerente Financeiro e Tributário"),
+    ("controladoria", "Coordenador Financeiro e Controladoria"),
+    ("tesouraria", "Analista Financeiro Sênior - Tesouraria"),
+    # Área de fora com o mesmo vocabulário
+    ("operacoes-industriais", "Gerente de Operações Industriais"),
+    ("operacoes-logisticas", "Coordenador de Operações Logísticas"),
+    ("processos-software", "Analista de Processos de Software Sênior"),
+    ("operacoes-ti", "Analista de Operações de TI Sênior"),
 ]
 
 
 @pytest.mark.parametrize(
-    "nome,titulo,esperado", CASOS_TITULO_EXCLUIDO,
-    ids=[c[0] for c in CASOS_TITULO_EXCLUIDO],
+    "nome,titulo", CASOS_EXCLUIDO, ids=[c[0] for c in CASOS_EXCLUIDO]
 )
-def test_titulos_excluidos(nome, titulo, esperado):
-    assert _job(titulo).combina_com(PERFIL_ADM.regras) == esperado
+def test_titulos_excluidos(nome, titulo):
+    assert not _job(titulo).combina_com(PERFIL_ADM.regras)
 
 
 # ---------------------------------------------------------------------------
-# Nível: pleno/sênior — e liderança continua entrando
+# Senioridade: Sênior/Especialista/Liderança são alvo, Pleno é neutro
 # ---------------------------------------------------------------------------
 
-CASOS_NIVEL = [
-    ("pleno-passa", "Analista Financeiro Pleno", True),
-    ("senior-passa", "Analista Financeiro Sênior", True),
-    ("sem-nivel-passa", "Analista Financeiro", True),
-    ("junior-barra", "Analista Financeiro Júnior", False),
-    ("jr-barra", "Analista Fiscal Jr", False),
-    ("estagio-barra", "Estágio em Departamento Pessoal", False),
-    # Promoção natural pra quem tem 7 anos de área e pós: continua entrando.
-    ("coordenacao-passa", "Coordenador Administrativo", True),
-]
+def _score(titulo: str) -> int:
+    return _job(titulo, local="Remoto (Brasil)").pontuar_relevancia(PERFIL_ADM.regras)
 
 
-@pytest.mark.parametrize(
-    "nome,titulo,esperado", CASOS_NIVEL, ids=[c[0] for c in CASOS_NIVEL]
-)
-def test_niveis_perfil_admin(nome, titulo, esperado):
-    assert _job(titulo).combina_com(PERFIL_ADM.regras) == esperado
+def test_prioridade_pontua_acima_de_pleno():
+    senior = _score("Analista Administrativo Financeiro Sênior")
+    especialista = _score("Analista Administrativo Financeiro Especialista")
+    pleno = _score("Analista Administrativo Financeiro Pleno")
+
+    assert senior == especialista
+    assert senior > pleno
 
 
-def test_senior_e_alvo_neste_perfil():
-    """Sênior tem que pontuar igual a Pleno aqui (os dois são o alvo), e
-    NÃO pode ser penalizado como é no padrão global."""
-    pleno = _job("Analista Financeiro Pleno", local="Remoto (Brasil)")
-    senior = _job("Analista Financeiro Sênior", local="Remoto (Brasil)")
-    sem_nivel = _job("Analista Financeiro", local="Remoto (Brasil)")
-
-    assert senior.pontuar_relevancia(PERFIL_ADM.regras) == pleno.pontuar_relevancia(
-        PERFIL_ADM.regras
-    )
-    assert senior.pontuar_relevancia(PERFIL_ADM.regras) > sem_nivel.pontuar_relevancia(
-        PERFIL_ADM.regras
-    )
+@pytest.mark.parametrize("titulo", [
+    "Coordenador Financeiro",
+    "Supervisora Administrativa",
+    "Gerente de Operações",
+])
+def test_lideranca_pontua_como_senior(titulo):
+    assert _job(titulo).senioridade == "Liderança"
+    # Os dois são cargo forte; o nível (alvo nos dois) não pode desempatar.
+    assert _score(titulo) == _score("Analista Administrativo Financeiro Sênior")
 
 
 def test_senior_continua_penalizado_no_perfil_dev():
@@ -171,7 +186,6 @@ CASOS_LOCAL = [
     ("joinville-hibrido-passa", "Joinville, Santa Catarina, Brazil", "Híbrido", True),
     ("outra-cidade-barra", "Blumenau, SC", "Presencial", False),
     ("sao-paulo-barra", "São Paulo, SP", "Presencial", False),
-    # Rotina fiscal/DP é legislação nacional — remoto de fora não serve.
     ("remoto-portugal-barra", "Remote - Portugal", "Remoto", False),
     ("remoto-eua-barra", "Remote - US", "Remoto", False),
 ]
@@ -181,8 +195,24 @@ CASOS_LOCAL = [
     "nome,local,modalidade,esperado", CASOS_LOCAL, ids=[c[0] for c in CASOS_LOCAL]
 )
 def test_local_perfil_admin(nome, local, modalidade, esperado):
-    job = _job("Analista Financeiro", local=local, modalidade=modalidade)
+    job = _job("Coordenador Administrativo Financeiro", local=local, modalidade=modalidade)
     assert job.combina_com(PERFIL_ADM.regras) == esperado
+
+
+# ---------------------------------------------------------------------------
+# Termos de busca
+# ---------------------------------------------------------------------------
+
+def test_termos_de_busca():
+    assert PERFIL_ADM.termos_prioritarios == [
+        "coordenador administrativo financeiro",
+        "gerente administrativo financeiro",
+        "analista administrativo financeiro",
+        "analista de operações comerciais",
+        "coordenador de contratos",
+    ]
+    extras = [t for t in PERFIL_ADM.termos_busca if t not in PERFIL_ADM.termos_prioritarios]
+    assert extras == ["sienge", "incorporadora", "imobiliária", "sales operations"]
 
 
 # ---------------------------------------------------------------------------
@@ -190,7 +220,7 @@ def test_local_perfil_admin(nome, local, modalidade, esperado):
 # ---------------------------------------------------------------------------
 
 CASOS_CRUZADOS = [
-    ("vaga-dela", "Analista Financeiro Pleno", False, True),
+    ("vaga-dela", "Coordenadora Administrativa Financeira", False, True),
     ("vaga-dele", "Desenvolvedor Back-end Node.js Pleno", True, False),
     ("nenhum-dos-dois", "Analista de Dados Pleno", False, False),
 ]

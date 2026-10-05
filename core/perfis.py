@@ -412,23 +412,20 @@ PERFIL_DEV = Perfil(
     max_scrapers_concorrentes=4,
 )
 
-# Perfil administrativo/financeiro/RH — ver core/config_adm.py pra origem
+# Perfil administrativo/financeiro — ver core/config_adm.py pra origem
 # de cada lista. Segundo perfil de pessoa real deste fork (o outro é o
 # dev): os dois rodam na mesma execução e notificam no MESMO Telegram,
 # distinguidos pela linha "Perfil:" da notificação (ver notificar_vaga).
 #
 # Usa as três regras opcionais de RegrasFiltro:
-#   - titulos_excluidos — rejeição incondicional. Cobre área de fora que
-#     usa o mesmo vocabulário ("Analista de Processos" é cargo dela,
-#     "Analista de Processos Industriais" não é; Joinville é polo
-#     industrial) e mais fiscal/tributário, tirados a pedido dela. É a
-#     versão SEM perdão da regra: diferente do perfil dev, aqui não existe
-#     vaga boa que nomeie uma dessas no título, e o perdão por ferramenta
-#     só deixaria passar "Analista Fiscal Protheus" e "Analista de
-#     Sistemas Protheus".
-#   - niveis_excluidos — estágio e júnior fora; liderança continua entrando.
-#   - niveis_alvo — Pleno E Sênior pontuam o teto (no padrão global, Sênior
-#     valeria -2 e metade do que ela procura cairia no ranking).
+#   - titulos_excluidos — rejeição incondicional: nível abaixo do alvo
+#     (assistente, auxiliar, júnior, estágio...), contábil/fiscal/
+#     tributário/controladoria/tesouraria (pedido dela) e área de fora que
+#     usa o mesmo vocabulário ("Gerente de Operações Industriais").
+#   - niveis_excluidos — estágio e júnior fora.
+#   - niveis_alvo — Sênior, Especialista e Liderança pontuam o teto (no
+#     padrão global valeriam -2); Pleno fica neutro.
+# A rota ferramenta+cargo está desligada (listas vazias em config_adm).
 _REGRAS_ADM = RegrasFiltro(
     keywords_forte=KEYWORDS_CARGO_FORTE_ADM,
     keywords_ambiguo=KEYWORDS_CARGO_AMBIGUO_ADM,
@@ -442,7 +439,7 @@ _REGRAS_ADM = RegrasFiltro(
     niveis_alvo=NIVEIS_ALVO_ADM,
 )
 
-# Portais generalistas, que é onde vaga administrativa/financeira/RH de
+# Portais generalistas, que é onde vaga administrativa/financeira de
 # fato mora. GeekHunter e WeWorkRemotely ficam FORA: as duas são fonte de
 # vaga de tecnologia, rodariam termo administrativo pra devolver nada.
 # Catho e Sólides sobem pra FREQUENCIA_ALTA aqui (no perfil de dados são
