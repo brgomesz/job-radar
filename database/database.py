@@ -138,6 +138,72 @@ def _garantir_coluna_feedback(conn):
         conn.execute("ALTER TABLE vagas_vistas ADD COLUMN feedback TEXT")
 
 
+def _garantir_tabela_conteudo(conn):
+    """Texto completo do anúncio (descrição, requisitos, benefícios), aberto
+    vaga a vaga depois do ciclo — ver scripts/capturar_conteudo.py.
+
+    Tabela à parte, não coluna em vagas_vistas: o texto é grande (KBs por
+    vaga, contra ~200 bytes do resto da linha) e é preenchido DEPOIS, em
+    outro passo do workflow, com tentativas e falhas próprias. Misturar isso
+    na tabela de dedup deixaria toda consulta de ja_vista() carregando
+    texto que ela nunca usa.
+
+    `status`: 'ok' (texto guardado), 'falhou' (página não abriu ou não deu
+    pra achar o texto — tenta de novo até MAX_TENTATIVAS), 'indisponivel'
+    (a fonte respondeu 404/410: anúncio removido, não adianta insistir).
+    """
+    conn.execute("""
+        CREATE TABLE IF NOT EXISTS conteudo_vagas (
+            id TEXT PRIMARY KEY,
+            texto TEXT,
+            origem TEXT,
+            status TEXT,
+            tentativas INTEGER DEFAULT 0,
+            atualizado_em TEXT DEFAULT CURRENT_TIMESTAMP
+        )
+    """)
+
+
+def vagas_sem_conteudo(perfil_chave: str, limite: int, max_tentativas: int) -> list[tuple]:
+    """(id, link, site, titulo) das vagas do perfil cujo anúncio ainda não
+    foi aberto — ou foi e falhou menos de `max_tentativas` vezes. Mais
+    recentes primeiro: vaga nova é a que ainda está no ar."""
+    with _conectar() as conn:
+        _garantir_tabela_conteudo(conn)
+        return conn.execute(
+            """
+            SELECT v.id, v.link, v.site, v.titulo
+            FROM vagas_vistas v
+            LEFT JOIN conteudo_vagas c ON c.id = v.id
+            WHERE v.perfil = ? AND v.link IS NOT NULL AND v.link != ''
+              AND (c.id IS NULL OR (c.status = 'falhou' AND c.tentativas < ?))
+            ORDER BY v.encontrada_em DESC
+            LIMIT ?
+            """,
+            (perfil_chave, max_tentativas, limite),
+        ).fetchall()
+
+
+def salvar_conteudo(job_id: str, status: str, texto: str = "", origem: str = ""):
+    """Grava o resultado de uma tentativa. Falha soma tentativa sem apagar
+    texto nenhum; sucesso substitui o que houver."""
+    with _conectar() as conn:
+        _garantir_tabela_conteudo(conn)
+        conn.execute(
+            """
+            INSERT INTO conteudo_vagas (id, texto, origem, status, tentativas, atualizado_em)
+            VALUES (?, ?, ?, ?, 1, CURRENT_TIMESTAMP)
+            ON CONFLICT(id) DO UPDATE SET
+                texto = CASE WHEN excluded.status = 'ok' THEN excluded.texto ELSE conteudo_vagas.texto END,
+                origem = CASE WHEN excluded.status = 'ok' THEN excluded.origem ELSE conteudo_vagas.origem END,
+                status = excluded.status,
+                tentativas = conteudo_vagas.tentativas + 1,
+                atualizado_em = CURRENT_TIMESTAMP
+            """,
+            (job_id, texto, origem, status),
+        )
+
+
 class BancoVazioSuspeito(RuntimeError):
     """jobs.db já existia em disco (tinha conteúdo) mas a tabela veio vazia
     depois de iniciar_db() — não é primeiro uso, é banco perdido/corrompido/
@@ -186,6 +252,7 @@ def iniciar_db():
                 valor TEXT
             )
         """)
+        _garantir_tabela_conteudo(conn)
         total_vagas = conn.execute("SELECT COUNT(*) FROM vagas_vistas").fetchone()[0]
 
     # Se o arquivo já existia com conteúdo mas a tabela veio vazia, não é

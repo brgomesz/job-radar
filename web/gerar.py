@@ -26,6 +26,17 @@ from core.config import DB_PATH
 _RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE = os.path.join(_RAIZ, "web", "template.html")
 SAIDA = os.path.join(_RAIZ, "docs", "index.html")
+# Texto corrido com o anúncio inteiro de cada vaga Dev — feito pra colar
+# numa IA. Fica ao lado do index.html (o GitHub Pages serve os dois) e é o
+# que a aba "Conteúdo Dev" da página carrega. Arquivo à parte, e não
+# embutido no HTML, porque são centenas de KB que só quem abre a aba usa.
+SAIDA_CONTEUDO = os.path.join(_RAIZ, "docs", "conteudo-dev.txt")
+PERFIL_CONTEUDO = "dev"
+# Linha que separa uma vaga da outra no .txt. O template divide o arquivo
+# por ela pra montar a lista da aba — mudar aqui exige mudar lá
+# (test_pagina_web trava os dois juntos).
+SEPARADOR_VAGA = "===== VAGA {n} de {total} ====="
+MARCADOR_ANUNCIO = "--- Anúncio ---"
 
 # Espelha o --perfil do workflow. As chaves antigas do banco (brasil,
 # internacional e as vagas sem perfil, anteriores ao campo existir) são
@@ -129,7 +140,84 @@ def carregar_vagas(db_path: str = "") -> list[dict]:
     ]
 
 
-def montar_html(vagas: list[dict], agora: datetime | None = None) -> str:
+def carregar_conteudo(db_path: str = "", perfil: str = PERFIL_CONTEUDO) -> tuple[list[dict], dict]:
+    """(vagas com anúncio capturado, contagem) do perfil, mais recentes
+    primeiro. Banco sem a tabela conteudo_vagas (anterior à captura) conta
+    como nada capturado ainda, não como erro."""
+    conn = sqlite3.connect(db_path or DB_PATH)
+    conn.row_factory = sqlite3.Row
+    try:
+        total = conn.execute(
+            "SELECT COUNT(*) FROM vagas_vistas WHERE perfil = ?", (perfil,)
+        ).fetchone()[0]
+        try:
+            linhas = conn.execute(
+                """
+                SELECT v.titulo, v.empresa, v.local, v.link, v.site, v.modalidade,
+                       v.publicado_em, v.encontrada_em, c.texto
+                FROM vagas_vistas v JOIN conteudo_vagas c ON c.id = v.id
+                WHERE v.perfil = ? AND c.status = 'ok' AND c.texto != ''
+                ORDER BY v.encontrada_em DESC
+                """,
+                (perfil,),
+            ).fetchall()
+            removidas = conn.execute(
+                """
+                SELECT COUNT(*) FROM vagas_vistas v JOIN conteudo_vagas c ON c.id = v.id
+                WHERE v.perfil = ? AND c.status = 'indisponivel'
+                """,
+                (perfil,),
+            ).fetchone()[0]
+        except sqlite3.OperationalError:
+            linhas, removidas = [], 0
+    finally:
+        conn.close()
+
+    vagas = [dict(l) for l in linhas]
+    contagem = {
+        "total": total,
+        "capturadas": len(vagas),
+        "removidas": removidas,
+        "pendentes": max(total - len(vagas) - removidas, 0),
+    }
+    return vagas, contagem
+
+
+def montar_conteudo_txt(vagas: list[dict], contagem: dict, agora: datetime | None = None) -> str:
+    agora = agora or datetime.now(_FUSO_BR)
+    blocos = [
+        "CONTEÚDO DAS VAGAS DE DEV — JobRadar\n"
+        f"Gerado em {agora.strftime('%d/%m/%Y às %H:%M')} (Brasília). "
+        f"{contagem['capturadas']} vaga(s) com anúncio capturado, de {contagem['total']} "
+        "vagas Dev no radar. Mais recentes primeiro.\n"
+        "Cada vaga traz o texto do anúncio como a fonte publicou (descrição, "
+        "requisitos, diferenciais, benefícios)."
+    ]
+    for n, v in enumerate(vagas, 1):
+        local = v["local"] or "—"
+        if v["modalidade"]:
+            local = f"{local} ({v['modalidade']})"
+        fonte = v["site"] or "—"
+        pub = _rotulo_publicacao(v["publicado_em"] or "")
+        if pub:
+            fonte += f" · publicada {pub}"
+        achada = _quando_entrou(v["encontrada_em"] or "")
+        if achada:
+            fonte += f" · achada {achada}"
+        blocos.append(
+            SEPARADOR_VAGA.format(n=n, total=len(vagas)) + "\n"
+            f"Título: {v['titulo'] or '—'}\n"
+            f"Empresa: {v['empresa'] or '—'}\n"
+            f"Local: {local}\n"
+            f"Fonte: {fonte}\n"
+            f"Link: {v['link']}\n"
+            f"{MARCADOR_ANUNCIO}\n"
+            f"{(v['texto'] or '').strip()}"
+        )
+    return "\n\n\n".join(blocos) + "\n"
+
+
+def montar_html(vagas: list[dict], agora: datetime | None = None, conteudo: dict | None = None) -> str:
     """Template + dados. Os dados entram como JSON dentro de <script>, e
     por isso "</" é escapado: um título de vaga que contivesse "</script>"
     fecharia a tag no meio do JSON e quebraria a página inteira. Escapar
@@ -141,6 +229,7 @@ def montar_html(vagas: list[dict], agora: datetime | None = None) -> str:
     return (
         modelo
         .replace("__DADOS__", dados)
+        .replace("__CONTEUDO__", json.dumps(conteudo or {"total": 0, "capturadas": 0, "removidas": 0, "pendentes": 0}))
         .replace("__ATUALIZADO__", html.escape(agora.strftime("%d/%m/%Y às %H:%M")))
     )
 
@@ -253,13 +342,18 @@ def _epoch(bruto: str) -> int:
 
 def gerar(db_path: str = "", saida: str = "") -> int:
     saida = saida or SAIDA
+    # Sempre ao lado do index.html: a aba carrega o .txt por caminho relativo.
+    saida_conteudo = os.path.join(os.path.dirname(saida), os.path.basename(SAIDA_CONTEUDO))
     vagas = carregar_vagas(db_path)
+    com_conteudo, contagem = carregar_conteudo(db_path)
     os.makedirs(os.path.dirname(saida), exist_ok=True)
     with open(saida, "w", encoding="utf-8") as f:
-        f.write(montar_html(vagas))
+        f.write(montar_html(vagas, conteudo=contagem))
+    with open(saida_conteudo, "w", encoding="utf-8") as f:
+        f.write(montar_conteudo_txt(com_conteudo, contagem))
     return len(vagas)
 
 
 if __name__ == "__main__":
     total = gerar()
-    print(f"docs/index.html gerado com {total} vaga(s).")
+    print(f"docs/index.html gerado com {total} vaga(s); docs/conteudo-dev.txt junto.")

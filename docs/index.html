@@ -228,17 +228,59 @@ li[data-enviei="1"]{border-left:3px solid var(--adm); padding-left:14px}
 }
 .limpar:hover{border-color:var(--muted); color:var(--ink-2)}
 .limpar:focus-visible{outline:2px solid var(--dev); outline-offset:1px}
+/* Abas: "Vagas" (a lista de sempre) e "Conteúdo Dev" (texto inteiro dos
+   anúncios, pra levar pra uma análise). */
+.abas{display:flex; gap:4px; border-bottom:1px solid var(--line); margin:0 0 18px}
+.abas button{
+  appearance:none; border:0; background:transparent; font:inherit; font-size:14px;
+  color:var(--muted); padding:9px 14px; cursor:pointer; border-bottom:2px solid transparent;
+  margin-bottom:-1px;
+}
+.abas button[aria-selected="true"]{color:var(--ink); font-weight:600; border-bottom-color:var(--dev)}
+.abas button:focus-visible{outline:2px solid var(--dev); outline-offset:-2px}
+.acoes{display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin:0 0 14px}
+.btn{
+  appearance:none; font:inherit; font-size:13px; cursor:pointer; text-decoration:none;
+  border:1px solid var(--line); background:var(--surface); color:var(--ink-2);
+  border-radius:8px; padding:8px 13px; display:inline-flex; align-items:center; gap:6px;
+}
+.btn:hover{border-color:var(--muted); color:var(--ink)}
+.btn:focus-visible{outline:2px solid var(--dev); outline-offset:1px}
+.btn.principal{background:var(--dev); border-color:var(--dev); color:var(--surface); font-weight:600}
+.btn.principal:hover{color:var(--surface); opacity:.92}
+.aviso{font-size:12.5px; color:var(--muted)}
+.anuncios{display:flex; flex-direction:column; gap:8px}
+.anuncio{background:var(--surface); border:1px solid var(--line); border-radius:10px; box-shadow:var(--shadow)}
+.anuncio[hidden]{display:none}
+.anuncio summary{cursor:pointer; padding:12px 16px; list-style:none; display:flex; flex-direction:column; gap:3px}
+.anuncio summary::-webkit-details-marker{display:none}
+.anuncio summary b{font-size:15px; font-weight:600; line-height:1.35}
+.anuncio summary span{font-size:12.5px; color:var(--muted)}
+.anuncio summary:focus-visible{outline:2px solid var(--dev); outline-offset:-2px; border-radius:10px}
+.anuncio[open] summary{border-bottom:1px solid var(--line)}
+.anuncio .corpo{padding:12px 16px 16px; font-size:14px; color:var(--ink-2); white-space:pre-wrap; overflow-wrap:anywhere}
+.anuncio .corpo a{color:var(--dev)}
+@media (max-width:620px){
+  .acoes .btn{flex:1 1 auto; justify-content:center}
+  #buscaConteudo{width:100%}
+}
 @media (prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important}}
 </style>
 </head>
 <body>
 <div class="wrap">
 <header>
-  <p class="eyebrow">JobRadar &middot; atualizado 08/10/2026 às 07:25</p>
+  <p class="eyebrow">JobRadar &middot; atualizado 08/10/2026 às 14:19</p>
   <h1>Radar de Vagas</h1>
   <p class="sub">Tudo que os radares já acharam, do mais relevante pro menos. A página se regenera a cada ciclo do robô — o Telegram avisa o que é urgente, aqui fica o histórico inteiro.</p>
 </header>
 
+<nav class="abas" role="tablist" aria-label="Seções">
+  <button type="button" role="tab" id="tabVagas" aria-controls="abaVagas" aria-selected="true">Vagas</button>
+  <button type="button" role="tab" id="tabConteudo" aria-controls="abaConteudo" aria-selected="false">Conteúdo Dev</button>
+</nav>
+
+<section id="abaVagas" role="tabpanel" aria-labelledby="tabVagas">
 <div class="stats" id="stats"></div>
 
 <div class="bar" id="bar">
@@ -310,6 +352,21 @@ li[data-enviei="1"]{border-left:3px solid var(--adm); padding-left:14px}
 
 <ol id="lista"></ol>
 <p class="empty" id="vazio" hidden>Nenhuma vaga com esses filtros. Tente ampliar o período ou baixar a nota mínima.</p>
+</section>
+
+<section id="abaConteudo" role="tabpanel" aria-labelledby="tabConteudo" hidden>
+  <p class="sub">O anúncio inteiro de cada vaga Dev que o radar guardou — descrição, requisitos, diferenciais, benefícios — num texto corrido só, pronto pra colar numa IA e ver o que o mercado está pedindo. O robô abre os anúncios aos poucos, a cada ciclo, então o histórico antigo vai entrando ao longo dos próximos dias.</p>
+  <div class="stats" id="statsConteudo"></div>
+  <div class="acoes">
+    <button type="button" class="btn principal" id="copiarConteudo" disabled>Copiar tudo</button>
+    <a class="btn" id="baixarConteudo" href="conteudo-dev.txt" download="conteudo-vagas-dev.txt">Baixar .txt</a>
+    <a class="btn" href="conteudo-dev.txt" target="_blank" rel="noopener">Abrir o arquivo</a>
+    <input type="search" id="buscaConteudo" placeholder="filtrar: node, aws, inglês…" autocomplete="off">
+    <span class="aviso" id="avisoConteudo" role="status"></span>
+  </div>
+  <div class="anuncios" id="anuncios"></div>
+  <p class="empty" id="vazioConteudo" hidden></p>
+</section>
 
 <footer>
   <p>Nota 9 é o teto da escala: cargo forte + ferramenta no título + nível declarado + mercado confirmado. O que derruba a nota quase sempre é o anúncio incompleto, não a vaga ruim — “Remoto” sem dizer o país custa 1 ponto, título sem o nível custa 1.</p>
@@ -592,6 +649,113 @@ $("limpar").addEventListener("click", () => {
 $("busca").addEventListener("input", (ev) => { estado.busca = ev.target.value; aplicar(); });
 $("busca").value = estado.busca;
 aplicar();
+
+// --- Aba "Conteúdo Dev" ---------------------------------------------------
+// O texto vive em conteudo-dev.txt (gerado junto com esta página, ver
+// web/gerar.py) e só é baixado quando a aba abre: são centenas de KB que
+// quem só olha a lista de vagas nunca usa. A lista abaixo é montada
+// dividindo o arquivo pela linha "===== VAGA n de N =====" — o mesmo
+// SEPARADOR_VAGA do gerador.
+const CONTEUDO = {"total": 450, "capturadas": 0, "removidas": 0, "pendentes": 450};
+const SEPARADOR = /^===== VAGA \d+ de \d+ =====$/m;
+let conteudoCabecalho = "";
+let anuncios = null;  // [{ bruto, busca, el }]
+
+$("statsConteudo").innerHTML = [
+  ["Com anúncio", CONTEUDO.capturadas],
+  ["Na fila", CONTEUDO.pendentes],
+  ["Removidas na fonte", CONTEUDO.removidas],
+  ["Vagas Dev", CONTEUDO.total],
+].map(([rot, n]) => `<div class="stat"><b>${n}</b><span>${rot}</span></div>`).join("");
+
+function montarAnuncio(bruto) {
+  const [cab, ...resto] = bruto.split("\n--- Anúncio ---\n");
+  const campos = {};
+  for (const linha of cab.split("\n")) {
+    const i = linha.indexOf(": ");
+    if (i > 0) campos[linha.slice(0, i)] = linha.slice(i + 2);
+  }
+  const det = document.createElement("details");
+  det.className = "anuncio";
+  const link = campos["Link"] || "";
+  det.innerHTML = `<summary><b>${esc(campos["Título"] || "—")}</b>
+    <span>${esc(campos["Empresa"] || "—")} · ${esc(campos["Local"] || "—")} · ${esc(campos["Fonte"] || "")}</span></summary>
+    <div class="corpo">${link ? `<a href="${esc(link)}" target="_blank" rel="noopener noreferrer">Abrir anúncio original</a>\n\n` : ""}${esc(resto.join("\n--- Anúncio ---\n").trim())}</div>`;
+  return { bruto: bruto.trim(), busca: bruto.toLowerCase(), el: det };
+}
+
+function filtrarConteudo() {
+  if (!anuncios) return;
+  const termo = $("buscaConteudo").value.trim().toLowerCase();
+  let n = 0;
+  for (const a of anuncios) {
+    a.el.hidden = !!termo && !a.busca.includes(termo);
+    if (!a.el.hidden) n++;
+  }
+  $("copiarConteudo").textContent = termo ? `Copiar ${n} filtrada(s)` : `Copiar tudo (${n})`;
+  $("copiarConteudo").disabled = n === 0;
+  $("vazioConteudo").hidden = n > 0;
+  $("vazioConteudo").textContent = anuncios.length
+    ? "Nenhum anúncio tem esse termo."
+    : "Nenhum anúncio capturado ainda — o robô começa a abrir as vagas no próximo ciclo.";
+}
+
+function carregarConteudo() {
+  if (anuncios) return;
+  anuncios = [];
+  $("avisoConteudo").textContent = "Carregando…";
+  fetch("conteudo-dev.txt", { cache: "no-cache" })
+    .then((r) => { if (!r.ok) throw new Error(r.status); return r.text(); })
+    .then((texto) => {
+      const partes = texto.split(SEPARADOR);
+      conteudoCabecalho = partes.shift().trim();
+      anuncios = partes.filter((p) => p.trim()).map(montarAnuncio);
+      const frag = document.createDocumentFragment();
+      for (const a of anuncios) frag.appendChild(a.el);
+      $("anuncios").appendChild(frag);
+      $("avisoConteudo").textContent = "";
+      filtrarConteudo();
+    })
+    .catch(() => {
+      anuncios = null;
+      $("avisoConteudo").innerHTML = 'Não deu pra carregar o texto aqui — use “Abrir o arquivo”.';
+    });
+}
+
+function textoParaCopiar() {
+  const visiveis = anuncios.filter((a) => !a.el.hidden);
+  return [conteudoCabecalho, ...visiveis.map((a, i) => `===== VAGA ${i + 1} de ${visiveis.length} =====\n${a.bruto}`)]
+    .join("\n\n\n");
+}
+
+$("copiarConteudo").addEventListener("click", () => {
+  const texto = textoParaCopiar();
+  const ok = () => { $("avisoConteudo").textContent = "Copiado."; };
+  const reserva = () => {
+    // Clipboard API exige contexto seguro e permissão; sem ela, cai no
+    // jeito antigo (textarea + execCommand), que ainda funciona em celular.
+    const ta = document.createElement("textarea");
+    ta.value = texto; document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); ok(); } catch (e) { $("avisoConteudo").textContent = "Não deu pra copiar — use “Baixar .txt”."; }
+    ta.remove();
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(texto).then(ok, reserva);
+  else reserva();
+});
+$("buscaConteudo").addEventListener("input", filtrarConteudo);
+
+// Aba escolhida fica no endereço (#conteudo-dev), pra dar pra mandar o
+// link direto pra ela.
+function mostrarAba(conteudo) {
+  $("abaVagas").hidden = conteudo;
+  $("abaConteudo").hidden = !conteudo;
+  $("tabVagas").setAttribute("aria-selected", String(!conteudo));
+  $("tabConteudo").setAttribute("aria-selected", String(conteudo));
+  if (conteudo) carregarConteudo();
+}
+$("tabVagas").addEventListener("click", () => { history.replaceState(null, "", location.pathname + location.search); mostrarAba(false); });
+$("tabConteudo").addEventListener("click", () => { history.replaceState(null, "", "#conteudo-dev"); mostrarAba(true); });
+mostrarAba(location.hash === "#conteudo-dev");
 </script>
 </body>
 </html>

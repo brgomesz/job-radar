@@ -21,6 +21,11 @@ globais da conta, em ~/.claude/CLAUDE.md — não são repetidas aqui.
   o workflow o regenera a partir do `jobs.db` a cada ciclo e o GitHub
   Pages o serve. Pra mudar o visual da página, mexer em
   `web/template.html`.
+- Aba "Conteúdo Dev" da página: o passo "Capturar conteúdo dos anúncios"
+  do workflow (`scripts/capturar_conteudo.py`) abre o anúncio de cada vaga
+  `dev` salva (até 80 por ciclo, mais recentes primeiro) e guarda o texto
+  na tabela `conteudo_vagas`; `web.gerar` junta tudo em
+  `docs/conteudo-dev.txt`, que é o que a aba carrega. Também GERADO.
 
 ## Perfis de busca
 

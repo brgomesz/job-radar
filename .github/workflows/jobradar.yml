@@ -72,6 +72,19 @@ jobs:
         # (`python main.py --perfil brasil --once`), mas fora do cron.
         run: python main.py --perfil dev admin agro analista --once
 
+      # Abre o anúncio de cada vaga Dev salva e guarda o texto (descrição,
+      # requisitos, benefícios) no jobs.db — vira a aba "Conteúdo Dev" da
+      # página e o docs/conteudo-dev.txt. Passo à parte e com
+      # continue-on-error: se a fonte bloquear a leitura do anúncio, o
+      # ciclo de busca já notificou o que tinha que notificar e o banco
+      # ainda é salvo no passo seguinte. No máximo 80 vagas por ciclo (2s
+      # de pausa entre elas: ~3-5 min); o histórico atrasado entra aos
+      # poucos, ver scripts/capturar_conteudo.py.
+      - name: Capturar conteúdo dos anúncios (Dev)
+        continue-on-error: true
+        timeout-minutes: 20
+        run: python -m scripts.capturar_conteudo --perfil dev --limite 80
+
       - name: Salvar vagas já vistas (evita notificação duplicada)
         run: |
           git config user.name "jobradar-bot"
@@ -136,7 +149,7 @@ jobs:
             # que o ciclo rodou, mesmo num ciclo sem vaga nova nenhuma.
             python -m web.gerar
 
-            git add data/jobs.db docs/index.html
+            git add data/jobs.db docs/index.html docs/conteudo-dev.txt
 
             if git diff --cached --quiet; then
               echo "Nada novo pra commitar."
