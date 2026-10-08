@@ -39,6 +39,30 @@ SELETORES_POR_SITE = {
 }
 SELETORES_GENERICOS = ["main", "article", '[role="main"]']
 
+# MEDIDO no 1º ciclo real (08/10): a WeWorkRemotely devolveu a tela do
+# anti-bot ("Performing security verification") e o fallback <main> gravou
+# isso como anúncio. Texto com essas marcas é casca de página, não vaga.
+_MARCAS_BLOQUEIO = (
+    "performing security verification",
+    "verifies you are not a bot",
+    "verify you are human",
+    "checking your browser",
+    "are you a robot",
+    "captcha",
+    "enable javascript and cookies",
+    "faça login para continuar",
+    "sign in to continue",
+)
+
+
+def parece_bloqueio(texto: str) -> bool:
+    """Tela de anti-bot ou de login no lugar do anúncio. Só vale pra texto
+    curto: anúncio de verdade às vezes cita "captcha" no meio de 4 mil
+    caracteres, a tela de bloqueio nunca passa de umas poucas linhas."""
+    t = (texto or "").lower()
+    return len(t) < 1500 and any(m in t for m in _MARCAS_BLOQUEIO)
+
+
 _LINKEDIN_ID = re.compile(r"(\d{6,})(?:[/?#]|$)")
 
 
@@ -143,6 +167,13 @@ def _criterios_linkedin(page) -> str:
 
 def extrair_da_pagina(page, site: str) -> tuple[str, str]:
     """(texto, origem) de uma página já carregada; ("", "") se nada serviu."""
+    texto, origem = _extrair(page, site)
+    if parece_bloqueio(texto):
+        return "", ""
+    return texto, origem
+
+
+def _extrair(page, site: str) -> tuple[str, str]:
     texto = _texto_dos_seletores(page, SELETORES_POR_SITE.get(site, []))
     if texto:
         if site == "LinkedIn":

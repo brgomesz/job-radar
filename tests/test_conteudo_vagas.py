@@ -133,3 +133,26 @@ def test_banco_sem_tabela_de_conteudo_gera_txt_vazio(tmp_path):
     txt = (tmp_path / "docs" / "conteudo-dev.txt").read_text(encoding="utf-8")
     assert "0 vaga(s) com anúncio capturado" in txt
     assert '"capturadas": 0' in saida.read_text(encoding="utf-8")
+
+
+TELA_ANTIBOT = (
+    "weworkremotely.com\nPerforming security verification\n\nThis website uses a security "
+    "service to protect against malicious bots. This page is displayed while the website "
+    "verifies you are not a bot."
+)
+
+
+def test_tela_de_antibot_nao_conta_como_anuncio():
+    from scrapers.conteudo import parece_bloqueio
+    assert parece_bloqueio(TELA_ANTIBOT)
+    assert not parece_bloqueio(LONGO)
+    # Anúncio longo que cita captcha no meio continua valendo.
+    assert not parece_bloqueio(LONGO * 10 + " integração com reCAPTCHA ")
+
+
+def test_texto_de_bloqueio_ja_gravado_volta_pra_fila(banco):
+    from scrapers.conteudo import parece_bloqueio
+    db.salvar_conteudo("a", "ok", TELA_ANTIBOT, "pagina")
+    db.salvar_conteudo("b", "ok", LONGO, "seletor")
+    assert db.reabrir_conteudo_bloqueado("dev", parece_bloqueio) == 1
+    assert [l[0] for l in db.vagas_sem_conteudo("dev", 10, 3)] == ["a"]

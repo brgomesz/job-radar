@@ -22,8 +22,8 @@ import time
 from playwright.sync_api import sync_playwright
 
 from core.logger import get_logger
-from database.database import salvar_conteudo, vagas_sem_conteudo
-from scrapers.conteudo import extrair_da_pagina, url_para_abrir
+from database.database import reabrir_conteudo_bloqueado, salvar_conteudo, vagas_sem_conteudo
+from scrapers.conteudo import extrair_da_pagina, parece_bloqueio, url_para_abrir
 
 logger = get_logger()
 
@@ -42,6 +42,9 @@ USER_AGENT = (
 
 
 def capturar(perfil: str, limite: int) -> dict:
+    reabertas = reabrir_conteudo_bloqueado(perfil, parece_bloqueio)
+    if reabertas:
+        logger.info(f"[conteudo] {reabertas} texto(s) de tela de bloqueio voltaram pra fila.")
     fila = vagas_sem_conteudo(perfil, limite, MAX_TENTATIVAS)
     resumo = {"ok": 0, "falhou": 0, "indisponivel": 0, "pulada": 0}
     if not fila:

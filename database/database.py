@@ -204,6 +204,29 @@ def salvar_conteudo(job_id: str, status: str, texto: str = "", origem: str = "")
         )
 
 
+def reabrir_conteudo_bloqueado(perfil_chave: str, eh_bloqueio) -> int:
+    """Devolve pra fila o texto 'ok' que na verdade era tela de bloqueio
+    (capturado antes de scrapers.conteudo.parece_bloqueio existir). Conta
+    como falha, então ainda tem tentativas pela frente."""
+    with _conectar() as conn:
+        _garantir_tabela_conteudo(conn)
+        linhas = conn.execute(
+            """
+            SELECT c.id, c.texto FROM conteudo_vagas c JOIN vagas_vistas v ON v.id = c.id
+            WHERE v.perfil = ? AND c.status = 'ok'
+            """,
+            (perfil_chave,),
+        ).fetchall()
+        ruins = [id_ for id_, texto in linhas if eh_bloqueio(texto)]
+        for id_ in ruins:
+            conn.execute(
+                "UPDATE conteudo_vagas SET status = 'falhou', texto = '', origem = '', "
+                "tentativas = 1 WHERE id = ?",
+                (id_,),
+            )
+        return len(ruins)
+
+
 class BancoVazioSuspeito(RuntimeError):
     """jobs.db já existia em disco (tinha conteúdo) mas a tabela veio vazia
     depois de iniciar_db() — não é primeiro uso, é banco perdido/corrompido/
