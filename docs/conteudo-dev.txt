@@ -1,9 +1,241 @@
 CONTEÚDO DAS VAGAS DE DEV — JobRadar
-Gerado em 20/10/2026 às 11:27 (Brasília). 466 vaga(s) com anúncio capturado, de 482 vagas Dev no radar. Mais recentes primeiro.
+Gerado em 20/10/2026 às 16:16 (Brasília). 469 vaga(s) com anúncio capturado, de 484 vagas Dev no radar. Mais recentes primeiro.
 Cada vaga traz o texto do anúncio como a fonte publicou (descrição, requisitos, diferenciais, benefícios).
 
 
-===== VAGA 1 de 466 =====
+===== VAGA 1 de 469 =====
+Título: Desenvolvedor Nodejs
+Empresa: Verx Tecnologia e Inovação
+Local: São Paulo, Brazil (Remoto)
+Fonte: LinkedIn · publicada 2026-10-20 · achada 20/10 16:01
+Link: https://br.linkedin.com/jobs/view/desenvolvedor-nodejs-at-verx-tecnologia-e-inova%C3%A7%C3%A3o-4478901344
+--- Anúncio ---
+A VERX é uma consultoria especializada em TI, apaixonada por desafios e comprometida em impulsionar transformações tecnológicas estratégicas para nossos clientes. Se você busca crescimento profissional e deseja atuar em um ambiente dinâmico, com múltiplas demandas e projetos, essa oportunidade é para você.
+
+Estamos em busca de um Desenvolvedor Node Js. , para apoiar no refinamento de negócio e técnico junto ao time.
+
+Requisitos técnicos:
+
+• Javascript
+
+• Node.JS (>8)
+
+• NPM
+
+• Bancos relacionais (Oracle, Postgress)
+
+• Bancos não relacionais
+
+• Cloud (AWS)
+
+• Filas (RabbitMQ)
+
+• Docker
+
+• Kubernetes
+
+• CI/CD
+
+• Arquitetura Event-Driven
+
+• Testes unitários
+
+• Conceitos de API Restful
+
+• Oauth
+
+Conhecimentos desejáveis:
+
+• Metodologia Agil
+
+• Gitflow
+
+Atividades e Desafios:
+
+• Desenvolver e manter aplicações backend utilizando JavaScript e Node.js
+
+• Desenvolver e executar testes unitários, garantindo a qualidade, a confiabilidade e a manutenibilidade do código.
+
+• Implementar arquiteturas orientadas a eventos (Event-Driven), utilizando filas de mensagens, como RabbitMQ, para comunicação assíncrona entre serviços.
+
+Local e Modelo de contratação:
+
+• Presencial no escritório localizado na Faria Lima/SP
+
+• Contratação CLT
+
+Seniority level: Mid-Senior level
+Employment type: Full-time
+Industries: IT Services and IT Consulting and Financial Services
+
+
+===== VAGA 2 de 469 =====
+Título: Fullstack Developer Pleno - REMOTO
+Empresa: #Sejaveriter
+Local: Não informado (Remoto)
+Fonte: Gupy · publicada 20/10/2026 · achada 20/10 16:00
+Link: https://verity.gupy.io/job/eyJqb2JJZCI6MTI3NTUzODUsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+--- Anúncio ---
+DESCRIÇÃO DA VAGA
+
+A Verity está buscando novos talentos!
+
+Somos uma consultoria de transformação e engenharia digital e buscamos Desenvolvedor Fullstack Pleno para fazer parte dessa jornada.
+
+Olha só quais são as experiências e conhecimentos que você precisa ter para acelerar e transformar com a gente:
+
+RESPONSABILIDADES E ATRIBUIÇÕES
+
+Estamos procurando um Desenvolvedor Full Stack com forte expertise em backend para construir os serviços principais, APIs e integrações por trás de protótipos e MVPs baseados em IA. Você trabalhará em estreita colaboração com o líder de equipe, o desenvolvedor front-end e o designer de UX para transformar hipóteses de negócio em soluções robustas e testáveis, que podem ser validadas rapidamente com usuários reais.
+
+Seu foco principal será no desenvolvimento backend (Node.js e/ou Python), integrações com serviços em nuvem e IA, e na construção da lógica de orquestração para alimentar LLMs, agentes e automações de fluxos de trabalho.
+
+Principais Responsabilidades
+
+- Desenvolvimento de backend e APIs
+
+Projetar, construir e manter APIs REST/GraphQL e serviços backend usando Node.js e/ou Python.
+Implemente código limpo, mantível e testável, com atenção ao manejo de erros e à observabilidade.
+Integre com bancos de dados (SQL/NoSQL), filas e APIs de terceiros conforme necessário para cada projeto.
+Suporte integração front-end, garantindo que as APIs sejam bem documentadas, estáveis e fáceis de consumir.
+
+- Integração de IA / Agentes
+
+Implemente serviços que consomam APIs LLM e plataformas de IA (por exemplo, Azure OpenAI, Bedrock, Vertex AI).
+Construa lógica de orquestração para agentes, ferramentas e fluxos de trabalho de IA (por exemplo, recuperação, chamada de funções, agentes de múltiplas etapas).
+Crie módulos reutilizáveis para gerenciamento de prompts, registro, avaliação e proteções.
+
+- Nuvem e Infraestrutura
+
+Desenvolver e implantar serviços em ambientes em nuvem (Azure, AWS ou GCP), idealmente usando conteinerização (Docker).
+Colabore com a equipe nas práticas de CI/CD e infraestrutura leve como código, quando aplicável.
+Implemente monitoramento, registro e ajuste básico de desempenho para feedback rápido em PoCs e pilotos.
+
+- Colaboração e Formas de Trabalhar
+
+Trabalhe em estreita colaboração com o desenvolvedor front-end e o designer de UX para garantir coerência e desempenho de ponta a ponta.
+Participe ativamente de discussões técnicas, estimativas e decisões arquitetônicas.
+Ajudar a refinar as histórias dos usuários e tarefas técnicas, propondo simplificações inteligentes que aceleram o aprendizado.
+
+REQUISITOS E QUALIFICAÇÕES
+
+Requisitos:
+
+Forte experiência em desenvolvimento backend em Node.js e/ou Python.
+Entendimento sólido de design de APIs, autenticação/autorização e padrões de integração.
+Familiarização com pelo menos um grande provedor de nuvem (Azure, AWS, GCP).
+Experiência com bancos de dados relacionais e/ou NoSQL e modelagem básica de dados.
+Interesse ou experiência em integrar serviços backend com APIs de IA/LLM e frameworks de agentes.
+Capacidade de trabalhar em projetos acelerados e iterativos, com informações incompletas e prioridades em constante mudança.
+
+Diferenciais:
+
+Experiência com microserviços, arquitetura orientada a eventos ou funções serverless.
+Exposição a frameworks e ferramentas de IA (LangChain, LlamaIndex, busca semântica, bancos de dados vetoriais).
+Experiência com CI/CD, observabilidade e ajuste de desempenho para sistemas distribuídos.
+Conhecimento das melhores práticas de segurança para APIs, gerenciamento de segredos e privacidade de dados.
+
+INFORMAÇÕES ADICIONAIS
+
+Aqui nós somos humanos, somos digitais, somos Verity!
+
+Nossa Missão: Transformar complexidade em valor real por meio de tecnologia, inteligência e conexão humana, fazendo o melhor e o que é certo, sempre.
+
+Nossa Visão: Ser uma empresa referência em transformação e engenharia digital, admirada pela confiança que constrói, pela performance que entrega e pelas pessoas que forma.
+
+Tudo o que fazemos se baseia em nossos Valores:
+
+Fazer o Certo:
+
+Agir com verdade, ética, transparência e coerência, sem vender a qualquer custo e sem negociar a reputação.
+
+Fazer o Melhor:
+
+Buscar excelência, clareza, qualidade, foco e impacto real, priorizando o que gera valor.
+
+Fazer com Atitude:
+
+Assumir responsabilidade, agir com protagonismo, decidir com dados e resolver até o fim.
+
+Fazer Juntos:
+
+Construir com respeito, colaboração, empatia, pertencimento e cuidado genuíno, criando um ambiente onde pessoas crescem, realizam sonhos e são felizes.
+
+Fazer para Evoluir:
+
+Aprender continuamente, inovar com responsabilidade, formar pessoas e usar tecnologia para gerar valor.
+
+Fazer para Construir a Reputação:
+
+Proteger a confiança, a experiência, a felicidade das pessoas e a perenidade da Verity, com austeridade, lucro saudável e decisões responsáveis.
+
+Fomos certificados como uma das melhores empresas para se trabalhar pelo Great Place To Work, e a cada dia criamos ações que melhoram ainda mais o ambiente de trabalho, aqui na Verity você tem:
+
+Vale refeição
+Vale alimentação
+Auxílio home office
+Assistência médica
+Assistência odontológica
+Seguro de vida
+DayOff no aniversário
+Total Pass / Wellhub
+App Boon Saúde
+Parcerias de descontos
+Convênios em estabelecimentos e instituições de ensino
+Kit de Boas-vindas
+Onboarding
+Verity Learning
+Intervalo Verity
+#VerityComVocê
+
+E aí, topa criar experiências inovadoras para o mundo digital?
+
+ETAPAS DO PROCESSO
+Etapa 1: Cadastro
+1
+Cadastro
+Etapa 2: Entrevista RH
+2
+Entrevista RH
+Etapa 3: Entrevista Tech
+3
+Entrevista Tech
+Etapa 4: Entrevista Final
+4
+Entrevista Final
+Etapa 5: Processo de Contratação
+5
+Processo de Contratação
+Etapa 6: Contratação
+6
+Contratação
+
+SOMOS UMA CONSULTORIA DE TRANSFORMAÇÃO E ENGENHARIA DIGITAL_
+
+A Verity é uma consultoria de Transformação e Engenharia Digital.
+
+Estruturamos tecnologia para funcionar, escalar e gerar valor real. Atuamos na Modernização de Aplicações, decisões críticas de Arquitetura, Engenharia de Software e Dados, Experiência Digital e orquestração de processos com Inteligência Artificial.
+
+Com o Verity Quantum®, nosso orquestrador de IA, conectamos engenharia, plataformas e operações para modernizar legados, otimizar código e acelerar decisões com impacto direto no negócio.
+
+Há 16 anos, trabalhamos ao lado de mais de 100 empresas líderes em seus mercados, nos setores financeiro, saúde, varejo, indústria e serviços, transformando estratégia em soluções tecnológicas que geram eficiência, escala e vantagem competitiva.
+
+Desde 2019, somos certificados como Great Place to Work - GPTW, reconhecimento que reforça nossa cultura baseada em transparência, confiança e compromisso real com a entrega.
+
+INICIATIVAS VERITY_
+
+Aqui na Verity temos diversas ações que estimulam a troca de conhecimento:
+
+FAZER O MELHOR E O QUE É CERTO, SEMPRE_
+
+​Esse é o mantra que nos guia da modernização à aceleração digital para ofereceremos soluções de ponta a ponta da jornada de tecnologia.
+
+VAGA PERFEITA_​
+
+Ser Veriter é ter coragem para evoluir, pensar diferente e contribuir com insights antes nunca imaginados. Aqui na Verity você tem vale refeição e alimentação, assistência médica e odontológica, seguro de vida, parceria com a Total Pass para cuidar da saúde, auxílio home office, acesso a cursos para desenvolvimento, day off no aniversário e outras iniciativas que não param de surgir.​
+
+
+===== VAGA 3 de 469 =====
 Título: SOFTWARE DEVELOPER ANALYST III (React) - FRAUD
 Empresa: Inter
 Local: Belo Horizonte, Minas Gerais, Brazil (Remoto)
@@ -82,7 +314,7 @@ Employment type: Full-time
 Industries: Financial Services
 
 
-===== VAGA 2 de 466 =====
+===== VAGA 4 de 469 =====
 Título: Desenvolvedor(a) Frontend Pleno – React / (Home Office/Brasil)
 Empresa: Programmers
 Local: Brazil (Remoto)
@@ -157,7 +389,46 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 3 de 466 =====
+===== VAGA 5 de 469 =====
+Título: Desenvolvedor(a) Web Fullstack
+Empresa: Contato Seguro | Canal de Denúncias
+Local: Greater Porto Alegre (Remoto)
+Fonte: LinkedIn · publicada 2026-10-20 · achada 20/10 05:18
+Link: https://br.linkedin.com/jobs/view/desenvolvedor-a-web-fullstack-at-contato-seguro-canal-de-den%C3%BAncias-4481503958
+--- Anúncio ---
+Como Desenvolvedor(a) Web Fullstack, você atuará de ponta a ponta, desde a concepção de produtos novos até a manutenção e melhoria de sistemas legados, garantindo a melhor performance e qualidade técnica nas entregas da nossa equipe.
+
+Responsabilidades e atribuições:
+
+Desenvolver novas funcionalidades e realizar a manutenção de produtos legados;
+Atuar no desenvolvimento Backend utilizando PHP e Frontend utilizando ReactJS e TypeScript;
+Estruturar e otimizar bancos de dados, com foco em performance de queries no MySQL;
+Garantir a segurança das APIs, aplicando bons padrões de projeto e de arquitetura de software;
+Configurar e manter ambientes utilizando Docker, containers e pipelines de CI/CD;
+Escrever e aplicar testes unitários e automatizados para garantir a qualidade das entregas;
+Participar ativamente de code reviews com a equipe;
+Gerenciar versionamento de código avançado (Git), atuando na resolução de eventuais conflitos entre desenvolvedores;
+Elaborar documentações técnicas acessíveis e claras.
+
+Requisitos e qualificações:
+
+Experiência mínima de 1 ano atuando como Desenvolvedor(a) Web/Fullstack;
+Ensino Superior (completo ou em andamento) em Engenharia da Computação, Ciências da Computação, Engenharia de Software ou áreas correlatas;
+Domínio prático em PHP, ReactJS, TypeScript e MySQL;
+Conhecimento sólido em padrões de projeto, arquitetura de software e segurança de API;
+Autonomia, capacidade de priorização e boa resolução de problemas;
+Excelente comunicação, com capacidade de traduzir complexidades técnicas de forma clara e objetiva.
+
+Será um diferencial se você possuir:
+
+Experiência prática utilizando ferramentas de Inteligência Artificial para apoio na codificação;
+
+Seniority level: Entry level
+Employment type: Full-time
+Industries: Internet Publishing
+
+
+===== VAGA 6 de 469 =====
 Título: DESENVOLVEDOR DE FRONT-END
 Empresa: Grupo Ybera Paris
 Local: Vitoria, Brazil Metropolitan Area (Remoto)
@@ -184,7 +455,7 @@ Employment type: Full-time
 Industries: Personal Care Product Manufacturing
 
 
-===== VAGA 4 de 466 =====
+===== VAGA 7 de 469 =====
 Título: Frontend Software Engineer - Ag & Trading
 Empresa: Cargill
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -222,7 +493,7 @@ Employment type: Full-time
 Industries: Chemical Manufacturing, Food and Beverage Services, and Food and Beverage Manufacturing
 
 
-===== VAGA 5 de 466 =====
+===== VAGA 8 de 469 =====
 Título: Pessoa Desenvolvedora Fullstack Java/React - Pleno
 Empresa: VENHA SER #SANGUELARANJA 🧡🚀
 Local: Não informado (Remoto)
@@ -301,7 +572,7 @@ Na FCamara todos são bem-vindos, para nós, Diversidade, Respeito e Ética, sã
 E aí, está pronto para fazer parte de um time incrível e ser protagonista da própria história?
 
 
-===== VAGA 6 de 466 =====
+===== VAGA 9 de 469 =====
 Título: Backend Software Engineer
 Empresa: Global Payments Inc.
 Local: Greater São Paulo Area (Remoto)
@@ -350,7 +621,7 @@ Employment type: Full-time
 Industries: Financial Services and IT Services and IT Consulting
 
 
-===== VAGA 7 de 466 =====
+===== VAGA 10 de 469 =====
 Título: Desenvolvedor Backend Pleno | Node.js & TypeScript
 Empresa: MyT | Global Recruitment
 Local: Greater São Paulo Area (Remoto)
@@ -418,7 +689,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 8 de 466 =====
+===== VAGA 11 de 469 =====
 Título: Desenvolvedor Full Stack Web Pleno
 Empresa: Jobbol
 Local: São José do Rio Preto, São Paulo, Brazil (Remoto)
@@ -453,7 +724,7 @@ Employment type: Full-time
 Industries: Technology, Information and Internet
 
 
-===== VAGA 9 de 466 =====
+===== VAGA 12 de 469 =====
 Título: DESENVOLVEDOR FRONT-END PL
 Empresa: Stefanini Group
 Local: Não informado (Remoto)
@@ -564,7 +835,7 @@ Quer conhecer mais sobre o Grupo Stefanini, nossa cultura e as pessoas que fazem
 ▶️ Assista ao nosso vídeo institucional e venha construir o futuro com a gente!
 
 
-===== VAGA 10 de 466 =====
+===== VAGA 13 de 469 =====
 Título: Desenvolvedor de Sistemas Front-end | Sistemas 5 - Canais IB | CSC (Remoto)
 Empresa: Cresol Oficial
 Local: Não informado (Remoto)
@@ -784,7 +1055,7 @@ Confira nossas oportunidades e cresça com a gente! 🧡
 Cada colaborador faz parte de uma história que já transformou milhares de vidas, e que continua sendo construída todos os dias.
 
 
-===== VAGA 11 de 466 =====
+===== VAGA 14 de 469 =====
 Título: Desenvolvedor(a) Full Stack (com ênfase em Frontend)
 Empresa: Víssimo
 Local: Não informado (Remoto)
@@ -903,7 +1174,7 @@ A Essência Víssimo, traduzida em crenças, propósitos, aspirações e princí
 Se você se identifica com a nossa forma de celebrar, venha brindar essa história com a gente!
 
 
-===== VAGA 12 de 466 =====
+===== VAGA 15 de 469 =====
 Título: Desenvolvedor Fullstack Pleno
 Empresa: ConTI Consultoria
 Local: Belo Horizonte, Minas Gerais, Brazil (Remoto)
@@ -931,7 +1202,7 @@ Employment type: Full-time
 Industries: Computer and Network Security
 
 
-===== VAGA 13 de 466 =====
+===== VAGA 16 de 469 =====
 Título: Node.js Software Engineer - Remote Work | REF#305670
 Empresa: BairesDev
 Local: Greater Rio de Janeiro (Remoto)
@@ -985,7 +1256,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 14 de 466 =====
+===== VAGA 17 de 469 =====
 Título: PL Software Engineer (Node.js)
 Empresa: ST-One
 Local: Brazil (Remoto)
@@ -1058,7 +1329,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 15 de 466 =====
+===== VAGA 18 de 469 =====
 Título: Desenvolvedor Frontend Pleno
 Empresa: Globalsys
 Local: Vitória, Espírito Santo, Brazil (Remoto)
@@ -1110,7 +1381,7 @@ Employment type: Full-time
 Industries: Food and Beverage Services and IT Services and IT Consulting
 
 
-===== VAGA 16 de 466 =====
+===== VAGA 19 de 469 =====
 Título: Software Engineer III (Frontend)
 Empresa: frete.com
 Local: Brazil (Remoto)
@@ -1218,7 +1489,7 @@ Employment type: Full-time
 Industries: Internet Marketplace Platforms
 
 
-===== VAGA 17 de 466 =====
+===== VAGA 20 de 469 =====
 Título: Software Engineer, Backend - Product Engineering (Brazil)
 Empresa: DoorDash
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -1280,7 +1551,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 18 de 466 =====
+===== VAGA 21 de 469 =====
 Título: DESENVOLVEDOR FULL STACK | NODE.JS | REACT
 Empresa: La Moda
 Local: Não informado (Remoto)
@@ -1385,7 +1656,7 @@ Investimos no desenvolvimento das pessoas, fortalecemos nossa liderança e acred
 Se você busca um lugar para crescer, aprender e fazer parte de algo maior, a La Moda pode ser o próximo passo da sua jornada. #VemSerLaModa
 
 
-===== VAGA 19 de 466 =====
+===== VAGA 22 de 469 =====
 Título: Full-Stack E-commerce Developer with Sage X3 Experience
 Empresa: Toptal
 Local: Não informado (Remoto)
@@ -1429,7 +1700,7 @@ Nice to have:
 Manufacturing industry experience.
 
 
-===== VAGA 20 de 466 =====
+===== VAGA 23 de 469 =====
 Título: PL/SR Front-end Developer (React)
 Empresa: Jobgether
 Local: Brazil (Remoto)
@@ -1514,7 +1785,7 @@ Employment type: Full-time
 Industries: Internet Marketplace Platforms
 
 
-===== VAGA 21 de 466 =====
+===== VAGA 24 de 469 =====
 Título: Full Stack Developer
 Empresa: Typeform
 Local: HQ: Ireland (Remote) (Remoto)
@@ -1578,7 +1849,7 @@ Degree in Computer Science or a related technical field
 We are proud to be an equal-opportunity employer. We celebrate diversity and stand firmly against discrimination and harassment of any kind—whether based on race, color, ancestry, religion, sex, national origin, sexual orientation, age, citizenship, marital status, disability, gender identity or expression, or veteran status. Everyone is welcome here.
 
 
-===== VAGA 22 de 466 =====
+===== VAGA 25 de 469 =====
 Título: Desenvolvedor Full Stack
 Empresa: Crefaz
 Local: Maringá, Paraná, Brazil (Remoto)
@@ -1670,7 +1941,7 @@ Employment type: Full-time
 Industries: Financial Services
 
 
-===== VAGA 23 de 466 =====
+===== VAGA 26 de 469 =====
 Título: Full Stack Developer
 Empresa: ExxonMobil
 Local: Curitiba, Paraná, Brazil (Remoto)
@@ -1771,7 +2042,7 @@ Employment type: Full-time
 Industries: Oil and Gas
 
 
-===== VAGA 24 de 466 =====
+===== VAGA 27 de 469 =====
 Título: Desenvolvedor Full Stack
 Empresa: EMPRESA CONFIDENCIAL
 Local: Não informado (Remoto)
@@ -1837,7 +2108,7 @@ Etapa 5: Contratação
 Contratação
 
 
-===== VAGA 25 de 466 =====
+===== VAGA 28 de 469 =====
 Título: Desenvolvedor Full Stack/ Remoto - PJ
 Empresa: AME
 Local: Não informado (Remoto)
@@ -1928,7 +2199,7 @@ Acessibilidade • Engajamento Social • Solidariedade • Integridade e Conhec
 Aqui, cada pessoa é valorizada, cada história importa e a inclusão é o que nos move.
 
 
-===== VAGA 26 de 466 =====
+===== VAGA 29 de 469 =====
 Título: Pessoa Desenvolvedora Full-stack Kotlin/React - Dev II (Produtos Digitais Financeiros)
 Empresa: Grupo Boticário
 Local: Não informado (Remoto)
@@ -2055,7 +2326,7 @@ Reinventamos a beleza por meio da tecnologia, inovação, diversidade e sustenta
 Vem fazer beleza com a gente!
 
 
-===== VAGA 27 de 466 =====
+===== VAGA 30 de 469 =====
 Título: Desenvolvedor Front-end Pleno
 Empresa: Jobbol
 Local: Porto Alegre, Rio Grande do Sul, Brazil (Remoto)
@@ -2092,7 +2363,7 @@ Employment type: Full-time
 Industries: Technology, Information and Internet
 
 
-===== VAGA 28 de 466 =====
+===== VAGA 31 de 469 =====
 Título: Backend Engineer
 Empresa: Spheric
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -2130,7 +2401,7 @@ Employment type: Full-time
 Industries: Construction
 
 
-===== VAGA 29 de 466 =====
+===== VAGA 32 de 469 =====
 Título: Forward Deployed Engineer (TypeScript + AI) - Remote - Latin America
 Empresa: FullStack
 Local: Manaus, Amazonas, Brazil (Remoto)
@@ -2243,7 +2514,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting, Computer and Network Security, and Information Services
 
 
-===== VAGA 30 de 466 =====
+===== VAGA 33 de 469 =====
 Título: ANALISTA DESENVOLVEDOR PLENO - PHP/Node.js
 Empresa: Funcional Health Tech
 Local: Não informado (Remoto)
@@ -2406,7 +2677,7 @@ Falar com verdade e ouvir com atenção é como criamos confiança. Valorizamos 
 #PAPORETO
 
 
-===== VAGA 31 de 466 =====
+===== VAGA 34 de 469 =====
 Título: Desenvolvedor(a) JavaScript Pleno
 Empresa: Neppo
 Local: Brazil (Remoto)
@@ -2468,7 +2739,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 32 de 466 =====
+===== VAGA 35 de 469 =====
 Título: Pessoa Desenvolvedora Fullstack Go/Node.js - Pleno
 Empresa: Mplan
 Local: Não informado (Remoto)
@@ -2560,7 +2831,7 @@ Atuando com parceiros estratégicos na jornada de transformação logística das
 Com a força da tecnologia da informação como alicerce, a MPLAN desenvolve soluções inovadoras, como o SIGLA, MPONTO e FORMULA BUS. Essas ferramentas são projetadas para oferecer um gerenciamento superior, otimização de recursos e planejamento estratégico, capacitando as empresas de transporte a operar com máxima eficiência.
 
 
-===== VAGA 33 de 466 =====
+===== VAGA 36 de 469 =====
 Título: Desenvolvedor Node.Js Pleno | Remoto
 Empresa: PremierSoft
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -2654,7 +2925,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 34 de 466 =====
+===== VAGA 37 de 469 =====
 Título: Desenvolvedor(a) Frontend Pleno
 Empresa: Orktus
 Local: Joinville, Santa Catarina, Brazil
@@ -2716,7 +2987,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 35 de 466 =====
+===== VAGA 38 de 469 =====
 Título: Desenvolvedor(a) Full Stack .NET, C# e React
 Empresa: Finlândia Corretora de Seguros
 Local: Belo Horizonte, Minas Gerais, Brazil (Remoto)
@@ -2776,7 +3047,7 @@ Employment type: Full-time
 Industries: Insurance
 
 
-===== VAGA 36 de 466 =====
+===== VAGA 39 de 469 =====
 Título: Backend Engineer (Node) - Remote Work | REF#304727
 Empresa: BairesDev
 Local: Greater Rio de Janeiro (Remoto)
@@ -2832,7 +3103,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 37 de 466 =====
+===== VAGA 40 de 469 =====
 Título: Desenvolvedor Full Stack Pleno (Node.js/React) | Curitiba/PR
 Empresa: Spacecom Monitoramento
 Local: Curitiba, Paraná, Brazil (Remoto)
@@ -2912,7 +3183,7 @@ Employment type: Full-time
 Industries: Administrative and Support Services
 
 
-===== VAGA 38 de 466 =====
+===== VAGA 41 de 469 =====
 Título: Desenvolvedor(a) Back End I (Serviços Financeiro)
 Empresa: Omie
 Local: Não informado (Remoto)
@@ -3013,7 +3284,7 @@ Somos todos #OmieLovers!
 Acreditamos que TODOS devem se sentir acolhidos, seguros e realizados sendo sua melhor versão. Por isso, todas as nossas oportunidades são abertas a todos os públicos, valorizando e incentivando a inclusão e a diversidade.
 
 
-===== VAGA 39 de 466 =====
+===== VAGA 42 de 469 =====
 Título: ANALISTA DESENVOLVEDOR PL (Full Stack | WEB)
 Empresa: Stefanini Group
 Local: Não informado (Remoto)
@@ -3122,7 +3393,7 @@ Quer conhecer mais sobre o Grupo Stefanini, nossa cultura e as pessoas que fazem
 ▶️ Assista ao nosso vídeo institucional e venha construir o futuro com a gente!
 
 
-===== VAGA 40 de 466 =====
+===== VAGA 43 de 469 =====
 Título: Pessoa Desenvolvedora FullStack Java/React Pl (Remoto) - 2893
 Empresa: Starian
 Local: Não informado (Remoto)
@@ -3213,7 +3484,7 @@ A inteligência artificial é parte da nossa essência. Atuamos guiados por uma 
 Faça parte de equipes que transformam desafios em soluções reais e ajudam a guiar negócios rumo ao futuro.
 
 
-===== VAGA 41 de 466 =====
+===== VAGA 44 de 469 =====
 Título: Software Engineer FullStack (Java/React)
 Empresa: SoftDesign
 Local: Não informado (Remoto)
@@ -3325,7 +3596,7 @@ VEM PRA SOFT! 💙
 Conheça nossa página de carreira em https://softdesign.com.br/vemprasoft/
 
 
-===== VAGA 42 de 466 =====
+===== VAGA 45 de 469 =====
 Título: Engenheiro(a) de Software Frontend
 Empresa: BTG Pactual
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -3387,7 +3658,7 @@ Employment type: Full-time
 Industries: Financial Services
 
 
-===== VAGA 43 de 466 =====
+===== VAGA 46 de 469 =====
 Título: Desenvolvedor/ Desenvolvedora Front End
 Empresa: Capgemini
 Local: Barueri, São Paulo, Brazil (Remoto)
@@ -3508,7 +3779,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 44 de 466 =====
+===== VAGA 47 de 469 =====
 Título: Software Engineer Backend Pleno
 Empresa: FitDance
 Local: São Paulo, Brazil (Remoto)
@@ -3555,7 +3826,7 @@ Employment type: Full-time
 Industries: Entertainment Providers, Movies, Videos, and Sound, and Wellness and Fitness Services
 
 
-===== VAGA 45 de 466 =====
+===== VAGA 48 de 469 =====
 Título: Desenvolvedor Full Stack
 Empresa: Icomm Group
 Local: Não informado (Remoto)
@@ -3651,7 +3922,7 @@ Acompanhe nossos sites:
 https://www.oqvestir.com.br | https://www.shop2gether.com.br
 
 
-===== VAGA 46 de 466 =====
+===== VAGA 49 de 469 =====
 Título: Desenvolvedor TypeScript + AWS Lambda
 Empresa: 4DF Connect
 Local: Brazil (Remoto)
@@ -3684,7 +3955,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 47 de 466 =====
+===== VAGA 50 de 469 =====
 Título: Desenvolvedor Full Stack Pl.
 Empresa: AmorSaúde
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -3800,7 +4071,7 @@ Employment type: Full-time
 Industries: Business Consulting and Services
 
 
-===== VAGA 48 de 466 =====
+===== VAGA 51 de 469 =====
 Título: 546 - Desenvolvedor(a) BackEnd PL
 Empresa: SEIDOR
 Local: Belo Horizonte, Minas Gerais, Brazil (Remoto)
@@ -3856,7 +4127,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 49 de 466 =====
+===== VAGA 52 de 469 =====
 Título: Desenvolvedor de Software – Frontend - AGNES
 Empresa: AG Capital - Auditoria Tributária Previdenciária
 Local: Brazil (Remoto)
@@ -3909,7 +4180,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 50 de 466 =====
+===== VAGA 53 de 469 =====
 Título: Desenvolvedor Fullstack (Python + Next.js)
 Empresa: FalaBoss
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -3971,7 +4242,7 @@ Employment type: Full-time
 Industries: Advertising Services
 
 
-===== VAGA 51 de 466 =====
+===== VAGA 54 de 469 =====
 Título: AI Backend Engineer
 Empresa: Avatar Natural Foods
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -4141,7 +4412,7 @@ Employment type: Full-time
 Industries: Food and Beverage Manufacturing
 
 
-===== VAGA 52 de 466 =====
+===== VAGA 55 de 469 =====
 Título: Mid-level Full Stack Engineer ID91779
 Empresa: AgileEngine
 Local: Salvador, Bahia, Brazil (Remoto)
@@ -4195,7 +4466,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 53 de 466 =====
+===== VAGA 56 de 469 =====
 Título: Desenvolvedor Web Fullstack Pleno
 Empresa: INDT - Instituto de Desenvolvimento Tecnológico
 Local: Manaus, Amazonas, Brazil (Remoto)
@@ -4229,7 +4500,7 @@ Employment type: Full-time
 Industries: Research Services
 
 
-===== VAGA 54 de 466 =====
+===== VAGA 57 de 469 =====
 Título: Mid-level Full Stack Engineer ID92628
 Empresa: AgileEngine
 Local: Salvador, Bahia, Brazil (Remoto)
@@ -4279,7 +4550,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 55 de 466 =====
+===== VAGA 58 de 469 =====
 Título: Desenvolvedor Frontend React Pleno
 Empresa: Jobgether
 Local: Brazil (Remoto)
@@ -4362,7 +4633,7 @@ Employment type: Full-time
 Industries: Internet Marketplace Platforms
 
 
-===== VAGA 56 de 466 =====
+===== VAGA 59 de 469 =====
 Título: Pessoa Desenvolvedora FullStack Python e React Pleno
 Empresa: Neogrid Carreiras
 Local: Não informado (Remoto)
@@ -4512,7 +4783,7 @@ Jeito Neogrid de Ser ✨
 Nossa cultura é viva e forte em tudo que fazemos: nos gestos de colaboração, na dedicação ao cliente e na iniciativa de ir além para alcançar os melhores resultados. Esse é o nosso jeito de ser!
 
 
-===== VAGA 57 de 466 =====
+===== VAGA 60 de 469 =====
 Título: Desenvolvedor Frontend React Pleno
 Empresa: Deliver IT
 Local: Não informado (Remoto)
@@ -4624,7 +4895,7 @@ IT IS OPPORTUNITIES
 Somos valorizados por nossas capacidades e temos o estímulo necessário para desenvolver nossos talentos.
 
 
-===== VAGA 58 de 466 =====
+===== VAGA 61 de 469 =====
 Título: Pessoa Desenvolvedora Java/React Pl (Remoto) - 6210
 Empresa: Starian
 Local: Não informado (Remoto)
@@ -4720,7 +4991,7 @@ A inteligência artificial é parte da nossa essência. Atuamos guiados por uma 
 Faça parte de equipes que transformam desafios em soluções reais e ajudam a guiar negócios rumo ao futuro.
 
 
-===== VAGA 59 de 466 =====
+===== VAGA 62 de 469 =====
 Título: Desenvolvedor Fullstack .NET + Angular ou React - Pleno
 Empresa: VENHA SER #SANGUELARANJA 🧡🚀
 Local: Não informado (Remoto)
@@ -4822,7 +5093,7 @@ Na FCamara todos são bem-vindos, para nós, Diversidade, Respeito e Ética, sã
 E aí, está pronto para fazer parte de um time incrível e ser protagonista da própria história?
 
 
-===== VAGA 60 de 466 =====
+===== VAGA 63 de 469 =====
 Título: Desenvolvedor Full Stack Pleno
 Empresa: ISA SAÚDE
 Local: Não informado (Remoto)
@@ -4916,7 +5187,7 @@ Para cumprir essa missão, nossos valores guiam cada decisão e ação:
 Quer fazer parte da transformação da saúde no Brasil? Conecte-se com a gente.
 
 
-===== VAGA 61 de 466 =====
+===== VAGA 64 de 469 =====
 Título: Desenvolvedor Full Stack Pleno (.NET | SQL Server | Cloud)
 Empresa: Atento TI
 Local: Não informado (Remoto)
@@ -5053,7 +5324,7 @@ Portal PcD – com vagas exclusivas para pessoas com deficiência;
 Porta Atento - Seleção Executivos voltado a vagas exclusivas para executovos.
 
 
-===== VAGA 62 de 466 =====
+===== VAGA 65 de 469 =====
 Título: Pessoa Desenvolvedora Backend Node e IA II (Franquias)
 Empresa: Grupo Boticário
 Local: Não informado (Remoto)
@@ -5173,7 +5444,7 @@ Reinventamos a beleza por meio da tecnologia, inovação, diversidade e sustenta
 Vem fazer beleza com a gente!
 
 
-===== VAGA 63 de 466 =====
+===== VAGA 66 de 469 =====
 Título: Desenvolvedor(a) Fullstack — Pleno / Sênior
 Empresa: Gloss Express
 Local: Florianópolis, Santa Catarina, Brazil (Remoto)
@@ -5253,7 +5524,7 @@ Employment type: Full-time
 Industries: Personal Care Product Manufacturing
 
 
-===== VAGA 64 de 466 =====
+===== VAGA 67 de 469 =====
 Título: Fullstack Web3 Engineer (Solidity / Rust / Typescript)
 Empresa: bondex
 Local: Remote - Americas, El Salvador (Remoto)
@@ -5297,7 +5568,7 @@ Offer
 If you're an experience web3 full stack developer eager to make a meaningful contribution to a cutting-edge project in the DeFi space, we would love to hear from you!
 
 
-===== VAGA 65 de 466 =====
+===== VAGA 68 de 469 =====
 Título: SaaS Full-Stack Developer (100 % remote) (m/f/d)
 Empresa: EWOR
 Local: Odense Banegård (Odense Letbane) Odense C, Europe, 5000 Denmark (Remoto)
@@ -5325,7 +5596,7 @@ You have excellent verbal and written communication skills in English.
 Join us to build cutting-edge technology and category-defining initiatives from the ground up!
 
 
-===== VAGA 66 de 466 =====
+===== VAGA 69 de 469 =====
 Título: Desenvolvedor(a) Frontend
 Empresa: VAAS
 Local: Florianópolis, Santa Catarina, Brazil (Remoto)
@@ -5391,7 +5662,7 @@ Employment type: Full-time
 Industries: Technology, Information and Internet
 
 
-===== VAGA 67 de 466 =====
+===== VAGA 70 de 469 =====
 Título: Desenvolvedor de back end
 Empresa: ETHER
 Local: Brazil (Remoto)
@@ -5467,7 +5738,7 @@ Employment type: Contract
 Industries: Financial Services
 
 
-===== VAGA 68 de 466 =====
+===== VAGA 71 de 469 =====
 Título: Pessoa Desenvolvedora Node.js - Pleno - Home office
 Empresa: LOJAS TRÊS PASSOS
 Local: Porto Alegre (Remoto)
@@ -5507,7 +5778,7 @@ Modalidade de trabalho
 Híbrido, com deslocamento para Porto Alegre uma semana por mês.
 
 
-===== VAGA 69 de 466 =====
+===== VAGA 72 de 469 =====
 Título: Work From Home Golang React Developer
 Empresa: BAIRESDEV
 Local: Barueri + 35 cidades (Remoto)
@@ -5549,7 +5820,7 @@ Supportive environment with mentorship, promotions, skill development, and diver
 Apply now and become part of a global team where your unique talents can truly thrive!
 
 
-===== VAGA 70 de 466 =====
+===== VAGA 73 de 469 =====
 Título: Desenvolvedor Fullstack .NET / React
 Empresa: FCamara
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -5590,7 +5861,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 71 de 466 =====
+===== VAGA 74 de 469 =====
 Título: Desenvolvedor Full Stack
 Empresa: Be.Aliant
 Local: Não informado (Remoto)
@@ -5675,7 +5946,7 @@ Contribuímos para a construção de uma sociedade ética e transparente unindo 
 Com sede em Barueri/SP e Lab em Vinhedo/SP, seguimos evoluindo nossas soluções e buscando pessoas que queiram crescer, construir e gerar impacto real em empresas e na sociedade.
 
 
-===== VAGA 72 de 466 =====
+===== VAGA 75 de 469 =====
 Título: Desenvolvedor Fullstack I
 Empresa: SPL Engenharia
 Local: Belo Horizonte, Minas Gerais, Brazil (Remoto)
@@ -5758,7 +6029,7 @@ Employment type: Full-time
 Industries: Civil Engineering
 
 
-===== VAGA 73 de 466 =====
+===== VAGA 76 de 469 =====
 Título: Forward Deployed AI Engineer (TypeScript) - Remote - Latin America
 Empresa: FullStack
 Local: Manaus, Amazonas, Brazil (Remoto)
@@ -5872,7 +6143,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting, Computer and Network Security, and Information Services
 
 
-===== VAGA 74 de 466 =====
+===== VAGA 77 de 469 =====
 Título: 11513140 Desenvolvedor(a) Pleno Back-End
 Empresa: Quality Digital
 Local: Não informado (Remoto)
@@ -5962,7 +6233,7 @@ Aqui, não faltam histórias para contar!
 ☕ Então, que tal pegar sua xícara de café, chá, suco ou sua bebida preferida e saber mais sobre nós, se encantar, conferir nossas vagas e fazer parte desse time em constante crescimento? 🚀💖
 
 
-===== VAGA 75 de 466 =====
+===== VAGA 78 de 469 =====
 Título: Desenvolvedor(a) de Sistemas | Full Stack
 Empresa: Brisanet
 Local: Não informado (Remoto)
@@ -6059,7 +6330,7 @@ Atuamos no segmento de telecomunicações há 27 anos, com a missão de conectar
 Nossa trajetória começou em 1998, na cidade de Pereiro, interior do Ceará. Nascemos com o objetivo de oferecer internet de qualidade a preço acessível em cidades pequenas. Hoje, estamos presentes nos nove estados do Nordeste, levando conectividade de ponta do interior até as capitais, contribuindo ativamente para a transformação digital no Brasil.
 
 
-===== VAGA 76 de 466 =====
+===== VAGA 79 de 469 =====
 Título: Software Engineer FrontEnd (Angular/React)
 Empresa: SoftDesign
 Local: Não informado (Remoto)
@@ -6169,7 +6440,7 @@ VEM PRA SOFT! 💙
 Conheça nossa página de carreira em https://softdesign.com.br/vemprasoft/
 
 
-===== VAGA 77 de 466 =====
+===== VAGA 80 de 469 =====
 Título: Desenvolvedor Backend - Barueri/SP
 Empresa: Cardway
 Local: Barueri, São Paulo, Brazil (Remoto)
@@ -6292,7 +6563,7 @@ Employment type: Full-time
 Industries: Telecommunications
 
 
-===== VAGA 78 de 466 =====
+===== VAGA 81 de 469 =====
 Título: Desenvolvedor Backend NodeJS
 Empresa: Mirante Tecnologia
 Local: São Paulo, Brazil (Remoto)
@@ -6330,7 +6601,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting and Financial Services
 
 
-===== VAGA 79 de 466 =====
+===== VAGA 82 de 469 =====
 Título: DESENVOLVEDOR BACK END PL
 Empresa: ADMINISTRADOR DE REDES
 Local: Não informado (Remoto)
@@ -6434,7 +6705,7 @@ Ao se juntar à Stefanini, você se tornará parte de uma jornada global de tran
 Junte-se a nós e seja parte da mudança!
 
 
-===== VAGA 80 de 466 =====
+===== VAGA 83 de 469 =====
 Título: Desenvolvedor JavaScript /Angular
 Empresa: 4DF Connect
 Local: Brazil (Remoto)
@@ -6464,7 +6735,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 81 de 466 =====
+===== VAGA 84 de 469 =====
 Título: Desenvolvedor Back-End Pleno
 Empresa: Webmotors
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -6545,7 +6816,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 82 de 466 =====
+===== VAGA 85 de 469 =====
 Título: Frontend Developer (React)
 Empresa: Jobgether
 Local: Brazil (Remoto)
@@ -6604,7 +6875,7 @@ Employment type: Full-time
 Industries: Internet Marketplace Platforms
 
 
-===== VAGA 83 de 466 =====
+===== VAGA 86 de 469 =====
 Título: Desenvolvedor(a) Full Stack Python + React Pleno
 Empresa: Amo Promo
 Local: Greater Belo Horizonte (Remoto)
@@ -6647,7 +6918,7 @@ Employment type: Full-time
 Industries: Internet Publishing
 
 
-===== VAGA 84 de 466 =====
+===== VAGA 87 de 469 =====
 Título: Desenvolvedor full stack - Pleno
 Empresa: Papo de Residência
 Local: Recife, Pernambuco, Brazil (Remoto)
@@ -6705,7 +6976,7 @@ Employment type: Full-time
 Industries: Education Administration Programs
 
 
-===== VAGA 85 de 466 =====
+===== VAGA 88 de 469 =====
 Título: Laravel Developer + React - Remote, Latin America
 Empresa: Bluelight
 Local: Manaus, Amazonas, Brazil (Remoto)
@@ -6749,7 +7020,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 86 de 466 =====
+===== VAGA 89 de 469 =====
 Título: Desenvolvedor Back-End Pleno
 Empresa: Cactvs
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -6779,7 +7050,7 @@ Employment type: Full-time
 Industries: Farming, Ranching, Forestry
 
 
-===== VAGA 87 de 466 =====
+===== VAGA 90 de 469 =====
 Título: Engenheiro(a) de Software Frontend Pleno a Sênior (React) | IT BTG Empresas
 Empresa: BTG Pactual
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -6842,7 +7113,7 @@ Employment type: Full-time
 Industries: Financial Services
 
 
-===== VAGA 88 de 466 =====
+===== VAGA 91 de 469 =====
 Título: Desenvolvedor(a) FullStack
 Empresa: Slabware
 Local: Vila Velha, Espírito Santo, Brazil (Remoto)
@@ -6929,7 +7200,7 @@ Employment type: Full-time
 Industries: Information Technology & Services
 
 
-===== VAGA 89 de 466 =====
+===== VAGA 92 de 469 =====
 Título: Backend Engineer I
 Empresa: Jobgether
 Local: Brazil (Remoto)
@@ -7015,7 +7286,7 @@ Employment type: Full-time
 Industries: Internet Marketplace Platforms
 
 
-===== VAGA 90 de 466 =====
+===== VAGA 93 de 469 =====
 Título: DESENVOLVEDOR FULLSTACK PLENO I
 Empresa: Doutor-IE | Inteligência Automotiva
 Local: Florianópolis, Santa Catarina, Brazil (Remoto)
@@ -7075,7 +7346,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 91 de 466 =====
+===== VAGA 94 de 469 =====
 Título: Desenvolvedor(a) Full Stack
 Empresa: UneCont | Automação Fiscal
 Local: São Caetano do Sul, São Paulo, Brazil (Remoto)
@@ -7160,7 +7431,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 92 de 466 =====
+===== VAGA 95 de 469 =====
 Título: Full-Stack Developer - Sumare, Brasil.
 Empresa: 3M
 Local: Sumaré, São Paulo, Brazil (Remoto)
@@ -7291,7 +7562,7 @@ Employment type: Full-time
 Industries: Industrial Machinery Manufacturing
 
 
-===== VAGA 93 de 466 =====
+===== VAGA 96 de 469 =====
 Título: Zé Delivery | Desenvolvedor Pleno Front end
 Empresa: Ambev
 Local: Não informado (Remoto)
@@ -7377,7 +7648,7 @@ Acolhemos talentos diversos, porque acreditamos que grandes ideias vêm de pesso
 É trabalhando e crescendo juntos que atingimos o nosso propósito: Sonhamos Grande por um Futuro com Mais Razões para Brindar!
 
 
-===== VAGA 94 de 466 =====
+===== VAGA 97 de 469 =====
 Título: Desenvolvedor(a) Full Stack | Blumenau/SC
 Empresa: Conecta Ads
 Local: Blumenau, Santa Catarina, Brazil (Remoto)
@@ -7440,7 +7711,7 @@ Employment type: Full-time
 Industries: Marketing Services
 
 
-===== VAGA 95 de 466 =====
+===== VAGA 98 de 469 =====
 Título: Desenvolvedor Frontend React PL/SR
 Empresa: Lighthouse Innovation & Technology
 Local: Brazil (Remoto)
@@ -7489,7 +7760,7 @@ Employment type: Full-time
 Industries: Information Technology & Services
 
 
-===== VAGA 96 de 466 =====
+===== VAGA 99 de 469 =====
 Título: Engenheiro de Software Pleno/Senior (Node.js) | IT Offshore Platform
 Empresa: BTG Pactual
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -7553,7 +7824,7 @@ Employment type: Full-time
 Industries: Financial Services
 
 
-===== VAGA 97 de 466 =====
+===== VAGA 100 de 469 =====
 Título: Desenvolvedor Full Stack Pleno / Sênior
 Empresa: Empresa Confidencial
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -7601,7 +7872,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 98 de 466 =====
+===== VAGA 101 de 469 =====
 Título: Desenvolvedor(a) de Software Fullstack (Pleno)
 Empresa: Fundação CERTI
 Local: Florianópolis, Santa Catarina, Brazil (Remoto)
@@ -7662,7 +7933,7 @@ Employment type: Full-time
 Industries: Research Services
 
 
-===== VAGA 99 de 466 =====
+===== VAGA 102 de 469 =====
 Título: Pessoa Desenvolvedora Backend - Node.js
 Empresa: BIP Brasil
 Local: Não informado (Remoto)
@@ -7816,7 +8087,7 @@ Together we go further: valorizamos colaboração e trabalho em equipe para gran
 Nosso propósito é construir, junto com nossos clientes e talentos, um futuro mais inovador, humano e sustentável. Valorizamos a diversidade, o protagonismo e o espírito colaborativo. Aqui, suas ideias são valorizadas, você encontra espaço para crescer e tem a chance de atuar em projetos relevantes, ao lado de grandes empresas de diversos setores.
 
 
-===== VAGA 100 de 466 =====
+===== VAGA 103 de 469 =====
 Título: Desenvolvedor Full Stack
 Empresa: Diagonal
 Local: Não informado (Remoto)
@@ -7913,7 +8184,7 @@ Se você se conecta com este propósito, junte-se a nós!
 #SejaDiagonal🧡
 
 
-===== VAGA 101 de 466 =====
+===== VAGA 104 de 469 =====
 Título: Pessoa Desenvolvedora Fullstack Pleno - React/Node.js/Chatbots
 Empresa: Akross
 Local: Não informado (Remoto)
@@ -8036,7 +8307,7 @@ Que tal construir essa extraordinária história com a gente? :)
 #vemserakross
 
 
-===== VAGA 102 de 466 =====
+===== VAGA 105 de 469 =====
 Título: Desenvolvedor(a) Full Stack
 Empresa: Conecta Ads
 Local: Blumenau, Santa Catarina, Brazil (Remoto)
@@ -8099,7 +8370,7 @@ Employment type: Full-time
 Industries: Marketing Services
 
 
-===== VAGA 103 de 466 =====
+===== VAGA 106 de 469 =====
 Título: Remote Full Stack Developer (Frontend-Focused) - Brazil
 Empresa: Brafton Inc.
 Local: São Paulo, Brazil (Remoto)
@@ -8152,7 +8423,7 @@ Employment type: Full-time
 Industries: Business Consulting and Services, IT Services and IT Consulting, and Professional Training and Coaching
 
 
-===== VAGA 104 de 466 =====
+===== VAGA 107 de 469 =====
 Título: DESENVOLVEDOR BACK END PL
 Empresa: Stefanini Group
 Local: Não informado (Remoto)
@@ -8277,7 +8548,7 @@ Quer conhecer mais sobre o Grupo Stefanini, nossa cultura e as pessoas que fazem
 ▶️ Assista ao nosso vídeo institucional e venha construir o futuro com a gente!
 
 
-===== VAGA 105 de 466 =====
+===== VAGA 108 de 469 =====
 Título: PESSOA DESENVOLVEDORA PLENO (FULL-STACK)
 Empresa: Quality Digital
 Local: Não informado (Remoto)
@@ -8373,7 +8644,7 @@ Aqui, não faltam histórias para contar!
 ☕ Então, que tal pegar sua xícara de café, chá, suco ou sua bebida preferida e saber mais sobre nós, se encantar, conferir nossas vagas e fazer parte desse time em constante crescimento? 🚀💖
 
 
-===== VAGA 106 de 466 =====
+===== VAGA 109 de 469 =====
 Título: Software Engineer FullStack (.NET CORE/React)
 Empresa: SoftDesign
 Local: Não informado (Remoto)
@@ -8499,7 +8770,7 @@ VEM PRA SOFT! 💙
 Conheça nossa página de carreira em https://softdesign.com.br/vemprasoft/
 
 
-===== VAGA 107 de 466 =====
+===== VAGA 110 de 469 =====
 Título: Desenvolvedor BackEnd Node - Estagiário
 Empresa: VENHA SER #SANGUELARANJA 🧡🚀
 Local: Não informado (Remoto)
@@ -8591,7 +8862,7 @@ Na FCamara todos são bem-vindos, para nós, Diversidade, Respeito e Ética, sã
 E aí, está pronto para fazer parte de um time incrível e ser protagonista da própria história?
 
 
-===== VAGA 108 de 466 =====
+===== VAGA 111 de 469 =====
 Título: Desenvolvedor Full Stack PL
 Empresa: SESATECH
 Local: Rio de Janeiro, Rio de Janeiro, Brazil (Remoto)
@@ -8640,7 +8911,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 109 de 466 =====
+===== VAGA 112 de 469 =====
 Título: Engenheiro(a) de Software (Back-end Node.js) - INVESTMENT PRODUCTS
 Empresa: BTG Pactual
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -8731,7 +9002,7 @@ Employment type: Full-time
 Industries: Financial Services
 
 
-===== VAGA 110 de 466 =====
+===== VAGA 113 de 469 =====
 Título: Desenvolvedor Back-end PL
 Empresa: Grupo SysMap
 Local: Não informado (Remoto)
@@ -8796,7 +9067,7 @@ Aqui, acreditamos que tecnologia só gera valor quando é construída por pessoa
 A única forma de participar de processos seletivos do Grupo SysMap é por meio das páginas da empresa na plataforma Gupy e não há pagamento de taxa de participação ou contratação.
 
 
-===== VAGA 111 de 466 =====
+===== VAGA 114 de 469 =====
 Título: Desenvolvedor Front-end PL
 Empresa: Grupo SysMap
 Local: Não informado (Remoto)
@@ -8867,7 +9138,7 @@ Aqui, acreditamos que tecnologia só gera valor quando é construída por pessoa
 A única forma de participar de processos seletivos do Grupo SysMap é por meio das páginas da empresa na plataforma Gupy e não há pagamento de taxa de participação ou contratação.
 
 
-===== VAGA 112 de 466 =====
+===== VAGA 115 de 469 =====
 Título: Backend Developer
 Empresa: Stefanini Latam
 Local: Não informado (Remoto)
@@ -8952,7 +9223,7 @@ Con más de 38 años y una presencia global, en Stefanini transformamos el maña
 Si eres una persona disruptiva, te mantienes en aprendizaje continuo y la innovación está en tu ADN, entonces somos lo que buscas. ¡Ven y construyamos juntos un futuro mejor!
 
 
-===== VAGA 113 de 466 =====
+===== VAGA 116 de 469 =====
 Título: Developer Fullstack
 Empresa: Stefanini Latam
 Local: Não informado (Remoto)
@@ -9088,7 +9359,7 @@ Con más de 38 años y una presencia global, en Stefanini transformamos el maña
 Si eres una persona disruptiva, te mantienes en aprendizaje continuo y la innovación está en tu ADN, entonces somos lo que buscas. ¡Ven y construyamos juntos un futuro mejor!
 
 
-===== VAGA 114 de 466 =====
+===== VAGA 117 de 469 =====
 Título: FullStack Developer
 Empresa: Stefanini Latam
 Local: Não informado (Remoto)
@@ -9211,7 +9482,7 @@ Con más de 38 años y una presencia global, en Stefanini transformamos el maña
 Si eres una persona disruptiva, te mantienes en aprendizaje continuo y la innovación está en tu ADN, entonces somos lo que buscas. ¡Ven y construyamos juntos un futuro mejor!
 
 
-===== VAGA 115 de 466 =====
+===== VAGA 118 de 469 =====
 Título: Full Stack Developer
 Empresa: Flatiron Software
 Local: Brazil (Remoto)
@@ -9266,7 +9537,7 @@ Employment type: Full-time
 Industries: Software Development, IT Services and IT Consulting, and Technology, Information and Media
 
 
-===== VAGA 116 de 466 =====
+===== VAGA 119 de 469 =====
 Título: Desenvolvedor Back End Pleno
 Empresa: Jobbol
 Local: Cascavel, Paraná, Brazil (Remoto)
@@ -9309,7 +9580,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 117 de 466 =====
+===== VAGA 120 de 469 =====
 Título: Staff Frontend Engineer, Acquisition
 Empresa: CookUnity
 Local: Greater São Paulo Area (Remoto)
@@ -9418,7 +9689,7 @@ Employment type: Full-time
 Industries: Food and Beverage Manufacturing
 
 
-===== VAGA 118 de 466 =====
+===== VAGA 121 de 469 =====
 Título: Desenvolvedor Front-End Pleno - E-commerce| TRACK&FIELD | São Paulo
 Empresa: TRACK&FIELD
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -9514,7 +9785,7 @@ Employment type: Full-time
 Industries: Retail
 
 
-===== VAGA 119 de 466 =====
+===== VAGA 122 de 469 =====
 Título: JavaScript Frontend Developer (Remote)
 Empresa: Hire Feed
 Local: Brazil (Remoto)
@@ -9567,7 +9838,7 @@ Employment type: Full-time
 Industries: Software Development, Technology, Information and Media, and Information Services
 
 
-===== VAGA 120 de 466 =====
+===== VAGA 123 de 469 =====
 Título: Desenvolvedor(a) Frontend Pleno | React + TypeScript
 Empresa: Gestão e Propósito
 Local: Maringá, Paraná, Brazil (Remoto)
@@ -9643,7 +9914,7 @@ Employment type: Full-time
 Industries: Business Consulting and Services
 
 
-===== VAGA 121 de 466 =====
+===== VAGA 124 de 469 =====
 Título: Work From Home React Software Developer
 Empresa: BAIRESDEV
 Local: Barueri + 35 cidades (Remoto)
@@ -9690,7 +9961,7 @@ Supportive environment with mentorship, promotions, skill development, and diver
 Apply now and become part of a global team where your unique talents can truly thrive!
 
 
-===== VAGA 122 de 466 =====
+===== VAGA 125 de 469 =====
 Título: Desenvolvedor Front End Pl
 Empresa: Addvisor Group
 Local: Barueri, São Paulo, Brazil (Remoto)
@@ -9768,7 +10039,7 @@ Employment type: Full-time
 Industries: Computer and Network Security
 
 
-===== VAGA 123 de 466 =====
+===== VAGA 126 de 469 =====
 Título: Desenvolvedor de front-end
 Empresa: Lyncas
 Local: Jaraguá do Sul, Santa Catarina, Brazil (Remoto)
@@ -9894,7 +10165,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 124 de 466 =====
+===== VAGA 127 de 469 =====
 Título: Pessoa Desenvolvedora Frontend — React
 Empresa: Ideen
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -9945,7 +10216,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 125 de 466 =====
+===== VAGA 128 de 469 =====
 Título: AI Engineer / Desenvolvedor(a) Full Stack com foco em IA
 Empresa: 4DF Connect
 Local: Joinville, Santa Catarina, Brazil
@@ -10010,7 +10281,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 126 de 466 =====
+===== VAGA 129 de 469 =====
 Título: Backend Engineer - Wallets (100% Remote)
 Empresa: Tether.io
 Local: Brazil (Remoto)
@@ -10077,7 +10348,7 @@ Employment type: Full-time
 Industries: Financial Services
 
 
-===== VAGA 127 de 466 =====
+===== VAGA 130 de 469 =====
 Título: Desenvolvedor Frontend - Web Pleno
 Empresa: DIGISYSTEM - IT Solutions
 Local: Brazil (Remoto)
@@ -10134,7 +10405,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 128 de 466 =====
+===== VAGA 131 de 469 =====
 Título: Full Stack Developer (React + Node) - Remote Work
 Empresa: BairesDev
 Local: Recife, Pernambuco, Brazil (Remoto)
@@ -10214,7 +10485,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 129 de 466 =====
+===== VAGA 132 de 469 =====
 Título: Desenvolvedor(a) Front-end – SEO Técnico
 Empresa: DSAC Chile
 Local: Brasília, Federal District, Brazil (Remoto)
@@ -10275,7 +10546,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 130 de 466 =====
+===== VAGA 133 de 469 =====
 Título: Desenvolvedor de Sistemas Fullstack | Java e React | Crédito 1 | CSC (remoto)
 Empresa: Cresol Oficial
 Local: Não informado (Remoto)
@@ -10510,7 +10781,7 @@ Confira nossas oportunidades e cresça com a gente! 🧡
 Cada colaborador faz parte de uma história que já transformou milhares de vidas, e que continua sendo construída todos os dias.
 
 
-===== VAGA 131 de 466 =====
+===== VAGA 134 de 469 =====
 Título: Fullstack Node + Nest + React Engineer | REF#303118
 Empresa: BairesDev
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -10568,7 +10839,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 132 de 466 =====
+===== VAGA 135 de 469 =====
 Título: Pessoa Desenvolvedora Fullstack Node/React III - Venda Direta
 Empresa: Grupo Boticário
 Local: Não informado (Remoto)
@@ -10709,7 +10980,7 @@ Reinventamos a beleza por meio da tecnologia, inovação, diversidade e sustenta
 Vem fazer beleza com a gente!
 
 
-===== VAGA 133 de 466 =====
+===== VAGA 136 de 469 =====
 Título: Desenvolvedor Fullstack - Pleno
 Empresa: FCamara
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -10754,7 +11025,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 134 de 466 =====
+===== VAGA 137 de 469 =====
 Título: Backend Engineer (Node) - Remote Work | REF#289465
 Empresa: BairesDev
 Local: Brazil (Remoto)
@@ -10808,7 +11079,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 135 de 466 =====
+===== VAGA 138 de 469 =====
 Título: Pessoa Desenvolvedora Fullstack React/Node (Pricing/E-commerce) - Vaga Afirmativa para Talentos Diversos
 Empresa: Grupo Boticário
 Local: Não informado (Remoto)
@@ -10923,7 +11194,7 @@ Reinventamos a beleza por meio da tecnologia, inovação, diversidade e sustenta
 Vem fazer beleza com a gente!
 
 
-===== VAGA 136 de 466 =====
+===== VAGA 139 de 469 =====
 Título: Desenvolvedor Frontend - TypeScript - Trabalho Remoto
 Empresa: BairesDev
 Local: Greater Curitiba (Remoto)
@@ -10995,7 +11266,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 137 de 466 =====
+===== VAGA 140 de 469 =====
 Título: Desenvolvedor full stack
 Empresa: Grupo Comolatti
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -11071,7 +11342,7 @@ Employment type: Full-time
 Industries: Transportation, Logistics, Supply Chain and Storage, Retail, and Motor Vehicle Manufacturing
 
 
-===== VAGA 138 de 466 =====
+===== VAGA 141 de 469 =====
 Título: Desenvolvedor(a) Fullstack (React + .NET)
 Empresa: Nava | Tech for Business
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -11146,7 +11417,7 @@ Employment type: Full-time
 Industries: Information Technology & Services
 
 
-===== VAGA 139 de 466 =====
+===== VAGA 142 de 469 =====
 Título: Desenvolvedor Full Stack Pleno/Sênior
 Empresa: 4DF Connect
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -11178,7 +11449,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 140 de 466 =====
+===== VAGA 143 de 469 =====
 Título: Desenvolvedor Full Stack Pleno
 Empresa: INV Recursos Humanos
 Local: Caxias do Sul, Rio Grande do Sul, Brazil (Remoto)
@@ -11244,7 +11515,7 @@ Employment type: Full-time
 Industries: Design Services, Financial Services, and IT Services and IT Consulting
 
 
-===== VAGA 141 de 466 =====
+===== VAGA 144 de 469 =====
 Título: Desenvolvedor(a) Front-End React
 Empresa: 4DF Connect
 Local: Brazil (Remoto)
@@ -11306,7 +11577,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 142 de 466 =====
+===== VAGA 145 de 469 =====
 Título: Desenvolvedor(a) de Software Back-End | Investment Products
 Empresa: BTG Pactual
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -11361,7 +11632,7 @@ Employment type: Full-time
 Industries: Financial Services
 
 
-===== VAGA 143 de 466 =====
+===== VAGA 146 de 469 =====
 Título: Desenvolvedor BackEnd
 Empresa: 4DF Connect
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -11381,7 +11652,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 144 de 466 =====
+===== VAGA 147 de 469 =====
 Título: Desenvolvedor de front-end
 Empresa: TideWise
 Local: Rio de Janeiro, Brazil (Remoto)
@@ -11441,7 +11712,7 @@ Employment type: Full-time
 Industries: Robotics Engineering and Engineering Services
 
 
-===== VAGA 145 de 466 =====
+===== VAGA 148 de 469 =====
 Título: Desenvolvedor full stack
 Empresa: Pasquali Solution
 Local: Brazil (Remoto)
@@ -11477,7 +11748,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 146 de 466 =====
+===== VAGA 149 de 469 =====
 Título: Desenvolvedor Full Stack Pleno
 Empresa: EMPRESA CONFIDENCIAL
 Local: Não informado (Remoto)
@@ -11543,7 +11814,7 @@ Etapa 5: Contratação
 Contratação
 
 
-===== VAGA 147 de 466 =====
+===== VAGA 150 de 469 =====
 Título: Node.js Software Engineer - Remote Work
 Empresa: BairesDev
 Local: Rio de Janeiro, Rio de Janeiro, Brazil (Remoto)
@@ -11611,7 +11882,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 148 de 466 =====
+===== VAGA 151 de 469 =====
 Título: Desenvolvedor Back-End
 Empresa: Jobbol
 Local: Itajaí, Santa Catarina, Brazil (Remoto)
@@ -11654,7 +11925,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 149 de 466 =====
+===== VAGA 152 de 469 =====
 Título: Software Engineer | Back-End | Remote Work
 Empresa: Loft
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -11748,7 +12019,7 @@ Employment type: Other
 Industries: Technology, Information and Internet
 
 
-===== VAGA 150 de 466 =====
+===== VAGA 153 de 469 =====
 Título: Staff Backend Engineer (Remote)
 Empresa: Nango
 Local: Brazil (Remoto)
@@ -11771,7 +12042,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 151 de 466 =====
+===== VAGA 154 de 469 =====
 Título: Desenvolvedor Full Stack- Pleno
 Empresa: IESDE
 Local: Curitiba, Paraná, Brazil (Remoto)
@@ -11873,7 +12144,7 @@ Employment type: Full-time
 Industries: Computer and Network Security
 
 
-===== VAGA 152 de 466 =====
+===== VAGA 155 de 469 =====
 Título: Desenvolvedor(a) Backend Pleno - (Node.js)
 Empresa: Capco
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -11938,7 +12209,7 @@ Employment type: Full-time
 Industries: Financial Services
 
 
-===== VAGA 153 de 466 =====
+===== VAGA 156 de 469 =====
 Título: Desenvolvedor(a) Backend | Rio de Janeiro - RJ
 Empresa: InvestSmartXP
 Local: Rio de Janeiro, Rio de Janeiro, Brazil (Remoto)
@@ -12000,7 +12271,7 @@ Employment type: Full-time
 Industries: Financial Services
 
 
-===== VAGA 154 de 466 =====
+===== VAGA 157 de 469 =====
 Título: Desenvolvedor full stack
 Empresa: Empresa Municipal de Tecnologias de Juiz de Fora - EMTEC
 Local: Juiz de Fora, Minas Gerais, Brazil (Remoto)
@@ -12049,7 +12320,7 @@ Employment type: Full-time
 Industries: Technology, Information and Internet
 
 
-===== VAGA 155 de 466 =====
+===== VAGA 158 de 469 =====
 Título: Desenvolvedor(a) Full Stack - PJ
 Empresa: Ativa GR
 Local: Não informado (Remoto)
@@ -12147,7 +12418,7 @@ Nossos princípios fortes orientam nossas decisões e ações.
 #SomosAtivaLawtechLegaltech
 
 
-===== VAGA 156 de 466 =====
+===== VAGA 159 de 469 =====
 Título: Desenvolvedor Node.js - Remote Work
 Empresa: BairesDev
 Local: Natal, Rio Grande do Norte, Brazil (Remoto)
@@ -12215,7 +12486,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 157 de 466 =====
+===== VAGA 160 de 469 =====
 Título: Engenheiro de Software Node.js - Remote Work
 Empresa: BairesDev
 Local: São Paulo, Brazil (Remoto)
@@ -12283,7 +12554,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 158 de 466 =====
+===== VAGA 161 de 469 =====
 Título: Desenvolvedor(a) de Software Back-End | Investment Products (Luis)
 Empresa: BTG Pactual
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -12338,7 +12609,7 @@ Employment type: Full-time
 Industries: Financial Services
 
 
-===== VAGA 159 de 466 =====
+===== VAGA 162 de 469 =====
 Título: Full stack developer
 Empresa: Gula.menu
 Local: Belo Horizonte, Minas Gerais, Brazil (Remoto)
@@ -12381,7 +12652,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 160 de 466 =====
+===== VAGA 163 de 469 =====
 Título: Desenvolvedor(a) Fullstack Pleno (Java 8 e 11, Spring Boot, Angular/React/Vue)
 Empresa: AZ TECNOLOGIA EM GESTÃO
 Local: Campo Grande - MS (Remoto)
@@ -12414,7 +12685,7 @@ Contribuir para a documentação técnica de sistemas e processos, registrando i
 *Desejável 2 anos de experiência na função
 
 
-===== VAGA 161 de 466 =====
+===== VAGA 164 de 469 =====
 Título: Desenvolvedor Front-End Pleno
 Empresa: SCCON GEOSPATIAL LTDA
 Local: São Paulo - SP (Remoto)
@@ -12476,7 +12747,7 @@ Além disso, é importante que você possua:
 • Melhoria Contínua e Organização: Receptividade a feedbacks, visão crítica para propor evolução nos sistemas e atenção aos padrões visuais e de código.
 
 
-===== VAGA 162 de 466 =====
+===== VAGA 165 de 469 =====
 Título: Desenvolvedor(a) Flutter & ReactJS Pleno |- 100% Remoto (Contrato Temporário)
 Empresa: CEDRO SISTEMAS E TECNOLOGIA LTDA
 Local: Uberlândia - MG (Remoto)
@@ -12543,7 +12814,7 @@ Contratação: Temporária, inicialmente por 3 meses, com possibilidade de renov
 Projeto: Segmento bancário | Canais Digitais
 
 
-===== VAGA 163 de 466 =====
+===== VAGA 166 de 469 =====
 Título: Desenvolvedor Backend Pleno (Node.js)
 Empresa: Marinho Tech Talent
 Local: Greater Salvador (Remoto)
@@ -12593,7 +12864,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 164 de 466 =====
+===== VAGA 167 de 469 =====
 Título: Desenvolvedor Pleno - Node.Js
 Empresa: Porto
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -12725,7 +12996,7 @@ Employment type: Full-time
 Industries: Insurance
 
 
-===== VAGA 165 de 466 =====
+===== VAGA 168 de 469 =====
 Título: Desenvolvedor(a) Full Stack - Pleno
 Empresa: Claro Brasil
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -12800,7 +13071,7 @@ Employment type: Full-time
 Industries: Telecommunications
 
 
-===== VAGA 166 de 466 =====
+===== VAGA 169 de 469 =====
 Título: Desenvolvedor(a) Backend
 Empresa: InCicle
 Local: São José dos Campos, São Paulo, Brazil (Remoto)
@@ -12846,7 +13117,7 @@ Employment type: Full-time
 Industries: Human Resources
 
 
-===== VAGA 167 de 466 =====
+===== VAGA 170 de 469 =====
 Título: JavaScript Developer (CRM Platform)
 Empresa: Sigma Software
 Local: Greater São Paulo Area (Remoto)
@@ -12908,7 +13179,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 168 de 466 =====
+===== VAGA 171 de 469 =====
 Título: Desenvolvedor Front-end React
 Empresa: innolevels
 Local: Greater São Paulo Area (Remoto)
@@ -12968,7 +13239,7 @@ Employment type: Full-time
 Industries: Internet Publishing
 
 
-===== VAGA 169 de 466 =====
+===== VAGA 172 de 469 =====
 Título: Desenvolvedor Full Stack Pleno
 Empresa: Leaf Consulting
 Local: Vitória, Espírito Santo, Brazil (Remoto)
@@ -13050,7 +13321,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 170 de 466 =====
+===== VAGA 173 de 469 =====
 Título: Software Engineer Backend - IT Commodities
 Empresa: BTG Pactual
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -13128,7 +13399,7 @@ Employment type: Full-time
 Industries: Financial Services
 
 
-===== VAGA 171 de 466 =====
+===== VAGA 174 de 469 =====
 Título: React Developer - Remote Work
 Empresa: INDI Staffing Services
 Local: São Paulo, Brazil (Remoto)
@@ -13192,7 +13463,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 172 de 466 =====
+===== VAGA 175 de 469 =====
 Título: Desenvolvedor(a) Backend (Node.js / NestJS)
 Empresa: Kotai
 Local: Brazil (Remoto)
@@ -13310,7 +13581,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 173 de 466 =====
+===== VAGA 176 de 469 =====
 Título: Staff Software Engineer - Backend
 Empresa: Nuvemshop
 Local: Brazil (Remoto)
@@ -13375,7 +13646,7 @@ Employment type: Full-time
 Industries: Technology, Information and Internet
 
 
-===== VAGA 174 de 466 =====
+===== VAGA 177 de 469 =====
 Título: Fullstack JavaScript Developer - Latin America - Remote
 Empresa: Azumo
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -13446,7 +13717,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 175 de 466 =====
+===== VAGA 178 de 469 =====
 Título: Frontend Developer
 Empresa: Bees Brasil
 Local: Campinas, São Paulo, Brazil (Remoto)
@@ -13564,7 +13835,7 @@ Employment type: Full-time
 Industries: Technology, Information and Media
 
 
-===== VAGA 176 de 466 =====
+===== VAGA 179 de 469 =====
 Título: Desenvolvedor Back-end Node.js
 Empresa: innolevels
 Local: Greater São Paulo Area (Remoto)
@@ -13624,7 +13895,7 @@ Employment type: Full-time
 Industries: Internet Publishing
 
 
-===== VAGA 177 de 466 =====
+===== VAGA 180 de 469 =====
 Título: JavaScript Developer
 Empresa: Sigma Software
 Local: Greater São Paulo Area (Remoto)
@@ -13708,7 +13979,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 178 de 466 =====
+===== VAGA 181 de 469 =====
 Título: Full Stack Developer ID84745
 Empresa: AgileEngine
 Local: Salvador, Bahia, Brazil (Remoto)
@@ -13761,7 +14032,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 179 de 466 =====
+===== VAGA 182 de 469 =====
 Título: Backend Engineer (Node) - Remote Work | REF#302640
 Empresa: BairesDev
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -13815,7 +14086,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 180 de 466 =====
+===== VAGA 183 de 469 =====
 Título: Middle Full Stack Engineer ID86300
 Empresa: AgileEngine
 Local: Florianópolis, Santa Catarina, Brazil (Remoto)
@@ -13868,7 +14139,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 181 de 466 =====
+===== VAGA 184 de 469 =====
 Título: Desenvolvedor de front-end
 Empresa: Starsoft
 Local: Barueri, São Paulo, Brazil (Remoto)
@@ -13918,7 +14189,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 182 de 466 =====
+===== VAGA 185 de 469 =====
 Título: Desenvolvedor de Software Frontend - Remote Work
 Empresa: BairesDev
 Local: Fortaleza, Ceará, Brazil (Remoto)
@@ -13988,7 +14259,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 183 de 466 =====
+===== VAGA 186 de 469 =====
 Título: Desenvolvedor(a) Full-Stack Pleno — Node/Next.js + .NET
 Empresa: Inspira Rede de Educadores
 Local: Não informado (Remoto)
@@ -14063,7 +14334,7 @@ A Inspira reúne escolas de todo o Brasil em torno de um mesmo propósito: fazer
 Venha fazer parte dessa Rede e viver Inspira. Se você acredita que educação é um caminho para um futuro melhor, você já é um Inspirado. 💙
 
 
-===== VAGA 184 de 466 =====
+===== VAGA 187 de 469 =====
 Título: Desenvolvedor Front End Pleno
 Empresa: Cadastra
 Local: Não informado (Remoto)
@@ -14185,7 +14456,7 @@ Total Pass 🏋🏽‍♀️
 Parceria com a Fecap - descontos de 10% a 20% em cursos de Graduação, pós-graduação, MBA e Mestrado 🎓
 
 
-===== VAGA 185 de 466 =====
+===== VAGA 188 de 469 =====
 Título: Desenvolvedor de back end
 Empresa: Onzze
 Local: Greater Belo Horizonte (Remoto)
@@ -14251,7 +14522,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 186 de 466 =====
+===== VAGA 189 de 469 =====
 Título: DESENVOLVEDOR FULL STACK
 Empresa: Mampei Funada
 Local: Presidente Prudente, São Paulo, Brazil (Remoto)
@@ -14281,7 +14552,7 @@ Employment type: Full-time
 Industries: Construction
 
 
-===== VAGA 187 de 466 =====
+===== VAGA 190 de 469 =====
 Título: Full Stack Engineer
 Empresa: NexaLogix
 Local: São Paulo, Brazil (Remoto)
@@ -14315,7 +14586,7 @@ Employment type: Contract
 Industries: Staffing and Recruiting
 
 
-===== VAGA 188 de 466 =====
+===== VAGA 191 de 469 =====
 Título: Desenvolvedor(a) Front End II
 Empresa: CPQD
 Local: Campinas, São Paulo, Brazil (Remoto)
@@ -14424,7 +14695,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 189 de 466 =====
+===== VAGA 192 de 469 =====
 Título: Desenvolvedor(a) Front End Pleno - React
 Empresa: frete.com
 Local: Brazil (Remoto)
@@ -14537,7 +14808,7 @@ Employment type: Full-time
 Industries: Internet Marketplace Platforms
 
 
-===== VAGA 190 de 466 =====
+===== VAGA 193 de 469 =====
 Título: Desenvolvedor(a) Web
 Empresa: Deltasul Utilidades
 Local: Santa Cruz do Sul, Rio Grande do Sul, Brazil (Remoto)
@@ -14590,7 +14861,7 @@ Employment type: Full-time
 Industries: Retail
 
 
-===== VAGA 191 de 466 =====
+===== VAGA 194 de 469 =====
 Título: Desenvolvedor Web Fullstack Pleno
 Empresa: Shift
 Local: Não informado (Remoto)
@@ -14738,7 +15009,7 @@ ESSE É O NOSSO #JEITOSHIFTDESER!
 Estamos sediados em São José do Rio Preto (SP), mas temos equipes em home office por todo o Brasil! E, desde 2014, ocupamos um lugar no ranking das Melhores Empresas para Trabalhar, pelo Great Place to Work (GPTW), e, recentemente, estamos entre os Lugares Incríveis Para Trabalhar, pela FIA/UOL. ⭐
 
 
-===== VAGA 192 de 466 =====
+===== VAGA 195 de 469 =====
 Título: Back-End Developer
 Empresa: GyanSys Inc.
 Local: Brazil (Remoto)
@@ -14812,7 +15083,7 @@ Employment type: Full-time
 Industries: Technology, Information and Media
 
 
-===== VAGA 193 de 466 =====
+===== VAGA 196 de 469 =====
 Título: DESENVOLVEDOR FULL STACK PLENO
 Empresa: WEGA MOTORS BRASIL
 Local: Itajai, Roraima, Brazil (Remoto)
@@ -14869,7 +15140,7 @@ Employment type: Full-time
 Industries: Semiconductor Manufacturing
 
 
-===== VAGA 194 de 466 =====
+===== VAGA 197 de 469 =====
 Título: Desenvolvedor(a) Fullstack Node
 Empresa: Trinus Co
 Local: Londrina, Paraná, Brazil (Remoto)
@@ -14947,7 +15218,7 @@ Employment type: Full-time
 Industries: Financial Services
 
 
-===== VAGA 195 de 466 =====
+===== VAGA 198 de 469 =====
 Título: Front-End Developer - Remote Work | REF#170687
 Empresa: BairesDev
 Local: Natal, Rio Grande do Norte, Brazil (Remoto)
@@ -14996,7 +15267,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 196 de 466 =====
+===== VAGA 199 de 469 =====
 Título: Backend Developer (LatAm based)
 Empresa: Nabu Casa
 Local: Greater São Paulo Area (Remoto)
@@ -15099,7 +15370,7 @@ Employment type: Full-time
 Industries: Technology, Information and Internet
 
 
-===== VAGA 197 de 466 =====
+===== VAGA 200 de 469 =====
 Título: Desenvolvedor full stack
 Empresa: Tata Consultancy Services
 Local: Brazil (Remoto)
@@ -15178,7 +15449,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 198 de 466 =====
+===== VAGA 201 de 469 =====
 Título: Intermediate Frontend Developer
 Empresa: BEES
 Local: Campinas, São Paulo, Brazil (Remoto)
@@ -15251,7 +15522,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 199 de 466 =====
+===== VAGA 202 de 469 =====
 Título: Desenvolvedor(a) Fullstack (Node/React) - Pleno
 Empresa: VENHA SER #SANGUELARANJA 🧡🚀
 Local: Não informado (Remoto)
@@ -15381,7 +15652,7 @@ Na FCamara todos são bem-vindos, para nós, Diversidade, Respeito e Ética, sã
 E aí, está pronto para fazer parte de um time incrível e ser protagonista da própria história?
 
 
-===== VAGA 200 de 466 =====
+===== VAGA 203 de 469 =====
 Título: Desenvolvedor Back End
 Empresa: PX Bank
 Local: Greater Belo Horizonte (Remoto)
@@ -15415,7 +15686,7 @@ Employment type: Full-time
 Industries: Banking
 
 
-===== VAGA 201 de 466 =====
+===== VAGA 204 de 469 =====
 Título: Desenvolvedor Node.JS - RJ
 Empresa: innolevels
 Local: Greater Rio de Janeiro (Remoto)
@@ -15475,7 +15746,7 @@ Employment type: Full-time
 Industries: Internet Publishing
 
 
-===== VAGA 202 de 466 =====
+===== VAGA 205 de 469 =====
 Título: Desenvolvedor Full Stack (React)
 Empresa: Clínica do Leite
 Local: Piracicaba, São Paulo, Brazil (Remoto)
@@ -15539,7 +15810,7 @@ Employment type: Full-time
 Industries: Utilities
 
 
-===== VAGA 203 de 466 =====
+===== VAGA 206 de 469 =====
 Título: JavaScript Developer
 Empresa: Hired
 Local: Brazil (Remoto)
@@ -15615,7 +15886,7 @@ Employment type: Full-time
 Industries: Marketing Services, Staffing and Recruiting, and Technology, Information and Media
 
 
-===== VAGA 204 de 466 =====
+===== VAGA 207 de 469 =====
 Título: Desenvolvedor Front-end React - SP
 Empresa: innolevels
 Local: Greater São Paulo Area (Remoto)
@@ -15675,7 +15946,7 @@ Employment type: Full-time
 Industries: Internet Publishing
 
 
-===== VAGA 205 de 466 =====
+===== VAGA 208 de 469 =====
 Título: Desenvolvedor Back-end Node.js - SP
 Empresa: innolevels
 Local: Greater São Paulo Area (Remoto)
@@ -15735,7 +16006,7 @@ Employment type: Full-time
 Industries: Internet Publishing
 
 
-===== VAGA 206 de 466 =====
+===== VAGA 209 de 469 =====
 Título: Desenvolvedor de back end
 Empresa: MBRAS
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -15797,7 +16068,7 @@ Employment type: Full-time
 Industries: Real Estate, Software Development, and IT Services and IT Consulting
 
 
-===== VAGA 207 de 466 =====
+===== VAGA 210 de 469 =====
 Título: Desenvolvedor Fullstack Node.js React
 Empresa: Jobbol
 Local: Manaus, Amazonas, Brazil (Remoto)
@@ -15837,7 +16108,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 208 de 466 =====
+===== VAGA 211 de 469 =====
 Título: Desenvolvedor Full Stack PL
 Empresa: MULTIPEDIDOS
 Local: Joinville - SC (Remoto)
@@ -15917,7 +16188,7 @@ E aí, bora?!
 Vem ser um Oranger!
 
 
-===== VAGA 209 de 466 =====
+===== VAGA 212 de 469 =====
 Título: Front-End Application Developer
 Empresa: Tata Consultancy Services
 Local: São Paulo, Brazil (Remoto)
@@ -15984,7 +16255,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 210 de 466 =====
+===== VAGA 213 de 469 =====
 Título: Desenvolvedor BackEnd Node - Pleno
 Empresa: FCamara
 Local: Brazil (Remoto)
@@ -16058,7 +16329,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 211 de 466 =====
+===== VAGA 214 de 469 =====
 Título: Full Stack JavaScript/TypeScript Engineer
 Empresa: Jobgether
 Local: Brazil (Remoto)
@@ -16133,7 +16404,7 @@ Employment type: Full-time
 Industries: Internet Marketplace Platforms
 
 
-===== VAGA 212 de 466 =====
+===== VAGA 215 de 469 =====
 Título: #Hckt 2026 - Desenvolvedor Full Stack (Python e React)
 Empresa: Claro no Hacktown 2026
 Local: Não informado (Remoto)
@@ -16224,7 +16495,7 @@ Curtiu? Então se inscreva agora e venha construir o novo com a gente!
 #VemPraClaro
 
 
-===== VAGA 213 de 466 =====
+===== VAGA 216 de 469 =====
 Título: DESENVOLVEDOR PLENO (FULL-STACK)
 Empresa: Quality Digital
 Local: Não informado (Remoto)
@@ -16353,7 +16624,7 @@ Aqui, não faltam histórias para contar!
 ☕ Então, que tal pegar sua xícara de café, chá, suco ou sua bebida preferida e saber mais sobre nós, se encantar, conferir nossas vagas e fazer parte desse time em constante crescimento? 🚀💖
 
 
-===== VAGA 214 de 466 =====
+===== VAGA 217 de 469 =====
 Título: Desenvolvedor(a) Fullstack
 Empresa: Capgemini
 Local: São Paulo, Brazil (Remoto)
@@ -16412,7 +16683,7 @@ Employment type: Full-time
 Industries: IT System Operations and Maintenance
 
 
-===== VAGA 215 de 466 =====
+===== VAGA 218 de 469 =====
 Título: Pessoa Desenvolvedora Fullstack PHP/React Pl (Remoto) - 0336
 Empresa: Starian
 Local: Não informado (Remoto)
@@ -16500,7 +16771,7 @@ A inteligência artificial é parte da nossa essência. Atuamos guiados por uma 
 Faça parte de equipes que transformam desafios em soluções reais e ajudam a guiar negócios rumo ao futuro.
 
 
-===== VAGA 216 de 466 =====
+===== VAGA 219 de 469 =====
 Título: Desenvolvedor React
 Empresa: Auth21
 Local: Curitiba, Paraná, Brazil (Remoto)
@@ -16611,7 +16882,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 217 de 466 =====
+===== VAGA 220 de 469 =====
 Título: Desenvolvedor Full Stack
 Empresa: PRIMETOUR Viagens & Experiências
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -16659,7 +16930,7 @@ Employment type: Full-time
 Industries: Travel Arrangements
 
 
-===== VAGA 218 de 466 =====
+===== VAGA 221 de 469 =====
 Título: Desenvolvedor(a) Back-End Pleno (Remoto)
 Empresa: VExpenses
 Local: Não informado (Remoto)
@@ -16756,7 +17027,7 @@ Nosso time é 100% remoto, com mais de 250 pessoas espalhadas pelo Brasil e unid
 Dentro do Ecossistema VR, ajudamos mais de 7.000 empresas como Nike, L’Occitane, Iguatemi, OLX, Ri Happy e Centauro a ganhar tempo, reduzir custos e trazer mais segurança e transparência para seus processos.
 
 
-===== VAGA 219 de 466 =====
+===== VAGA 222 de 469 =====
 Título: Fullstack developer, mid [remote from Brasil, working on PT time zone]
 Empresa: VENHA SER #SANGUELARANJA 🧡🚀
 Local: Não informado (Remoto)
@@ -16868,7 +17139,7 @@ Na FCamara todos são bem-vindos, para nós, Diversidade, Respeito e Ética, sã
 E aí, está pronto para fazer parte de um time incrível e ser protagonista da própria história?
 
 
-===== VAGA 220 de 466 =====
+===== VAGA 223 de 469 =====
 Título: Desenvolvedor Node.js - Trabalho Remoto
 Empresa: BairesDev
 Local: Recife, Pernambuco, Brazil (Remoto)
@@ -16938,7 +17209,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 221 de 466 =====
+===== VAGA 224 de 469 =====
 Título: Pessoa Desenvolvedora Back End Node Js
 Empresa: Elumini Outdoing IT
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -17024,7 +17295,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting and Financial Services
 
 
-===== VAGA 222 de 466 =====
+===== VAGA 225 de 469 =====
 Título: Engenheiro de Software Node.js - Trabalho Remoto
 Empresa: BairesDev
 Local: São Paulo, Brazil (Remoto)
@@ -17094,7 +17365,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 223 de 466 =====
+===== VAGA 226 de 469 =====
 Título: Staff Software Engineer, Backend
 Empresa: Nango
 Local: Brazil (Remoto)
@@ -17139,7 +17410,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 224 de 466 =====
+===== VAGA 227 de 469 =====
 Título: Frontend Engineer (React/Next.js) - Remote Work
 Empresa: BairesDev
 Local: Rio de Janeiro, Brazil (Remoto)
@@ -17219,7 +17490,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 225 de 466 =====
+===== VAGA 228 de 469 =====
 Título: Full Stack Software Engineer (React + Typescript)
 Empresa: Velozient
 Local: Brazil (Remoto)
@@ -17289,7 +17560,7 @@ Employment type: Contract
 Industries: Software Development, IT Services and IT Consulting, and IT System Custom Software Development
 
 
-===== VAGA 226 de 466 =====
+===== VAGA 229 de 469 =====
 Título: Desenvolvedor Full-Stack
 Empresa: Check Commerce ®
 Local: Florianópolis, Santa Catarina, Brazil (Remoto)
@@ -17346,7 +17617,7 @@ Employment type: Full-time
 Industries: Internet Publishing
 
 
-===== VAGA 227 de 466 =====
+===== VAGA 230 de 469 =====
 Título: Desenvolvedor(a) Full-Stack | Pleno
 Empresa: Horizon - Inovação e Tecnologia
 Local: Salvador, Bahia, Brazil (Remoto)
@@ -17442,7 +17713,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 228 de 466 =====
+===== VAGA 231 de 469 =====
 Título: Desenvolvedor Full Stack
 Empresa: Schmersal Brasil
 Local: Brazil (Remoto)
@@ -17498,7 +17769,7 @@ Employment type: Full-time
 Industries: Manufacturing
 
 
-===== VAGA 229 de 466 =====
+===== VAGA 232 de 469 =====
 Título: Full Stack Developer (Go) - Remote Work | REF#295845
 Empresa: BairesDev
 Local: Greater Rio de Janeiro (Remoto)
@@ -17552,7 +17823,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 230 de 466 =====
+===== VAGA 233 de 469 =====
 Título: Desenvolvedor full stack
 Empresa: FalaBoss
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -17614,7 +17885,7 @@ Employment type: Full-time
 Industries: Advertising Services
 
 
-===== VAGA 231 de 466 =====
+===== VAGA 234 de 469 =====
 Título: DESENVOLVEDOR FULLSTACK NODE.JS /.NET C# CORE PLENO - REMOTO
 Empresa: ARTIUM SOLUÇÕES
 Local: São Paulo (Remoto)
@@ -17628,7 +17899,7 @@ Habilidade para trabalhar em equipe e boa comunicação.
 Formação superior em Ciência da Computação, Engenharia de Software ou áreas correlatas (desejável).
 
 
-===== VAGA 232 de 466 =====
+===== VAGA 235 de 469 =====
 Título: Work From Home Lead React Engineer
 Empresa: BAIRESDEV
 Local: Barueri + 35 cidades (Remoto)
@@ -17680,7 +17951,7 @@ Supportive environment with mentorship, promotions, skill development, and diver
 Apply now and become part of a global team where your unique talents can truly thrive!
 
 
-===== VAGA 233 de 466 =====
+===== VAGA 236 de 469 =====
 Título: Work From Home Software Engineer (Python/React)
 Empresa: BAIRESDEV
 Local: Barueri + 35 cidades (Remoto)
@@ -17724,7 +17995,7 @@ Supportive environment with mentorship, promotions, skill development, and diver
 Apply now and become part of a global team where your unique talents can truly thrive!
 
 
-===== VAGA 234 de 466 =====
+===== VAGA 237 de 469 =====
 Título: 483 - Desenvolvedor(a) BackEnd PL
 Empresa: SEIDOR
 Local: Belo Horizonte, Minas Gerais, Brazil (Remoto)
@@ -17780,7 +18051,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 235 de 466 =====
+===== VAGA 238 de 469 =====
 Título: Desenvolvedor Web Pleno
 Empresa: Kalfe Calçados
 Local: Sorocaba, São Paulo, Brazil (Remoto)
@@ -17832,7 +18103,7 @@ Employment type: Full-time
 Industries: Wholesale Footwear
 
 
-===== VAGA 236 de 466 =====
+===== VAGA 239 de 469 =====
 Título: Full-Stack Elixir + React Engineer - Remote Work
 Empresa: BairesDev
 Local: Greater Salvador (Remoto)
@@ -17894,7 +18165,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 237 de 466 =====
+===== VAGA 240 de 469 =====
 Título: 482 - Desenvolvedor(a) Frontend PL
 Empresa: SEIDOR
 Local: Belo Horizonte, Minas Gerais, Brazil (Remoto)
@@ -17945,7 +18216,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 238 de 466 =====
+===== VAGA 241 de 469 =====
 Título: Staff Frontend Engineer - Remote Work
 Empresa: BairesDev
 Local: Brazil (Remoto)
@@ -18037,7 +18308,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 239 de 466 =====
+===== VAGA 242 de 469 =====
 Título: Desenvolvedor de Software Frontend - Trabalho Remoto
 Empresa: BairesDev
 Local: Fortaleza, Ceará, Brazil (Remoto)
@@ -18109,7 +18380,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 240 de 466 =====
+===== VAGA 243 de 469 =====
 Título: Desenvolvedor(a) Backend Node.js (Pleno/Sênior)
 Empresa: HOOBOX Robotics
 Local: São Paulo, Brazil (Remoto)
@@ -18193,7 +18464,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 241 de 466 =====
+===== VAGA 244 de 469 =====
 Título: Desenvolvedor de back end
 Empresa: Volix
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -18251,7 +18522,7 @@ Employment type: Full-time
 Industries: IT System Data Services
 
 
-===== VAGA 242 de 466 =====
+===== VAGA 245 de 469 =====
 Título: DESENVOLVEDOR BACK-END
 Empresa: Leve Saúde
 Local: Não informado (Remoto)
@@ -18377,7 +18648,7 @@ Nosso Modelo de Atuação tem três pilares que expressam as nossas crenças sob
 Aqui na nossa página, você encontrará as oportunidades disponíveis. Estamos na torcida por você! 🚀
 
 
-===== VAGA 243 de 466 =====
+===== VAGA 246 de 469 =====
 Título: Engenheiro(a) de Software Front-end React - AI Native
 Empresa: VENHA SER #SANGUELARANJA 🧡🚀
 Local: Não informado (Remoto)
@@ -18479,7 +18750,7 @@ Na FCamara todos são bem-vindos, para nós, Diversidade, Respeito e Ética, sã
 E aí, está pronto para fazer parte de um time incrível e ser protagonista da própria história?
 
 
-===== VAGA 244 de 466 =====
+===== VAGA 247 de 469 =====
 Título: Full Stack Laravel + React Developer - Remote, Latin America
 Empresa: Bluelight
 Local: Salvador, Bahia, Brazil (Remoto)
@@ -18523,7 +18794,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 245 de 466 =====
+===== VAGA 248 de 469 =====
 Título: Desenvolvedor(a) Fullstack Pleno/Sênior
 Empresa: FASTBUILT
 Local: Blumenau, Santa Catarina, Brazil (Remoto)
@@ -18566,7 +18837,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 246 de 466 =====
+===== VAGA 249 de 469 =====
 Título: AI Product Engineer, Finance Systems (Full Stack, Next.js + Supabase)
 Empresa: Koin Limited
 Local: Brazil (Remoto)
@@ -18686,7 +18957,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 247 de 466 =====
+===== VAGA 250 de 469 =====
 Título: Lead Fullstack Engineer (React+Next.js)
 Empresa: N-iX
 Local: Brazil (Remoto)
@@ -18743,7 +19014,7 @@ Employment type: Full-time
 Industries: Construction, Software Development, and IT Services and IT Consulting
 
 
-===== VAGA 248 de 466 =====
+===== VAGA 251 de 469 =====
 Título: Frontend Engineer & UI Designer (Developer Tooling)
 Empresa: SearchApi
 Local: Brazil (Remoto)
@@ -18862,7 +19133,7 @@ Employment type: Full-time
 Industries: IT System Data Services
 
 
-===== VAGA 249 de 466 =====
+===== VAGA 252 de 469 =====
 Título: Full-Stack Engineer (Remote)
 Empresa: Tempo (YC S23)
 Local: Brazil (Remoto)
@@ -18908,7 +19179,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 250 de 466 =====
+===== VAGA 253 de 469 =====
 Título: Fullstack Engineer II
 Empresa: Skeelo
 Local: Brazil (Remoto)
@@ -18983,7 +19254,7 @@ Employment type: Full-time
 Industries: Entertainment Providers
 
 
-===== VAGA 251 de 466 =====
+===== VAGA 254 de 469 =====
 Título: Full Stack Developer
 Empresa: Edelman Intelligence
 Local: Brasília, Federal District, Brazil (Remoto)
@@ -19077,7 +19348,7 @@ Employment type: Full-time
 Industries: Research
 
 
-===== VAGA 252 de 466 =====
+===== VAGA 255 de 469 =====
 Título: Fullstack Engineer, NodeJS & ReactJS | LATAM
 Empresa: Deel
 Local: Brazil (Remoto)
@@ -19205,7 +19476,7 @@ Employment type: Full-time
 Industries: Human Resources Services
 
 
-===== VAGA 253 de 466 =====
+===== VAGA 256 de 469 =====
 Título: Desenvolvedor Front-end React - Pleno
 Empresa: Jobgether
 Local: Brazil (Remoto)
@@ -19283,7 +19554,7 @@ Employment type: Full-time
 Industries: Internet Marketplace Platforms
 
 
-===== VAGA 254 de 466 =====
+===== VAGA 257 de 469 =====
 Título: Desenvolvedor Javascript - Automação e Integrações
 Empresa: Cooper Card Administradora de Cartões Ltda
 Local: Maringá, Paraná, Brazil (Remoto)
@@ -19315,7 +19586,7 @@ Employment type: Full-time
 Industries: Financial Services
 
 
-===== VAGA 255 de 466 =====
+===== VAGA 258 de 469 =====
 Título: Front-End Developer - Remote Work | REF#5830
 Empresa: BairesDev
 Local: Greater Rio de Janeiro (Remoto)
@@ -19364,7 +19635,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 256 de 466 =====
+===== VAGA 259 de 469 =====
 Título: Desenvolvedor Front-end Pleno
 Empresa: MENKHOFF, CHOANNE' LEE
 Local: Greater Belo Horizonte (Remoto)
@@ -19396,7 +19667,7 @@ Employment type: Full-time
 Industries: Individual and Family Services
 
 
-===== VAGA 257 de 466 =====
+===== VAGA 260 de 469 =====
 Título: Staff Software Engineer - Frontend
 Empresa: GRUPO SBF
 Local: Brazil (Remoto)
@@ -19448,7 +19719,7 @@ Employment type: Full-time
 Industries: Retail
 
 
-===== VAGA 258 de 466 =====
+===== VAGA 261 de 469 =====
 Título: Backend Engineer (Node.js + JavaScript) - Remote Work | REF#299136
 Empresa: BairesDev
 Local: Brazil (Remoto)
@@ -19513,7 +19784,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 259 de 466 =====
+===== VAGA 262 de 469 =====
 Título: Desenvolvedor Front-end Pleno
 Empresa: VILT
 Local: Brazil (Remoto)
@@ -19573,7 +19844,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 260 de 466 =====
+===== VAGA 263 de 469 =====
 Título: Front-end Engineer
 Empresa: SYDLE
 Local: Belo Horizonte, Minas Gerais, Brazil (Remoto)
@@ -19658,7 +19929,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 261 de 466 =====
+===== VAGA 264 de 469 =====
 Título: [Talent Pool] Software Engineer (Frontend)
 Empresa: Azion
 Local: Greater Porto Alegre (Remoto)
@@ -19737,7 +20008,7 @@ Employment type: Full-time
 Industries: Technology, Information and Internet
 
 
-===== VAGA 262 de 466 =====
+===== VAGA 265 de 469 =====
 Título: Front-End Engineer (AI Project) - Remote Work | REF#283492
 Empresa: BairesDev
 Local: Salvador, Bahia, Brazil (Remoto)
@@ -19789,7 +20060,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 263 de 466 =====
+===== VAGA 266 de 469 =====
 Título: Front-End Engineer (AI Project) - Remote Work | REF#283493
 Empresa: BairesDev
 Local: Recife, Pernambuco, Brazil (Remoto)
@@ -19841,7 +20112,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 264 de 466 =====
+===== VAGA 267 de 469 =====
 Título: Desenvolvedor(a) de Sistemas | FRONTEND
 Empresa: Brisanet Telecomunicações
 Local: Juazeiro do Norte, Ceará, Brazil (Remoto)
@@ -19927,7 +20198,7 @@ Employment type: Full-time
 Industries: Telecommunications
 
 
-===== VAGA 265 de 466 =====
+===== VAGA 268 de 469 =====
 Título: Front End Developer JavaScript / Angular
 Empresa: AIknow srl
 Local: Viamão, Rio Grande do Sul, Brazil (Remoto)
@@ -19972,7 +20243,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 266 de 466 =====
+===== VAGA 269 de 469 =====
 Título: Frontend Engineer (GIS & Data Visualization)
 Empresa: Applaudo
 Local: Rio de Janeiro, Brazil (Remoto)
@@ -20038,7 +20309,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 267 de 466 =====
+===== VAGA 270 de 469 =====
 Título: Desenvolvedor Front End
 Empresa: Zeentech
 Local: São Bernardo do Campo, São Paulo, Brazil (Remoto)
@@ -20082,7 +20353,7 @@ Employment type: Full-time
 Industries: Utility System Construction
 
 
-===== VAGA 268 de 466 =====
+===== VAGA 271 de 469 =====
 Título: Front-end Developer
 Empresa: SYDLE
 Local: Belo Horizonte, Minas Gerais, Brazil (Remoto)
@@ -20167,7 +20438,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 269 de 466 =====
+===== VAGA 272 de 469 =====
 Título: Desenvolvedor(a) Front-end
 Empresa: SYDLE
 Local: Belo Horizonte, Minas Gerais, Brazil (Remoto)
@@ -20252,7 +20523,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 270 de 466 =====
+===== VAGA 273 de 469 =====
 Título: Desenvolvedor Front-end I
 Empresa: Orizon
 Local: Brazil (Remoto)
@@ -20329,7 +20600,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 271 de 466 =====
+===== VAGA 274 de 469 =====
 Título: Desenvolvedor Frontend
 Empresa: Jobbol
 Local: São Bernardo do Campo, São Paulo, Brazil (Remoto)
@@ -20368,7 +20639,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 272 de 466 =====
+===== VAGA 275 de 469 =====
 Título: Software Engineer | Backend Pleno
 Empresa: Sankhya
 Local: Brazil (Remoto)
@@ -20430,7 +20701,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 273 de 466 =====
+===== VAGA 276 de 469 =====
 Título: Desenvolvedor(a) BackEnd
 Empresa: Avanade
 Local: Recife, Pernambuco, Brazil (Remoto)
@@ -20483,7 +20754,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 274 de 466 =====
+===== VAGA 277 de 469 =====
 Título: Software Engineer Backend - IT Credit & FX
 Empresa: BTG Pactual
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -20582,7 +20853,7 @@ Employment type: Full-time
 Industries: Financial Services
 
 
-===== VAGA 275 de 466 =====
+===== VAGA 278 de 469 =====
 Título: Desenvolvedor Node autêntico - Trabalho Remoto | REF#189450
 Empresa: BairesDev
 Local: Brasília, Federal District, Brazil (Remoto)
@@ -20646,7 +20917,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 276 de 466 =====
+===== VAGA 279 de 469 =====
 Título: Back End Developer
 Empresa: Mission.dev
 Local: Brazil (Remoto)
@@ -20694,7 +20965,7 @@ Employment type: Contract
 Industries: Software Development and IT Services and IT Consulting
 
 
-===== VAGA 277 de 466 =====
+===== VAGA 280 de 469 =====
 Título: Backend Software Engineer
 Empresa: Worldpay
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -20743,7 +21014,7 @@ Employment type: Full-time
 Industries: Financial Services
 
 
-===== VAGA 278 de 466 =====
+===== VAGA 281 de 469 =====
 Título: Lead Frontend React Engineer - Work from home
 Empresa: Nortal
 Local: Greater Curitiba (Remoto)
@@ -20815,7 +21086,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 279 de 466 =====
+===== VAGA 282 de 469 =====
 Título: (1425) Lead Frontend (JavaScript/TypeScript & React) Engineer - Work from Home
 Empresa: Nortal
 Local: Greater Rio de Janeiro (Remoto)
@@ -20919,7 +21190,7 @@ Employment type: Full-time
 Industries: Spectator Sports, Software Development, and Information Services
 
 
-===== VAGA 280 de 466 =====
+===== VAGA 283 de 469 =====
 Título: Desenvolvedor Full Stack Pleno
 Empresa: Jobbol
 Local: Salvador, Bahia, Brazil (Remoto)
@@ -20956,7 +21227,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 281 de 466 =====
+===== VAGA 284 de 469 =====
 Título: DESENVOLVEDOR FULL STACK - PLENO
 Empresa: ACR Safety on Lifting & Handling
 Local: São Bernardo do Campo, São Paulo, Brazil (Remoto)
@@ -20990,7 +21261,7 @@ Employment type: Full-time
 Industries: Industrial Automation
 
 
-===== VAGA 282 de 466 =====
+===== VAGA 285 de 469 =====
 Título: Mid-Level Full Stack Software Engineer – Cloud Applications
 Empresa: Jitterbit
 Local: Greater Rio de Janeiro (Remoto)
@@ -21063,7 +21334,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 283 de 466 =====
+===== VAGA 286 de 469 =====
 Título: Full Stack Web Engineer (Python & React)
 Empresa: Oowlish
 Local: Greater Fortaleza (Remoto)
@@ -21162,7 +21433,7 @@ Employment type: Full-time
 Industries: Transportation, Logistics, Supply Chain and Storage
 
 
-===== VAGA 284 de 466 =====
+===== VAGA 287 de 469 =====
 Título: TypeScript Developer - Remote Work | REF#282262
 Empresa: BairesDev
 Local: Natal, Rio Grande do Norte, Brazil (Remoto)
@@ -21218,7 +21489,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 285 de 466 =====
+===== VAGA 288 de 469 =====
 Título: Staff Software Engineer (TypeScript / Distributed Systems)
 Empresa: Zentact, Inc.
 Local: Brazil (Remoto)
@@ -21335,7 +21606,7 @@ Employment type: Full-time
 Industries: Financial Services
 
 
-===== VAGA 286 de 466 =====
+===== VAGA 289 de 469 =====
 Título: Engenheiro de Software Full Stack - Pleno (React/Node.js/TypeScript)
 Empresa: MedSimples
 Local: Campinas, São Paulo, Brazil (Remoto)
@@ -21395,7 +21666,7 @@ Employment type: Full-time
 Industries: Financial Services
 
 
-===== VAGA 287 de 466 =====
+===== VAGA 290 de 469 =====
 Título: Desenvolvedor Web React JS | Pigz Roraima
 Empresa: Pigz
 Local: Boa Vista, Roraima, Brazil (Remoto)
@@ -21431,7 +21702,7 @@ Employment type: Full-time
 Industries: Computer and Network Security
 
 
-===== VAGA 288 de 466 =====
+===== VAGA 291 de 469 =====
 Título: Desenvolvedor Full Stack
 Empresa: Fundação Dom Cabral
 Local: Nova Lima, Minas Gerais, Brazil (Remoto)
@@ -21517,7 +21788,7 @@ Employment type: Full-time
 Industries: Education Administration Programs
 
 
-===== VAGA 289 de 466 =====
+===== VAGA 292 de 469 =====
 Título: Desenvolvedor BackEnd Pl - Rio de Janeiro
 Empresa: OceanPact Serviços Marítimos
 Local: Rio de Janeiro, Rio de Janeiro, Brazil (Remoto)
@@ -21595,7 +21866,7 @@ Employment type: Full-time
 Industries: Environmental Services
 
 
-===== VAGA 290 de 466 =====
+===== VAGA 293 de 469 =====
 Título: Desenvolvedor Backend
 Empresa: Zeentech
 Local: São Bernardo do Campo, São Paulo, Brazil (Remoto)
@@ -21639,7 +21910,7 @@ Employment type: Full-time
 Industries: Utility System Construction
 
 
-===== VAGA 291 de 466 =====
+===== VAGA 294 de 469 =====
 Título: Desenvolvedor Backend
 Empresa: inChurch
 Local: Greater Rio de Janeiro (Remoto)
@@ -21685,7 +21956,7 @@ Employment type: Full-time
 Industries: Internet Publishing
 
 
-===== VAGA 292 de 466 =====
+===== VAGA 295 de 469 =====
 Título: Desenvolvedor(a) Backend
 Empresa: Nelogica
 Local: Porto Alegre, Rio Grande do Sul, Brazil (Remoto)
@@ -21735,7 +22006,7 @@ Employment type: Full-time
 Industries: Software Development, Capital Markets, and IT Services and IT Consulting
 
 
-===== VAGA 293 de 466 =====
+===== VAGA 296 de 469 =====
 Título: Backend Engineer - São Paulo
 Empresa: Axonius
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -21792,7 +22063,7 @@ Employment type: Full-time
 Industries: Computer and Network Security
 
 
-===== VAGA 294 de 466 =====
+===== VAGA 297 de 469 =====
 Título: Desenvolvedor(a) Back End
 Empresa: Avanade
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -21847,7 +22118,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 295 de 466 =====
+===== VAGA 298 de 469 =====
 Título: Pessoa Engenheira de Software Backend
 Empresa: Tivita
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -21915,7 +22186,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 296 de 466 =====
+===== VAGA 299 de 469 =====
 Título: Desenvolvedor Web Fullstack - Remoto
 Empresa: NUCLEOGOV ASSESSORIA E TECNOLOGIA LTDA
 Local: Goiânia - GO (Remoto)
@@ -21986,7 +22257,7 @@ Plano Odontológico
 DayOff
 
 
-===== VAGA 297 de 466 =====
+===== VAGA 300 de 469 =====
 Título: Desenvolvedor Frontend
 Empresa: inChurch
 Local: Rio de Janeiro - RJ (Remoto)
@@ -22027,7 +22298,7 @@ Experiência com acessibilidade (WCAG) e internacionalização (i18n).
 *Vaga híbrida para residentes do Rio de Janeiro e remota para demais localidades.
 
 
-===== VAGA 298 de 466 =====
+===== VAGA 301 de 469 =====
 Título: Desenvolvedor Web Pleno Node.js e Vue.js
 Empresa: C A CHAVES LTDA
 Local: Nova Mutum - MT (Remoto)
@@ -22038,7 +22309,7 @@ Desenvolvedo Full Stack Pleno com expriência em Node.js e Vue.js para atuar no 
 Esperamos experiência com JavaScript/TypeScript, APIs REST, Git e bancos de dados. É importante ter boa capacidade de análise, oranização de código e trabalho em equipe.
 
 
-===== VAGA 299 de 466 =====
+===== VAGA 302 de 469 =====
 Título: Trabalhe de Casa Desenvolvedor Next.js
 Empresa: BAIRESDEV
 Local: Barueri + 35 cidades (Remoto)
@@ -22348,7 +22619,7 @@ Quero o Destaque Extra
 Agora não
 
 
-===== VAGA 300 de 466 =====
+===== VAGA 303 de 469 =====
 Título: Work From Home Fullstack Node + Nest + React Engineer
 Empresa: BAIRESDEV
 Local: Barueri + 35 cidades (Remoto)
@@ -22468,7 +22739,7 @@ Quero o Destaque Extra
 Agora não
 
 
-===== VAGA 301 de 466 =====
+===== VAGA 304 de 469 =====
 Título: Work From Home Fullstack Node + Nest + React Developer
 Empresa: BAIRESDEV
 Local: Barueri + 35 cidades (Remoto)
@@ -22588,7 +22859,7 @@ Quero o Destaque Extra
 Agora não
 
 
-===== VAGA 302 de 466 =====
+===== VAGA 305 de 469 =====
 Título: Work From Home React Frontend Developer
 Empresa: BAIRESDEV
 Local: Barueri + 35 cidades (Remoto)
@@ -22702,7 +22973,7 @@ Quero o Destaque Extra
 Agora não
 
 
-===== VAGA 303 de 466 =====
+===== VAGA 306 de 469 =====
 Título: Trabalhe de Casa Desenvolvedor Frontend
 Empresa: BAIRESDEV
 Local: Barueri + 35 cidades (Remoto)
@@ -22866,7 +23137,7 @@ Quero o Destaque Extra
 Agora não
 
 
-===== VAGA 304 de 466 =====
+===== VAGA 307 de 469 =====
 Título: Trabalhe de Casa Desenvolvedor Frontend - Next.js
 Empresa: BAIRESDEV
 Local: Barueri + 35 cidades (Remoto)
@@ -23049,7 +23320,7 @@ Quero o Destaque Extra
 Agora não
 
 
-===== VAGA 305 de 466 =====
+===== VAGA 308 de 469 =====
 Título: Work From Home Frontend Developer
 Empresa: BAIRESDEV
 Local: Barueri + 35 cidades (Remoto)
@@ -23180,7 +23451,7 @@ Quero o Destaque Extra
 Agora não
 
 
-===== VAGA 306 de 466 =====
+===== VAGA 309 de 469 =====
 Título: [Fully Remote] Full-Stack Software Engineer (Typescript, React, Next.js, Tailwind, Postgresql)
 Empresa: Reverie
 Local: São Paulo, Brazil (Remoto)
@@ -23232,7 +23503,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 307 de 466 =====
+===== VAGA 310 de 469 =====
 Título: DESENVOLVEDOR FULL-STACK PLENO (FOCO EM FRONT-END)
 Empresa: Dynamox
 Local: Florianópolis, Santa Catarina, Brazil (Remoto)
@@ -23294,7 +23565,7 @@ Employment type: Full-time
 Industries: Internet Publishing
 
 
-===== VAGA 308 de 466 =====
+===== VAGA 311 de 469 =====
 Título: Programador Full Stack
 Empresa: WiTI
 Local: Uru, São Paulo, Brazil (Remoto)
@@ -23358,7 +23629,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 309 de 466 =====
+===== VAGA 312 de 469 =====
 Título: Desenvolvedor Node Backend - Trabalho Remoto | REF#236895
 Empresa: BairesDev
 Local: Sorocaba, São Paulo, Brazil (Remoto)
@@ -23417,7 +23688,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 310 de 466 =====
+===== VAGA 313 de 469 =====
 Título: PROGRAMADOR WEB
 Empresa: Open System Tecnologia
 Local: Salvador, Bahia, Brazil (Remoto)
@@ -23462,7 +23733,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 311 de 466 =====
+===== VAGA 314 de 469 =====
 Título: Processo Seletivo -1797-12163441: Assistente Desenvolvedor(a) Web
 Empresa: SOFTEX
 Local: Brasília, Federal District, Brazil (Remoto)
@@ -23570,7 +23841,7 @@ Employment type: Full-time
 Industries: Consumer Services
 
 
-===== VAGA 312 de 466 =====
+===== VAGA 315 de 469 =====
 Título: Desenvolvedor Web Fullstack
 Empresa: AGTech agrotecnologia
 Local: São José do Rio Preto, São Paulo, Brazil (Remoto)
@@ -23619,7 +23890,7 @@ Employment type: Full-time
 Industries: Farming
 
 
-===== VAGA 313 de 466 =====
+===== VAGA 316 de 469 =====
 Título: Front End Web Developer
 Empresa: Fluke Corporation
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -23723,7 +23994,7 @@ Employment type: Full-time
 Industries: Appliances, Electrical, and Electronics Manufacturing
 
 
-===== VAGA 314 de 466 =====
+===== VAGA 317 de 469 =====
 Título: Full Stack Engineer
 Empresa: Tata Consultancy Services
 Local: Brazil (Remoto)
@@ -23802,7 +24073,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 315 de 466 =====
+===== VAGA 318 de 469 =====
 Título: Desenvolvedor full stack
 Empresa: Claw Express
 Local: São José, Santa Catarina, Brazil (Remoto)
@@ -23860,7 +24131,7 @@ Employment type: Contract
 Industries: Financial Services
 
 
-===== VAGA 316 de 466 =====
+===== VAGA 319 de 469 =====
 Título: P2P Node.js Engineer (100% Remote, Worldwide)
 Empresa: Holepunch
 Local: Brazil (Remoto)
@@ -23908,7 +24179,7 @@ Employment type: Full-time
 Industries: Technology, Information and Internet
 
 
-===== VAGA 317 de 466 =====
+===== VAGA 320 de 469 =====
 Título: Desenvolvedor Front-end
 Empresa: Click Interativo
 Local: Salvador, Bahia, Brazil (Remoto)
@@ -23979,7 +24250,7 @@ Employment type: Full-time
 Industries: Information Technology & Services
 
 
-===== VAGA 318 de 466 =====
+===== VAGA 321 de 469 =====
 Título: Desenvolvedor/ Desenvolvedora Frontend
 Empresa: Capgemini
 Local: Barueri, São Paulo, Brazil (Remoto)
@@ -24064,7 +24335,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 319 de 466 =====
+===== VAGA 322 de 469 =====
 Título: Desenvolvedor (a) Frontend Pleno
 Empresa: Aevium
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -24116,7 +24387,7 @@ Employment type: Full-time
 Industries: Computer and Network Security
 
 
-===== VAGA 320 de 466 =====
+===== VAGA 323 de 469 =====
 Título: Desenvolvedor Backend Node.js Pleno/Sênior
 Empresa: Growdev
 Local: Brazil (Remoto)
@@ -24167,7 +24438,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 321 de 466 =====
+===== VAGA 324 de 469 =====
 Título: Pessoa Desenvolvedora Front-End Plena | Vaga Afirmativa para Pessoas com Deficiência
 Empresa: Caju
 Local: Não informado (Remoto)
@@ -24297,7 +24568,7 @@ Que tal construir junto o nosso cajueiro?
 #VemProCajueiro 🧡
 
 
-===== VAGA 322 de 466 =====
+===== VAGA 325 de 469 =====
 Título: Desenvolvedor Frontend React (PLENO/SÊNIOR) - REMOTO
 Empresa: CEDRO SISTEMAS E TECNOLOGIA LTDA
 Local: Uberlândia - MG (Remoto)
@@ -24351,7 +24622,7 @@ NOSSOS BENEFÍCIOS PARA VOCÊ (PJ/Cooperado)
 Day off no aniversário.
 
 
-===== VAGA 323 de 466 =====
+===== VAGA 326 de 469 =====
 Título: DESENVOLVEDOR(a) NODE.JS PLENO
 Empresa: UNIBF
 Local: Joinville - SC (Presencial)
@@ -24448,7 +24719,7 @@ Após 3 meses:
 *Formato de trabalho: presencial de segunda a sexta-feira
 
 
-===== VAGA 324 de 466 =====
+===== VAGA 327 de 469 =====
 Título: Bolsista Fullstack Developer (React + Node.js + IA)
 Empresa: SAMBATECH
 Local: Belo Horizonte - MG (Remoto)
@@ -24503,7 +24774,7 @@ Se identificou? Então vem crescer com a gente!
 Se candidate agora ou compartilhe essa vaga com alguém que pode fazer parte do nosso time.
 
 
-===== VAGA 325 de 466 =====
+===== VAGA 328 de 469 =====
 Título: Desenvolvedor(a) Full Stack Pleno/Sênior
 Empresa: AUTEN ENERGY LTDA
 Local: Florianópolis - SC (Remoto)
@@ -24583,7 +24854,7 @@ O que oferecemos:
 ● Recesso remunerado de duas semanas após 1 ano de contrato.
 
 
-===== VAGA 326 de 466 =====
+===== VAGA 329 de 469 =====
 Título: 187 - Desenvolvedor Full Stack Pleno/Sênior (Node | React | React Native)
 Empresa: DEVELCODE INFORMATICA LTDA
 Local: Caxias do Sul - RS (Remoto)
@@ -24653,7 +24924,7 @@ CI/CD.
 Conhecimento em n8n.
 
 
-===== VAGA 327 de 466 =====
+===== VAGA 330 de 469 =====
 Título: Full Stack Developer
 Empresa: INVENZI TECNOLOGIA LTDA.
 Local: São Paulo - SP (Remoto)
@@ -24786,7 +25057,7 @@ Desenvolvimento de Sistemas
 Ou áreas correlatas
 
 
-===== VAGA 328 de 466 =====
+===== VAGA 331 de 469 =====
 Título: Desenvolvedor(a) Front-End Pleno
 Empresa: CONTATO SEGURO PREVENCAO DE RISCOS EMPRESARIAIS LTDA
 Local: Porto Alegre - RS (Remoto)
@@ -24820,7 +25091,7 @@ Vivência com organização e priorização de backlog
 Boa comunicação e trabalho em equipe
 
 
-===== VAGA 329 de 466 =====
+===== VAGA 332 de 469 =====
 Título: Engenheiro de Software - BackEnd - Joinville
 Empresa: ROTAEXATA SOFTWARE LTDA
 Local: Joinville - SC (Híbrido)
@@ -24848,7 +25119,7 @@ Conhecimento em boas práticas de desenvolvimento de software
 Graduação na área de Tecnologia da Informação ou áreas relacionadas
 
 
-===== VAGA 330 de 466 =====
+===== VAGA 333 de 469 =====
 Título: Work From Home Node Developer Pleno
 Empresa: BAIRESDEV
 Local: Barueri + 35 cidades (Remoto)
@@ -24968,7 +25239,7 @@ Quero o Destaque Extra
 Agora não
 
 
-===== VAGA 331 de 466 =====
+===== VAGA 334 de 469 =====
 Título: Trabalhe de Casa Pessoa Desenvolvedora Node
 Empresa: BAIRESDEV
 Local: Barueri + 35 cidades (Remoto)
@@ -25098,7 +25369,7 @@ Quero o Destaque Extra
 Agora não
 
 
-===== VAGA 332 de 466 =====
+===== VAGA 335 de 469 =====
 Título: Work From Home Node Developer
 Empresa: BAIRESDEV
 Local: Barueri + 35 cidades (Remoto)
@@ -25257,7 +25528,7 @@ Quero o Destaque Extra
 Agora não
 
 
-===== VAGA 333 de 466 =====
+===== VAGA 336 de 469 =====
 Título: Trabalhe de Casa Desenvolvedor Node
 Empresa: BAIRESDEV
 Local: Barueri + 35 cidades (Remoto)
@@ -25448,7 +25719,7 @@ Quero o Destaque Extra
 Agora não
 
 
-===== VAGA 334 de 466 =====
+===== VAGA 337 de 469 =====
 Título: Trabalhe de Casa Desenvolvedor Node Backend
 Empresa: BAIRESDEV
 Local: Barueri + 35 cidades (Remoto)
@@ -25761,7 +26032,7 @@ Quero o Destaque Extra
 Agora não
 
 
-===== VAGA 335 de 466 =====
+===== VAGA 338 de 469 =====
 Título: Trabalhe de Casa Desenvolvedor de Software JavaScript
 Empresa: BAIRESDEV
 Local: Barueri + 35 cidades (Remoto)
@@ -25875,7 +26146,7 @@ Quero o Destaque Extra
 Agora não
 
 
-===== VAGA 336 de 466 =====
+===== VAGA 339 de 469 =====
 Título: Work From Home Javascript Developer
 Empresa: BAIRESDEV
 Local: Barueri + 35 cidades (Remoto)
@@ -26008,7 +26279,7 @@ Quero o Destaque Extra
 Agora não
 
 
-===== VAGA 337 de 466 =====
+===== VAGA 340 de 469 =====
 Título: Work From Home Full Stack JavaScript Developer
 Empresa: BAIRESDEV
 Local: Barueri + 35 cidades (Remoto)
@@ -26119,7 +26390,7 @@ Quero o Destaque Extra
 Agora não
 
 
-===== VAGA 338 de 466 =====
+===== VAGA 341 de 469 =====
 Título: Trabalhe de Casa Desenvolvedor Javascript
 Empresa: BAIRESDEV
 Local: Barueri + 35 cidades (Remoto)
@@ -26241,7 +26512,7 @@ Quero o Destaque Extra
 Agora não
 
 
-===== VAGA 339 de 466 =====
+===== VAGA 342 de 469 =====
 Título: Desenvolvedor Fullstack Pleno
 Empresa: AMBIENTAL
 Local: Joinville
@@ -26369,7 +26640,7 @@ Quero o Destaque Extra
 Agora não
 
 
-===== VAGA 340 de 466 =====
+===== VAGA 343 de 469 =====
 Título: Work From Home Full-Stack Developer (React + NestJS)
 Empresa: BAIRESDEV
 Local: Barueri + 35 cidades (Remoto)
@@ -26582,7 +26853,7 @@ Quero o Destaque Extra
 Agora não
 
 
-===== VAGA 341 de 466 =====
+===== VAGA 344 de 469 =====
 Título: Work From Home R&D Commercial Full-Stack Developer
 Empresa: BAIRESDEV
 Local: Barueri + 35 cidades (Remoto)
@@ -26696,7 +26967,7 @@ Quero o Destaque Extra
 Agora não
 
 
-===== VAGA 342 de 466 =====
+===== VAGA 345 de 469 =====
 Título: Work From Home Staff React Engineer
 Empresa: BAIRESDEV
 Local: Barueri + 35 cidades (Remoto)
@@ -26829,7 +27100,7 @@ Quero o Destaque Extra
 Agora não
 
 
-===== VAGA 343 de 466 =====
+===== VAGA 346 de 469 =====
 Título: Work From Home Node Backend Developer
 Empresa: BAIRESDEV
 Local: Barueri + 35 cidades (Remoto)
@@ -26949,7 +27220,7 @@ Quero o Destaque Extra
 Agora não
 
 
-===== VAGA 344 de 466 =====
+===== VAGA 347 de 469 =====
 Título: Trabalhe de Casa Desenvolvedora/Engenheira React
 Empresa: BAIRESDEV
 Local: Barueri + 35 cidades (Remoto)
@@ -26978,7 +27249,7 @@ Quero o Destaque Extra
 Agora não
 
 
-===== VAGA 345 de 466 =====
+===== VAGA 348 de 469 =====
 Título: Trabalhe de Casa Pessoa Desenvolvedora React
 Empresa: BAIRESDEV
 Local: Barueri + 35 cidades (Remoto)
@@ -27100,7 +27371,7 @@ Quero o Destaque Extra
 Agora não
 
 
-===== VAGA 346 de 466 =====
+===== VAGA 349 de 469 =====
 Título: Work From Home React Engineer
 Empresa: BAIRESDEV
 Local: Barueri + 35 cidades (Remoto)
@@ -27252,7 +27523,7 @@ Quero o Destaque Extra
 Agora não
 
 
-===== VAGA 347 de 466 =====
+===== VAGA 350 de 469 =====
 Título: Work From Home React Developer
 Empresa: BAIRESDEV
 Local: Barueri + 35 cidades (Remoto)
@@ -27482,7 +27753,7 @@ Quero o Destaque Extra
 Agora não
 
 
-===== VAGA 348 de 466 =====
+===== VAGA 351 de 469 =====
 Título: Trabalhe de Casa Desenvolvedor React Pleno
 Empresa: BAIRESDEV
 Local: Barueri + 35 cidades (Remoto)
@@ -27617,7 +27888,7 @@ Quero o Destaque Extra
 Agora não
 
 
-===== VAGA 349 de 466 =====
+===== VAGA 352 de 469 =====
 Título: Trabalhe de Casa Desenvolvedor React Frontend
 Empresa: BAIRESDEV
 Local: Barueri + 35 cidades (Remoto)
@@ -27922,7 +28193,7 @@ Quero o Destaque Extra
 Agora não
 
 
-===== VAGA 350 de 466 =====
+===== VAGA 353 de 469 =====
 Título: Trabalhe de Casa Desenvolvedor React
 Empresa: BAIRESDEV
 Local: Barueri + 35 cidades (Remoto)
@@ -28217,7 +28488,7 @@ Quero o Destaque Extra
 Agora não
 
 
-===== VAGA 351 de 466 =====
+===== VAGA 354 de 469 =====
 Título: Trabalhe de Casa Engenheiro Frontend React
 Empresa: BAIRESDEV
 Local: Barueri + 35 cidades (Remoto)
@@ -28430,7 +28701,7 @@ Quero o Destaque Extra
 Agora não
 
 
-===== VAGA 352 de 466 =====
+===== VAGA 355 de 469 =====
 Título: Trabalhe de Casa Desenvolvedor de Software React
 Empresa: BAIRESDEV
 Local: Barueri + 35 cidades (Remoto)
@@ -28545,7 +28816,7 @@ Quero o Destaque Extra
 Agora não
 
 
-===== VAGA 353 de 466 =====
+===== VAGA 356 de 469 =====
 Título: Work From Home TypeScript Developer
 Empresa: BAIRESDEV
 Local: Barueri + 35 cidades (Remoto)
@@ -28700,7 +28971,7 @@ Quero o Destaque Extra
 Agora não
 
 
-===== VAGA 354 de 466 =====
+===== VAGA 357 de 469 =====
 Título: Work From Home Full-Stack Ruby + TypeScript Developer
 Empresa: BAIRESDEV
 Local: Barueri + 35 cidades (Remoto)
@@ -28814,7 +29085,7 @@ Quero o Destaque Extra
 Agora não
 
 
-===== VAGA 355 de 466 =====
+===== VAGA 358 de 469 =====
 Título: Trabalhe de Casa Engenheiro React
 Empresa: BAIRESDEV
 Local: Barueri + 35 cidades (Remoto)
@@ -28978,7 +29249,7 @@ Quero o Destaque Extra
 Agora não
 
 
-===== VAGA 356 de 466 =====
+===== VAGA 359 de 469 =====
 Título: Work From Home Staff Node.js Engineer
 Empresa: BAIRESDEV
 Local: Barueri + 35 cidades (Remoto)
@@ -29111,7 +29382,7 @@ Quero o Destaque Extra
 Agora não
 
 
-===== VAGA 357 de 466 =====
+===== VAGA 360 de 469 =====
 Título: Trabalhe de Casa Desenvolvedor Frontend - TypeScript
 Empresa: BAIRESDEV
 Local: Barueri + 35 cidades (Remoto)
@@ -29234,7 +29505,7 @@ Quero o Destaque Extra
 Agora não
 
 
-===== VAGA 358 de 466 =====
+===== VAGA 361 de 469 =====
 Título: Trabalhe de Casa Engenheiro de Software Node.js
 Empresa: BAIRESDEV
 Local: Barueri + 35 cidades (Remoto)
@@ -29467,7 +29738,7 @@ Quero o Destaque Extra
 Agora não
 
 
-===== VAGA 359 de 466 =====
+===== VAGA 362 de 469 =====
 Título: React Front-End Developer Pleno | Remote
 Empresa: AI/R
 Local: Brazil (Remoto)
@@ -29524,7 +29795,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 360 de 466 =====
+===== VAGA 363 de 469 =====
 Título: Desenvolvedor(a) Front-end
 Empresa: Tata Consultancy Services
 Local: Greater Curitiba (Remoto)
@@ -29599,7 +29870,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 361 de 466 =====
+===== VAGA 364 de 469 =====
 Título: Frontend Software Engineer
 Empresa: TRACTIAN
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -29655,7 +29926,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 362 de 466 =====
+===== VAGA 365 de 469 =====
 Título: Desenvolvedor(a) Front-end
 Empresa: IPM Sistemas
 Local: Florianópolis, Santa Catarina, Brazil (Remoto)
@@ -29745,7 +30016,7 @@ Employment type: Full-time
 Industries: Computer and Network Security
 
 
-===== VAGA 363 de 466 =====
+===== VAGA 366 de 469 =====
 Título: Desenvolvedor React Frontend - Trabalho Remoto
 Empresa: BairesDev
 Local: Florianópolis, Santa Catarina, Brazil (Remoto)
@@ -29819,7 +30090,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 364 de 466 =====
+===== VAGA 367 de 469 =====
 Título: Desenvolvedor(a) Front-End Pleno
 Empresa: Contato Seguro | Canal de Denúncias
 Local: Greater Porto Alegre (Remoto)
@@ -29869,7 +30140,7 @@ Employment type: Full-time
 Industries: Internet Publishing
 
 
-===== VAGA 365 de 466 =====
+===== VAGA 368 de 469 =====
 Título: React Engineer - Remote, Latin America
 Empresa: Bluelight
 Local: Porto Alegre, Rio Grande do Sul, Brazil (Remoto)
@@ -29914,7 +30185,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 366 de 466 =====
+===== VAGA 369 de 469 =====
 Título: [Banco de Talentos] | Desenvolvedor Front-End (React.js e React Native) | Remoto
 Empresa: PremierSoft
 Local: Brazil (Remoto)
@@ -29990,7 +30261,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 367 de 466 =====
+===== VAGA 370 de 469 =====
 Título: DESENVOLVEDOR (A) REACT
 Empresa: Bravi
 Local: Florianópolis, Santa Catarina, Brazil (Remoto)
@@ -30129,7 +30400,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 368 de 466 =====
+===== VAGA 371 de 469 =====
 Título: React + TypeScript Developer - Remote Work
 Empresa: BairesDev
 Local: Florianópolis, Santa Catarina, Brazil (Remoto)
@@ -30209,7 +30480,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 369 de 466 =====
+===== VAGA 372 de 469 =====
 Título: Desenvolvedor(a) Front-End
 Empresa: Starsoft
 Local: Barueri, São Paulo, Brazil (Remoto)
@@ -30259,7 +30530,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 370 de 466 =====
+===== VAGA 373 de 469 =====
 Título: Desenvolvedor Back End PL (Node.js)
 Empresa: Farmácias App | GrupoSC
 Local: Brazil (Remoto)
@@ -30344,7 +30615,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 371 de 466 =====
+===== VAGA 374 de 469 =====
 Título: Desenvolvedor de back end
 Empresa: DS3 Digital
 Local: Brazil (Remoto)
@@ -30393,7 +30664,7 @@ Employment type: Full-time
 Industries: Technology, Information and Internet and Software Development
 
 
-===== VAGA 372 de 466 =====
+===== VAGA 375 de 469 =====
 Título: Desenvolvedor BackEnd Node - Pleno
 Empresa: Jobgether
 Local: Brazil (Remoto)
@@ -30475,7 +30746,7 @@ Employment type: Full-time
 Industries: Internet Marketplace Platforms
 
 
-===== VAGA 373 de 466 =====
+===== VAGA 376 de 469 =====
 Título: Backend Engineer (Node) - Remote Work | REF#300879
 Empresa: BairesDev
 Local: Minas Gerais, Brazil (Remoto)
@@ -30531,7 +30802,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 374 de 466 =====
+===== VAGA 377 de 469 =====
 Título: PESSOA DESENVOLVEDORA BACKEND PLENO
 Empresa: YDUQS
 Local: Brazil (Remoto)
@@ -30623,7 +30894,7 @@ Employment type: Full-time
 Industries: Education Administration Programs
 
 
-===== VAGA 375 de 466 =====
+===== VAGA 378 de 469 =====
 Título: Back-end Software Engineer (Node.js 20+)
 Empresa: Velozient
 Local: Brazil (Remoto)
@@ -30690,7 +30961,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 376 de 466 =====
+===== VAGA 379 de 469 =====
 Título: Desenvolvedor(a) Backend Pleno | Node.js | Azure | IA Generativa
 Empresa: Unify
 Local: Brazil (Remoto)
@@ -30772,7 +31043,7 @@ Employment type: Full-time
 Industries: Technology, Information and Internet
 
 
-===== VAGA 377 de 466 =====
+===== VAGA 380 de 469 =====
 Título: ISI SENAI - Desenvolvedor(a) Full Stack Typescript
 Empresa: IEL/SC
 Local: Florianópolis, Santa Catarina, Brazil (Remoto)
@@ -30838,7 +31109,7 @@ Employment type: Full-time
 Industries: Non-profit Organization Management
 
 
-===== VAGA 378 de 466 =====
+===== VAGA 381 de 469 =====
 Título: Desenvolvedor de front-end
 Empresa: Tata Consultancy Services
 Local: Greater São Paulo Area (Remoto)
@@ -30902,7 +31173,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 379 de 466 =====
+===== VAGA 382 de 469 =====
 Título: Desenvolvedor NODE.JS
 Empresa: Nava | Tech for Business
 Local: São Paulo, Brazil (Remoto)
@@ -31038,7 +31309,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 380 de 466 =====
+===== VAGA 383 de 469 =====
 Título: TypeScript Developer - Remote
 Empresa: INDI Staffing Services
 Local: Rio de Janeiro, Rio de Janeiro, Brazil (Remoto)
@@ -31112,7 +31383,7 @@ Employment type: Full-time
 Industries: Staffing and Recruiting
 
 
-===== VAGA 381 de 466 =====
+===== VAGA 384 de 469 =====
 Título: TypeScript Developer - Remote Work | REF#281581
 Empresa: BairesDev
 Local: Santo André, São Paulo, Brazil (Remoto)
@@ -31168,7 +31439,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 382 de 466 =====
+===== VAGA 385 de 469 =====
 Título: IT Developer III (Fullstack - Node.js/Angular)
 Empresa: Santander Brasil
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -31268,7 +31539,7 @@ Employment type: Full-time
 Industries: Financial Services
 
 
-===== VAGA 383 de 466 =====
+===== VAGA 386 de 469 =====
 Título: Full Stack Developer
 Empresa: Tata Consultancy Services
 Local: São Paulo, Brazil (Remoto)
@@ -31339,7 +31610,7 @@ Employment type: Full-time
 Industries: Technology, Information and Media
 
 
-===== VAGA 384 de 466 =====
+===== VAGA 387 de 469 =====
 Título: Desenvolvedor React
 Empresa: Neohype
 Local: Curitiba, Paraná, Brazil (Remoto)
@@ -31419,7 +31690,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 385 de 466 =====
+===== VAGA 388 de 469 =====
 Título: Desenvolvedor(a) Pleno (Full-Stack)
 Empresa: GrupoNewChase
 Local: Salvador, Bahia, Brazil (Remoto)
@@ -31484,7 +31755,7 @@ Employment type: Full-time
 Industries: Motor Vehicle Manufacturing
 
 
-===== VAGA 386 de 466 =====
+===== VAGA 389 de 469 =====
 Título: Desenvolvedor full stack (Node.JS)
 Empresa: Tata Consultancy Services
 Local: Brazil (Remoto)
@@ -31576,7 +31847,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 387 de 466 =====
+===== VAGA 390 de 469 =====
 Título: TypeScript Developer - Remote Work | REF#282265
 Empresa: BairesDev
 Local: Duque de Caxias, Bahia, Brazil (Remoto)
@@ -31632,7 +31903,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 388 de 466 =====
+===== VAGA 391 de 469 =====
 Título: Front-End Developer - Remote Work | REF#284091
 Empresa: BairesDev
 Local: Duque de Caxias, Bahia, Brazil (Remoto)
@@ -31681,7 +31952,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 389 de 466 =====
+===== VAGA 392 de 469 =====
 Título: DESENVOLVEDOR FRONT-END (PLENO/SÊNIOR)
 Empresa: Brid Soluções®
 Local: Maringá, Paraná, Brazil (Remoto)
@@ -31740,7 +32011,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 390 de 466 =====
+===== VAGA 393 de 469 =====
 Título: DESENVOLVEDOR FULL-STACK REACTJS, REDUX E NODEJS
 Empresa: Dynamox
 Local: Florianópolis, Santa Catarina, Brazil (Remoto)
@@ -31796,7 +32067,7 @@ Employment type: Full-time
 Industries: IT System Custom Software Development
 
 
-===== VAGA 391 de 466 =====
+===== VAGA 394 de 469 =====
 Título: Programador Full Stack
 Empresa: Grupo Pensar Educação
 Local: Teresina, Piauí, Brazil (Remoto)
@@ -31834,7 +32105,7 @@ Employment type: Full-time
 Industries: Education Administration Programs
 
 
-===== VAGA 392 de 466 =====
+===== VAGA 395 de 469 =====
 Título: Desenvolvedor Fullstack na Área da Saúde
 Empresa: Simplecheck
 Local: Brazil (Remoto)
@@ -31878,7 +32149,7 @@ Employment type: Other
 Industries: Software Development
 
 
-===== VAGA 393 de 466 =====
+===== VAGA 396 de 469 =====
 Título: DESENVOLVEDOR DE SOFTWARE FULLSTACK PL (HEALTH DATA LAB)
 Empresa: Sidia Instituto de Ciência e Tecnologia
 Local: Manaus, Amazonas, Brazil (Remoto)
@@ -31926,7 +32197,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 394 de 466 =====
+===== VAGA 397 de 469 =====
 Título: Full Stack Engineer
 Empresa: YASH Technologies
 Local: Indaiatuba, São Paulo, Brazil (Remoto)
@@ -31978,7 +32249,7 @@ Employment type: Contract
 Industries: Information Services
 
 
-===== VAGA 395 de 466 =====
+===== VAGA 398 de 469 =====
 Título: Full Stack Developer
 Empresa: Pantheon Inc
 Local: Curitiba, Paraná, Brazil (Remoto)
@@ -32040,7 +32311,7 @@ Employment type: Full-time
 Industries: Computer and Network Security
 
 
-===== VAGA 396 de 466 =====
+===== VAGA 399 de 469 =====
 Título: Fullstack Developer
 Empresa: PrimeIT
 Local: Brazil (Remoto)
@@ -32080,7 +32351,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 397 de 466 =====
+===== VAGA 400 de 469 =====
 Título: Programador Fullstack
 Empresa: Ellite Digital
 Local: Caxias do Sul, Rio Grande do Sul, Brazil (Remoto)
@@ -32122,7 +32393,7 @@ Employment type: Full-time
 Industries: Advertising Services
 
 
-===== VAGA 398 de 466 =====
+===== VAGA 401 de 469 =====
 Título: DESENVOLVEDOR FULL-STACK PLENO
 Empresa: Dynamox
 Local: Florianópolis, Santa Catarina, Brazil (Remoto)
@@ -32192,7 +32463,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 399 de 466 =====
+===== VAGA 402 de 469 =====
 Título: React Software Engineer
 Empresa: Thunes
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -32258,7 +32529,7 @@ Employment type: Full-time
 Industries: Financial Services
 
 
-===== VAGA 400 de 466 =====
+===== VAGA 403 de 469 =====
 Título: Middle Frontend Developer
 Empresa: Sigma Software
 Local: Brasília, Federal District, Brazil (Remoto)
@@ -32322,7 +32593,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 401 de 466 =====
+===== VAGA 404 de 469 =====
 Título: Desenvolvedor Front-end React - Pleno
 Empresa: Blite Tecnologia
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -32390,7 +32661,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 402 de 466 =====
+===== VAGA 405 de 469 =====
 Título: Desenvolvedor(a) React - Pleno
 Empresa: Framework Digital
 Local: Belo Horizonte, Minas Gerais, Brazil (Remoto)
@@ -32486,7 +32757,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 403 de 466 =====
+===== VAGA 406 de 469 =====
 Título: Frontend Engineer
 Empresa: Liferay
 Local: Recife, Pernambuco, Brazil (Remoto)
@@ -32593,7 +32864,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 404 de 466 =====
+===== VAGA 407 de 469 =====
 Título: Pessoa Desenvolvedora React Pleno - Web
 Empresa: Inter
 Local: Belo Horizonte, Minas Gerais, Brazil (Remoto)
@@ -32696,7 +32967,7 @@ Employment type: Full-time
 Industries: Financial Services
 
 
-===== VAGA 405 de 466 =====
+===== VAGA 408 de 469 =====
 Título: Pessoa Desenvolvedora Back-end (Node.js)
 Empresa: MJV Technology & Innovation
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -32782,7 +33053,7 @@ Employment type: Full-time
 Industries: Business Consulting and Services
 
 
-===== VAGA 406 de 466 =====
+===== VAGA 409 de 469 =====
 Título: Pessoa Desenvolvedora Back-end (Node)
 Empresa: MJV Technology & Innovation
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -32867,7 +33138,7 @@ Employment type: Full-time
 Industries: Business Consulting and Services
 
 
-===== VAGA 407 de 466 =====
+===== VAGA 410 de 469 =====
 Título: Staff Backend For Frontend (Node/Nest.js) Engineer
 Empresa: Kake
 Local: Brazil (Remoto)
@@ -32932,7 +33203,7 @@ Employment type: Contract
 Industries: Staffing and Recruiting and Software Development
 
 
-===== VAGA 408 de 466 =====
+===== VAGA 411 de 469 =====
 Título: Desenvolvedor Backend NodeJS
 Empresa: Verx Tecnologia e Inovação
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -33004,7 +33275,7 @@ Employment type: Full-time
 Industries: Financial Services and IT Services and IT Consulting
 
 
-===== VAGA 409 de 466 =====
+===== VAGA 412 de 469 =====
 Título: [Banco de Talentos] | Desenvolvedor Node.js Pleno | Remoto
 Empresa: PremierSoft
 Local: Brazil (Remoto)
@@ -33085,7 +33356,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 410 de 466 =====
+===== VAGA 413 de 469 =====
 Título: TypeScript Developer - Remote Work | REF#284194
 Empresa: BairesDev
 Local: Joinville, Santa Catarina, Brazil
@@ -33141,7 +33412,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 411 de 466 =====
+===== VAGA 414 de 469 =====
 Título: Software Engineer - Frontend - Payments
 Empresa: Kraken
 Local: Brazil (Remoto)
@@ -33217,7 +33488,7 @@ Employment type: Full-time
 Industries: Financial Services
 
 
-===== VAGA 412 de 466 =====
+===== VAGA 415 de 469 =====
 Título: Staff Frontend Software Engineer
 Empresa: TRACTIAN
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -33276,7 +33547,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 413 de 466 =====
+===== VAGA 416 de 469 =====
 Título: Software Engineer II - Front End
 Empresa: Arco Educação
 Local: Brazil (Remoto)
@@ -33368,7 +33639,7 @@ Employment type: Full-time
 Industries: Primary and Secondary Education
 
 
-===== VAGA 414 de 466 =====
+===== VAGA 417 de 469 =====
 Título: Desenvolvedor(a) Full Stack Pleno (PHP/React/IA)
 Empresa: SoftExpert
 Local: Joinville, Santa Catarina, Brazil
@@ -33456,7 +33727,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 415 de 466 =====
+===== VAGA 418 de 469 =====
 Título: Desenvolvedor Node.js
 Empresa: Jobbol
 Local: Manaus, Amazonas, Brazil (Remoto)
@@ -33495,7 +33766,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 416 de 466 =====
+===== VAGA 419 de 469 =====
 Título: Desenvolvedor/Desenvolvedora Nodejs
 Empresa: Capgemini
 Local: Recife, Pernambuco, Brazil (Remoto)
@@ -33566,7 +33837,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 417 de 466 =====
+===== VAGA 420 de 469 =====
 Título: Desenvolvedor full stack
 Empresa: Syonet
 Local: Porto Alegre, Rio Grande do Sul, Brazil (Remoto)
@@ -33633,7 +33904,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 418 de 466 =====
+===== VAGA 421 de 469 =====
 Título: Desenvolvedor Full-Stack
 Empresa: Check Commerce
 Local: Florianópolis, Santa Catarina, Brazil (Remoto)
@@ -33690,7 +33961,7 @@ Employment type: Full-time
 Industries: Internet Publishing
 
 
-===== VAGA 419 de 466 =====
+===== VAGA 422 de 469 =====
 Título: Desenvolvedor Fullstack
 Empresa: Agrotis
 Local: Curitiba, Paraná, Brazil (Remoto)
@@ -33735,7 +34006,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 420 de 466 =====
+===== VAGA 423 de 469 =====
 Título: DESENVOLVEDOR FULLSTACK
 Empresa: Save Co.
 Local: Jaraguá do Sul, Santa Catarina, Brazil (Remoto)
@@ -33768,7 +34039,7 @@ Employment type: Full-time
 Industries: Legal Services
 
 
-===== VAGA 421 de 466 =====
+===== VAGA 424 de 469 =====
 Título: Desenvolvedor/Desenvolvedora Full Stack
 Empresa: Capgemini
 Local: Recife, Pernambuco, Brazil (Remoto)
@@ -33847,7 +34118,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 422 de 466 =====
+===== VAGA 425 de 469 =====
 Título: Programador (a) Full Stack
 Empresa: Sub100 Imóveis
 Local: Maringá, Paraná, Brazil (Remoto)
@@ -33903,7 +34174,7 @@ Employment type: Full-time
 Industries: Real Estate
 
 
-===== VAGA 423 de 466 =====
+===== VAGA 426 de 469 =====
 Título: Desenvolvedor Full Stack
 Empresa: Jobbol
 Local: Ribeirão Preto, São Paulo, Brazil (Remoto)
@@ -33944,7 +34215,7 @@ Employment type: Full-time
 Industries: Technology, Information and Internet
 
 
-===== VAGA 424 de 466 =====
+===== VAGA 427 de 469 =====
 Título: Desenvolvedor Full Stack Web – Educação | Home Office
 Empresa: Radartec
 Local: New Fribourg, Rio de Janeiro, Brazil (Remoto)
@@ -33991,7 +34262,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 425 de 466 =====
+===== VAGA 428 de 469 =====
 Título: Desenvolvedor Full Stack
 Empresa: BaladAPP
 Local: Goiânia, Goiás, Brazil (Remoto)
@@ -34035,7 +34306,7 @@ Employment type: Full-time
 Industries: Entertainment Providers
 
 
-===== VAGA 426 de 466 =====
+===== VAGA 429 de 469 =====
 Título: Desenvolvedor web
 Empresa: Sensio - ERP para Indústria
 Local: Juiz de Fora, Minas Gerais, Brazil (Remoto)
@@ -34123,7 +34394,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 427 de 466 =====
+===== VAGA 430 de 469 =====
 Título: Desenvolvedor Fullstack
 Empresa: Maxtrack
 Local: Nova Lima, Minas Gerais, Brazil (Remoto)
@@ -34208,7 +34479,7 @@ Employment type: Full-time
 Industries: Transportation Equipment Manufacturing
 
 
-===== VAGA 428 de 466 =====
+===== VAGA 431 de 469 =====
 Título: Desenvolvedor FullStack
 Empresa: Grupo PRIMO
 Local: Caxias do Sul, Rio Grande do Sul, Brazil (Remoto)
@@ -34279,7 +34550,7 @@ Employment type: Full-time
 Industries: Computer and Network Security
 
 
-===== VAGA 429 de 466 =====
+===== VAGA 432 de 469 =====
 Título: Desenvolvedor Full Stack
 Empresa: Curitiba Prime RH
 Local: Curitiba, Paraná, Brazil (Remoto)
@@ -34337,7 +34608,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 430 de 466 =====
+===== VAGA 433 de 469 =====
 Título: Desenvolvedor(a) Fullstack ll
 Empresa: Caffeine Army
 Local: Salvador, Bahia, Brazil (Remoto)
@@ -34415,7 +34686,7 @@ Employment type: Full-time
 Industries: Food and Beverage Services
 
 
-===== VAGA 431 de 466 =====
+===== VAGA 434 de 469 =====
 Título: Full Stack Web Developer
 Empresa: RevStar
 Local: Brasília, Federal District, Brazil (Remoto)
@@ -34500,7 +34771,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 432 de 466 =====
+===== VAGA 435 de 469 =====
 Título: Desenvolvedor Back-End Pleno
 Empresa: Jobbol
 Local: Belo Horizonte, Minas Gerais, Brazil (Remoto)
@@ -34537,7 +34808,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 433 de 466 =====
+===== VAGA 436 de 469 =====
 Título: Backend Engineer (Go) - Remote Work
 Empresa: BairesDev
 Local: Salvador, Bahia, Brazil (Remoto)
@@ -34605,7 +34876,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 434 de 466 =====
+===== VAGA 437 de 469 =====
 Título: Software Engineer, Backend (All teams) – Brazil – Vaga para mulheres
 Empresa: DoorDash
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -34696,7 +34967,7 @@ Employment type: Full-time
 Industries: Technology, Information and Internet
 
 
-===== VAGA 435 de 466 =====
+===== VAGA 438 de 469 =====
 Título: Desenvolvedor Node Backend - Trabalho Remoto | REF#236869
 Empresa: BairesDev
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -34755,7 +35026,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 436 de 466 =====
+===== VAGA 439 de 469 =====
 Título: DESENVOLVEDOR BACK-END PLENO
 Empresa: Grupo Ybera Paris
 Local: Vitoria, Brazil Metropolitan Area (Remoto)
@@ -34781,7 +35052,7 @@ Employment type: Full-time
 Industries: Personal Care Product Manufacturing
 
 
-===== VAGA 437 de 466 =====
+===== VAGA 440 de 469 =====
 Título: Engenheiro de Software - BackEnd - Joinville
 Empresa: RotaExata
 Local: Joinville, Santa Catarina, Brazil
@@ -34814,7 +35085,7 @@ Employment type: Full-time
 Industries: Internet Publishing
 
 
-===== VAGA 438 de 466 =====
+===== VAGA 441 de 469 =====
 Título: Desenvolvedor Full Stack
 Empresa: Importe Melhor
 Local: Itajaí, Santa Catarina, Brazil (Remoto)
@@ -34892,7 +35163,7 @@ Employment type: Full-time
 Industries: Import & Export
 
 
-===== VAGA 439 de 466 =====
+===== VAGA 442 de 469 =====
 Título: Software Engineer (foco em back-end) I Híbrido (Joinville)
 Empresa: Motorista PX
 Local: Joinville, Santa Catarina, Brazil
@@ -34968,7 +35239,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 440 de 466 =====
+===== VAGA 443 de 469 =====
 Título: Desenvolvedor(a) Back-end Pleno
 Empresa: Grupo Adriano Cobuccio
 Local: Monte Belo, Minas Gerais, Brazil (Remoto)
@@ -35013,7 +35284,7 @@ Employment type: Full-time
 Industries: Financial Services
 
 
-===== VAGA 441 de 466 =====
+===== VAGA 444 de 469 =====
 Título: Pessoa Desenvolvedora frontend React
 Empresa: VENHA SER #SANGUELARANJA 🧡🚀
 Local: Não informado (Remoto)
@@ -35107,7 +35378,7 @@ Na FCamara todos são bem-vindos, para nós, Diversidade, Respeito e Ética, sã
 E aí, está pronto para fazer parte de um time incrível e ser protagonista da própria história?
 
 
-===== VAGA 442 de 466 =====
+===== VAGA 445 de 469 =====
 Título: PESSOA DESENVOLVEDORA REACT.JS/REACT NATIVE III (DIRETORIA DE DESIGN) ·
 Empresa: Grupo Boticário
 Local: Não informado (Remoto)
@@ -35275,7 +35546,7 @@ Reinventamos a beleza por meio da tecnologia, inovação, diversidade e sustenta
 Vem fazer beleza com a gente!
 
 
-===== VAGA 443 de 466 =====
+===== VAGA 446 de 469 =====
 Título: Spring Boot Back-End Developer | Pleno (Remoto)
 Empresa: Compass UOL
 Local: Não informado (Remoto)
@@ -35352,7 +35623,7 @@ We empower borderless talent and promote knowledge and opportunities in the late
 Join us and be part of the AI-driven revolution.
 
 
-===== VAGA 444 de 466 =====
+===== VAGA 447 de 469 =====
 Título: Desenvolvedor BackEnd Node - Pleno
 Empresa: VENHA SER #SANGUELARANJA 🧡🚀
 Local: Não informado (Remoto)
@@ -35448,7 +35719,7 @@ Na FCamara todos são bem-vindos, para nós, Diversidade, Respeito e Ética, sã
 E aí, está pronto para fazer parte de um time incrível e ser protagonista da própria história?
 
 
-===== VAGA 445 de 466 =====
+===== VAGA 448 de 469 =====
 Título: Desenvolvedor de Sistemas | Fullstack | Java e React | Sistemas 4 |Contábil | Cresol Confederação (Remoto)
 Empresa: Cresol Oficial
 Local: Não informado (Remoto)
@@ -35666,7 +35937,7 @@ Confira nossas oportunidades e cresça com a gente! 🧡
 Cada colaborador faz parte de uma história que já transformou milhares de vidas, e que continua sendo construída todos os dias.
 
 
-===== VAGA 446 de 466 =====
+===== VAGA 449 de 469 =====
 Título: React Front-End Developer Pleno | Remote
 Empresa: Compass UOL
 Local: Não informado (Remoto)
@@ -35744,7 +36015,7 @@ We empower borderless talent and promote knowledge and opportunities in the late
 Join us and be part of the AI-driven revolution.
 
 
-===== VAGA 447 de 466 =====
+===== VAGA 450 de 469 =====
 Título: Staff Backend Developer | Remoto
 Empresa: Aurum
 Local: Não informado (Remoto)
@@ -35908,7 +36179,7 @@ Antes de conferir nossas oportunidades, olha o que oferecemos às pessoas áurea
 Curtiu? Veja as vagas para fazer parte dO Time!
 
 
-===== VAGA 448 de 466 =====
+===== VAGA 451 de 469 =====
 Título: React Full-Stack Developer Pleno | Remoto
 Empresa: Compass UOL
 Local: Não informado (Remoto)
@@ -35981,7 +36252,7 @@ We empower borderless talent and promote knowledge and opportunities in the late
 Join us and be part of the AI-driven revolution.
 
 
-===== VAGA 449 de 466 =====
+===== VAGA 452 de 469 =====
 Título: Desenvolvedor de Sistemas | Fullstack | Java e React | Sistemas 4 | Riscos de Crédito | Cresol Confederação (Remoto)
 Empresa: Cresol Oficial
 Local: Não informado (Remoto)
@@ -36199,7 +36470,7 @@ Confira nossas oportunidades e cresça com a gente! 🧡
 Cada colaborador faz parte de uma história que já transformou milhares de vidas, e que continua sendo construída todos os dias.
 
 
-===== VAGA 450 de 466 =====
+===== VAGA 453 de 469 =====
 Título: Pessoa Desenvolvedora Java/React Pl (Remoto) - 7755
 Empresa: Starian
 Local: Não informado (Remoto)
@@ -36293,7 +36564,7 @@ A inteligência artificial é parte da nossa essência. Atuamos guiados por uma 
 Faça parte de equipes que transformam desafios em soluções reais e ajudam a guiar negócios rumo ao futuro.
 
 
-===== VAGA 451 de 466 =====
+===== VAGA 454 de 469 =====
 Título: Software Engineer FrontEnd (React)
 Empresa: SoftDesign
 Local: Não informado (Remoto)
@@ -36394,7 +36665,7 @@ VEM PRA SOFT! 💙
 Conheça nossa página de carreira em https://softdesign.com.br/vemprasoft/
 
 
-===== VAGA 452 de 466 =====
+===== VAGA 455 de 469 =====
 Título: Desenvolvedor Fullstack.NET React - Pleno
 Empresa: VENHA SER #SANGUELARANJA 🧡🚀
 Local: Não informado (Remoto)
@@ -36485,7 +36756,7 @@ Na FCamara todos são bem-vindos, para nós, Diversidade, Respeito e Ética, sã
 E aí, está pronto para fazer parte de um time incrível e ser protagonista da própria história?
 
 
-===== VAGA 453 de 466 =====
+===== VAGA 456 de 469 =====
 Título: PDI SW - Pessoa Desenvolvedora Fullstack II (React / NodeJS)
 Empresa: Inatel
 Local: Não informado (Remoto)
@@ -36562,7 +36833,7 @@ Mais que educação e inovação: unimos tecnologia, pesquisa e responsabilidade
 Fique por dentro do que acontece no Instituto, acesse https://inatel.br/noticias/ e acompanhe nossas notícias.
 
 
-===== VAGA 454 de 466 =====
+===== VAGA 457 de 469 =====
 Título: ANALISTA DESENVOLVEDOR PLENO .NET, Node.js e React.
 Empresa: Funcional Health Tech
 Local: Não informado (Remoto)
@@ -36726,7 +36997,7 @@ Falar com verdade e ouvir com atenção é como criamos confiança. Valorizamos 
 #PAPORETO
 
 
-===== VAGA 455 de 466 =====
+===== VAGA 458 de 469 =====
 Título: Desenvolvedor Fullstack .NET + TypeScript - Pleno
 Empresa: VENHA SER #SANGUELARANJA 🧡🚀
 Local: Não informado (Remoto)
@@ -36825,7 +37096,7 @@ Na FCamara todos são bem-vindos, para nós, Diversidade, Respeito e Ética, sã
 E aí, está pronto para fazer parte de um time incrível e ser protagonista da própria história?
 
 
-===== VAGA 456 de 466 =====
+===== VAGA 459 de 469 =====
 Título: Desenvolvedor(a) Full Stack Pleno (JavaScript/PHP/React)
 Empresa: Carreiras SoftExpert
 Local: Não informado (Remoto)
@@ -36935,7 +37206,7 @@ E por trás de cada solução estão pessoas que também buscam sempre o próxim
 900+ Experts | 3.000+ clientes | 3 milhões de usuários | 50+ países
 
 
-===== VAGA 457 de 466 =====
+===== VAGA 460 de 469 =====
 Título: Desenvolvedor(a) Full Stack Pleno
 Empresa: Grupo SysMap
 Local: Não informado (Remoto)
@@ -37011,7 +37282,7 @@ Aqui, acreditamos que tecnologia só gera valor quando é construída por pessoa
 A única forma de participar de processos seletivos do Grupo SysMap é por meio das páginas da empresa na plataforma Gupy e não há pagamento de taxa de participação ou contratação.
 
 
-===== VAGA 458 de 466 =====
+===== VAGA 461 de 469 =====
 Título: Pessoa Desenvolvedora Fullstack Node.js/React.js III (Tech Consumer) - Vaga afirmativa para pessoas com deficiência
 Empresa: Grupo Boticário
 Local: Não informado (Remoto)
@@ -37214,7 +37485,7 @@ Reinventamos a beleza por meio da tecnologia, inovação, diversidade e sustenta
 Vem fazer beleza com a gente!
 
 
-===== VAGA 459 de 466 =====
+===== VAGA 462 de 469 =====
 Título: Pessoa Desenvolvedora Full Stack Pleno
 Empresa: VENHA SER #SANGUELARANJA 🧡🚀
 Local: Não informado (Remoto)
@@ -37311,7 +37582,7 @@ Na FCamara todos são bem-vindos, para nós, Diversidade, Respeito e Ética, sã
 E aí, está pronto para fazer parte de um time incrível e ser protagonista da própria história?
 
 
-===== VAGA 460 de 466 =====
+===== VAGA 463 de 469 =====
 Título: Desenvolvedor(a) Full Stack Pleno (Java/React)
 Empresa: Carreiras SoftExpert
 Local: Não informado (Remoto)
@@ -37418,7 +37689,7 @@ E por trás de cada solução estão pessoas que também buscam sempre o próxim
 900+ Experts | 3.000+ clientes | 3 milhões de usuários | 50+ países
 
 
-===== VAGA 461 de 466 =====
+===== VAGA 464 de 469 =====
 Título: Pessoa Desenvolvedora Back-End Pleno | Vaga Afirmativa para Pessoas com Deficiência
 Empresa: Caju
 Local: Não informado (Remoto)
@@ -37556,7 +37827,7 @@ Que tal construir junto o nosso cajueiro?
 #VemProCajueiro 🧡
 
 
-===== VAGA 462 de 466 =====
+===== VAGA 465 de 469 =====
 Título: Desenvolvedor(a) Full Stack Pleno (PHP/React)
 Empresa: Carreiras SoftExpert
 Local: Não informado (Remoto)
@@ -37662,7 +37933,7 @@ E por trás de cada solução estão pessoas que também buscam sempre o próxim
 900+ Experts | 3.000+ clientes | 3 milhões de usuários | 50+ países
 
 
-===== VAGA 463 de 466 =====
+===== VAGA 466 de 469 =====
 Título: Desenvolvedor Back-End Pleno (4773)
 Empresa: Keep Simple
 Local: Não informado (Remoto)
@@ -37749,7 +38020,7 @@ Optamos por fazer a diferença e temos orgulho em dizer que todos que passam pel
 Faça parte da nossa história, #vemprakeep 💙🚀
 
 
-===== VAGA 464 de 466 =====
+===== VAGA 467 de 469 =====
 Título: Desenvolvedor Back End PL (Node.js)
 Empresa: Farmácias APP
 Local: Não informado (Remoto)
@@ -37847,7 +38118,7 @@ Nosso aplicativo está disponível para download gratuito nas lojas de aplicativ
 Junte-se a nós nessa jornada e descubra como podemos facilitar o acesso à saúde e bem-estar!
 
 
-===== VAGA 465 de 466 =====
+===== VAGA 468 de 469 =====
 Título: Full-Stack Developer (Python, React, AI)
 Empresa: Huzzle
 Local: Argentina (Remoto)
@@ -40153,7 +40424,7 @@ Anywhere in the World
 Senior Brand Success Manager - Bili
 
 
-===== VAGA 466 de 466 =====
+===== VAGA 469 de 469 =====
 Título: FULL TIME: Software Engineer Position - React and Rest
 Empresa: Yooli
 Local: Australia (Remoto)
