@@ -1,9 +1,256 @@
 CONTEÚDO DAS VAGAS DE ANALISTA — JobRadar
-Gerado em 04/11/2026 às 07:43 (Brasília). 18 vaga(s) com anúncio capturado, de 18 vagas Analista no radar. Mais recentes primeiro.
+Gerado em 04/11/2026 às 16:36 (Brasília). 20 vaga(s) com anúncio capturado, de 20 vagas Analista no radar. Mais recentes primeiro.
 Cada vaga traz o texto do anúncio como a fonte publicou (descrição, requisitos, diferenciais, benefícios).
 
 
-===== VAGA 1 de 18 =====
+===== VAGA 1 de 20 =====
+Título: Pessoa Especialista de FP&A (Remoto) - 8126
+Empresa: Softplan
+Local: Não informado (Remoto)
+Fonte: Gupy · publicada 27/10/2026 · achada 04/11 16:33
+Link: https://softplan.gupy.io/job/eyJqb2JJZCI6MTI3ODgxMjYsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+--- Anúncio ---
+DESCRIÇÃO DA VAGA
+
+A Softplan é uma das maiores empresas de software para o setor público da América Latina. Há 35 anos, desenvolvemos soluções que transformam a vida de milhões de pessoas, impactando aproximadamente 95% da população brasileira e expandindo nossa atuação também para Colômbia e Peru.
+
+Nossas tecnologias impulsionam a transformação digital nos segmentos de Infraestrutura e Obras, Processos Digitais e Administrativos e Justiça, tornando os serviços públicos mais ágeis, transparentes e eficientes. Trabalhar aqui é fazer parte de uma empresa que une propósito, inovação e impacto social.
+
+Atualmente, contamos com um portfólio de mais de 19 marcas e essa posição é para atuar me nosso time de FP&A para fortalecer nossa estrutura de planejamento financeiro e contribuir para a evolução do modelo de gestão financeira da Softplan.
+
+RESPONSABILIDADES E ATRIBUIÇÕES
+
+Essa posição terá papel importante no desenvolvimento de modelos financeiros, rolling forecast, projeções, análises de cenários, rentabilidade, pricing e estudos de viabilidade econômico-financeira, apoiando decisões estratégicas da companhia.
+
+Buscamos alguém com profundidade técnica, visão de negócio e autonomia para conduzir análises complexas de ponta a ponta, questionar premissas, identificar oportunidades e transformar dados em recomendações para a tomada de decisão.
+
+O uso de tecnologias de dados, automação e inteligência artificial é parte fundamental dessa atuação, tanto para desenvolver soluções que ampliem nossa capacidade analítica quanto para construir um FP&A cada vez mais proativo, escalável e orientado ao futuro.
+
+Mentalidade digital, curiosidade por novas tecnologias e interesse em entender como a Inteligência Artificial pode transformar processos, experiências e resultados.
+
+REQUISITOS E QUALIFICAÇÕES
+
+Experiência sólida em FP&A, com foco em modelagem financeira, planejamento e rolling forecast.
+Domínio de demonstrações financeiras, análise de rentabilidade, margens, pricing, estrutura de custos e drivers de resultado.
+Experiência na construção de modelos de projeção, simulação de cenários, análises de sensibilidade e estudos de viabilidade econômico-financeira.
+Excel avançado, com capacidade de desenvolver modelos financeiros complexos, estruturados e auditáveis.
+Domínio de SQL e Python ou R para manipulação de grandes volumes de dados, análises exploratórias e automação de processos financeiros.
+Interesse em explorar aplicações de IA generativa e desenvolver agentes ou soluções inteligentes para planejamento e análise financeira.
+Capacidade de integrar dados financeiros e operacionais, avaliar impactos econômicos e subsidiar decisões estratégicas.
+Conhecimento ou interesse em tecnologias de Inteligência Artificial: ferramentas, aplicações e conceitos.
+
+INFORMAÇÕES ADICIONAIS
+
+Modelo de trabalho: Anywhere Office - 100% remoto
+
+Benefícios:
+
+Vale-alimentação/Vale-refeição;
+Plano de saúde e odontológico;
+Auxílio Home Office;
+Participação nos Lucros e Resultados;
+Voucher para Kit Setup;
+Seguro de vida;
+Day Off aniversário;
+Programa de promoção à saúde e bem-estar;
+Parcerias e descontos.
+
+Um dos nossos pilares é a valorização das pessoas e temos orgulho de dizer que somos uma empresa que apoia a diversidade e inclusão. Sendo assim, consideramos todos os candidatos para as nossas vagas, sem distinção de raça, cor, religião, gênero e identidade de gênero, nacionalidade, deficiência, orientação sexual, ascendência, idade, etc.
+
+ETAPAS DO PROCESSO
+Etapa 1: Cadastro
+1
+Cadastro
+Etapa 2: Entrevista Pessoa Recrutadora
+2
+Entrevista Pessoa Recrutadora
+Etapa 3: Excelência Técnica - Entrevista Líder
+3
+Excelência Técnica - Entrevista Líder
+Etapa 4: Excelência Técnica - Entrevista com o time
+4
+Excelência Técnica - Entrevista com o time
+Etapa 5: Contratação
+5
+Contratação
+
+SOBRE A SOFTPLAN
+
+Somos uma das maiores empresas de software da LATAM e uma das principais GovTechs do país.
+
+Há mais de 36 anos, desenvolvemos soluções que apoiam a transformação digital do Setor Público.
+
+Nosso posicionamento é claro: transformamos desafios em soluções reais, com tecnologia que promove mais transparência e eficiência, porque impactar vidas é o que nos move.
+
+Esse impacto acontece em escala: nossas soluções fazem a diferença no dia a dia de 9 em cada 10 brasileiros (cerca de 91% da população).
+
+Atuação na América Latina
+
+nossa tecnologia atravessa fronteiras e também transforma a Justiça e a gestão pública na região:
+
+Colômbia: apoiamos a Jurisdição Especial para a Paz (JEP) a levar agilidade, segurança jurídica e acesso digital a um dos processos de paz mais complexos da região.
+Peru: unificamos processos judiciais com o sistema SAJ Courts, ampliando o acesso à Justiça digital em todo o país.
+Argentina: modernizamos a Justiça do Trabalho de Buenos Aires (PJCABA), levando mais agilidade e transparência a trabalhadores e empresas.
+
+
+===== VAGA 2 de 20 =====
+Título: Coordenador(a) de RH I Generalista I Remoto
+Empresa: Cuattro
+Local: Não informado (Remoto)
+Fonte: Gupy · publicada 19/10/2026 · achada 04/11 16:33
+Link: https://cuattro.gupy.io/job/eyJqb2JJZCI6MTI3Mzg4OTcsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+--- Anúncio ---
+DESCRIÇÃO DA VAGA
+
+Somos a Cuattro!
+
+Uma agência única porque fornecemos soluções completas e personalizadas, para diversos segmentos, que vão do Live ao Digital.
+
+﻿Encontrar SOLUÇÕES é a nossa especialidade!
+
+Nosso jeito de SER e FAZER está ancorado nos valores que vivenciamos diariamente: Empatia, Humildade, Motivação, Reconhecimento e Respeito.
+
+Temos o desenvolvimento de pessoas no nosso DNA.
+
+É dessa forma que há mais de 20 anos, integramos pessoas, processos e tecnologias para encontrar a melhor solução para os nossos clientes.
+
+Se você tem valores próximos aos nossos e preza por um ambiente inclusivo e com pessoas que têm como prioridade acolher, ouvir, cuidar, gerenciar e motivar pessoas, seu lugar é aqui!
+
+Buscamos uma pessoa para integrar nossa tripulação como: Coordenador(a) de RH.
+
+RESPONSABILIDADES E ATRIBUIÇÕES
+
+Checklist de Voo — Como será seu dia a dia:
+
+Gestão do time e dos processos de RH
+
+✈ Liderar, desenvolver e acompanhar o time de RH, dimensionando a equipe de acordo com o volume de vagas abertas e a sazonalidade dos projetos
+
+✈ Mapear, documentar e melhorar continuamente os processos da área
+
+✈ Definir e acompanhar indicadores de RH (tempo de fechamento de vagas, turnover, absenteísmo)
+
+✈ Apoiar a gestão de remuneração e benefícios junto ao DP, com pesquisas salariais e faixas por cargo
+
+Recrutamento, seleção e marca empregadora
+
+✈ Conduzir os processos seletivos, do alinhamento com o gestor ao fechamento, com volume que acompanha a sazonalidade dos projetos, utilizando a Gupy como ATS
+
+✈ Planejar a divulgação das vagas junto ao Marketing, nas redes sociais e canais de recrutamento
+
+✈ Garantir uma boa experiência para candidatos e uma integração consistente dos novos colaboradores
+
+Cultura, clima e desenvolvimento
+
+✈ Zelar para que a cultura da Cuattro seja praticada nas rotinas, nas lideranças e nas decisões
+
+✈ Conduzir ações de engajamento, comunicação interna e feedback
+
+✈ Gerir o calendário anual de campanhas e datas importantes (Setembro Amarelo, Outubro Rosa, Novembro Azul etc.), alinhando as publicações com o Marketing e validando as artes
+
+✈ Estruturar o ciclo de avaliação de desempenho e os PDI´s, incluindo a capacitação de líderes
+
+Saúde, segurança e conformidade
+
+✈ Conduzir a frente de NR-01 (gerenciamento de riscos psicossociais) e o acompanhamento do PGR junto ao DP e aos fornecedores
+
+✈ Atuar em parceria com o DP para que as rotinas trabalhistas estejam em conformidade com a legislação
+
+✈ Coordenar, com a assessoria de plano de saúde, as comunicações de saúde obrigatórias e preventivas, como exames ocupacionais e campanhas de vacinação
+
+✈ Gerir o programa de Jovem Aprendiz: cumprimento da cota legal e acompanhamento das instituições parceiras de aprendizagem
+
+Parceria com as lideranças
+
+✈ Ser a referência de RH para as lideranças e os gestores, trazendo dados, riscos e propostas
+
+✈ Apoiar líderes em temas de pessoas: contratação, desempenho e conflitos
+
+✈ Conduzir os desligamentos e as entrevistas de desligamento, transformando os aprendizados em indicadores
+
+REQUISITOS E QUALIFICAÇÕES
+
+Checklist de Embarque — O que é importante trazer na bagagem:
+
+✈ Ensino superior em Psicologia, Administração, Gestão de RH ou áreas afins
+
+✈ Experiência sólida em RH generalista, com vivência em recrutamento e seleção
+
+✈ Experiência em liderança de equipe
+
+✈ Conhecimento das rotinas de DP e da legislação trabalhista (CLT) para atuar em parceria com o DP
+
+✈ Domínio de LinkedIn e ferramentas de recrutamento
+
+✈ Boa comunicação escrita e verbal
+
+Bagagem Extra — Diferenciais:
+
+✈ Experiência com a Gupy e outras ferramentas de recrutamento e gestão de pessoas
+
+✈ Vivência em agências, eventos, live marketing ou empresas de serviços
+
+✈ Conhecimento da NR-01 e de gestão de riscos psicossociais
+
+✈ Projetos de employer branding em parceria com Marketing
+
+✈ Pós-graduação em Gestão de Pessoas ou áreas afins
+
+INFORMAÇÕES ADICIONAIS
+
+Checklist de Bordo — O que oferecemos nesta missão:
+
+✈ Contratação: PJ - MEI
+✈ Remuneração compatível com a função
+✈ Reembolso de até R$ 250,00 para apoio nas atividades em home office
+
+Informações da Cabine — Para um voo tranquilo e alinhado:
+
+✈ Modelo de trabalho: Remoto - com possibilidade de reuniões presenciais esporádicas na sede da Cuattro (Vila Olímpia)
+
+ETAPAS DO PROCESSO
+Etapa 1: Cadastro
+1
+Cadastro
+Etapa 2: Conexão de Tripulação | Briefing com o RH
+2
+Conexão de Tripulação | Briefing com o RH
+Etapa 3: Simulação de Voo | Teste Prático
+3
+Simulação de Voo | Teste Prático
+Etapa 4: Decisão de Pouso | Conversa com a Diretoria
+4
+Decisão de Pouso | Conversa com a Diretoria
+Etapa 5: Contratação
+5
+Contratação
+
+SEJA BEM-VINDO(A) A BORDO DA CUATTRO!✈️
+
+Seja bem-vindo(a) a bordo da Cuattro!✈️
+
+Há mais de duas décadas, nossa tripulação tem voado alto pelos mercados B2B e B2C, conectando marcas, varejistas, revendedores e distribuidores em todo o Brasil.
+
+Com presença nacional e atuação estratégica, somos uma agência que integra pessoas, processos e tecnologia para entregar soluções personalizadas, orientadas por dados e com foco em resultados.
+
+Nossos valores são o que sustentam esse voo:
+
+✦ Empatia
+
+✦ Humildade
+
+✦ Motivação
+
+✦ Reconhecimento
+
+✦ Respeito
+
+Queremos que cada jornada na Cuattro seja uma oportunidade de desenvolvimento e realização.
+
+Muito prazer, somos a Cuattro...E por aqui, voamos juntos para conectar pessoas, ideias e oportunidades!
+
+
+===== VAGA 3 de 20 =====
 Título: Analista Financeiro Sênior - Revenue Management | RD Station (Remoto)
 Empresa: TOTVS
 Local: Florianópolis, Santa Catarina, Brazil
@@ -50,7 +297,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 2 de 18 =====
+===== VAGA 4 de 20 =====
 Título: Coordenador de operações
 Empresa: Culture Designer
 Local: Joinville, Santa Catarina, Brazil
@@ -128,7 +375,7 @@ Employment type: Full-time
 Industries: Wholesale Import and Export
 
 
-===== VAGA 3 de 18 =====
+===== VAGA 5 de 20 =====
 Título: Analista Administrativo de Vendas
 Empresa: abler Vagas
 Local: Joinville, Santa Catarina, Brazil
@@ -175,7 +422,7 @@ Employment type: Full-time
 Industries: Technology, Information and Internet
 
 
-===== VAGA 4 de 18 =====
+===== VAGA 6 de 20 =====
 Título: Coordenador Administrativo Comercial
 Empresa: MERKEL RECURSOS HUMANOS
 Local: Joinville
@@ -198,7 +445,7 @@ Vivência em gestão administrativa multissetorial e liderança.
 Excel avançado e ERP.
 
 
-===== VAGA 5 de 18 =====
+===== VAGA 7 de 20 =====
 Título: COORDENADOR DE OPERAÇÕES*
 Empresa: Ânima Educação
 Local: Joinville, Santa Catarina, Brazil
@@ -288,7 +535,7 @@ Employment type: Full-time
 Industries: Education Administration Programs
 
 
-===== VAGA 6 de 18 =====
+===== VAGA 8 de 20 =====
 Título: Coordenador administrativo de vendas
 Empresa: MERKEL RH
 Local: Joinville, Santa Catarina, Brazil
@@ -322,7 +569,7 @@ Employment type: Full-time
 Industries: Human Resources Services
 
 
-===== VAGA 7 de 18 =====
+===== VAGA 9 de 20 =====
 Título: Coordenador(a) Administrativo(a) de Vendas
 Empresa: Grupo Krona
 Local: Joinville, Santa Catarina, Brazil
@@ -385,7 +632,7 @@ Employment type: Full-time
 Industries: Chemical Manufacturing
 
 
-===== VAGA 8 de 18 =====
+===== VAGA 10 de 20 =====
 Título: Analista Administrativo Comercial
 Empresa: Jobbol
 Local: Joinville, Santa Catarina, Brazil
@@ -424,7 +671,7 @@ Employment type: Full-time
 Industries: Technology, Information and Internet
 
 
-===== VAGA 9 de 18 =====
+===== VAGA 11 de 20 =====
 Título: Coordenador de operações
 Empresa: Par RH®️
 Local: Joinville, Santa Catarina, Brazil
@@ -464,7 +711,7 @@ Employment type: Full-time
 Industries: Business Consulting and Services
 
 
-===== VAGA 10 de 18 =====
+===== VAGA 12 de 20 =====
 Título: Gerente Administrativo Operacional –Clínica médica
 Empresa: HRL Consultoria e Projetos
 Local: Joinville, Santa Catarina, Brazil
@@ -518,7 +765,7 @@ Employment type: Full-time
 Industries: Human Resources Services
 
 
-===== VAGA 11 de 18 =====
+===== VAGA 13 de 20 =====
 Título: Analista de Planejamento Comercial - Salesforce
 Empresa: Porto Itapoa
 Local: Joinville, Santa Catarina, Brazil
@@ -569,7 +816,7 @@ Employment type: Full-time
 Industries: Data Infrastructure and Analytics
 
 
-===== VAGA 12 de 18 =====
+===== VAGA 14 de 20 =====
 Título: Gerente Financeiro
 Empresa: Jobbol
 Local: Joinville, Santa Catarina, Brazil
@@ -608,7 +855,7 @@ Employment type: Full-time
 Industries: Technology, Information and Internet
 
 
-===== VAGA 13 de 18 =====
+===== VAGA 15 de 20 =====
 Título: Analista de Planejamento de Vendas III
 Empresa: Tupy
 Local: Joinville, Santa Catarina, Brazil
@@ -684,7 +931,7 @@ Employment type: Full-time
 Industries: Automation Machinery Manufacturing
 
 
-===== VAGA 14 de 18 =====
+===== VAGA 16 de 20 =====
 Título: Sales Operations Analyst - Remote Work
 Empresa: BairesDev
 Local: Brazil (Remoto)
@@ -746,7 +993,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 15 de 18 =====
+===== VAGA 17 de 20 =====
 Título: Coordenador Financeiro
 Empresa: Jobbol
 Local: Joinville, Santa Catarina, Brazil
@@ -786,7 +1033,7 @@ Employment type: Full-time
 Industries: Technology, Information and Internet
 
 
-===== VAGA 16 de 18 =====
+===== VAGA 18 de 20 =====
 Título: Analista de Operações Comerciais
 Empresa: Rottas Vendas
 Local: Joinville, Santa Catarina, Brazil
@@ -854,7 +1101,7 @@ Employment type: Full-time
 Industries: Civil Engineering
 
 
-===== VAGA 17 de 18 =====
+===== VAGA 19 de 20 =====
 Título: Analista Administrativo de Vendas
 Empresa: Jobbol
 Local: Joinville, Santa Catarina, Brazil
@@ -893,7 +1140,7 @@ Employment type: Full-time
 Industries: Technology, Information and Internet
 
 
-===== VAGA 18 de 18 =====
+===== VAGA 20 de 20 =====
 Título: Analista de Operações Comerciais
 Empresa: House Rottas Vendas
 Local: Joinville - SC (Presencial)
