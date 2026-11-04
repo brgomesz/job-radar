@@ -1,3 +1,1015 @@
 CONTEÚDO DAS VAGAS DE ANALISTA — JobRadar
-Gerado em 04/11/2026 às 06:36 (Brasília). 0 vaga(s) com anúncio capturado, de 16 vagas Analista no radar. Mais recentes primeiro.
+Gerado em 04/11/2026 às 07:43 (Brasília). 18 vaga(s) com anúncio capturado, de 18 vagas Analista no radar. Mais recentes primeiro.
 Cada vaga traz o texto do anúncio como a fonte publicou (descrição, requisitos, diferenciais, benefícios).
+
+
+===== VAGA 1 de 18 =====
+Título: Analista Financeiro Sênior - Revenue Management | RD Station (Remoto)
+Empresa: TOTVS
+Local: Florianópolis, Santa Catarina, Brazil
+Fonte: LinkedIn · publicada 2026-10-01 · achada 04/11 07:40
+Link: https://br.linkedin.com/jobs/view/analista-financeiro-s%C3%AAnior-revenue-management-rd-station-remoto-at-totvs-4472979570
+--- Anúncio ---
+Descrição
+
+Garantir a integridade e o crescimento da receita da companhia, identificando riscos de evasão e oportunidades de incremento ao longo de toda a cadeia de monetização. Atuar de forma estratégica na conexão entre dados, processos e resultados, assegurando previsibilidade, eficiência e escalabilidade do modelo SaaS, e impulsionando decisões que fortalecem a rentabilidade e a sustentabilidade do negócio.
+
+Responsabilidades e atribuições
+
+Garantir a execução do contrato no fluxo financeiro;
+Monitorar a performance da receita no sistema de billing para detectar e corrigir gaps operacionais e sistêmicos da operação financeira e evitar evasão de receita;
+Apoiar a definição de premissas e parâmetros para construção de novos relatórios e indicadores;
+Identificar inconsistências e problemas relacionados à rastreabilidade das transações financeiras para correção de processos (identificação das pendências de registros de dados e inconsistências de execução de processo);
+Preparar, propor e apresentar estudos/resultados de maneira executiva para dar suporte ao negócio na tomada de decisões;
+Implementar e manter controles de Revenue Assurance para monitorar e garantir que todas as receitas devidas à empresa sejam corretamente identificadas e coletadas;
+Estabelecer parcerias e realizar interface com as demais áreas da empresa para a potencialização da receita;
+
+Requisitos e qualificações
+
+Conhecimento de modelo SAAS/recorrência, bilhetagem e Revenue Management com entendimento de modelos de cobrança SaaS, regras de faturamento e reconhecimento de receita;
+Conhecimento prévio em processos financeiros e de billing/recorrência;
+SQL intermediário à avançado para extração e cruzamento de dados de múltiplas fontes;
+Conhecimento intermediário em PowerBI ou outras ferramentas para construção de dashboard e análise de dados (além do Excel).
+
+Benefícios
+
+‍♀️ Buscamos o bem-estar integral de cada pessoa colaboradora, por meio de ações e benefícios que viabilizam recursos de autocuidado por meio de 5 pilares: Emocional
+
+Financeiro
+
+‍♂️ Físico
+
+Ocupacional
+
+Social
+
+Descubra neste link como os nossos benefícios apoiam sua jornada de crescimento e bem-estar.
+
+Seniority level: Not Applicable
+Employment type: Full-time
+Industries: Software Development
+
+
+===== VAGA 2 de 18 =====
+Título: Coordenador de operações
+Empresa: Culture Designer
+Local: Joinville, Santa Catarina, Brazil
+Fonte: LinkedIn · publicada 2026-10-30 · achada 04/11 07:40
+Link: https://br.linkedin.com/jobs/view/coordenador-de-opera%C3%A7%C3%B5es-at-culture-designer-4485332972
+--- Anúncio ---
+Na Culture Designer, unimos nosso profundo conhecimento de mercado à missão de impulsionar carreiras. Estamos conduzindo o processo de recrutamento e seleção para a posição de Coordenador(a) de Operações em um de nossos clientes, uma empresa especializada em soluções para comércio exterior, com atuação no planejamento e na gestão de operações de importação e exportação.
+
+Conheça um pouco sobre esta empresa:
+
+Com mais de uma década de atuação, a empresa oferece soluções personalizadas para operações internacionais, acompanhando todas as etapas do processo, desde o embarque até a entrega ao cliente final. Vive um momento de crescimento e ampliação de seus serviços, em um ambiente dinâmico, colaborativo e orientado à excelência operacional.
+
+Finalidade da posição: Liderar a equipe operacional, promovendo clareza de responsabilidades, desenvolvimento dos profissionais e colaboração no dia a dia. A posição atuará em parceria com a liderança técnica da operação, aproximando pessoas, áreas e clientes para apoiar a qualidade das entregas.
+
+Principais atividades:
+
+Conduzir a gestão de pessoas da equipe operacional, com acompanhamento próximo, feedbacks e alinhamento de expectativas;
+Apoiar a organização das demandas e das prioridades em conjunto com a liderança técnica, acompanhando prazos, responsabilidades e entregas;
+Identificar necessidades de desenvolvimento e organizar ações de capacitação com o apoio dos especialistas da área;
+Estimular a participação do time na identificação de dificuldades e na construção de melhorias para a rotina;
+Facilitar a integração entre comercial e operações, garantindo que as necessidades dos clientes e os acordos realizados sejam compartilhados com clareza;
+Apoiar o relacionamento com clientes e parceiros, alinhando expectativas e articulando os responsáveis pela solução de demandas;
+Acompanhar os resultados da equipe com base nos indicadores existentes e propor ajustes na organização do trabalho.
+
+Requisitos técnicos:
+
+Experiência em liderança direta de equipes, incluindo acompanhamento de entregas, feedbacks e desenvolvimento de profissionais;
+Vivência em ambientes com demandas simultâneas, prazos e necessidade de articulação entre pessoas e áreas;
+Experiência no alinhamento de demandas com clientes internos ou externos;
+Capacidade de utilizar indicadores para acompanhar o desempenho da equipe e orientar ações de melhoria.
+
+Diferenciais:
+
+Vivência em empresas de comércio exterior ou logística internacional;
+Familiaridade com fluxos de importação e relacionamento com parceiros desse segmento.
+
+Competências comportamentais:
+
+Liderança próxima, com escuta e capacidade de oferecer direcionamento;
+Comunicação clara e habilidade para construir relações de confiança;
+Iniciativa para identificar dificuldades e acompanhar os encaminhamentos;
+Organização e discernimento para definir prioridades;
+Colaboração para trabalhar em parceria com outras lideranças;
+Capacidade de conduzir conversas difíceis e mediar conflitos com respeito.
+
+Salário: Estamos avaliando a expectativa salarial, favor mencionar no campo específico do formulário de candidatura.
+
+Modelo de Contratação: CLT.
+
+Benefícios:
+
+Cartão multibenefícios Flash no valor mensal de R$800,00, sem desconto;
+Day off no mês do aniversário;
+Seguro de vida em grupo;
+Vale-transporte, com desconto de 6% em folha;
+Convênio com estacionamento, sem desconto;
+Plano de saúde Unimed, sem custo de mensalidade e com coparticipação de 50% na utilização;
+Plano odontológico sem coparticipação;
+TotalPass, com acesso a academias conveniadas;
+Clube Saúde, plataforma on-line com assistência médica, nutricional e teleterapia;
+Convênios com SESC e Univille para cursos de extensão e pós-graduação.
+
+Horário de trabalho: De segunda a sexta-feira, das 8h às 12h e das 13h30 às 18h.
+
+Local: Presencial em Joinville/SC.
+
+Etapas do Processo Seletivo:
+
+1- Entrevista online com a Culture Designer.
+
+2- Entrevista presencial com a gestão da empresa contratante.
+
+Seniority level: Mid-Senior level
+Employment type: Full-time
+Industries: Wholesale Import and Export
+
+
+===== VAGA 3 de 18 =====
+Título: Analista Administrativo de Vendas
+Empresa: abler Vagas
+Local: Joinville, Santa Catarina, Brazil
+Fonte: LinkedIn · publicada 2026-09-02 · achada 01/11 21:43
+Link: https://br.linkedin.com/jobs/view/analista-administrativo-de-vendas-at-abler-vagas-4462494038
+--- Anúncio ---
+Candidate-se rapidamente pelo email: vaga-389933@vagas.abler.in
+
+Nível: Analista
+
+Cursos de: gestão de vendas,Administração
+
+Escolaridade: Graduação - Administração ,gestão de vendas - Cursando
+
+Tipo de contrato: CLT
+
+Jornada de trabalho: Comercial
+
+Responsabilidades Da Posição
+
+Sobre a vaga
+
+Buscamos um Analista Administrativo de Vendas que seja proativo, organizado e tenha paixão por otimizar processos. Você fará parte de uma equipe que busca constantemente melhorar a eficiência das vendas e a experiência do cliente.
+
+Responsabilidades
+
+Gerenciar e atualizar o CRM, garantindo dados precisos e atualizados.
+Elaborar relatórios mensais de desempenho de vendas usando Excel e Power BI.
+Colaborar com as áreas de Marketing, Financeiro e Logística para alinhar estratégias e metas.
+Identificar oportunidades de melhoria nos processos de vendas e propor soluções.
+Suporte na elaboração de propostas comerciais e contratos.
+
+Requisitos Obrigatórios Para a Posição
+
+Graduação em Administração, Comercial, ou áreas afins.
+Conhecimento avançado em sistemas de CRM (Salesforce, HubSpot, ou similar).
+Domínio de Excel (tabelas dinâmicas, fórmulas complexas).
+Habilidade em análise de dados e elaboração de relatórios.
+Boa comunicação verbal e escrita.
+Capacidade de trabalhar de forma autônoma e em equipe.
+
+Seniority level: Mid-Senior level
+Employment type: Full-time
+Industries: Technology, Information and Internet
+
+
+===== VAGA 4 de 18 =====
+Título: Coordenador Administrativo Comercial
+Empresa: MERKEL RECURSOS HUMANOS
+Local: Joinville
+Fonte: Catho · publicada 30/10 · achada 01/11 21:41
+Link: https://www.catho.com.br/vagas/coordenador-administrativo-comercial/39062511
+--- Anúncio ---
+Gestão integrada de Administrativo de Vendas, Financeiro e Faturamento.
+
+Liderar o motor que conecta a estratégia comercial à operação da empresa. Garantir que, após comercial fechar o negócio, o pedido corra sem erros por faturamento, estoque e logística até chegar ao cliente.
+
+Manter a Padronização do fluxo (do pedido à entrega)
+Manter Centralização de dados (CRM + ERP)
+Promover a Sinergia entre Comercial, Financeiro e Logística
+Monitorar gargalos e performance (KPIs)
+
+Liderar a equipe administrativa e operacional que atua nos bastidores para dar suporte à força de vendas, garantindo que os acordos comerciais sejam concretizados e entregues sem errosSuperior completo (Administração, Contábeis, Negócios ou afins).
+
+Vivência em gestão administrativa multissetorial e liderança.
+
+Excel avançado e ERP.
+
+
+===== VAGA 5 de 18 =====
+Título: COORDENADOR DE OPERAÇÕES*
+Empresa: Ânima Educação
+Local: Joinville, Santa Catarina, Brazil
+Fonte: LinkedIn · publicada 2026-10-09 · achada 01/11 02:05
+Link: https://br.linkedin.com/jobs/view/coordenador-de-opera%C3%A7%C3%B5es-at-%C3%A2nima-educa%C3%A7%C3%A3o-4477877295
+--- Anúncio ---
+DESCRIÇÃO
+
+COORDENADOR DE OPERAÇÕES
+
+Essa posição é para atuar na UNISOCIESC que faz parte do Ecossistema Ânima, o maior e o mais inovador ecossistema de ensino de qualidade do país, com instituições espalhadas por todo o Brasil. Somos uma empresa em constante evolução, que enxerga em cada detalhe novas formas de promover a educação. Por sinal, essa é a essência que nos faz ser diferentes.
+
+Confira mais sobre a nossa oportunidade.
+
+Do Que Você Precisa Para Concorrer à Vaga
+
+Ensino Superior Completo;
+
+Especialização Completa;
+
+Experiência mínima de dois anos na área preferencialmente em Ensino Superior.
+
+Como Será Seu Dia a Dia Como Educador(a)
+
+Realizar toda gestão operacional da unidade;
+
+Realizar e reportar o planejamento Estratégico, Expansão B2B, Gestão Acadêmica, Financeira e Operacional.
+
+Implementar rotinas operacionais mais eficientes, prezando por qualidade e tempo de resposta.
+
+Acompanhar o planejamento de estratégias comerciais e de marketing, junto com as áreas responsáveis, visando ao desenvolvimento e acompanhamento de metas.
+
+Realizar acompanhamento das metas estabelecidas.
+
+Representar a universidade quando necessários em eventos internos e externos.
+
+Habilidades Bacanas Para Essa Posição
+
+Facilidade em trabalhar com grande volume de trabalho
+
+Adaptabilidade às mudanças
+
+Inovação
+
+Facilidade em trabalhar com prazos e sob pressão.
+
+Entenda Como é o Modelo Para Essa Vaga
+
+Para essa posição a atuação é: Presencial
+
+Horário: Segunda à Sexta-feria das 08h as 18h com 1h de intervalo
+
+Local de trabalho: UNISOCIESC - Anita Garibaldi
+
+Veja o que já vai encontrar no nosso Ecossistema Ânima
+
+Bolsas de Estudos;
+Indicação de 2 Bolsas de Estudos para quem preferir;
+Programa de Bem-estar e Qualidade de Vida;
+Totalpass;
+Zenklub;
+ECOA – Escola Corporativa Ânima, com + de 100 cursos livres e gratuitos;
+Day-off no aniversário;
+Abono de meio-período no aniversário do(a) filho(a) com até 16 anos;
+Programa Valor das Pessoas: vale-presente para os educadores em fases marcantes de suas vidas, como casamento, nascimento e até mesmo uma nova titulação;
+Assistência Médica;
+Assistência Odontológica.
+
+Ah! Independente de cor, idade, gênero, orientação sexual, origem, religião ou qualquer outra característica, ou particularidade que tenha, se você tem desejo e energia para contribuir para a transformação de vidas por meio da Educação, aqui é o seu lugar!
+
+Seja um educador ou educadora no Ecossistema Ânima e venha transformar o país pela educação.
+
+Boa sorte!
+
+Local de trabalho: Joinville, SC
+Regime de contratação de tipo: Efetivo – CLT
+Jornada: Período Integral
+Área e especialização profissional: Administração - Administração Geral
+Nível hierárquico: Coordenador
+
+REQUISITOS
+
+Escolaridade Mínima: Ensino Superior
+
+Seniority level: Not Applicable
+Employment type: Full-time
+Industries: Education Administration Programs
+
+
+===== VAGA 6 de 18 =====
+Título: Coordenador administrativo de vendas
+Empresa: MERKEL RH
+Local: Joinville, Santa Catarina, Brazil
+Fonte: LinkedIn · publicada 2026-10-30 · achada 30/10 19:16
+Link: https://br.linkedin.com/jobs/view/coordenador-administrativo-de-vendas-at-merkel-rh-4483488460
+--- Anúncio ---
+Gestão integrada de Administrativo de Vendas, Financeiro e Faturamento.
+
+Liderar o motor que conecta a estratégia comercial à operação da empresa. Garantir que, após comercial fechar o negócio, o pedido corra sem erros por faturamento, estoque e logística até chegar ao cliente.
+
+Manter a Padronização do fluxo (do pedido à entrega)
+
+Manter Centralização de dados (CRM + ERP)
+
+Promover a Sinergia entre Comercial, Financeiro e Logística
+
+Monitorar gargalos e performance (KPIs)
+
+Liderar a equipe administrativa e operacional que atua nos bastidores para dar suporte à força de vendas, garantindo que os acordos comerciais sejam concretizados e entregues sem erros
+
+Requisitos:
+
+Superior completo (Administração, Contábeis, Negócios ou afins).
+
+Vivência em gestão administrativa multissetorial e liderança.
+
+Excel avançado e ERP.
+
+Seniority level: Entry level
+Employment type: Full-time
+Industries: Human Resources Services
+
+
+===== VAGA 7 de 18 =====
+Título: Coordenador(a) Administrativo(a) de Vendas
+Empresa: Grupo Krona
+Local: Joinville, Santa Catarina, Brazil
+Fonte: LinkedIn · publicada 2026-10-26 · achada 26/10 17:37
+Link: https://br.linkedin.com/jobs/view/coordenador-a-administrativo-a-de-vendas-at-grupo-krona-4483224816
+--- Anúncio ---
+Joinville/SC
+
+Área: Comercial / Administração de Vendas
+
+Modelo de trabalho: Presencial
+
+Jornada: Comercial
+
+Contratação: CLT
+
+Buscamos um(a) profissional para liderar a equipe de Administração de Vendas, atuando na estruturação de processos, gestão de pessoas e suporte estratégico à Gerência Administrativa de Vendas. O objetivo principal é garantir a eficiência e a padronização das rotinas administrativas de vendas, o monitoramento de indicadores de performance de mercado, a otimização de custos da área e a excelência no relacionamento com clientes e representantes, assegurando o cumprimento do planejamento estratégico e o crescimento sustentável da marca.
+
+Principais Responsabilidades
+
+Liderar, desenvolver e motivar a equipe interna de Administração de Vendas, conduzindo rotinas de gestão de pessoas.
+Colaborar diretamente com a Gerência Comercial no planejamento estratégico, avaliando e propondo aprimoramentos nas políticas e diretrizes comerciais para adequação ao mercado.
+Monitorar, consolidar e analisar indicadores de desempenho (KPIs) de vendas e performance interna/externa, fornecendo relatórios e visões estratégicas para tomadas de decisão.
+Estruturar programas contínuos de capacitação técnica, processos e produtos para a equipe interna e agentes externos (como representantes comerciais).
+Gerenciar a resolução de divergências operacionais e contratuais nos processos de vendas, assegurando agilidade, foco no cliente e fortalecimento da marca.
+Controlar as despesas operacionais da área, garantindo o cumprimento orçamentário, a otimização de recursos e a eliminação de desperdícios.
+Apoiar e executar projetos estratégicos da área Comercial, identificando melhores práticas de mercado que elevem a competitividade da organização.
+Realizar visitas a clientes ou potenciais parceiros e representar a empresa em eventos externos, quando direcionado pela gestão ou alinhado com o Marketing.
+Zelar pelo cumprimento dos padrões de qualidade, organização do setor e normas de saúde, segurança do trabalho e meio ambiente.
+
+Requisitos Técnicos e Perfil
+
+Formação superior completa em Administração de Empresas, Gestão Comercial, Marketing ou áreas afins.
+Pós-graduação ou Especialização concluída em Negócios, Gestão Estratégica, Gestão Comercial, Recursos Humanos, Marketing ou áreas correlatas.
+Experiência consolidada em rotinas de administração de vendas e/ou gestão de equipes comerciais/administrativas.
+Vivência em acompanhamento orçamentário, gestão por indicadores e suporte a redes de representantes comerciais.
+Domínio de ferramentas de análise de dados e rotinas de CRM (Desejável: vivência com ferramentas de BI e sistema CRM Salesforce).
+Forte orientação para resolução de problemas, visão integrada de processos corporativos, excelente comunicação interpessoal e foco no cliente.
+Perfil voltado à inovação sustentável, adaptabilidade a mudanças de cenário e autodesenvolvimento contínuo.
+
+Benefícios
+
+Plano de saúde Seguros Unimed extensivo a dependentes (Sem Coparticipação e sem mensalidade). *apenas filhos acima de 18 anos pagam mensalidade;
+Plano Odontológico Dental Uni extensivo a dependentes (sem mensalidade);
+Refeitório na empresa para facilitar sua rotina;
+Vale transporte com desconto em folha, ou estacionamento próprio caso possua carro/moto;
+Participação nos lucros e resultados da empresa, com base no atingimento das metas;
+Seguro de vida em grupo para proteger você e sua família;
+Acesso ao Wellhub (Gympass) para manter sua saúde em dia;
+Licença maternidade e paternidade estendida;
+Programas de desenvolvimento profissional para impulsionar sua carreira;
+Bolsa de Estudos de até 50%, após 1 ano de empresa, em caso de aprovação no processo interno;
+Consultório odontológico na empresa;
+Atendimento Psicológico na empresa;
+Plataforma EAD para aprendizado contínuo e crescimento pessoal;
+Brinde de natal.
+
+Seniority level: Not Applicable
+Employment type: Full-time
+Industries: Chemical Manufacturing
+
+
+===== VAGA 8 de 18 =====
+Título: Analista Administrativo Comercial
+Empresa: Jobbol
+Local: Joinville, Santa Catarina, Brazil
+Fonte: LinkedIn · publicada 2026-09-28 · achada 20/10 05:31
+Link: https://br.linkedin.com/jobs/view/analista-administrativo-comercial-at-jobbol-4472470780
+--- Anúncio ---
+Empresa de software especializada em recrutamento e seleção busca profissional Analista Administrativo Comercial em Joinville.
+
+Por quase 10 anos, os fundadores da Abler atuaram no setor de recursos humanos. Essa bagagem os trouxe experiências, vivências e principalmente, um olhar tecnológico sobre as dores do setor! No ano de 2017, a inconformidade com as necessidades da área de RH os impulsionou a iniciar a criação da Abler, desenhando um software de recrutamento e seleção olhando para as maiores dores da área. Suas conquistas não param por aqui, seguem firme no propósito de dar às equipes de RH mais controle e previsibilidade em cada contratação!
+
+Responsabilidades
+
+Prospectar empresas, parceiros e novas oportunidades de negócios. Conduzir apresentações institucionais e comerciais. Desenvolver e fortalecer relacionamentos com empresas, instituições e parceiros. Identificar e desenvolver oportunidades de parcerias estratégicas. Atuar na negociação de projetos, serviços e parcerias. Apoiar ações de expansão e posicionamento institucional. Conduzir programas de pré-incubação, incubação e inovação aberta. Realizar a gestão e o acompanhamento das empresas instaladas no ambiente de inovação. Prestar acompanhamento consultivo às startups e empresas incubadas. Identificar necessidades e propor soluções adequadas aos negócios. Facilitar conexões entre startups, empresas, instituições e parceiros. Atuar na retenção e satisfação de empresas incubadas e parceiros. Representar a organização em eventos, reuniões e iniciativas externas. Avaliar projetos e propostas de incubação. Conduzir processos, registros e documentação relacionados à incubação. Acompanhar indicadores, metas e resultados da área. Sugerir melhorias nos processos administrativos, comerciais e de relacionamento. Apoiar o desenvolvimento e a execução de ações estratégicas. Contribuir para programas de melhoria contínua e qualidade dos serviços.
+
+Atuações anteriores em Assistente Administrativo Comercial, Coordenador Administrativo Comercial, Analista de Vendas ou Especialista em Processos Comerciais podem indicar afinidade com algumas das atividades desta posição.
+
+Requisitos Desejáveis
+
+Escolaridade: Ensino superior completo
+
+Experiência: Necessário experiência
+
+Remuneração e Benefícios
+
+Salário: Faixa salarial será informada na entrevista.
+Assistência Odontológica |Bolsa de Estudos |Plano Médico |Vale Alimentação |Vale Transporte
+
+Informações Adicionais
+
+Contrato: Efetivo. Presencial. Candidatos de Araquari, São Francisco do Sul ou Guaramirim também são considerados para esta vaga.
+Período: Tempo Integral
+Jornada: 08:00 às 17:00.
+
+Seniority level: Not Applicable
+Employment type: Full-time
+Industries: Technology, Information and Internet
+
+
+===== VAGA 9 de 18 =====
+Título: Coordenador de operações
+Empresa: Par RH®️
+Local: Joinville, Santa Catarina, Brazil
+Fonte: LinkedIn · publicada 2026-08-19 · achada 18/10 20:06
+Link: https://br.linkedin.com/jobs/view/coordenador-de-opera%C3%A7%C3%B5es-at-par-rh%C2%AE%EF%B8%8F-4456100300
+--- Anúncio ---
+Missão Do Cargo
+
+Coordenar a rotina operacional, garantindo planejamento diário, distribuição de equipes, organização de ordens de serviço, cumprimento de cronogramas, qualidade da execução e velocidade de resposta às demandas das regionais e da diretoria.
+
+Principais Responsabilidades
+
+Planejar diariamente instalações, substituições, manutenções e intervenções operacionais.
+Distribuir e acompanhar equipes próprias e terceirizadas, assegurando produtividade, prazo, qualidade e segurança.
+Organizar ordens de serviço, cronogramas, materiais e prioridades operacionais da semana e do dia.
+Acompanhar execução em campo, registrar desvios, cobrar correções e reportar gargalos com rapidez.
+Apoiar compras operacionais, logística de materiais e interface com serralharia, montagem e afixação.
+Atuar como ponte prática entre diretoria de operações, regionais e equipes de campo, dando visibilidade ao status das entregas.
+Contribuir para melhoria contínua de produtividade, organização da rotina e padronização operacional.
+
+Perfil e Formação Desejados
+
+Busca-se um profissional tático, muito organizado, com força de cobrança, leitura de campo e elevada capacidade de coordenação do dia a dia. Mais do que um planejador de gabinete, a Eldorado precisa de alguém que faça a operação rodar com disciplina e previsibilidade.
+
+Formação técnica ou superior em Engenharia Civil, Produção, Logística, Edificações, Manutenção ou áreas afins. Vivência em montagens, manutenção, estruturas metálicas, obras leves, facilities, mídia exterior ou operação de campo é altamente desejável.
+
+Regime De Contratação
+
+Pessoa Jurídica
+
+Departamento
+
+Operacional
+
+Seniority level: Not Applicable
+Employment type: Full-time
+Industries: Business Consulting and Services
+
+
+===== VAGA 10 de 18 =====
+Título: Gerente Administrativo Operacional –Clínica médica
+Empresa: HRL Consultoria e Projetos
+Local: Joinville, Santa Catarina, Brazil
+Fonte: LinkedIn · publicada 2026-10-14 · achada 14/10 16:29
+Link: https://br.linkedin.com/jobs/view/gerente-administrativo-operacional-%E2%80%93cl%C3%ADnica-m%C3%A9dica-at-hrl-consultoria-e-projetos-4476683683
+--- Anúncio ---
+Vaga: Gerente Administrativo(a) Operacional (Clínica Médica)
+
+Estamos em busca de um(a) Gerente Administrativo(a) Operacional experiente e com forte pulso de liderança para gerenciar a rotina de uma clínica médica de médio/alto padrão localizada no centro de Joinville (SC).
+
+Procuramos um perfil maduro, dinâmico e focado em resultados, que saiba organizar processos, impor respeito de forma equilibrada e garantir o funcionamento fluido da retaguarda administrativa, financeira e de atendimento.
+
+Principais Responsabilidades:
+
+* Gestão de Pessoas e Operação: Liderar, treinar e acompanhar a equipe administrativa/recepção (cerca de 8 funcionárias), garantindo a harmonia da equipe e o cumprimento de processos e hierarquia.
+
+* Rotina Financeira: Gerenciar o contas a pagar (seguindo planilhas estruturadas, emissão de boletos e prestação de contas à diretoria), controle de suprimentos de uso/consumo e compras recorrentes.
+
+* Faturamento e Convênios: Atuar em interface com as operadoras de saúde (cerca de 8 convênios), realizando conferências de guias, faturamento e acompanhamento de glosas para evitar furos ou atrasos.
+
+* Interface Contábil e DP Básico: Acompanhar o fechamento de ponto (banco de horas), organizar dados para a contabilidade terceirizada e apoiar no controle de repasses médicos.
+
+* Multitarefas e Resolução de Problemas: Ser o ponto focal para resolver gargalos imediatos do dia a dia da clínica com autonomia, agilidade e inteligência emocional.
+
+Requisitos e Perfil Desejado
+
+* Experiência Obrigatória: Vivência prévia na gestão administrativa de clínicas médicas, hospitais ou institutos de saúde particulares de médio/alto padrão.
+
+* Maturidade e Liderança: Perfil maduro (faixa etária recomendada entre 35 e 50 anos), com pulso firme, excelente inteligência emocional e habilidade comprovada na condução de equipes.
+
+* Perfil Tecnológico: Agilidade com sistemas de gestão e informática. Diferencial: Conhecimento prévio do sistema FGO (Prontuário Médico).
+
+* Organização e Dinamismo: Alta capacidade de gerenciar prioridades simultâneas em um ambiente acelerado, mantendo a organização de processos e relatórios.
+
+* Ferramentas: Excel intermediário.
+
+Informações Contratuais
+
+* Modelo de Contratação: PJ (Pessoa Jurídica)
+
+* Faixa Salarial: R$ 8.000,00 a R$ 9.000,00 (negociável compatível com a senioridade exigida)
+
+* Local de Trabalho: Centro de Joinville - SC (Presencial)
+
+* Jornada: Segunda a sexta-feira, em horário comercial.
+
+* Previsão de Início: Outubro / Início de Novembro de 2026.
+
+Seniority level: Mid-Senior level
+Employment type: Full-time
+Industries: Human Resources Services
+
+
+===== VAGA 11 de 18 =====
+Título: Analista de Planejamento Comercial - Salesforce
+Empresa: Porto Itapoa
+Local: Joinville, Santa Catarina, Brazil
+Fonte: LinkedIn · publicada 2026-10-13 · achada 13/10 16:15
+Link: https://br.linkedin.com/jobs/view/analista-de-planejamento-comercial-salesforce-at-porto-itapoa-4476461837
+--- Anúncio ---
+A função dessa posição é ser PO (product owner) da parte de negócio, gerencia os projetos de Salesforce do Comercial e toca junto com a consultoria, conectando os pedidos do time comercial ao TI e desenvolvedores. Além disso, é responsável pelo processo comercial (diretriz, procedimentos, instruções de trabalho e toda análise do funil de conversão). Buscando melhorias para vida dos vendedores e do resultado da companhia
+
+Como será o seu dia a dia
+
+Responsável por analisar, estruturar e aprimorar os processos e indicadores da área comercial, assegurando a governança das informações, qualidade dos dados e aderência às diretrizes internas.
+Atuar como referência na gestão operacional do Salesforce e na melhoria contínua dos fluxos comerciais, contribuindo com análises e projeções de curto e médio prazo que suportam a tomada de decisão.
+Mapear e implementar melhorias nos processos comerciais, buscando maior padronização, automação e eficiência;
+Estruturar e manter atualizada a documentação dos processos, fortalecendo a governança e clareza dos fluxos comerciais;
+Garantir a aderência dos processos às normas internas, políticas corporativas e requisitos regulatórios aplicáveis;
+Atuar como referência operacional do CRM Salesforce, apoiando parametrizações, melhorias evolutivas e utilização da ferramenta;
+Zelar pela qualidade, consistência e integridade dos dados comerciais, apoiando análises e tomadas de decisão;
+Conduzir treinamentos e disseminar boas práticas relacionadas aos processos comerciais e ao uso do CRM;
+Trabalhar de forma integrada com áreas parceiras na implementação de melhorias sistêmicas e otimização dos fluxos;
+Elaborar análises e consolidar informações que contribuam para a previsibilidade de demanda e projeções de curto e médio prazo;
+Atuar em conformidade com as normas e diretrizes de Segurança e Meio Ambiente do Porto Itapoá, contribuindo para um ambiente seguro e sustentável.
+
+Requisitos Obrigatórios:
+
+Ensino Superior em Administração, Engenharia, Comércio Exterior ou áreas afins;
+Pacote Office avançado;
+Tableau e/ou Power BI;
+Conhecimento em operações comerciais;
+Excel, Data Science, CRM - Curstomer Relationship Management;
+Conhecimentos intermediários de mercado exterior e mercado local;
+Inglês intermediário, com capacidade para leitura e interpretação de textos e manuais, além de conversação simples.
+Disponibilidade de atuação em Joinville/SC no modelo de trabalho 4 dias presenciais e 1 dia em home office.
+
+Benefícios
+
+Assistência Médica
+Assistência Odontológica
+Estacionamento
+Participação nos lucros
+Previdência privada
+Restaurante na empresa
+Seguro de vida em grupo
+Vale alimentação
+Vale Transporte
+
+Seniority level: Mid-Senior level
+Employment type: Full-time
+Industries: Data Infrastructure and Analytics
+
+
+===== VAGA 12 de 18 =====
+Título: Gerente Financeiro
+Empresa: Jobbol
+Local: Joinville, Santa Catarina, Brazil
+Fonte: LinkedIn · publicada 2026-10-07 · achada 07/10 22:09
+Link: https://br.linkedin.com/jobs/view/gerente-financeiro-at-jobbol-4476905980
+--- Anúncio ---
+Empresa de Serviços de Logística busca profissional Gerente Financeiro em Joinville (Zona Industrial Norte).
+
+A Otimizalog é uma empresa especializada em soluções de otimização logística. Oferecemos serviços que visam aumentar a eficiência e reduzir custos nas operações logísticas de nossos clientes.
+
+Responsabilidades
+
+Acompanhar a rotina financeira da empresa, apoiando o controle de pagamentos, recebimentos e fluxo de caixa. Elaborar relatórios gerenciais para subsidiar a tomada de decisão da liderança. Apoiar a organização de documentos e informações financeiras, garantindo a atualização e a conferência dos registros. Acompanhar o planejamento financeiro e a análise de resultados, em alinhamento com as necessidades da área administrativa.
+
+Atuações anteriores em Diretor Financeiro, Coordenador Financeiro, Supervisor Financeiro ou Analista Financeiro Sênior podem indicar afinidade com algumas das atividades desta posição.
+
+Requisitos Desejáveis
+
+Escolaridade: Ensino superior completo
+
+Experiência: Necessário experiência
+
+Remuneração e Benefícios
+
+Salário: Faixa salarial será informada na entrevista.
+Benefícios a combinar
+
+Informações Adicionais
+
+Contrato: Efetivo. Presencial. Candidatos de Araquari, São Francisco do Sul ou Guaramirim também são considerados para esta vaga.
+Período: Tempo Integral
+Jornada: A combinar
+
+Seniority level: Not Applicable
+Employment type: Full-time
+Industries: Technology, Information and Internet
+
+
+===== VAGA 13 de 18 =====
+Título: Analista de Planejamento de Vendas III
+Empresa: Tupy
+Local: Joinville, Santa Catarina, Brazil
+Fonte: LinkedIn · publicada 2026-10-02 · achada 07/10 07:12
+Link: https://br.linkedin.com/jobs/view/analista-de-planejamento-de-vendas-iii-at-tupy-4473125859
+--- Anúncio ---
+A Tupy é uma multinacional brasileira com mais de 80 anos de história, presente em mais de 40 países e reconhecida pela tecnologia de ponta aplicada à produção de componentes estruturais em ferro fundido para setores como transporte, infraestrutura, agronegócio e energia.
+
+Com operações no Brasil, México e Portugal, a Tupy transforma engenharia, inovação e sustentabilidade em soluções que fazem diferença na vida de milhões de pessoas, levando mobilidade, saneamento, saúde e qualidade de vida para o mundo todo.
+
+E tem mais: A MWM, parte do grupo Tupy, é uma empresa que une tradição e inovação na fabricação de motores, geradores de energia, torres de iluminação e sistemas de bombeamento. Com mais de sete décadas de atuação no Brasil e presença em mais de 45 países, ela se destaca por oferecer soluções modernas voltadas à descarbonização no campo e na cidade.
+
+A empresa também conta com um amplo portfólio de peças de reposição e é referência em contratos de manufatura. Além disso, possui uma robusta rede de distribuição com mais de 1.300 pontos espalhados pelo Brasil e pelo mundo.
+
+🚀 Se você quer trabalhar em um ambiente colaborativo, inovador, repleto de desafios e oportunidades, o seu próximo passo pode ser aqui com a gente.
+
+Venha fazer parte da Tupy!
+
+Sua trajetória será construída no coração da inovação, veja nosso endereço:
+
+📍Rua Albano Schmidt - Boa Vista - Joinville.
+
+Responsabilidades e atribuições
+
+O Analista de Planejamento de Vandas III, é responsável por apoiar os Gerentes de Contas na gestão comercial de clientes estratégicos, por meio do acompanhamento de demandas comerciais gerais, cotações de novos produtos e alterações de produtos existentes. Atua no monitoramento e na análise de indicadores da área, além de realizar a interface com áreas internas para obtenção e consolidação de informações relevantes. Também é responsável pela elaboração de análises e recomendações que apoiem a tomada de decisão e a identificação de riscos e oportunidades, bem como pela execução das demais atividades administrativas relacionadas à gestão comercial.
+
+Requisitos e qualificações
+
+Superior completo em Engenharia, Administração, Negócios, Economia, ou áreas afins;
+Inglês avançado é requisito indispensável, com forte ênfase em comunicação verbal (conversação);
+Necessário conhecimento em pacote Office, preferencialmente em um nível avançado;
+Vivência em processos industriais de transformação, preferencialmente em fundição, usinagem ou manufatura automotiva;
+Desejável experiência em funções que exijam habilidades de negociação e articulação.
+Disponibilidade para atuar 100%, presencialmente, em Joinville/SC;
+Se for funcionário(a) da Tupy, é necessário estar na empresa há pelo menos 01 ano.
+
+Informações adicionais
+
+Temos benefícios para cuidar do seu bem estar e do seu futuro:
+
+💰 Remuneração e Incentivos:
+
+💰 Remuneração Variável (PRT)
+
+🏆 Presença Premiada
+
+💳 Cartão Multibenefícios Tupy: Utilização nos estabelecimentos conveniados com a empresa.
+
+📈 Planejamento Financeiro e Bem-estar:
+
+📈 Previdência Privada
+
+🛡️ Seguro de Vida em Grupo
+
+🏥 Assistência Médica
+
+😁 Assistência Odontológica
+
+🍽️ Restaurante na Empresa
+
+🎓 Educação e Desenvolvimento:
+
+🎓 Parceria SESI/SENAI
+
+🏋️‍♂️⚽ Lazer e Qualidade de Vida
+
+🏋️‍♂️⚽ Associação Atlética Tupy – Incentivo ao Esporte e Lazer (Academia, Lutas, Quadras esportivas e eventos; Restaurantes e lanchonetes; Espaços de lazer para funcionários e família; Consumo autorizado por uso do convênio (crachá).
+
+A TUPY não cobra nenhum valor em nenhuma etapa do processo seletivo. Em caso de dúvidas ou informações adicionais, consulte sempre nossos canais oficiais.
+
+Seniority level: Not Applicable
+Employment type: Full-time
+Industries: Automation Machinery Manufacturing
+
+
+===== VAGA 14 de 18 =====
+Título: Sales Operations Analyst - Remote Work
+Empresa: BairesDev
+Local: Brazil (Remoto)
+Fonte: LinkedIn · publicada 2026-10-06 · achada 06/10 17:16
+Link: https://br.linkedin.com/jobs/view/sales-operations-analyst-remote-work-at-bairesdev-4474984535
+--- Anúncio ---
+At BairesDev®, we've been leading the way in technology projects for over 15 years. We deliver cutting-edge solutions to giants like Google and the most innovative startups in Silicon Valley.
+
+Our diverse 4,000+ team, composed of the world's Top 1% of tech talent, works remotely on roles that drive significant impact worldwide.
+
+When you apply for this position, you're taking the first step in a process that goes beyond the ordinary. We aim to align your passions and skills with our vacancies, setting you on a path to exceptional career development and success.
+
+Sales Operations Analyst at BairesDev
+
+In this role, you'll keep leads and requests moving smoothly through the sales pipeline, ensuring every one lands in the right hands quickly and accurately. This is a hands-on position where your attention to detail and process discipline directly support the commercial team's efficiency. This is your opportunity to become the operational backbone that keeps sales running without friction.
+
+What You'll Do:
+
+- Review incoming leads, qualify them based on defined criteria, and assign them to the appropriate Client Engagement rep per standard routing rules.
+
+- Introduce Client Engagement reps to leads when needed.
+
+- Ensure commercial teams follow the company's process for lead upload and assignment, clarifying the correct procedure whenever a request falls outside standard guidelines.
+
+- Support the Client Engagement team with operational tasks such as records enrichment, bulk uploads, and data cleansing.
+
+- Review automated reports that flag system issues and resolve the underlying problems.
+
+What we are looking for:
+
+- 2+ years of experience working in Sales, Revenue, or Business Operations, or customer support.
+
+- Proficiency in CRM data management.
+
+- Bachelor's degree.
+
+- Advanced proficiency in English.
+
+How we do make your work (and your life) easier:
+
+- 100% remote work (from anywhere).
+
+- Excellent compensation in USD or your local currency if preferred
+
+- Hardware and software setup for you to work from home.
+
+- Flexible hours: create your own schedule.
+
+- Paid parental leaves, vacations, and holidays.
+
+- Innovative and multicultural work environment: collaborate and learn from the global Top 1% of talent.
+
+- Supportive environment with mentorship, promotions, skill development, and diverse growth opportunities.
+
+Apply now and become part of a global team where your unique talents can truly thrive!
+
+Seniority level: Mid-Senior level
+Employment type: Full-time
+Industries: IT Services and IT Consulting
+
+
+===== VAGA 15 de 18 =====
+Título: Coordenador Financeiro
+Empresa: Jobbol
+Local: Joinville, Santa Catarina, Brazil
+Fonte: LinkedIn · publicada 2026-09-09 · achada 05/10 19:08
+Link: https://br.linkedin.com/jobs/view/coordenador-financeiro-at-jobbol-4465309675
+--- Anúncio ---
+Empresa de Hotelaria busca profissional Coordenador Financeiro em Joinville.
+
+A Hotel 10 é uma rede de hotéis que oferece acomodações confortáveis e serviços de qualidade. Focada em proporcionar uma experiência agradável para seus hóspedes.
+
+Responsabilidades
+
+Gerenciar as atividades financeiras do setor, monitorando pagamentos, recebimentos e controles internos. Auxiliar na criação e na verificação de relatórios financeiros que sustentem a tomada de decisões. Guiar a equipe nas tarefas administrativas pertinentes à área, assegurando a organização e o cumprimento dos prazos. Supervisionar o fluxo de informações financeiras entre as diferentes áreas da empresa, garantindo o alinhamento e a exatidão nos registros.
+
+Atuações anteriores em Gerente Financeiro, Supervisor Financeiro, Analista Financeiro Sênior ou Diretor Financeiro podem indicar afinidade com algumas das atividades desta posição.
+
+Requisitos Desejáveis
+
+Escolaridade: Ensino superior completo
+
+Experiência: Necessário experiência
+
+Remuneração e Benefícios
+
+Salário: Faixa salarial será informada na entrevista.
+Plano Médico |Seguro de Vida |Vale Alimentação
+Vale mobilidade. Plano de carreira. Apoio psicológico.
+
+Informações Adicionais
+
+Contrato: Efetivo. Presencial. Candidatos de Araquari, São Francisco do Sul ou Guaramirim também são considerados para esta vaga.
+Período: Tempo Integral
+Jornada: Segunda a sábado, 12:45 às 19:00.
+
+Seniority level: Not Applicable
+Employment type: Full-time
+Industries: Technology, Information and Internet
+
+
+===== VAGA 16 de 18 =====
+Título: Analista de Operações Comerciais
+Empresa: Rottas Vendas
+Local: Joinville, Santa Catarina, Brazil
+Fonte: LinkedIn · publicada 2026-09-16 · achada 05/10 19:08
+Link: https://br.linkedin.com/jobs/view/analista-de-opera%C3%A7%C3%B5es-comerciais-at-rottas-vendas-4465988187
+--- Anúncio ---
+Você sabia que um dos maiores sonhos dos brasileiros é o de adquirir seu próprio imóvel?
+
+A Rottas Construtora e Incorporadora está no mercado desde 2010, atuando com as modernas técnicas de construção civil, rigor na gestão das obras e dedicação em entregar qualidade e compromisso com o sonho do cliente. Nosso propósito é fazer sempre o melhor e entregar sempre mais, criando um círculo virtuoso que melhora a vida de nossos clientes, colaboradores, parceiros e comunidade que atuamos.
+
+E estamos à procura de pessoas que venham somar ao nosso tempo!
+
+Responsabilidades e atribuições
+
+Conferir documentos e dados cadastrais dos clientes, sinalizando inconsistências e solicitando as correções necessárias conforme os procedimentos estabelecidos;
+Acompanhar a esteira de reservas e vendas no CV, atualizando controles e direcionando pendências aos responsáveis;
+Receber e conferir comprovantes de pagamento de sinal, garantindo sua correta anexação e registro no sistema;
+Apoiar o controle das notas fiscais de origem comercial, incluindo as relacionadas a comissões e premiações;
+Abrir chamados para o lançamento de notas fiscais e acompanhar o atendimento até a conclusão;
+Apoiar o acompanhamento dos processos de pagamento de comissões e premiações, conforme as regras vigentes;
+Comunicar à equipe comercial orientações e informações previamente definidas pela gestão sobre comissões, premiações e processos operacionais;
+Realizar transferências de leads entre corretores ou canais, seguindo os critérios e as autorizações estabelecidas;
+Apoiar o cadastro de corretores e imobiliárias, conferindo documentos e informações necessárias;
+Acompanhar a vigência do CRECI de corretores e imobiliárias, solicitando atualizações quando necessário;
+Prestar suporte inicial aos corretores e gestores em dúvidas relacionadas aos sistemas e processos comerciais;
+Atualizar planilhas, controles, fluxos, procedimentos e manuais da operação comercial;  Identificar problemas recorrentes na rotina e reportar oportunidades de melhoria ao responsável pela área.
+
+Requisitos e qualificações
+
+Escolaridade :
+
+Ensino Superior Cursando em Administração, Gestão Comercial, Engenharia ou similar;
+
+Conhecimentos específicos:
+
+Excel intermediário;
+
+Informações adicionais
+
+Conheça o pacote de benefícios e diferenciais da Rottas Construtora:
+
+Jornada:
+
+De segunda à sexta-feira das 08h30 às 18h com 1 hora de intervalo.
+
+Benefícios:
+
+🍽️ Vale Refeição;
+🛒 Vale Alimentação;
+🩺 Assistência Médica e Odontológica;
+🚌 Vale Transporte;
+💪 Wellhub (Gympass);
+🎉 Day Off;
+🛡️ Seguro de Vida.
+
+Além disso:
+
+💻 Fornecemos os equipamentos necessários para seu trabalho;
+📊 Ciclo de Avaliação de Desempenho;
+🎯 Plano de Desenvolvimento Individual (PDI);
+💬 Feedback contínuo.
+
+Seniority level: Not Applicable
+Employment type: Full-time
+Industries: Civil Engineering
+
+
+===== VAGA 17 de 18 =====
+Título: Analista Administrativo de Vendas
+Empresa: Jobbol
+Local: Joinville, Santa Catarina, Brazil
+Fonte: LinkedIn · publicada 2026-09-08 · achada 05/10 19:08
+Link: https://br.linkedin.com/jobs/view/analista-administrativo-de-vendas-at-jobbol-4464435208
+--- Anúncio ---
+Empresa de Recrutamento e Seleção busca profissional Analista Administrativo de Vendas em Joinville.
+
+Por quase 10 anos, os fundadores da Abler atuaram no setor de recursos humanos. Essa bagagem os trouxe experiências, vivências e principalmente, um olhar tecnológico sobre as dores do setor! No ano de 2017, a inconformidade com as necessidades da área de RH os impulsionou a iniciar a criação da Abler, desenhando um software de recrutamento e seleção olhando para as maiores dores da área. Suas conquistas não param por aqui, seguem firme no propósito de dar às equipes de RH mais controle e previsibilidade em cada contratação!
+
+Responsabilidades
+
+Gerenciar e atualizar o CRM, garantindo dados precisos e atualizados. Elaborar relatórios mensais de desempenho de vendas usando Excel e Power BI. Colaborar com as áreas de Marketing, Financeiro e Logística para alinhar estratégias e metas. Identificar oportunidades de melhoria nos processos de vendas e propor soluções. Prestar suporte na elaboração de propostas comerciais e contratos.
+
+Atuações anteriores em Analista de Vendas, Assistente Comercial, Coordenador de Vendas ou Analista de Marketing podem indicar afinidade com algumas das atividades desta posição.
+
+Requisitos Desejáveis
+
+Escolaridade: Ensino superior completo
+
+Experiência: Necessário experiência
+
+Remuneração e Benefícios
+
+Salário: 4000.00
+Benefícios a combinar
+
+Informações Adicionais
+
+Contrato: Efetivo. Presencial. Candidatos de Araquari, São Francisco do Sul ou Guaramirim também são considerados para esta vaga.
+Período: Tempo Integral
+Jornada: A combinar
+
+Seniority level: Not Applicable
+Employment type: Full-time
+Industries: Technology, Information and Internet
+
+
+===== VAGA 18 de 18 =====
+Título: Analista de Operações Comerciais
+Empresa: House Rottas Vendas
+Local: Joinville - SC (Presencial)
+Fonte: Gupy · publicada 15/09/2026 · achada 05/10 19:08
+Link: https://rottasvendas.gupy.io/job/eyJqb2JJZCI6MTI0OTYyMzcsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=?jobBoardSource=gupy_portal
+--- Anúncio ---
+DESCRIÇÃO DA VAGA
+
+Você sabia que um dos maiores sonhos dos brasileiros é o de adquirir seu próprio imóvel?
+
+A Rottas Construtora e Incorporadora está no mercado desde 2010, atuando com as modernas técnicas de construção civil, rigor na gestão das obras e dedicação em entregar qualidade e compromisso com o sonho do cliente. Nosso propósito é fazer sempre o melhor e entregar sempre mais, criando um círculo virtuoso que melhora a vida de nossos clientes, colaboradores, parceiros e comunidade que atuamos.
+
+E estamos à procura de pessoas que venham somar ao nosso tempo!
+
+RESPONSABILIDADES E ATRIBUIÇÕES
+
+Conferir documentos e dados cadastrais dos clientes, sinalizando inconsistências e solicitando as correções necessárias conforme os procedimentos estabelecidos;
+Acompanhar a esteira de reservas e vendas no CV, atualizando controles e direcionando pendências aos responsáveis;
+Receber e conferir comprovantes de pagamento de sinal, garantindo sua correta anexação e registro no sistema;
+Apoiar o controle das notas fiscais de origem comercial, incluindo as relacionadas a comissões e premiações;
+Abrir chamados para o lançamento de notas fiscais e acompanhar o atendimento até a conclusão;
+Apoiar o acompanhamento dos processos de pagamento de comissões e premiações, conforme as regras vigentes;
+Comunicar à equipe comercial orientações e informações previamente definidas pela gestão sobre comissões, premiações e processos operacionais;
+Realizar transferências de leads entre corretores ou canais, seguindo os critérios e as autorizações estabelecidas;
+Apoiar o cadastro de corretores e imobiliárias, conferindo documentos e informações necessárias;
+Acompanhar a vigência do CRECI de corretores e imobiliárias, solicitando atualizações quando necessário;
+Prestar suporte inicial aos corretores e gestores em dúvidas relacionadas aos sistemas e processos comerciais;
+Atualizar planilhas, controles, fluxos, procedimentos e manuais da operação comercial;  Identificar problemas recorrentes na rotina e reportar oportunidades de melhoria ao responsável pela área.
+
+REQUISITOS E QUALIFICAÇÕES
+
+Escolaridade :
+
+Ensino Superior Cursando em Administração, Gestão Comercial, Engenharia ou similar;
+
+Conhecimentos específicos:
+
+Excel intermediário;
+
+INFORMAÇÕES ADICIONAIS
+
+Conheça o pacote de benefícios e diferenciais da Rottas Construtora:
+
+Jornada:
+
+De segunda à sexta-feira das 08h30 às 18h com 1 hora de intervalo.
+
+Benefícios:
+
+🍽️ Vale Refeição;
+🛒 Vale Alimentação;
+🩺 Assistência Médica e Odontológica;
+🚌 Vale Transporte;
+💪 Wellhub (Gympass);
+🎉 Day Off;
+🛡️ Seguro de Vida.
+
+Além disso:
+
+💻 Fornecemos os equipamentos necessários para seu trabalho;
+📊 Ciclo de Avaliação de Desempenho;
+🎯 Plano de Desenvolvimento Individual (PDI);
+💬 Feedback contínuo.
+
+ETAPAS DO PROCESSO
+Etapa 1: Cadastro
+1
+Cadastro
+Etapa 2: Bate Bapo com o Talent
+2
+Bate Bapo com o Talent
+Etapa 3: Bate Papo com o Gestor(a)
+3
+Bate Papo com o Gestor(a)
+Etapa 4: Contratação
+4
+Contratação
+
+BEM-VINDO À ROTTAS VENDAS!
+
+Aqui, fazemos mais do que vender imóveis – realizamos sonhos e transformamos vidas.
+Na Rottas Vendas, somos movidos pela paixão de conectar pessoas ao lar dos seus sonhos.
+
+Somos o coração comercial da Rottas, um time que acredita no poder das relações, da excelência e da inovação para fazer a diferença no mercado imobiliário.
+
+Por que escolher a Rottas Vendas?
+Nossa cultura é pautada em:
+
+Sonhar e realizar:
+
+Acreditamos no poder de sonhar grande e no compromisso de realizar esses sonhos. Nossa missão é transformar grandes sonhos em realizações concretas, com experiências que marcam vidas.
+
+Alegria e positividade:
+
+Nosso ambiente é marcado pela energia positiva e celebração de cada conquista. Acreditamos que um ambiente alegre e otimista potencializa nosso impacto e a satisfação de todos que interagem conosco.
+
+Cultura de impacto:
+
+Cada interação é uma chance de gerar impacto e transformar vidas. Em cada passo, buscamos não só cumprir, mas superar expectativas, gerando resultados que fazem a diferença em conjunto.
+
+Visão de futuro:
+
+Ser proativo em antecipar necessidades e oportunidades é essencial para criar experiências excepcionais e alcançar resultados notáveis.
+
+Sobre nós:
+
+Na Rottas Vendas atuamos com agilidade, ética e criatividade. Cada projeto que vendemos carrega o compromisso de transformar vidas e comunidades, alinhado aos nossos valores e à nossa visão de futuro.
+
+Trabalhamos com excelência e dedicação, porque sabemos que o que entregamos vai muito além de um imóvel: são lares, sonhos e conquistas que transformam vidas.
+
+O que esperamos de você?
+
+Queremos parceiros que amem desafios, que brilhem ao lidar com pessoas e que sejam protagonistas das próprias histórias.
+
+Se você é apaixonado por resultados, inovação e acredita no poder de transformar sonhos em realidade, seu lugar é aqui.
+
+Pronto para ser parte da nossa história?
+Se você acredita no poder de fazer a diferença e quer crescer em um ambiente dinâmico e inspirador, venha para a Rottas Vendas.
+Aqui, o sucesso a gente constrói junto!
