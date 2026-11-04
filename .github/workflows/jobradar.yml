@@ -25,18 +25,17 @@ jobs:
     # intervalo do cron (3h), então um run truncado nunca empilha em cima
     # do próximo agendado.
     #
-    # Rodam aqui os três perfis de pessoas reais deste fork (dev, admin e
-    # agro). brasil e internacional (Dados/BI, da autora original)
-    # continuam no código e rodáveis por linha de comando, mas ficam fora
-    # do cron: cada perfil a mais é tempo de ciclo somado sem retorno.
+    # Rodam aqui os dois perfis de pessoas reais deste fork (dev e
+    # analista; admin e agro foram removidos em nov/2026). brasil e
+    # internacional (Dados/BI, da autora original) continuam no código e
+    # rodáveis por linha de comando, mas ficam fora do cron: cada perfil a
+    # mais é tempo de ciclo somado sem retorno.
     #
-    # MEDIDO: dev + admin juntos levaram 8min47 (run de 25/08 10:07). O
-    # perfil agro tem o mesmo formato de custo do admin (12 termos por
-    # ciclo, portais generalistas), com uma cidade a mais no LinkedIn — 3
-    # em vez de 1, ver LOCATIONS_LINKEDIN_CIDADES_AGRO. Estimativa de
-    # ciclo com os três: 15-20 min, bem dentro dos 150.
+    # MEDIDO: com quatro perfis (dev, admin, agro, analista) o ciclo levava
+    # ~20 min mais ~5 min de captura de anúncios — com dois, sobra folga
+    # larga dentro dos 150, mesmo com a captura dobrando pra dois perfis.
     #
-    # Os três são baratos perto do perfil brasil, contra o qual este
+    # Os dois são baratos perto do perfil brasil, contra o qual este
     # número foi calibrado: ele roda 15 termos e 16 buscas de LinkedIn por
     # termo (1 país x 2 passadas + 6 países só-remoto + 8 cidades).
     timeout-minutes: 150
@@ -59,31 +58,30 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         # Um projeto só, com perfis selecionáveis (ver core/perfis.py).
-        # Aqui rodam os três perfis de pessoas reais deste fork: `dev`
-        # (back-end Node/TypeScript), `admin` (administrativo/financeiro/
-        # RH), `agro` (agronomia, SC e PR) e `analista` (coordenação/
-        # gerência adm-financeira e analista sênior/imobiliário). Os quatro
-        # notificam no MESMO
-        # chat do Telegram, distinguidos pela linha "Perfil:" da
+        # Aqui rodam os dois perfis de pessoas reais deste fork: `dev`
+        # (back-end Node/TypeScript) e `analista` (coordenação/gerência
+        # adm-financeira e analista sênior/imobiliário). Os dois notificam
+        # no MESMO chat do Telegram, distinguidos pela linha "Perfil:" da
         # notificação (ver notificar_vaga).
         #
         # brasil e internacional são os perfis de Dados/BI da autora
         # original: continuam existindo e rodáveis à mão
         # (`python main.py --perfil brasil --once`), mas fora do cron.
-        run: python main.py --perfil dev admin agro analista --once
+        run: python main.py --perfil dev analista --once
 
-      # Abre o anúncio de cada vaga Dev salva e guarda o texto (descrição,
-      # requisitos, benefícios) no jobs.db — vira a aba "Conteúdo Dev" da
-      # página e o docs/conteudo-dev.txt. Passo à parte e com
-      # continue-on-error: se a fonte bloquear a leitura do anúncio, o
-      # ciclo de busca já notificou o que tinha que notificar e o banco
-      # ainda é salvo no passo seguinte. No máximo 80 vagas por ciclo (2s
-      # de pausa entre elas: ~3-5 min); o histórico atrasado entra aos
-      # poucos, ver scripts/capturar_conteudo.py.
-      - name: Capturar conteúdo dos anúncios (Dev)
+      # Abre o anúncio de cada vaga salva dos perfis dev e analista e
+      # guarda o texto (descrição, requisitos, benefícios) no jobs.db —
+      # vira as abas "Conteúdo Dev" / "Conteúdo Analista" da página e os
+      # docs/conteudo-<perfil>.txt. Passo à parte e com continue-on-error:
+      # se a fonte bloquear a leitura do anúncio, o ciclo de busca já
+      # notificou o que tinha que notificar e o banco ainda é salvo no
+      # passo seguinte. No máximo 80 vagas POR perfil por ciclo (2s de
+      # pausa entre elas: MEDIDO 80 vagas em ~5 min); o histórico atrasado
+      # entra aos poucos, ver scripts/capturar_conteudo.py.
+      - name: Capturar conteúdo dos anúncios (Dev e Analista)
         continue-on-error: true
-        timeout-minutes: 20
-        run: python -m scripts.capturar_conteudo --perfil dev --limite 80
+        timeout-minutes: 30
+        run: python -m scripts.capturar_conteudo --perfil dev analista --limite 80
 
       - name: Salvar vagas já vistas (evita notificação duplicada)
         run: |
@@ -149,7 +147,7 @@ jobs:
             # que o ciclo rodou, mesmo num ciclo sem vaga nova nenhuma.
             python -m web.gerar
 
-            git add data/jobs.db docs/index.html docs/conteudo-dev.txt
+            git add data/jobs.db docs/index.html docs/conteudo-*.txt
 
             if git diff --cached --quiet; then
               echo "Nada novo pra commitar."

@@ -49,13 +49,16 @@ def _linha(titulo, perfil="dev", relevancia=8, empresa="Empresa", quando="2026-0
 def test_so_traz_perfis_em_producao(tmp_path):
     db = _banco(tmp_path, [
         _linha("Desenvolvedor Back-end", perfil="dev"),
-        _linha("Analista Financeiro", perfil="admin"),
+        _linha("Coordenador Financeiro", perfil="analista"),
+        # Perfis removidos em nov/2026: o histórico fica no banco, fora da página.
+        _linha("Analista Administrativo", perfil="admin"),
+        _linha("Engenheiro Agrônomo", perfil="agro"),
         _linha("Analista de Dados", perfil="brasil"),
         _linha("Data Analyst", perfil="internacional"),
         (None, "Vaga antiga", "X", "", "u", "s", "2026-08-07T00:00:00", 6, None, "", ""),
     ])
     titulos = [v["t"] for v in carregar_vagas(db)]
-    assert titulos == ["Desenvolvedor Back-end", "Analista Financeiro"]
+    assert titulos == ["Desenvolvedor Back-end", "Coordenador Financeiro"]
 
 
 def test_ordena_por_nota_e_depois_pela_mais_recente(tmp_path):
@@ -100,7 +103,7 @@ def test_nenhum_marcador_do_template_sobra(tmp_path):
 
 
 def test_gerar_escreve_o_arquivo_e_conta_as_vagas(tmp_path):
-    db = _banco(tmp_path, [_linha("A"), _linha("B", perfil="admin")])
+    db = _banco(tmp_path, [_linha("A"), _linha("B", perfil="analista")])
     saida = tmp_path / "sub" / "index.html"
 
     assert gerar(db, str(saida)) == 2

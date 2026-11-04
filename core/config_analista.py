@@ -3,13 +3,13 @@
 Mesma separação dos outros perfis: aqui é só DADO (vocabulário de cargo,
 qualificador, termo de busca), o motor e o filtro são os mesmos.
 
-Mesma pessoa do perfil `admin` (7+ anos em rotinas administrativas e
-financeiras no mercado imobiliário, Administração, Joinville/SC), com
-outro recorte, pedido por ela em out/2026: em vez de "qualquer analista da
-área", mira coordenação/gerência/supervisão administrativa e financeira,
-operações, contratos e sales ops — e analista só quando o título traz
-nível sênior ou o setor imobiliário/comercial. O `admin` continua rodando
-como estava; os dois perfis convivem.
+Pessoa com 7+ anos em rotinas administrativas e financeiras no mercado
+imobiliário (Administração, Joinville/SC). Recorte pedido por ela em
+out/2026: em vez de "qualquer analista da área", mira coordenação/
+gerência/supervisão administrativa e financeira, operações, contratos e
+sales ops — e analista só quando o título traz nível sênior ou o setor
+imobiliário/comercial. Era o segundo perfil dela, ao lado do `admin`; o
+`admin` foi removido em nov/2026 e este ficou como o único.
 """
 
 # Cargo forte: aprova SOZINHO pelo título. Variantes de gênero escritas

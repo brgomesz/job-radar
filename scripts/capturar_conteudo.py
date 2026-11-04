@@ -1,18 +1,21 @@
 """Abre o anúncio de cada vaga aprovada e guarda o texto (descrição,
-requisitos, benefícios) em conteudo_vagas — a matéria-prima da aba
-"Conteúdo Dev" da página e do arquivo docs/conteudo-dev.txt.
+requisitos, benefícios) em conteudo_vagas — a matéria-prima das abas
+"Conteúdo Dev" e "Conteúdo Analista" da página e dos arquivos
+docs/conteudo-<perfil>.txt.
 
 Roda como passo próprio do workflow, DEPOIS do ciclo de busca e ANTES de
 salvar o banco. Passo separado (e com continue-on-error) porque nada aqui
 pode atrasar ou derrubar a notificação: se o LinkedIn bloquear a leitura do
 anúncio, o ciclo de busca já terminou e já avisou o que tinha pra avisar.
 
-Por ciclo abre no máximo --limite vagas (mais recentes primeiro). O
+Por ciclo abre no máximo --limite vagas DE CADA perfil (mais recentes
+primeiro). O
 histórico atrasado vai sendo coberto aos poucos: vaga que falhou volta na
 fila até MAX_TENTATIVAS; a que a fonte respondeu 404/410 sai da fila.
 
 Uso:
-    python -m scripts.capturar_conteudo                 # perfil dev
+    python -m scripts.capturar_conteudo                         # perfil dev
+    python -m scripts.capturar_conteudo --perfil dev analista
     python -m scripts.capturar_conteudo --limite 20
 """
 
@@ -106,10 +109,15 @@ def capturar(perfil: str, limite: int) -> dict:
 
 def main():
     parser = argparse.ArgumentParser(description="Captura o texto dos anúncios das vagas salvas")
-    parser.add_argument("--perfil", default="dev")
-    parser.add_argument("--limite", type=int, default=80)
+    parser.add_argument("--perfil", nargs="+", default=["dev"])
+    parser.add_argument("--limite", type=int, default=80, help="máximo de vagas abertas POR perfil")
     args = parser.parse_args()
-    capturar(args.perfil, args.limite)
+    for perfil in args.perfil:
+        # Um perfil que quebre não impede o seguinte de rodar.
+        try:
+            capturar(perfil, args.limite)
+        except Exception as e:
+            logger.error(f"[conteudo] Captura do perfil {perfil} interrompida: {e}")
 
 
 if __name__ == "__main__":

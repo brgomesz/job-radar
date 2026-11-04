@@ -26,12 +26,15 @@ from core.config import DB_PATH
 _RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE = os.path.join(_RAIZ, "web", "template.html")
 SAIDA = os.path.join(_RAIZ, "docs", "index.html")
-# Texto corrido com o anúncio inteiro de cada vaga Dev — feito pra colar
-# numa IA. Fica ao lado do index.html (o GitHub Pages serve os dois) e é o
-# que a aba "Conteúdo Dev" da página carrega. Arquivo à parte, e não
-# embutido no HTML, porque são centenas de KB que só quem abre a aba usa.
-SAIDA_CONTEUDO = os.path.join(_RAIZ, "docs", "conteudo-dev.txt")
-PERFIL_CONTEUDO = "dev"
+# Texto corrido com o anúncio inteiro de cada vaga — feito pra colar numa
+# IA. Um arquivo por perfil (docs/conteudo-<perfil>.txt), ao lado do
+# index.html (o GitHub Pages serve todos) — é o que as abas "Conteúdo Dev"
+# e "Conteúdo Analista" carregam. Arquivo à parte, e não embutido no HTML,
+# porque são centenas de KB que só quem abre a aba usa. Os perfis daqui
+# são os mesmos que o passo de captura do workflow abre
+# (scripts/capturar_conteudo.py --perfil ...).
+PERFIS_CONTEUDO = ("dev", "analista")
+ARQUIVO_CONTEUDO = "conteudo-{perfil}.txt"
 # Linha que separa uma vaga da outra no .txt. O template divide o arquivo
 # por ela pra montar a lista da aba — mudar aqui exige mudar lá
 # (test_pagina_web trava os dois juntos).
@@ -42,12 +45,12 @@ MARCADOR_ANUNCIO = "--- Anúncio ---"
 # internacional e as vagas sem perfil, anteriores ao campo existir) são
 # do radar de Dados/BI da autora original e não têm o que fazer nesta
 # página — ficam no banco, fora da vitrine.
-PERFIS_NA_PAGINA = ("dev", "admin", "agro", "analista")
+PERFIS_NA_PAGINA = ("dev", "analista")
 
 # Rótulo por perfil. Não importado de core.perfis de propósito: aquele
 # módulo carrega todos os scrapers (e o Playwright junto), coisa que um
 # gerador de HTML não deveria arrastar só pra ler dois nomes.
-ROTULOS = {"dev": "Dev", "admin": "Administrativo", "agro": "Agronomia", "analista": "Analista"}
+ROTULOS = {"dev": "Dev", "analista": "Analista"}
 
 _FUSO_BR = timezone(timedelta(hours=-3))
 
@@ -140,7 +143,7 @@ def carregar_vagas(db_path: str = "") -> list[dict]:
     ]
 
 
-def carregar_conteudo(db_path: str = "", perfil: str = PERFIL_CONTEUDO) -> tuple[list[dict], dict]:
+def carregar_conteudo(db_path: str = "", perfil: str = "dev") -> tuple[list[dict], dict]:
     """(vagas com anúncio capturado, contagem) do perfil, mais recentes
     primeiro. Banco sem a tabela conteudo_vagas (anterior à captura) conta
     como nada capturado ainda, não como erro."""
@@ -183,13 +186,16 @@ def carregar_conteudo(db_path: str = "", perfil: str = PERFIL_CONTEUDO) -> tuple
     return vagas, contagem
 
 
-def montar_conteudo_txt(vagas: list[dict], contagem: dict, agora: datetime | None = None) -> str:
+def montar_conteudo_txt(
+    vagas: list[dict], contagem: dict, agora: datetime | None = None, perfil: str = "dev"
+) -> str:
     agora = agora or datetime.now(_FUSO_BR)
+    rotulo = ROTULOS.get(perfil, perfil)
     blocos = [
-        "CONTEÚDO DAS VAGAS DE DEV — JobRadar\n"
+        f"CONTEÚDO DAS VAGAS DE {rotulo.upper()} — JobRadar\n"
         f"Gerado em {agora.strftime('%d/%m/%Y às %H:%M')} (Brasília). "
         f"{contagem['capturadas']} vaga(s) com anúncio capturado, de {contagem['total']} "
-        "vagas Dev no radar. Mais recentes primeiro.\n"
+        f"vagas {rotulo} no radar. Mais recentes primeiro.\n"
         "Cada vaga traz o texto do anúncio como a fonte publicou (descrição, "
         "requisitos, diferenciais, benefícios)."
     ]
@@ -229,7 +235,9 @@ def montar_html(vagas: list[dict], agora: datetime | None = None, conteudo: dict
     return (
         modelo
         .replace("__DADOS__", dados)
-        .replace("__CONTEUDO__", json.dumps(conteudo or {"total": 0, "capturadas": 0, "removidas": 0, "pendentes": 0}))
+        # {perfil: contagem} — os números das abas de conteúdo, que existem
+        # antes do .txt ser baixado.
+        .replace("__CONTEUDO__", json.dumps(conteudo or {}))
         .replace("__ATUALIZADO__", html.escape(agora.strftime("%d/%m/%Y às %H:%M")))
     )
 
@@ -342,18 +350,20 @@ def _epoch(bruto: str) -> int:
 
 def gerar(db_path: str = "", saida: str = "") -> int:
     saida = saida or SAIDA
-    # Sempre ao lado do index.html: a aba carrega o .txt por caminho relativo.
-    saida_conteudo = os.path.join(os.path.dirname(saida), os.path.basename(SAIDA_CONTEUDO))
     vagas = carregar_vagas(db_path)
-    com_conteudo, contagem = carregar_conteudo(db_path)
     os.makedirs(os.path.dirname(saida), exist_ok=True)
+    contagens = {}
+    for perfil in PERFIS_CONTEUDO:
+        com_conteudo, contagens[perfil] = carregar_conteudo(db_path, perfil)
+        # Sempre ao lado do index.html: a aba carrega o .txt por caminho relativo.
+        caminho = os.path.join(os.path.dirname(saida), ARQUIVO_CONTEUDO.format(perfil=perfil))
+        with open(caminho, "w", encoding="utf-8") as f:
+            f.write(montar_conteudo_txt(com_conteudo, contagens[perfil], perfil=perfil))
     with open(saida, "w", encoding="utf-8") as f:
-        f.write(montar_html(vagas, conteudo=contagem))
-    with open(saida_conteudo, "w", encoding="utf-8") as f:
-        f.write(montar_conteudo_txt(com_conteudo, contagem))
+        f.write(montar_html(vagas, conteudo=contagens))
     return len(vagas)
 
 
 if __name__ == "__main__":
     total = gerar()
-    print(f"docs/index.html gerado com {total} vaga(s); docs/conteudo-dev.txt junto.")
+    print(f"docs/index.html gerado com {total} vaga(s); docs/conteudo-*.txt junto.")

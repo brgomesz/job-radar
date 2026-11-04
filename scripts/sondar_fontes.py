@@ -25,7 +25,7 @@ import sys
 import time
 import traceback
 
-from core.perfis import PERFIL_ADM, PERFIL_AGRO, PERFIL_ANALISTA, PERFIL_DEV
+from core.perfis import PERFIL_ANALISTA, PERFIL_DEV
 from scrapers.nacionais import CANDIDATAS
 
 # Um termo por perfil: o objetivo é saber se a fonte RESPONDE e se o
@@ -34,11 +34,10 @@ from scrapers.nacionais import CANDIDATAS
 # financeiro", e isso é informação útil).
 TERMOS_PADRAO = [
     "desenvolvedor back-end",
-    "analista financeiro",
-    "engenheiro agrônomo",
+    "coordenador financeiro",
 ]
 
-PERFIS = [PERFIL_DEV, PERFIL_ADM, PERFIL_AGRO, PERFIL_ANALISTA]
+PERFIS = [PERFIL_DEV, PERFIL_ANALISTA]
 
 
 def _amostra(vagas, n=3):

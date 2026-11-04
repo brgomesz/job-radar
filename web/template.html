@@ -22,7 +22,6 @@
   --ink:#141917; --ink-2:#3C4644; --muted:#61706C; --line:#DCE2DD;
   --dev:#0C6B63; --dev-soft:#E2F0EE;
   --adm:#9A5716; --adm-soft:#F6EBDE;
-  --agro:#4A6B18; --agro-soft:#EAF1DE;
   --ana:#5B3F8C; --ana-soft:#EDE7F6;
   --hot:#164E45; --shadow:0 1px 2px rgba(20,25,23,.06),0 8px 24px rgba(20,25,23,.05);
 }
@@ -32,8 +31,6 @@
     --ink:#E9EFEC; --ink-2:#C2CDC9; --muted:#8FA09B; --line:#27302E;
     --dev:#4FB0A5; --dev-soft:#12312D;
     --adm:#D89950; --adm-soft:#33240F;
-  --agro:#8FB84E; --agro-soft:#1E2A12;
-    --agro:#8FB84E; --agro-soft:#1E2A12;
     --ana:#B39DDB; --ana-soft:#271E38;
     --hot:#7FD4C7; --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3);
   }
@@ -43,7 +40,6 @@
   --ink:#E9EFEC; --ink-2:#C2CDC9; --muted:#8FA09B; --line:#27302E;
   --dev:#4FB0A5; --dev-soft:#12312D;
   --adm:#D89950; --adm-soft:#33240F;
-  --agro:#8FB84E; --agro-soft:#1E2A12;
   --ana:#B39DDB; --ana-soft:#271E38;
   --hot:#7FD4C7; --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3);
 }
@@ -133,8 +129,6 @@ li[data-hot="1"] .score{color:var(--hot)}
   text-transform:uppercase; padding:3px 8px; border-radius:999px; white-space:nowrap; align-self:start;
 }
 li[data-p="dev"] .tag{background:var(--dev-soft); color:var(--dev)}
-li[data-p="admin"] .tag{background:var(--adm-soft); color:var(--adm)}
-li[data-p="agro"] .tag{background:var(--agro-soft); color:var(--agro)}
 li[data-p="analista"] .tag{background:var(--ana-soft); color:var(--ana)}
 .empty{padding:48px 8px; text-align:center; color:var(--muted)}
 footer{margin-top:36px; padding-top:18px; border-top:1px solid var(--line); color:var(--muted); font-size:12.5px}
@@ -228,8 +222,8 @@ li[data-enviei="1"]{border-left:3px solid var(--adm); padding-left:14px}
 }
 .limpar:hover{border-color:var(--muted); color:var(--ink-2)}
 .limpar:focus-visible{outline:2px solid var(--dev); outline-offset:1px}
-/* Abas: "Vagas" (a lista de sempre) e "Conteúdo Dev" (texto inteiro dos
-   anúncios, pra levar pra uma análise). */
+/* Abas: "Vagas" (a lista de sempre) e "Conteúdo Dev"/"Conteúdo Analista"
+   (texto inteiro dos anúncios, pra levar pra uma análise). */
 .abas{display:flex; gap:4px; border-bottom:1px solid var(--line); margin:0 0 18px}
 .abas button{
   appearance:none; border:0; background:transparent; font:inherit; font-size:14px;
@@ -277,7 +271,8 @@ li[data-enviei="1"]{border-left:3px solid var(--adm); padding-left:14px}
 
 <nav class="abas" role="tablist" aria-label="Seções">
   <button type="button" role="tab" id="tabVagas" aria-controls="abaVagas" aria-selected="true">Vagas</button>
-  <button type="button" role="tab" id="tabConteudo" aria-controls="abaConteudo" aria-selected="false">Conteúdo Dev</button>
+  <button type="button" role="tab" id="tabConteudoDev" data-perfil="dev" aria-controls="abaConteudo" aria-selected="false">Conteúdo Dev</button>
+  <button type="button" role="tab" id="tabConteudoAnalista" data-perfil="analista" aria-controls="abaConteudo" aria-selected="false">Conteúdo Analista</button>
 </nav>
 
 <section id="abaVagas" role="tabpanel" aria-labelledby="tabVagas">
@@ -292,8 +287,6 @@ li[data-enviei="1"]{border-left:3px solid var(--adm); padding-left:14px}
     <span class="seg" id="segPerfil">
       <button type="button" data-v="todos">Todos</button>
       <button type="button" data-v="dev">Dev</button>
-      <button type="button" data-v="admin">Administrativo</button>
-      <button type="button" data-v="agro">Agronomia</button>
       <button type="button" data-v="analista">Analista</button>
     </span>
   </label>
@@ -354,13 +347,13 @@ li[data-enviei="1"]{border-left:3px solid var(--adm); padding-left:14px}
 <p class="empty" id="vazio" hidden>Nenhuma vaga com esses filtros. Tente ampliar o período ou baixar a nota mínima.</p>
 </section>
 
-<section id="abaConteudo" role="tabpanel" aria-labelledby="tabConteudo" hidden>
-  <p class="sub">O anúncio inteiro de cada vaga Dev que o radar guardou — descrição, requisitos, diferenciais, benefícios — num texto corrido só, pronto pra colar numa IA e ver o que o mercado está pedindo. O robô abre os anúncios aos poucos, a cada ciclo, então o histórico antigo vai entrando ao longo dos próximos dias.</p>
+<section id="abaConteudo" role="tabpanel" hidden>
+  <p class="sub">O anúncio inteiro de cada vaga <span id="nomeConteudo">Dev</span> que o radar guardou — descrição, requisitos, diferenciais, benefícios — num texto corrido só, pronto pra colar numa IA e ver o que o mercado está pedindo. O robô abre os anúncios aos poucos, a cada ciclo, então o histórico antigo vai entrando ao longo dos próximos dias.</p>
   <div class="stats" id="statsConteudo"></div>
   <div class="acoes">
     <button type="button" class="btn principal" id="copiarConteudo" disabled>Copiar tudo</button>
     <a class="btn" id="baixarConteudo" href="conteudo-dev.txt" download="conteudo-vagas-dev.txt">Baixar .txt</a>
-    <a class="btn" href="conteudo-dev.txt" target="_blank" rel="noopener">Abrir o arquivo</a>
+    <a class="btn" id="abrirConteudo" href="conteudo-dev.txt" target="_blank" rel="noopener">Abrir o arquivo</a>
     <input type="search" id="buscaConteudo" placeholder="filtrar: node, aws, inglês…" autocomplete="off">
     <span class="aviso" id="avisoConteudo" role="status"></span>
   </div>
@@ -378,7 +371,7 @@ li[data-enviei="1"]{border-left:3px solid var(--adm); padding-left:14px}
 <script>
 const VAGAS = __DADOS__;
 const $ = (id) => document.getElementById(id);
-const NOMES = { dev: "Dev", admin: "Administrativo", agro: "Agronomia", analista: "Analista" };
+const NOMES = { dev: "Dev", analista: "Analista" };
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
 // --- Marcações do usuário -------------------------------------------------
@@ -409,6 +402,9 @@ const PADRAO = {
   publicada: "0", plataforma: "todas", ordem: "relevancia", busca: "",
 };
 const estado = Object.assign({}, PADRAO, lerJSON(CHAVE_FILTROS, null) || {});
+// Filtro salvo num perfil que saiu da página (admin e agro, removidos em
+// nov/2026) abriria a lista vazia sem explicação: volta pra "Todos".
+if (estado.perfil !== "todos" && !NOMES[estado.perfil]) estado.perfil = "todos";
 
 const marcaDe = (link) => marcas[link] || { i: null, e: false };
 
@@ -650,23 +646,17 @@ $("busca").addEventListener("input", (ev) => { estado.busca = ev.target.value; a
 $("busca").value = estado.busca;
 aplicar();
 
-// --- Aba "Conteúdo Dev" ---------------------------------------------------
-// O texto vive em conteudo-dev.txt (gerado junto com esta página, ver
-// web/gerar.py) e só é baixado quando a aba abre: são centenas de KB que
-// quem só olha a lista de vagas nunca usa. A lista abaixo é montada
-// dividindo o arquivo pela linha "===== VAGA n de N =====" — o mesmo
-// SEPARADOR_VAGA do gerador.
-const CONTEUDO = __CONTEUDO__;
+// --- Abas "Conteúdo Dev" / "Conteúdo Analista" ---------------------------
+// Um painel só, que troca de perfil. O texto de cada perfil vive em
+// conteudo-<perfil>.txt (gerado junto com esta página, ver web/gerar.py) e
+// só é baixado quando a aba abre: são centenas de KB que quem só olha a
+// lista de vagas nunca usa. A lista é montada dividindo o arquivo pela
+// linha "===== VAGA n de N =====" — o mesmo SEPARADOR_VAGA do gerador.
+const CONTEUDO = __CONTEUDO__;  // { perfil: { total, capturadas, removidas, pendentes } }
 const SEPARADOR = /^===== VAGA \d+ de \d+ =====$/m;
-let conteudoCabecalho = "";
-let anuncios = null;  // [{ bruto, busca, el }]
-
-$("statsConteudo").innerHTML = [
-  ["Com anúncio", CONTEUDO.capturadas],
-  ["Na fila", CONTEUDO.pendentes],
-  ["Removidas na fonte", CONTEUDO.removidas],
-  ["Vagas Dev", CONTEUDO.total],
-].map(([rot, n]) => `<div class="stat"><b>${n}</b><span>${rot}</span></div>`).join("");
+const DICA_BUSCA = { dev: "filtrar: node, aws, inglês…", analista: "filtrar: excel, sap, power bi…" };
+const carregados = {};  // perfil -> { cabecalho, anuncios: [{ bruto, busca, el }] } | "carregando"
+let perfilConteudo = null;
 
 function montarAnuncio(bruto) {
   const [cab, ...resto] = bruto.split("\n--- Anúncio ---\n");
@@ -684,47 +674,83 @@ function montarAnuncio(bruto) {
   return { bruto: bruto.trim(), busca: bruto.toLowerCase(), el: det };
 }
 
+const atual = () => {
+  const c = carregados[perfilConteudo];
+  return c && c !== "carregando" ? c : null;
+};
+
 function filtrarConteudo() {
-  if (!anuncios) return;
+  const c = atual();
+  if (!c) return;
   const termo = $("buscaConteudo").value.trim().toLowerCase();
   let n = 0;
-  for (const a of anuncios) {
+  for (const a of c.anuncios) {
     a.el.hidden = !!termo && !a.busca.includes(termo);
     if (!a.el.hidden) n++;
   }
   $("copiarConteudo").textContent = termo ? `Copiar ${n} filtrada(s)` : `Copiar tudo (${n})`;
   $("copiarConteudo").disabled = n === 0;
   $("vazioConteudo").hidden = n > 0;
-  $("vazioConteudo").textContent = anuncios.length
+  $("vazioConteudo").textContent = c.anuncios.length
     ? "Nenhum anúncio tem esse termo."
     : "Nenhum anúncio capturado ainda — o robô começa a abrir as vagas no próximo ciclo.";
 }
 
-function carregarConteudo() {
-  if (anuncios) return;
-  anuncios = [];
+function exibirConteudo() {
+  const c = atual();
+  const frag = document.createDocumentFragment();
+  if (c) for (const a of c.anuncios) frag.appendChild(a.el);
+  $("anuncios").replaceChildren(frag);
+  filtrarConteudo();
+}
+
+function carregarConteudo(perfil) {
+  if (carregados[perfil]) return;
+  carregados[perfil] = "carregando";
   $("avisoConteudo").textContent = "Carregando…";
-  fetch("conteudo-dev.txt", { cache: "no-cache" })
+  fetch(`conteudo-${perfil}.txt`, { cache: "no-cache" })
     .then((r) => { if (!r.ok) throw new Error(r.status); return r.text(); })
     .then((texto) => {
       const partes = texto.split(SEPARADOR);
-      conteudoCabecalho = partes.shift().trim();
-      anuncios = partes.filter((p) => p.trim()).map(montarAnuncio);
-      const frag = document.createDocumentFragment();
-      for (const a of anuncios) frag.appendChild(a.el);
-      $("anuncios").appendChild(frag);
-      $("avisoConteudo").textContent = "";
-      filtrarConteudo();
+      const cabecalho = partes.shift().trim();
+      carregados[perfil] = { cabecalho, anuncios: partes.filter((p) => p.trim()).map(montarAnuncio) };
+      if (perfil === perfilConteudo) { $("avisoConteudo").textContent = ""; exibirConteudo(); }
     })
     .catch(() => {
-      anuncios = null;
-      $("avisoConteudo").innerHTML = 'Não deu pra carregar o texto aqui — use “Abrir o arquivo”.';
+      delete carregados[perfil];
+      if (perfil === perfilConteudo) $("avisoConteudo").textContent = "Não deu pra carregar o texto aqui — use “Abrir o arquivo”.";
     });
 }
 
+function selecionarPerfilConteudo(perfil) {
+  perfilConteudo = perfil;
+  const nome = NOMES[perfil];
+  const arquivo = `conteudo-${perfil}.txt`;
+  const cont = CONTEUDO[perfil] || { total: 0, capturadas: 0, removidas: 0, pendentes: 0 };
+  $("nomeConteudo").textContent = nome;
+  $("baixarConteudo").href = arquivo;
+  $("baixarConteudo").download = `conteudo-vagas-${perfil}.txt`;
+  $("abrirConteudo").href = arquivo;
+  $("buscaConteudo").value = "";
+  $("buscaConteudo").placeholder = DICA_BUSCA[perfil] || "filtrar…";
+  $("copiarConteudo").textContent = "Copiar tudo";
+  $("copiarConteudo").disabled = true;
+  $("vazioConteudo").hidden = true;
+  $("avisoConteudo").textContent = carregados[perfil] === "carregando" ? "Carregando…" : "";
+  $("statsConteudo").innerHTML = [
+    ["Com anúncio", cont.capturadas],
+    ["Na fila", cont.pendentes],
+    ["Removidas na fonte", cont.removidas],
+    [`Vagas ${nome}`, cont.total],
+  ].map(([rot, n]) => `<div class="stat"><b>${n}</b><span>${rot}</span></div>`).join("");
+  exibirConteudo();
+  carregarConteudo(perfil);
+}
+
 function textoParaCopiar() {
-  const visiveis = anuncios.filter((a) => !a.el.hidden);
-  return [conteudoCabecalho, ...visiveis.map((a, i) => `===== VAGA ${i + 1} de ${visiveis.length} =====\n${a.bruto}`)]
+  const c = atual();
+  const visiveis = c.anuncios.filter((a) => !a.el.hidden);
+  return [c.cabecalho, ...visiveis.map((a, i) => `===== VAGA ${i + 1} de ${visiveis.length} =====\n${a.bruto}`)]
     .join("\n\n\n");
 }
 
@@ -744,18 +770,25 @@ $("copiarConteudo").addEventListener("click", () => {
 });
 $("buscaConteudo").addEventListener("input", filtrarConteudo);
 
-// Aba escolhida fica no endereço (#conteudo-dev), pra dar pra mandar o
-// link direto pra ela.
-function mostrarAba(conteudo) {
-  $("abaVagas").hidden = conteudo;
-  $("abaConteudo").hidden = !conteudo;
-  $("tabVagas").setAttribute("aria-selected", String(!conteudo));
-  $("tabConteudo").setAttribute("aria-selected", String(conteudo));
-  if (conteudo) carregarConteudo();
+// Aba escolhida fica no endereço (#conteudo-dev, #conteudo-analista), pra
+// dar pra mandar o link direto pra ela.
+const ABAS_CONTEUDO = Array.from(document.querySelectorAll("[data-perfil]"));
+function mostrarAba(perfil) {
+  $("abaVagas").hidden = !!perfil;
+  $("abaConteudo").hidden = !perfil;
+  $("tabVagas").setAttribute("aria-selected", String(!perfil));
+  for (const t of ABAS_CONTEUDO) t.setAttribute("aria-selected", String(t.dataset.perfil === perfil));
+  if (perfil) {
+    $("abaConteudo").setAttribute("aria-labelledby", ABAS_CONTEUDO.find((t) => t.dataset.perfil === perfil).id);
+    selecionarPerfilConteudo(perfil);
+  }
 }
-$("tabVagas").addEventListener("click", () => { history.replaceState(null, "", location.pathname + location.search); mostrarAba(false); });
-$("tabConteudo").addEventListener("click", () => { history.replaceState(null, "", "#conteudo-dev"); mostrarAba(true); });
-mostrarAba(location.hash === "#conteudo-dev");
+$("tabVagas").addEventListener("click", () => { history.replaceState(null, "", location.pathname + location.search); mostrarAba(null); });
+for (const t of ABAS_CONTEUDO) {
+  t.addEventListener("click", () => { history.replaceState(null, "", `#conteudo-${t.dataset.perfil}`); mostrarAba(t.dataset.perfil); });
+}
+const doEndereco = location.hash.replace("#conteudo-", "");
+mostrarAba(ABAS_CONTEUDO.some((t) => t.dataset.perfil === doEndereco) ? doEndereco : null);
 </script>
 </body>
 </html>

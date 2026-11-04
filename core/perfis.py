@@ -60,23 +60,6 @@ from core.config_dev import (
     LOCATIONS_LINKEDIN_DEV,
     LOCATIONS_LINKEDIN_CIDADES_DEV,
 )
-from core.config_adm import (
-    KEYWORDS_CARGO_FORTE_ADM,
-    KEYWORDS_CARGO_AMBIGUO_ADM,
-    QUALIFICADORES_AREA_ADM,
-    FERRAMENTAS_TITULO_ADM,
-    QUALIFICADORES_CARGO_ADM,
-    TITULOS_EXCLUIDOS_ADM,
-    NIVEIS_EXCLUIDOS_ADM,
-    NIVEIS_ALVO_ADM,
-    CIDADES_ADM,
-    MERCADOS_REMOTO_ACEITOS_ADM,
-    TERMOS_BUSCA_ADM,
-    TERMOS_PRIORITARIOS_ADM,
-    TERMOS_POR_CICLO_ADM,
-    LOCATIONS_LINKEDIN_ADM,
-    LOCATIONS_LINKEDIN_CIDADES_ADM,
-)
 from core.config_analista import (
     KEYWORDS_CARGO_FORTE_ANALISTA,
     KEYWORDS_CARGO_AMBIGUO_ANALISTA,
@@ -91,23 +74,6 @@ from core.config_analista import (
     TERMOS_POR_CICLO_ANALISTA,
     LOCATIONS_LINKEDIN_ANALISTA,
     LOCATIONS_LINKEDIN_CIDADES_ANALISTA,
-)
-from core.config_agro import (
-    KEYWORDS_CARGO_FORTE_AGRO,
-    KEYWORDS_CARGO_AMBIGUO_AGRO,
-    QUALIFICADORES_AREA_AGRO,
-    FERRAMENTAS_TITULO_AGRO,
-    QUALIFICADORES_CARGO_AGRO,
-    TITULOS_EXCLUIDOS_AGRO,
-    NIVEIS_EXCLUIDOS_AGRO,
-    NIVEIS_ALVO_AGRO,
-    CIDADES_AGRO,
-    MERCADOS_REMOTO_ACEITOS_AGRO,
-    TERMOS_BUSCA_AGRO,
-    TERMOS_PRIORITARIOS_AGRO,
-    TERMOS_POR_CICLO_AGRO,
-    LOCATIONS_LINKEDIN_AGRO,
-    LOCATIONS_LINKEDIN_CIDADES_AGRO,
 )
 from core.job import RegrasFiltro
 from scrapers.catho import CathoScraper
@@ -427,135 +393,12 @@ PERFIL_DEV = Perfil(
     max_scrapers_concorrentes=4,
 )
 
-# Perfil administrativo/financeiro/RH — ver core/config_adm.py pra origem
-# de cada lista. Segundo perfil de pessoa real deste fork (o outro é o
-# dev): os dois rodam na mesma execução e notificam no MESMO Telegram,
-# distinguidos pela linha "Perfil:" da notificação (ver notificar_vaga).
-#
-# Usa as três regras opcionais de RegrasFiltro:
-#   - titulos_excluidos — rejeição incondicional. Cobre área de fora que
-#     usa o mesmo vocabulário ("Analista de Processos" é cargo dela,
-#     "Analista de Processos Industriais" não é; Joinville é polo
-#     industrial) e mais fiscal/tributário, tirados a pedido dela. É a
-#     versão SEM perdão da regra: diferente do perfil dev, aqui não existe
-#     vaga boa que nomeie uma dessas no título, e o perdão por ferramenta
-#     só deixaria passar "Analista Fiscal Protheus" e "Analista de
-#     Sistemas Protheus".
-#   - niveis_excluidos — estágio e júnior fora; liderança continua entrando.
-#   - niveis_alvo — Pleno E Sênior pontuam o teto (no padrão global, Sênior
-#     valeria -2 e metade do que ela procura cairia no ranking).
-_REGRAS_ADM = RegrasFiltro(
-    keywords_forte=KEYWORDS_CARGO_FORTE_ADM,
-    keywords_ambiguo=KEYWORDS_CARGO_AMBIGUO_ADM,
-    qualificadores_dados=QUALIFICADORES_AREA_ADM,
-    ferramentas_titulo=FERRAMENTAS_TITULO_ADM,
-    qualificadores_cargo=QUALIFICADORES_CARGO_ADM,
-    cidades=CIDADES_ADM,
-    mercados_remoto_aceitos=MERCADOS_REMOTO_ACEITOS_ADM,
-    titulos_excluidos=TITULOS_EXCLUIDOS_ADM,
-    niveis_excluidos=NIVEIS_EXCLUIDOS_ADM,
-    niveis_alvo=NIVEIS_ALVO_ADM,
-)
-
-# Portais generalistas, que é onde vaga administrativa/financeira/RH de
-# fato mora. GeekHunter e WeWorkRemotely ficam FORA: as duas são fonte de
-# vaga de tecnologia, rodariam termo administrativo pra devolver nada.
-# Catho e Sólides sobem pra FREQUENCIA_ALTA aqui (no perfil de dados são
-# de baixa, por rendimento medido abaixo de 1%): o rendimento delas foi
-# medido contra termo de dados/BI, e as duas são justamente portais fortes
-# em vaga administrativa. Rever quando houver medição deste perfil.
-_SCRAPERS_ADM = [
-    DefinicaoScraper(LinkedInScraper, FREQUENCIA_ALTA, {
-        "locations": LOCATIONS_LINKEDIN_ADM,
-        "locations_remoto_apenas": [],
-        "locations_cidades_presencial": LOCATIONS_LINKEDIN_CIDADES_ADM,
-    }),
-    DefinicaoScraper(GupyScraper, FREQUENCIA_ALTA),
-    DefinicaoScraper(CathoScraper, FREQUENCIA_ALTA),
-    DefinicaoScraper(SolidesScraper, FREQUENCIA_ALTA),
-    DefinicaoScraper(Jobs99Scraper, FREQUENCIA_BAIXA),
-    DefinicaoScraper(SeniorScraper, FREQUENCIA_BAIXA),
-]
-
-PERFIL_ADM = Perfil(
-    chave="admin",
-    nome="Administrativo/Financeiro",
-    palavras_monitoradas=KEYWORDS_CARGO_FORTE_ADM,
-    paises_pesquisados=None,
-    regras=_REGRAS_ADM,
-    regras_eixo_secundario=None,
-    eixo_secundario_ativo=False,
-    eixo_secundario_rotulo="",
-    termos_busca=TERMOS_BUSCA_ADM,
-    termos_por_ciclo=TERMOS_POR_CICLO_ADM,
-    termos_prioritarios=TERMOS_PRIORITARIOS_ADM,
-    definicao_scrapers=_SCRAPERS_ADM,
-    max_scrapers_concorrentes=4,
-)
-
-# Perfil agronomia — ver core/config_agro.py pra origem de cada lista.
-# Terceira pessoa deste fork; notifica no mesmo Telegram, distinguido pela
-# linha "Perfil:".
-#
-# Como o admin, usa titulos_excluidos (rejeição incondicional) em vez de
-# stacks_excluidas: não existe vaga que ele queira nomeando "software" ou
-# "telecom" no título, então o perdão por ferramenta só abriria brecha.
-#
-# niveis_alvo largo (até Liderança) porque dois dos quatro cargos que ele
-# procura são de gerência — no padrão global, "Liderança" vale -2 e
-# rebaixaria justamente os alvos declarados.
-_REGRAS_AGRO = RegrasFiltro(
-    keywords_forte=KEYWORDS_CARGO_FORTE_AGRO,
-    keywords_ambiguo=KEYWORDS_CARGO_AMBIGUO_AGRO,
-    qualificadores_dados=QUALIFICADORES_AREA_AGRO,
-    ferramentas_titulo=FERRAMENTAS_TITULO_AGRO,
-    qualificadores_cargo=QUALIFICADORES_CARGO_AGRO,
-    cidades=CIDADES_AGRO,
-    mercados_remoto_aceitos=MERCADOS_REMOTO_ACEITOS_AGRO,
-    titulos_excluidos=TITULOS_EXCLUIDOS_AGRO,
-    niveis_excluidos=NIVEIS_EXCLUIDOS_AGRO,
-    niveis_alvo=NIVEIS_ALVO_AGRO,
-)
-
-# Portais generalistas, que é onde vaga de agro é anunciada. GeekHunter e
-# WeWorkRemotely ficam de fora pelo mesmo motivo do perfil admin: são
-# fonte de vaga de tecnologia e rodariam termo agronômico pra devolver
-# nada.
-_SCRAPERS_AGRO = [
-    DefinicaoScraper(LinkedInScraper, FREQUENCIA_ALTA, {
-        "locations": LOCATIONS_LINKEDIN_AGRO,
-        "locations_remoto_apenas": [],
-        "locations_cidades_presencial": LOCATIONS_LINKEDIN_CIDADES_AGRO,
-    }),
-    DefinicaoScraper(GupyScraper, FREQUENCIA_ALTA),
-    DefinicaoScraper(CathoScraper, FREQUENCIA_ALTA),
-    DefinicaoScraper(SolidesScraper, FREQUENCIA_ALTA),
-    DefinicaoScraper(Jobs99Scraper, FREQUENCIA_BAIXA),
-    DefinicaoScraper(SeniorScraper, FREQUENCIA_BAIXA),
-]
-
-PERFIL_AGRO = Perfil(
-    chave="agro",
-    nome="Agronomia",
-    palavras_monitoradas=KEYWORDS_CARGO_FORTE_AGRO,
-    paises_pesquisados=None,
-    regras=_REGRAS_AGRO,
-    regras_eixo_secundario=None,
-    eixo_secundario_ativo=False,
-    eixo_secundario_rotulo="",
-    termos_busca=TERMOS_BUSCA_AGRO,
-    termos_por_ciclo=TERMOS_POR_CICLO_AGRO,
-    termos_prioritarios=TERMOS_PRIORITARIOS_AGRO,
-    definicao_scrapers=_SCRAPERS_AGRO,
-    max_scrapers_concorrentes=4,
-)
-
-# Perfil Analista — ver core/config_analista.py. Mesma pessoa do admin,
-# outro recorte: coordenação/gerência/supervisão adm-financeira,
-# operações, contratos e sales ops; analista só com qualificador de nível
-# ou de setor no título. Mesmos portais e mesmas regras opcionais do
-# admin; a rota ferramenta+cargo fica desligada (listas vazias): o Sienge,
-# única ferramenta que interessa aqui, é qualificador de setor.
+# Perfil Analista — ver core/config_analista.py. Coordenação/gerência/
+# supervisão adm-financeira, operações, contratos e sales ops; analista só
+# com qualificador de nível ou de setor no título. Portais generalistas
+# (onde vaga adm-financeira mora) e as três regras opcionais de
+# RegrasFiltro; a rota ferramenta+cargo fica desligada (listas vazias): o
+# Sienge, única ferramenta que interessa aqui, é qualificador de setor.
 _REGRAS_ANALISTA = RegrasFiltro(
     keywords_forte=KEYWORDS_CARGO_FORTE_ANALISTA,
     keywords_ambiguo=KEYWORDS_CARGO_AMBIGUO_ANALISTA,
@@ -602,7 +445,5 @@ PERFIS = {
     PERFIL_BR.chave: PERFIL_BR,
     PERFIL_INTL.chave: PERFIL_INTL,
     PERFIL_DEV.chave: PERFIL_DEV,
-    PERFIL_ADM.chave: PERFIL_ADM,
-    PERFIL_AGRO.chave: PERFIL_AGRO,
     PERFIL_ANALISTA.chave: PERFIL_ANALISTA,
 }

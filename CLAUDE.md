@@ -21,39 +21,34 @@ globais da conta, em ~/.claude/CLAUDE.md — não são repetidas aqui.
   o workflow o regenera a partir do `jobs.db` a cada ciclo e o GitHub
   Pages o serve. Pra mudar o visual da página, mexer em
   `web/template.html`.
-- Aba "Conteúdo Dev" da página: o passo "Capturar conteúdo dos anúncios"
-  do workflow (`scripts/capturar_conteudo.py`) abre o anúncio de cada vaga
-  `dev` salva (até 80 por ciclo, mais recentes primeiro) e guarda o texto
-  na tabela `conteudo_vagas`; `web.gerar` junta tudo em
-  `docs/conteudo-dev.txt`, que é o que a aba carrega. Também GERADO.
+- Abas "Conteúdo Dev" e "Conteúdo Analista" da página: o passo "Capturar
+  conteúdo dos anúncios" do workflow (`scripts/capturar_conteudo.py`) abre
+  o anúncio de cada vaga `dev` e `analista` salva (até 80 por perfil por
+  ciclo, mais recentes primeiro) e guarda o texto na tabela
+  `conteudo_vagas`; `web.gerar` junta tudo em `docs/conteudo-<perfil>.txt`
+  (lista em `PERFIS_CONTEUDO`), que é o que cada aba carrega. Também GERADO.
 
 ## Perfis de busca
 
 O motor (`main.py`) roda perfis selecionáveis por `--perfil`; cada perfil é
 só DADO (`core/config*.py` + `core/perfis.py`), não lógica duplicada.
 
-Quatro perfis rodam em produção (cron), todos notificando no MESMO chat do
+Dois perfis rodam em produção (cron), notificando no MESMO chat do
 Telegram, distinguidos pela linha `Perfil:` da notificação:
 
 - `dev` — full-stack com foco back-end Node/TypeScript, remoto ou
   presencial/híbrido em Joinville/SC, nível pleno apenas.
   Config em `core/config_dev.py`.
-- `admin` — administrativo, financeiro, contábil e RH/DP, remoto ou
-  Joinville/SC, pleno e sênior. Fiscal e tributário foram excluídos a
-  pedido da usuária. Config em `core/config_adm.py`.
-
-- `agro` — agronomia: assistência técnica ao produtor rural, RTV,
-  qualidade em fertilizantes e produção em unidade de beneficiamento de
-  sementes. Santa Catarina e Paraná inteiros, com buscas dedicadas em
-  Joinville, Curitiba e Ponta Grossa. Config em `core/config_agro.py`.
-
-- `analista` — mesma pessoa do `admin`, outro recorte: coordenação/
-  gerência/supervisão administrativa e financeira, operações, contratos e
-  sales ops; analista só com qualificador de nível (sênior/especialista/
+- `analista` — coordenação/gerência/supervisão administrativa e
+  financeira, operações, contratos e sales ops; analista só com qualificador de nível (sênior/especialista/
   III) ou de setor (imobiliário, incorporadora, construtora, comercial,
   Sienge) no título. Exclui assistente, auxiliar, júnior, estágio,
   contábil, fiscal, tributário, controladoria e tesouraria. Remoto
   (Brasil) ou Joinville/SC. Config em `core/config_analista.py`.
+
+- `admin` (administrativo/financeiro/RH) e `agro` (agronomia) foram
+  REMOVIDOS em nov/2026, a pedido — código, config e testes apagados. As
+  vagas deles continuam no `jobs.db`, só fora da página.
 
 - `brasil` / `internacional` — perfis de Dados/BI da autora original do
   projeto. Continuam no código e rodáveis à mão, mas FORA do cron: não

@@ -71,7 +71,7 @@ def banco(tmp_path, monkeypatch):
                  "Remoto", "Publicada em: 01/10/2026", "2026-10-01 12:00:00"),
                 ("b", "Back-end TS", "Beta", "Brasil", "https://x/b", "LinkedIn", "dev",
                  "", "", "2026-10-02 12:00:00"),
-                ("c", "Analista Financeiro", "Gama", "Joinville", "https://x/c", "Gupy", "admin",
+                ("c", "Coordenador Financeiro", "Gama", "Joinville", "https://x/c", "Gupy", "analista",
                  "", "", "2026-10-03 12:00:00"),
             ],
         )
@@ -108,7 +108,7 @@ def test_txt_traz_cabecalho_de_cada_vaga_e_o_anuncio(banco):
     assert "Título: Dev Node Pleno\nEmpresa: Acme\nLocal: Joinville, SC (Remoto)\n" in txt
     assert "publicada 01/10/2026" in txt
     assert f"{MARCADOR_ANUNCIO}\n{LONGO.strip()}" in txt
-    assert "Analista Financeiro" not in txt
+    assert "Coordenador Financeiro" not in txt
 
 
 def test_separador_do_txt_bate_com_o_do_template():
@@ -130,9 +130,25 @@ def test_banco_sem_tabela_de_conteudo_gera_txt_vazio(tmp_path):
         )
     saida = tmp_path / "docs" / "index.html"
     gerar(caminho, str(saida))
-    txt = (tmp_path / "docs" / "conteudo-dev.txt").read_text(encoding="utf-8")
-    assert "0 vaga(s) com anúncio capturado" in txt
-    assert '"capturadas": 0' in saida.read_text(encoding="utf-8")
+    for perfil in ("dev", "analista"):
+        txt = (tmp_path / "docs" / f"conteudo-{perfil}.txt").read_text(encoding="utf-8")
+        assert "0 vaga(s) com anúncio capturado" in txt
+    assert '"analista": {"total": 0, "capturadas": 0' in saida.read_text(encoding="utf-8")
+
+
+def test_cada_perfil_ganha_o_proprio_txt(banco, tmp_path):
+    """Conteúdo Analista é um arquivo à parte: anúncio de um perfil não
+    vaza pro .txt do outro."""
+    db.salvar_conteudo("a", "ok", LONGO, "seletor")
+    db.salvar_conteudo("c", "ok", "Gestão de contratos e indicadores financeiros. " * 5, "seletor")
+    saida = tmp_path / "pub" / "index.html"
+    gerar(banco, str(saida))
+    dev = (tmp_path / "pub" / "conteudo-dev.txt").read_text(encoding="utf-8")
+    analista = (tmp_path / "pub" / "conteudo-analista.txt").read_text(encoding="utf-8")
+    assert analista.startswith("CONTEÚDO DAS VAGAS DE ANALISTA")
+    assert "Coordenador Financeiro" in analista and "Dev Node Pleno" not in analista
+    assert "Dev Node Pleno" in dev and "Coordenador Financeiro" not in dev
+    assert "vagas Analista no radar" in analista
 
 
 TELA_ANTIBOT = (
