@@ -164,15 +164,15 @@ def _garantir_tabela_conteudo(conn):
     """)
 
 
-def vagas_sem_conteudo(perfil_chave: str, limite: int, max_tentativas: int) -> list[tuple]:
-    """(id, link, site, titulo) das vagas do perfil cujo anúncio ainda não
+def vagas_sem_conteudo(perfil_chave: str, limite: int | None, max_tentativas: int) -> list[tuple]:
+    """(id, link, site, titulo, local, modalidade) das vagas do perfil cujo anúncio ainda não
     foi aberto — ou foi e falhou menos de `max_tentativas` vezes. Mais
     recentes primeiro: vaga nova é a que ainda está no ar."""
     with _conectar() as conn:
         _garantir_tabela_conteudo(conn)
         return conn.execute(
             """
-            SELECT v.id, v.link, v.site, v.titulo
+            SELECT v.id, v.link, v.site, v.titulo, v.local, v.modalidade
             FROM vagas_vistas v
             LEFT JOIN conteudo_vagas c ON c.id = v.id
             WHERE v.perfil = ? AND v.link IS NOT NULL AND v.link != ''
@@ -180,7 +180,8 @@ def vagas_sem_conteudo(perfil_chave: str, limite: int, max_tentativas: int) -> l
             ORDER BY v.encontrada_em DESC
             LIMIT ?
             """,
-            (perfil_chave, max_tentativas, limite),
+            # LIMIT -1 = sem limite no SQLite.
+            (perfil_chave, max_tentativas, -1 if limite is None else limite),
         ).fetchall()
 
 

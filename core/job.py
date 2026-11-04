@@ -1089,6 +1089,29 @@ class RegrasFiltro:
     #
     # None/vazio = não checa nada.
     titulos_excluidos: list[str] | None = None
+    # Remoto só vale quando o TÍTULO declara ("Analista Financeiro -
+    # Remoto", "Coordenador Administrativo | Home Office"). Com isto
+    # preenchido, o campo `modalidade` e o texto de `local` deixam de
+    # confirmar remoto sozinhos.
+    #
+    # MEDIDO (nov/2026, perfil analista): 173 das 188 vagas salvas entraram
+    # só porque a passada f_WT=2 do LinkedIn marcou modalidade="Remoto" —
+    # e a usuária relatou que muitas não eram remotas de verdade (híbrido
+    # em São Paulo, "remoto" só em parte da semana). Só 1 das 188 dizia
+    # remoto no título. O filtro do LinkedIn é a declaração da EMPRESA num
+    # formulário; o título é o que ela escreveu pro candidato ler.
+    #
+    # Título que diz remoto E híbrido/presencial ("Híbrido ou Remoto")
+    # não conta como remoto expresso — ver _TITULO_NAO_REMOTO. A vaga
+    # ainda passa se o local for uma das cidades aceitas.
+    #
+    # None = comportamento padrão (modalidade/local confirmam remoto).
+    remoto_exige_titulo: list[str] | None = None
+
+
+# Título que mistura remoto com outra modalidade — não é "expressamente
+# remoto" (ver remoto_exige_titulo).
+_TITULO_NAO_REMOTO = ("hibrido", "hibrida", "hybrid", "presencial", "on-site", "onsite")
 
 
 @dataclass
@@ -1468,7 +1491,12 @@ class Job:
         # passa pelo mesmo caminho de bate_remoto/escopo que "remoto" já
         # passava, em vez de furar o filtro por um atalho.
         quer_remoto = any(_normalizar(c) in _FLAGS_REMOTO for c in regras.cidades)
-        bate_remoto = quer_remoto and _confirma_remoto(modalidade_norm, local_norm)
+        if regras.remoto_exige_titulo is not None:
+            bate_remoto = quer_remoto and any(
+                _contem_termo(_normalizar(t), titulo_norm) for t in regras.remoto_exige_titulo
+            ) and not any(_contem_termo(t, titulo_norm) for t in _TITULO_NAO_REMOTO)
+        else:
+            bate_remoto = quer_remoto and _confirma_remoto(modalidade_norm, local_norm)
 
         # Calculado uma vez só e reaproveitado nos dois gates abaixo
         # (mercado aceito e idioma exigido) — os dois leem o mesmo escopo.

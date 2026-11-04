@@ -25,6 +25,7 @@ import time
 from playwright.sync_api import sync_playwright
 
 from core.logger import get_logger
+from core.perfis import aprovada_pelas_regras_atuais
 from database.database import reabrir_conteudo_bloqueado, salvar_conteudo, vagas_sem_conteudo
 from scrapers.conteudo import extrair_da_pagina, parece_bloqueio, url_para_abrir
 
@@ -48,7 +49,15 @@ def capturar(perfil: str, limite: int) -> dict:
     reabertas = reabrir_conteudo_bloqueado(perfil, parece_bloqueio)
     if reabertas:
         logger.info(f"[conteudo] {reabertas} texto(s) de tela de bloqueio voltaram pra fila.")
-    fila = vagas_sem_conteudo(perfil, limite, MAX_TENTATIVAS)
+    # Vaga salva que não passa mais no filtro de hoje do perfil (ver
+    # refiltrar_historico em core/perfis.py) não vale a visita: ela nem
+    # aparece na página. Filtra antes de cortar no limite, senão o lote do
+    # ciclo podia vir inteiro de vagas descartadas.
+    fila = [
+        (job_id, link, site, titulo)
+        for job_id, link, site, titulo, local, modalidade in vagas_sem_conteudo(perfil, None, MAX_TENTATIVAS)
+        if aprovada_pelas_regras_atuais(perfil, titulo, local, modalidade, site)
+    ][:limite]
     resumo = {"ok": 0, "falhou": 0, "indisponivel": 0, "pulada": 0}
     if not fila:
         logger.info(f"[conteudo] Nada pendente no perfil {perfil}.")

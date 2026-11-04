@@ -1,6 +1,8 @@
 """Testes do perfil analista (core/config_analista.py) — coordenação/gerência/
 supervisão administrativa e financeira, operações, contratos e sales ops;
-analista só com qualificador de nível ou de setor. Joinville ou remoto.
+analista só com qualificador de nível ou de setor; áreas afins do currículo
+(imobiliário/locação, RH, FP&A, contas a pagar/receber, backoffice).
+Presencial/híbrido em Joinville, ou remoto declarado NO TÍTULO.
 
 O que este arquivo trava, além do óbvio "cargo certo entra":
 
@@ -12,8 +14,10 @@ O que este arquivo trava, além do óbvio "cargo certo entra":
     cargo forte;
   - a área de fora com o mesmo vocabulário ("Gerente de Operações
     Industriais", num polo industrial como Joinville) continua barrada;
-  - Sênior/Especialista/Liderança pontuam como ALVO (no padrão global
-    valem -2); Pleno é neutro.
+  - Pleno/Sênior/Especialista/Liderança pontuam como ALVO (no padrão
+    global os três últimos valem -2); júnior e "Nível I" nem entram;
+  - remoto só conta quando o título declara: a marcação "Remoto" do
+    LinkedIn sozinha não basta (MEDIDO: 173 de 188 vagas entravam assim).
 """
 
 import pytest
@@ -22,7 +26,9 @@ from core.job import Job
 from core.perfis import PERFIL_ANALISTA, PERFIL_DEV
 
 
-def _job(titulo: str, local: str = "Remoto", modalidade: str = "Remoto") -> Job:
+# Padrão em Joinville: os testes de cargo não podem depender da regra de
+# local (que tem os próprios testes lá embaixo).
+def _job(titulo: str, local: str = "Joinville, SC", modalidade: str = "Presencial") -> Job:
     return Job(
         titulo=titulo, empresa="Teste", local=local,
         link="https://teste.invalido/vaga", site="Teste", modalidade=modalidade,
@@ -53,6 +59,16 @@ CASOS_CARGO_FORTE = [
     ("sales-operations", "Sales Operations Analyst"),
     ("sales-ops", "Sales Ops Specialist"),
     ("gestor-contratos", "Gestora de Contratos"),
+    # Áreas afins do currículo (nov/2026)
+    ("gerente-fin-operacional", "Gerente Financeira e Operacional"),
+    ("gerente-imobiliario", "Gerente Imobiliário"),
+    ("coord-locacao", "Coordenadora de Locação"),
+    ("gerente-locacao", "Gerente de Locação"),
+    ("office-manager", "Office Manager"),
+    ("fpa", "Analista de FP&A Sênior"),
+    ("coord-rh", "Coordenadora de Recursos Humanos"),
+    ("hrbp", "HR Business Partner"),
+    ("backoffice", "Coordenador de Backoffice Comercial"),
 ]
 
 
@@ -75,7 +91,16 @@ CASOS_QUALIFICADOR = [
     ("financeiro-sozinho", "Analista Financeiro", False),
     ("processos-sozinho", "Analista de Processos", False),
     ("planejamento-sozinho", "Analista de Planejamento", False),
-    ("financeiro-pleno", "Analista Financeiro Pleno", False),
+    ("locacao-sozinho", "Analista de Locação", False),
+    ("rh-sozinho", "Analista de Recursos Humanos", False),
+    # Pleno e II são a faixa pedida (pleno a sênior)
+    ("financeiro-pleno", "Analista Financeiro Pleno", True),
+    ("financeiro-ii", "Analista Financeiro II", True),
+    ("rh-pleno", "Analista de RH Pleno", True),
+    ("locacao-imobiliaria", "Analista de Locação - Imobiliária", True),
+    ("contas-receber-senior", "Analista de Contas a Receber Sênior", True),
+    ("planejamento-fin-pleno", "Analista de Planejamento Financeiro Pleno", True),
+    ("recrutamento-senior", "Analista de Recrutamento e Seleção Sênior", True),
     # Com nível
     ("financeiro-senior", "Analista Financeiro Sênior", True),
     ("financeira-sr", "Analista Financeira Sr.", True),
@@ -89,11 +114,10 @@ CASOS_QUALIFICADOR = [
     ("operacoes-vendas", "Analista de Operações de Vendas", True),
     ("financeiro-real-estate", "Analista Financeiro Real Estate", True),
     ("adm-sienge", "Analista Administrativo Sienge", True),
-    # Nível II não é sênior
-    ("financeiro-ii", "Analista Financeiro II", False),
+    # Nível I é o degrau de entrada: júnior com outro nome
+    ("financeiro-i", "Analista Financeiro I", False),
     # Fora do escopo
     ("analista-generico", "Analista Pleno", False),
-    ("rh-saiu", "Analista de RH", False),
     ("dev-nao-entra", "Desenvolvedor Back-end", False),
     ("marketing-nao-entra", "Analista de Marketing Sênior", False),
 ]
@@ -141,20 +165,19 @@ def test_titulos_excluidos(nome, titulo):
 
 
 # ---------------------------------------------------------------------------
-# Senioridade: Sênior/Especialista/Liderança são alvo, Pleno é neutro
+# Senioridade: Pleno/Sênior/Especialista/Liderança são todos alvo
 # ---------------------------------------------------------------------------
 
 def _score(titulo: str) -> int:
-    return _job(titulo, local="Remoto (Brasil)").pontuar_relevancia(PERFIL_ANALISTA.regras)
+    return _job(titulo).pontuar_relevancia(PERFIL_ANALISTA.regras)
 
 
-def test_prioridade_pontua_acima_de_pleno():
+def test_pleno_e_senior_pontuam_igual():
     senior = _score("Analista Administrativo Financeiro Sênior")
     especialista = _score("Analista Administrativo Financeiro Especialista")
     pleno = _score("Analista Administrativo Financeiro Pleno")
 
-    assert senior == especialista
-    assert senior > pleno
+    assert senior == especialista == pleno
 
 
 @pytest.mark.parametrize("titulo", [
@@ -179,24 +202,49 @@ def test_senior_continua_penalizado_no_perfil_dev():
 # Localização
 # ---------------------------------------------------------------------------
 
+CARGO = "Coordenador Administrativo Financeiro"
+
 CASOS_LOCAL = [
-    ("remoto-passa", "Remoto", "Remoto", True),
-    ("remoto-brasil-passa", "Remoto (Curitiba, PR)", "Remoto", True),
-    ("joinville-presencial-passa", "Joinville, SC", "Presencial", True),
-    ("joinville-hibrido-passa", "Joinville, Santa Catarina, Brazil", "Híbrido", True),
-    ("outra-cidade-barra", "Blumenau, SC", "Presencial", False),
-    ("sao-paulo-barra", "São Paulo, SP", "Presencial", False),
-    ("remoto-portugal-barra", "Remote - Portugal", "Remoto", False),
-    ("remoto-eua-barra", "Remote - US", "Remoto", False),
+    # Joinville: presencial ou híbrido, título sem nada de especial
+    ("joinville-presencial-passa", CARGO, "Joinville, SC", "Presencial", True),
+    ("joinville-hibrido-passa", CARGO, "Joinville, Santa Catarina, Brazil", "Híbrido", True),
+    ("outra-cidade-barra", CARGO, "Blumenau, SC", "Presencial", False),
+    ("sao-paulo-barra", CARGO, "São Paulo, SP", "Presencial", False),
+    # MEDIDO: a marcação "Remoto" do LinkedIn (modalidade) sem nada no
+    # título era como 173 de 188 vagas entravam — e não eram remotas de
+    # verdade. Agora não basta.
+    ("remoto-so-na-modalidade-barra", CARGO, "São Paulo, São Paulo, Brazil", "Remoto", False),
+    ("remoto-so-no-local-barra", CARGO, "Remoto", "", False),
+    # Remoto declarado no título passa, de qualquer lugar do Brasil
+    ("titulo-remoto-passa", f"{CARGO} - Remoto", "São Paulo, SP", "", True),
+    ("titulo-home-office-passa", f"{CARGO} | Home Office", "Brazil", "Remoto", True),
+    ("titulo-100-remoto-passa", f"{CARGO} (100% Remoto)", "Curitiba, PR", "", True),
+    ("titulo-remote-passa", "Sales Operations Analyst - Remote Work", "Brazil", "Remoto", True),
+    # ...mas não quando o título mistura com híbrido/presencial
+    ("titulo-hibrido-remoto-barra", f"{CARGO} - Híbrido/Remoto", "São Paulo, SP", "", False),
+    ("titulo-presencial-ou-remoto-barra", f"{CARGO} (Presencial ou Remoto)", "Curitiba, PR", "", False),
+    # ...a não ser que seja em Joinville, onde híbrido já vale
+    ("titulo-hibrido-joinville-passa", f"{CARGO} - Híbrido/Remoto", "Joinville, SC", "", True),
+    # Remoto no título, mas pra outro país: continua barrado (só Brasil)
+    ("titulo-remoto-portugal-barra", f"{CARGO} - Remoto", "Remote - Portugal", "Remoto", False),
+    ("titulo-remote-eua-barra", "Sales Operations Analyst - Remote", "Remote - US", "Remoto", False),
 ]
 
 
 @pytest.mark.parametrize(
-    "nome,local,modalidade,esperado", CASOS_LOCAL, ids=[c[0] for c in CASOS_LOCAL]
+    "nome,titulo,local,modalidade,esperado", CASOS_LOCAL, ids=[c[0] for c in CASOS_LOCAL]
 )
-def test_local_perfil_analista(nome, local, modalidade, esperado):
-    job = _job("Coordenador Administrativo Financeiro", local=local, modalidade=modalidade)
+def test_local_perfil_analista(nome, titulo, local, modalidade, esperado):
+    job = _job(titulo, local=local, modalidade=modalidade)
     assert job.combina_com(PERFIL_ANALISTA.regras) == esperado
+
+
+def test_remoto_pelo_titulo_nao_vaza_pro_perfil_dev():
+    """A regra nova é do perfil analista: no dev a modalidade continua
+    confirmando remoto."""
+    assert PERFIL_DEV.regras.remoto_exige_titulo is None
+    job = _job("Desenvolvedor Back-end Node.js", local="Brazil", modalidade="Remoto")
+    assert job.combina_com(PERFIL_DEV.regras)
 
 
 # ---------------------------------------------------------------------------
@@ -208,11 +256,13 @@ def test_termos_de_busca():
         "coordenador administrativo financeiro",
         "gerente administrativo financeiro",
         "analista administrativo financeiro",
-        "analista de operações comerciais",
-        "coordenador de contratos",
+        "gerente financeiro",
+        "coordenador financeiro",
+        "analista financeiro remoto",
     ]
     extras = [t for t in PERFIL_ANALISTA.termos_busca if t not in PERFIL_ANALISTA.termos_prioritarios]
-    assert extras == ["sienge", "incorporadora", "imobiliária", "sales operations"]
+    assert len(extras) == 16 and len(set(extras)) == 16
+    assert {"gerente de locação", "office manager", "fp&a", "analista de recursos humanos"} <= set(extras)
 
 
 # ---------------------------------------------------------------------------

@@ -103,7 +103,7 @@ def test_nenhum_marcador_do_template_sobra(tmp_path):
 
 
 def test_gerar_escreve_o_arquivo_e_conta_as_vagas(tmp_path):
-    db = _banco(tmp_path, [_linha("A"), _linha("B", perfil="analista")])
+    db = _banco(tmp_path, [_linha("A"), _linha("Coordenador Financeiro", perfil="analista")])
     saida = tmp_path / "sub" / "index.html"
 
     assert gerar(db, str(saida)) == 2
@@ -239,3 +239,26 @@ def test_rotulo_publicacao_nao_duplica_a_palavra(bruto, esperado):
     mandam "Publicada em:" embutido, e saía "publicada Publicada em:"."""
     from web.gerar import _rotulo_publicacao
     assert _rotulo_publicacao(bruto) == esperado
+
+
+def test_vaga_analista_que_saiu_do_filtro_some_da_pagina(tmp_path):
+    """MEDIDO (nov/2026): 172 de 188 vagas do analista entraram só pela
+    marcação "Remoto" do LinkedIn, que deixou de valer. A página reaplica o
+    filtro atual do perfil (refiltrar_historico) — o banco não muda."""
+    db = _banco(tmp_path, [
+        # Joinville: continua
+        ("a1", "Coordenador Financeiro", "E", "Joinville, SC", "https://x/1", "LinkedIn",
+         "2026-11-01T10:00:00", 9, "analista", "", ""),
+        # remoto só na marcação do LinkedIn: sai
+        ("a2", "Gerente Financeiro", "E", "São Paulo, SP", "https://x/2", "LinkedIn",
+         "2026-11-01T10:00:00", 9, "analista", "Remoto", ""),
+        # remoto no título: continua
+        ("a3", "Analista Financeiro Pleno (Remoto)", "E", "Brazil", "https://x/3", "LinkedIn",
+         "2026-11-01T10:00:00", 9, "analista", "Remoto", ""),
+        # dev não é reavaliado: fica como foi salvo
+        ("d1", "Qualquer título antigo", "E", "Recife", "https://x/4", "LinkedIn",
+         "2026-11-01T10:00:00", 7, "dev", "", ""),
+    ])
+    assert sorted(v["t"] for v in carregar_vagas(db)) == [
+        "Analista Financeiro Pleno (Remoto)", "Coordenador Financeiro", "Qualquer título antigo",
+    ]

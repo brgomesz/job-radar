@@ -39,12 +39,19 @@ Telegram, distinguidos pela linha `Perfil:` da notificação:
 - `dev` — full-stack com foco back-end Node/TypeScript, remoto ou
   presencial/híbrido em Joinville/SC, nível pleno apenas.
   Config em `core/config_dev.py`.
-- `analista` — coordenação/gerência/supervisão administrativa e
-  financeira, operações, contratos e sales ops; analista só com qualificador de nível (sênior/especialista/
-  III) ou de setor (imobiliário, incorporadora, construtora, comercial,
-  Sienge) no título. Exclui assistente, auxiliar, júnior, estágio,
-  contábil, fiscal, tributário, controladoria e tesouraria. Remoto
-  (Brasil) ou Joinville/SC. Config em `core/config_analista.py`.
+- `analista` — Ana Julia (Gerente Financeira e Operacional Sênior,
+  mercado imobiliário; filtro revisado contra o currículo dela em
+  nov/2026). Coordenação/gerência/supervisão adm-financeira, operações,
+  contratos, sales ops, imobiliário/locação, RH, FP&A, contas a pagar/
+  receber, backoffice e office manager; analista só com nível (pleno, II,
+  sênior, III, especialista) ou setor no título. Pleno a sênior: exclui
+  júnior, "Nível I", estágio, assistente, auxiliar, contábil, fiscal,
+  tributário, controladoria, tesouraria e DP/folha. Local: presencial/
+  híbrido SÓ em Joinville; remoto SÓ quando o TÍTULO diz (remoto, home
+  office...) — a marcação "Remoto" do LinkedIn não basta
+  (`remoto_exige_titulo`). Com `refiltrar_historico`, a página e a captura
+  de anúncios reaplicam o filtro atual às vagas já salvas.
+  Config em `core/config_analista.py`.
 
 - `admin` (administrativo/financeiro/RH) e `agro` (agronomia) foram
   REMOVIDOS em nov/2026, a pedido — código, config e testes apagados. As

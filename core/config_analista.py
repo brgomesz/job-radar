@@ -10,6 +10,16 @@ gerência/supervisão administrativa e financeira, operações, contratos e
 sales ops — e analista só quando o título traz nível sênior ou o setor
 imobiliário/comercial. Era o segundo perfil dela, ao lado do `admin`; o
 `admin` foi removido em nov/2026 e este ficou como o único.
+
+Revisado em nov/2026 contra o currículo dela (Gerente Financeira e
+Operacional Sênior numa imobiliária; antes, 7 anos de Analista
+Administrativo em locação): além de adm-financeiro, operações e
+contratos, entram as áreas afins que o currículo sustenta — mercado
+imobiliário/locação, RH (MBA em RH; recrutamento e onboarding),
+planejamento financeiro (FP&A), contas a pagar/receber e cobrança,
+backoffice e office manager. Faixa: pleno a sênior, mais coordenação/
+gerência. Local: presencial/híbrido só em Joinville; remoto só quando o
+TÍTULO diz (ver REMOTO_NO_TITULO_ANALISTA).
 """
 
 # Cargo forte: aprova SOZINHO pelo título. Variantes de gênero escritas
@@ -58,6 +68,33 @@ KEYWORDS_CARGO_FORTE_ANALISTA = [
     "Sales Ops",
     "Gestor de Contratos",
     "Gestora de Contratos",
+    # --- Mercado imobiliário / locação (o setor dela há 8 anos)
+    "Gerente Imobiliário",
+    "Gerente Imobiliária",
+    "Coordenador Imobiliário",
+    "Coordenadora Imobiliária",
+    "Gerente de Locação",
+    "Coordenador de Locação",
+    "Coordenadora de Locação",
+    "Supervisor de Locação",
+    "Supervisora de Locação",
+    # --- Gestão de escritório / suporte à diretoria
+    "Office Manager",
+    "Gerente de Escritório",
+    "Coordenador de Backoffice",
+    "Coordenadora de Backoffice",
+    # --- Planejamento financeiro
+    "FP&A",
+    # --- RH (MBA em RH; montou recrutamento e onboarding)
+    "Coordenador de RH",
+    "Coordenadora de RH",
+    "Coordenador de Recursos Humanos",
+    "Coordenadora de Recursos Humanos",
+    "Gerente de RH",
+    "Gerente de Recursos Humanos",
+    "Business Partner de RH",
+    "HR Business Partner",
+    "HRBP",
 ]
 
 # Cargo que só aprova com um QUALIFICADORES_AREA_ANALISTA junto no título:
@@ -72,7 +109,18 @@ KEYWORDS_CARGO_AMBIGUO_ANALISTA = [
     "Analista Financeiro",
     "Analista Financeira",
     "Analista de Processos",
+    # Cobre "Analista de Planejamento Financeiro" também (casa por trecho).
     "Analista de Planejamento",
+    # --- Áreas afins do currículo (nov/2026)
+    "Analista de Locação",
+    "Analista de Contas a Pagar",
+    "Analista de Contas a Receber",
+    "Analista de Cobrança",
+    "Analista de Backoffice",
+    "Analista de Back Office",
+    "Analista de RH",
+    "Analista de Recursos Humanos",
+    "Analista de Recrutamento",
 ]
 
 # O que libera o cargo ambíguo acima: nível sênior ou setor imobiliário/
@@ -81,7 +129,12 @@ KEYWORDS_CARGO_AMBIGUO_ANALISTA = [
 # Plural com "s" já é aceito pelo filtro; "comerciais" não é "comercial"
 # + s, por isso vem escrito à parte.
 QUALIFICADORES_AREA_ANALISTA = [
-    # --- Nível
+    # --- Nível (pleno entrou em nov/2026: a faixa pedida é pleno a sênior,
+    # e sem isto "Analista Financeiro Pleno" caía por falta de qualificador)
+    "pleno",
+    "plena",
+    # "II" é o degrau pleno da escada I/II/III (o I é barrado como júnior).
+    "ii",
     "sênior",
     "senior",
     "sr",
@@ -138,6 +191,12 @@ TITULOS_EXCLUIDOS_ANALISTA = [
     "tributária",
     "controladoria",
     "tesouraria",
+    # Departamento pessoal / folha (nov/2026): não está no currículo dela e
+    # é vizinho do fiscal. "Analista de RH Sênior (Foco em folha)" entrava
+    # pela regra de RH.
+    "departamento pessoal",
+    "dp",
+    "folha",
     # --- Área de fora que usa o mesmo vocabulário de cargo. Não vieram no
     # pedido, mas são a proteção que já existia: "Coordenador de
     # Operações" e "Analista de Processos" são cargos dela, mas em
@@ -177,21 +236,42 @@ TITULOS_EXCLUIDOS_ANALISTA = [
 NIVEIS_EXCLUIDOS_ANALISTA = [
     "Estágio/Trainee",
     "Júnior",
+    # "Analista Financeiro I" é o degrau de entrada da escada I/II/III —
+    # júnior com outro nome. II (pleno) e III (sênior) continuam.
+    "Nível I",
 ]
 
-# Prioridade da usuária: Sênior, Especialista e Coordenação/Supervisão/
-# Gerência ("Liderança" em _detectar_senioridade) pontuam o teto. Pleno
-# fica neutro (fora do alvo e fora da penalidade: 0 ponto). No padrão
-# global os três valeriam -2.
+# Faixa pedida: pleno a sênior, mais Especialista e Coordenação/
+# Supervisão/Gerência ("Liderança" em _detectar_senioridade) — todos
+# pontuam o teto. No padrão global Sênior/Especialista/Liderança valeriam -2.
 NIVEIS_ALVO_ANALISTA = [
+    "Pleno",
     "Sênior",
     "Especialista",
     "Liderança",
 ]
 
+# Presencial/híbrido só em Joinville. "Remoto" aqui liga a rota de vaga
+# remota, mas com REMOTO_NO_TITULO_ANALISTA abaixo ela só vale quando o
+# título declara — a marcação "Remoto" do LinkedIn não basta.
 CIDADES_ANALISTA = [
     "Remoto",
     "Joinville",
+]
+
+# Termos que tornam uma vaga "expressamente remota" (ver
+# remoto_exige_titulo em core/job.py). Título que também diz híbrido ou
+# presencial não conta.
+REMOTO_NO_TITULO_ANALISTA = [
+    "remoto",
+    "remota",
+    "home office",
+    "home-office",
+    "homeoffice",
+    "teletrabalho",
+    "trabalho de casa",
+    "100% online",
+    "remote",
 ]
 
 # Só Brasil: rotina administrativa e financeira segue legislação
@@ -200,21 +280,37 @@ CIDADES_ANALISTA = [
 # rejeitar).
 MERCADOS_REMOTO_ACEITOS_ANALISTA = ["Brasil"]
 
+# Os cargos mais próximos do currículo, em TODO ciclo. Os dois com
+# "remoto" existem porque remoto só vale com o termo no título: a busca
+# com a palavra junto traz justamente esses anúncios pra cima.
 TERMOS_PRIORITARIOS_ANALISTA = [
     "coordenador administrativo financeiro",
     "gerente administrativo financeiro",
     "analista administrativo financeiro",
-    "analista de operações comerciais",
-    "coordenador de contratos",
+    "gerente financeiro",
+    "coordenador financeiro",
+    "analista financeiro remoto",
 ]
 
-# Prioritários rodam em TODO ciclo; estes entram no rodízio. Com 4 extras
-# e TERMOS_POR_CICLO_ANALISTA = 8, na prática também rodam todo ciclo.
+# Rodízio: 16 termos em blocos de TERMOS_POR_CICLO_ANALISTA = 8 — cada um
+# roda a cada 2 ciclos (6h).
 TERMOS_BUSCA_ANALISTA = TERMOS_PRIORITARIOS_ANALISTA + [
+    "analista administrativo remoto",
+    "analista de operações comerciais",
+    "coordenador de contratos",
+    "analista de contratos",
+    "gerente de locação",
+    "analista de locação",
+    "gerente operacional",
+    "office manager",
+    "fp&a",
+    "analista de recursos humanos",
+    "coordenador de rh",
+    "sales operations",
     "sienge",
     "incorporadora",
     "imobiliária",
-    "sales operations",
+    "home office financeiro",
 ]
 
 TERMOS_POR_CICLO_ANALISTA = 8

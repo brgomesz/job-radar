@@ -92,6 +92,17 @@ def _quando_entrou(bruto: str) -> str:
     return quando.astimezone(_FUSO_BR).strftime("%d/%m %H:%M")
 
 
+def _ainda_vale(linha) -> bool:
+    """A vaga salva ainda passa no filtro de hoje do perfil? Só reavalia
+    perfil marcado com refiltrar_historico (ver core/perfis.py) — hoje, o
+    analista. Import tardio: core.perfis arrasta os scrapers (e o
+    Playwright) e só faz falta aqui."""
+    from core.perfis import aprovada_pelas_regras_atuais
+    return aprovada_pelas_regras_atuais(
+        linha["perfil"], linha["titulo"], linha["local"], linha["modalidade"], linha["site"]
+    )
+
+
 def carregar_vagas(db_path: str = "") -> list[dict]:
     """Vagas dos perfis em produção, da mais relevante pra menos.
 
@@ -140,6 +151,7 @@ def carregar_vagas(db_path: str = "") -> list[dict]:
             "pts": _epoch_publicacao(l["publicado_em"] or "", _instante(l["encontrada_em"] or "")),
         }
         for l in linhas
+        if _ainda_vale(l)
     ]
 
 
@@ -150,38 +162,39 @@ def carregar_conteudo(db_path: str = "", perfil: str = "dev") -> tuple[list[dict
     conn = sqlite3.connect(db_path or DB_PATH)
     conn.row_factory = sqlite3.Row
     try:
-        total = conn.execute(
-            "SELECT COUNT(*) FROM vagas_vistas WHERE perfil = ?", (perfil,)
-        ).fetchone()[0]
         try:
             linhas = conn.execute(
                 """
                 SELECT v.titulo, v.empresa, v.local, v.link, v.site, v.modalidade,
-                       v.publicado_em, v.encontrada_em, c.texto
-                FROM vagas_vistas v JOIN conteudo_vagas c ON c.id = v.id
-                WHERE v.perfil = ? AND c.status = 'ok' AND c.texto != ''
+                       v.publicado_em, v.encontrada_em, v.perfil, c.status, c.texto
+                FROM vagas_vistas v LEFT JOIN conteudo_vagas c ON c.id = v.id
+                WHERE v.perfil = ?
                 ORDER BY v.encontrada_em DESC
                 """,
                 (perfil,),
             ).fetchall()
-            removidas = conn.execute(
-                """
-                SELECT COUNT(*) FROM vagas_vistas v JOIN conteudo_vagas c ON c.id = v.id
-                WHERE v.perfil = ? AND c.status = 'indisponivel'
-                """,
-                (perfil,),
-            ).fetchone()[0]
         except sqlite3.OperationalError:
-            linhas, removidas = [], 0
+            linhas = [
+                dict(l, status=None, texto=None)
+                for l in conn.execute(
+                    "SELECT titulo, empresa, local, link, site, modalidade, publicado_em,"
+                    " encontrada_em, perfil FROM vagas_vistas WHERE perfil = ?",
+                    (perfil,),
+                ).fetchall()
+            ]
     finally:
         conn.close()
 
-    vagas = [dict(l) for l in linhas]
+    # Mesmo recorte da lista de vagas: o que saiu do filtro do perfil sai
+    # também da contagem e do .txt.
+    linhas = [l for l in linhas if _ainda_vale(l)]
+    vagas = [dict(l) for l in linhas if l["status"] == "ok" and l["texto"]]
+    removidas = sum(1 for l in linhas if l["status"] == "indisponivel")
     contagem = {
-        "total": total,
+        "total": len(linhas),
         "capturadas": len(vagas),
         "removidas": removidas,
-        "pendentes": max(total - len(vagas) - removidas, 0),
+        "pendentes": max(len(linhas) - len(vagas) - removidas, 0),
     }
     return vagas, contagem
 

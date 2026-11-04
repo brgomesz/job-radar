@@ -74,8 +74,9 @@ from core.config_analista import (
     TERMOS_POR_CICLO_ANALISTA,
     LOCATIONS_LINKEDIN_ANALISTA,
     LOCATIONS_LINKEDIN_CIDADES_ANALISTA,
+    REMOTO_NO_TITULO_ANALISTA,
 )
-from core.job import RegrasFiltro
+from core.job import Job, RegrasFiltro
 from scrapers.catho import CathoScraper
 from scrapers.geekhunter import GeekHunterScraper
 from scrapers.gupy import GupyScraper
@@ -128,6 +129,10 @@ class Perfil:
     # comportamento de antes deste campo existir (perfil internacional).
     termos_prioritarios: list[str] = field(default_factory=list)
     max_scrapers_concorrentes: int = 4
+    # Reaplica as regras ATUAIS às vagas já salvas do perfil, na página e na
+    # captura de anúncios (ver aprovada_pelas_regras_atuais). Ligado quando
+    # o filtro do perfil aperta e o histórico antigo deixou de servir.
+    refiltrar_historico: bool = False
 
 
 # Regra primária: cidade brasileira (Nordeste) ou "Remoto" com mercado
@@ -410,6 +415,7 @@ _REGRAS_ANALISTA = RegrasFiltro(
     titulos_excluidos=TITULOS_EXCLUIDOS_ANALISTA,
     niveis_excluidos=NIVEIS_EXCLUIDOS_ANALISTA,
     niveis_alvo=NIVEIS_ALVO_ANALISTA,
+    remoto_exige_titulo=REMOTO_NO_TITULO_ANALISTA,
 )
 
 _SCRAPERS_ANALISTA = [
@@ -439,7 +445,26 @@ PERFIL_ANALISTA = Perfil(
     termos_prioritarios=TERMOS_PRIORITARIOS_ANALISTA,
     definicao_scrapers=_SCRAPERS_ANALISTA,
     max_scrapers_concorrentes=4,
+    # MEDIDO (nov/2026): com o remoto passando a exigir o termo no título,
+    # 172 das 188 vagas salvas deixaram de servir — continuariam na página
+    # e na aba "Conteúdo Analista" sem isto.
+    refiltrar_historico=True,
 )
+
+def aprovada_pelas_regras_atuais(
+    perfil_chave: str, titulo: str, local: str, modalidade: str, site: str = ""
+) -> bool:
+    """A vaga já salva ainda passa no filtro de HOJE do perfil? Só reavalia
+    perfil com refiltrar_historico; para os outros (e chave desconhecida)
+    devolve True — o histórico fica como foi salvo. Não apaga nada do
+    banco: quem chama só deixa de mostrar/abrir a vaga."""
+    perfil = PERFIS.get(perfil_chave)
+    if perfil is None or not perfil.refiltrar_historico:
+        return True
+    job = Job(titulo=titulo or "", empresa="", local=local or "", link="", site=site or "",
+              modalidade=modalidade or "")
+    return job.combina_com(perfil.regras)
+
 
 PERFIS = {
     PERFIL_BR.chave: PERFIL_BR,
