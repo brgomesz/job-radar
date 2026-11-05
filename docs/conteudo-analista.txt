@@ -1,9 +1,51 @@
 CONTEÚDO DAS VAGAS DE ANALISTA — JobRadar
-Gerado em 05/11/2026 às 07:35 (Brasília). 20 vaga(s) com anúncio capturado, de 20 vagas Analista no radar. Mais recentes primeiro.
+Gerado em 05/11/2026 às 16:46 (Brasília). 21 vaga(s) com anúncio capturado, de 21 vagas Analista no radar. Mais recentes primeiro.
 Cada vaga traz o texto do anúncio como a fonte publicou (descrição, requisitos, diferenciais, benefícios).
 
 
-===== VAGA 1 de 20 =====
+===== VAGA 1 de 21 =====
+Título: Analista Administrativo Financeiro
+Empresa: GENTER
+Local: Joinville
+Fonte: Catho · publicada Hoje · achada 05/11 16:40
+Link: https://www.catho.com.br/vagas/analista-administrativo-financeiro/39137913
+--- Anúncio ---
+ANALISTA ADMINISTRATIVO FINANCEIRO
+Local: Pirabeiraba - Joinville/SC
+Modelo de trabalho: Presencial
+Regime de contratação: CLT
+Remuneração: A combinar
+Sobre a oportunidade
+Buscamos um profissional para atuar nas rotinas administrativas, financeiras, fiscais e de faturamento da empresa, garantindo a organização e o controle das informações e apoiando o fechamento mensal junto à contabilidade terceirizada.
+Principais atividades
+Controlar contas a pagar e a receber;
+Conferir e lançar pedidos de compra;
+Emitir e lançar notas fiscais e boletos pelo SAP;
+Realizar conciliação bancária;
+Elaborar relatórios financeiros;
+Organizar documentos financeiros e fiscais;
+Acompanhar a inadimplência e realizar cobranças;
+Apoiar o fechamento mensal e o atendimento às demandas da contabilidade terceirizada.
+Requisitos
+Formação técnica ou graduação em Ciências Contábeis, Administração ou áreas correlatas, concluída ou em andamento;
+Experiência com sistemas ERP, preferencialmente SAP Business One;
+Conhecimentos na área contábil;
+Organização, proatividade e dinamismo;
+Boa comunicação e facilidade para trabalhar em equipe;
+Responsabilidade e comprometimento com prazos e rotinas.
+Benefícios
+Vale-transporte;
+Vale-refeição de R$ 25,00 por dia;
+Vale-alimentação de R$ 150,00 por mês;
+Plano de saúde após o período de experiência, sem desconto em folha e sem coparticipação;
+Plano odontológico após o período de experiência, sem desconto em folha e sem coparticipação;
+Um dia de folga no mês do aniversário.
+Horário de trabalho
+Segunda a quinta-feira: das 7h30 às 11h30 e das 12h30 às 17h30;
+Sexta-feira: das 7h30 às 11h30 e das 12h30 às 16h30.
+
+
+===== VAGA 2 de 21 =====
 Título: Pessoa Especialista de FP&A (Remoto) - 8126
 Empresa: Softplan
 Local: Não informado (Remoto)
@@ -93,7 +135,7 @@ Peru: unificamos processos judiciais com o sistema SAJ Courts, ampliando o acess
 Argentina: modernizamos a Justiça do Trabalho de Buenos Aires (PJCABA), levando mais agilidade e transparência a trabalhadores e empresas.
 
 
-===== VAGA 2 de 20 =====
+===== VAGA 3 de 21 =====
 Título: Coordenador(a) de RH I Generalista I Remoto
 Empresa: Cuattro
 Local: Não informado (Remoto)
@@ -250,7 +292,7 @@ Queremos que cada jornada na Cuattro seja uma oportunidade de desenvolvimento e 
 Muito prazer, somos a Cuattro...E por aqui, voamos juntos para conectar pessoas, ideias e oportunidades!
 
 
-===== VAGA 3 de 20 =====
+===== VAGA 4 de 21 =====
 Título: Analista Financeiro Sênior - Revenue Management | RD Station (Remoto)
 Empresa: TOTVS
 Local: Florianópolis, Santa Catarina, Brazil
@@ -297,7 +339,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 4 de 20 =====
+===== VAGA 5 de 21 =====
 Título: Coordenador de operações
 Empresa: Culture Designer
 Local: Joinville, Santa Catarina, Brazil
@@ -375,7 +417,7 @@ Employment type: Full-time
 Industries: Wholesale Import and Export
 
 
-===== VAGA 5 de 20 =====
+===== VAGA 6 de 21 =====
 Título: Analista Administrativo de Vendas
 Empresa: abler Vagas
 Local: Joinville, Santa Catarina, Brazil
@@ -422,7 +464,7 @@ Employment type: Full-time
 Industries: Technology, Information and Internet
 
 
-===== VAGA 6 de 20 =====
+===== VAGA 7 de 21 =====
 Título: Coordenador Administrativo Comercial
 Empresa: MERKEL RECURSOS HUMANOS
 Local: Joinville
@@ -445,7 +487,7 @@ Vivência em gestão administrativa multissetorial e liderança.
 Excel avançado e ERP.
 
 
-===== VAGA 7 de 20 =====
+===== VAGA 8 de 21 =====
 Título: COORDENADOR DE OPERAÇÕES*
 Empresa: Ânima Educação
 Local: Joinville, Santa Catarina, Brazil
@@ -535,7 +577,7 @@ Employment type: Full-time
 Industries: Education Administration Programs
 
 
-===== VAGA 8 de 20 =====
+===== VAGA 9 de 21 =====
 Título: Coordenador administrativo de vendas
 Empresa: MERKEL RH
 Local: Joinville, Santa Catarina, Brazil
@@ -569,7 +611,7 @@ Employment type: Full-time
 Industries: Human Resources Services
 
 
-===== VAGA 9 de 20 =====
+===== VAGA 10 de 21 =====
 Título: Coordenador(a) Administrativo(a) de Vendas
 Empresa: Grupo Krona
 Local: Joinville, Santa Catarina, Brazil
@@ -632,7 +674,7 @@ Employment type: Full-time
 Industries: Chemical Manufacturing
 
 
-===== VAGA 10 de 20 =====
+===== VAGA 11 de 21 =====
 Título: Analista Administrativo Comercial
 Empresa: Jobbol
 Local: Joinville, Santa Catarina, Brazil
@@ -671,7 +713,7 @@ Employment type: Full-time
 Industries: Technology, Information and Internet
 
 
-===== VAGA 11 de 20 =====
+===== VAGA 12 de 21 =====
 Título: Coordenador de operações
 Empresa: Par RH®️
 Local: Joinville, Santa Catarina, Brazil
@@ -711,7 +753,7 @@ Employment type: Full-time
 Industries: Business Consulting and Services
 
 
-===== VAGA 12 de 20 =====
+===== VAGA 13 de 21 =====
 Título: Gerente Administrativo Operacional –Clínica médica
 Empresa: HRL Consultoria e Projetos
 Local: Joinville, Santa Catarina, Brazil
@@ -765,7 +807,7 @@ Employment type: Full-time
 Industries: Human Resources Services
 
 
-===== VAGA 13 de 20 =====
+===== VAGA 14 de 21 =====
 Título: Analista de Planejamento Comercial - Salesforce
 Empresa: Porto Itapoa
 Local: Joinville, Santa Catarina, Brazil
@@ -816,7 +858,7 @@ Employment type: Full-time
 Industries: Data Infrastructure and Analytics
 
 
-===== VAGA 14 de 20 =====
+===== VAGA 15 de 21 =====
 Título: Gerente Financeiro
 Empresa: Jobbol
 Local: Joinville, Santa Catarina, Brazil
@@ -855,7 +897,7 @@ Employment type: Full-time
 Industries: Technology, Information and Internet
 
 
-===== VAGA 15 de 20 =====
+===== VAGA 16 de 21 =====
 Título: Analista de Planejamento de Vendas III
 Empresa: Tupy
 Local: Joinville, Santa Catarina, Brazil
@@ -931,7 +973,7 @@ Employment type: Full-time
 Industries: Automation Machinery Manufacturing
 
 
-===== VAGA 16 de 20 =====
+===== VAGA 17 de 21 =====
 Título: Sales Operations Analyst - Remote Work
 Empresa: BairesDev
 Local: Brazil (Remoto)
@@ -993,7 +1035,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 17 de 20 =====
+===== VAGA 18 de 21 =====
 Título: Coordenador Financeiro
 Empresa: Jobbol
 Local: Joinville, Santa Catarina, Brazil
@@ -1033,7 +1075,7 @@ Employment type: Full-time
 Industries: Technology, Information and Internet
 
 
-===== VAGA 18 de 20 =====
+===== VAGA 19 de 21 =====
 Título: Analista de Operações Comerciais
 Empresa: Rottas Vendas
 Local: Joinville, Santa Catarina, Brazil
@@ -1101,7 +1143,7 @@ Employment type: Full-time
 Industries: Civil Engineering
 
 
-===== VAGA 19 de 20 =====
+===== VAGA 20 de 21 =====
 Título: Analista Administrativo de Vendas
 Empresa: Jobbol
 Local: Joinville, Santa Catarina, Brazil
@@ -1140,7 +1182,7 @@ Employment type: Full-time
 Industries: Technology, Information and Internet
 
 
-===== VAGA 20 de 20 =====
+===== VAGA 21 de 21 =====
 Título: Analista de Operações Comerciais
 Empresa: House Rottas Vendas
 Local: Joinville - SC (Presencial)
