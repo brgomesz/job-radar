@@ -20,6 +20,7 @@ import os
 import re
 import sqlite3
 from datetime import datetime, timedelta, timezone
+from functools import lru_cache
 
 from core.config import DB_PATH
 
@@ -33,7 +34,7 @@ SAIDA = os.path.join(_RAIZ, "docs", "index.html")
 # porque são centenas de KB que só quem abre a aba usa. Os perfis daqui
 # são os mesmos que o passo de captura do workflow abre
 # (scripts/capturar_conteudo.py --perfil ...).
-PERFIS_CONTEUDO = ("dev", "analista")
+PERFIS_CONTEUDO = ("dev", "dev-joinville", "dev-remoto", "dev-intl", "analista")
 ARQUIVO_CONTEUDO = "conteudo-{perfil}.txt"
 # Linha que separa uma vaga da outra no .txt. O template divide o arquivo
 # por ela pra montar a lista da aba — mudar aqui exige mudar lá
@@ -45,12 +46,26 @@ MARCADOR_ANUNCIO = "--- Anúncio ---"
 # internacional e as vagas sem perfil, anteriores ao campo existir) são
 # do radar de Dados/BI da autora original e não têm o que fazer nesta
 # página — ficam no banco, fora da vitrine.
-PERFIS_NA_PAGINA = ("dev", "analista")
+PERFIS_NA_PAGINA = ("dev", "dev-joinville", "dev-remoto", "dev-intl", "analista")
+
+# Família dev. "dev" (o perfil original, fora do cron desde nov/2026) é a
+# opção "Geral" da página: junta o histórico dele com tudo que os três
+# subperfis acharem. As vagas antigas de "dev" são classificadas num dos
+# três pela regra de local de cada um (ver _categoria), então as abas
+# Joinville/Remoto/Internacional já nascem com o histórico.
+PERFIS_DEV = ("dev", "dev-joinville", "dev-remoto", "dev-intl")
+SUBPERFIS_DEV = PERFIS_DEV[1:]
 
 # Rótulo por perfil. Não importado de core.perfis de propósito: aquele
 # módulo carrega todos os scrapers (e o Playwright junto), coisa que um
-# gerador de HTML não deveria arrastar só pra ler dois nomes.
-ROTULOS = {"dev": "Dev", "analista": "Analista"}
+# gerador de HTML não deveria arrastar só pra ler alguns nomes.
+ROTULOS = {
+    "dev": "Dev (geral)",
+    "dev-joinville": "Dev Joinville",
+    "dev-remoto": "Dev Remoto",
+    "dev-intl": "Dev Internacional",
+    "analista": "Analista",
+}
 
 _FUSO_BR = timezone(timedelta(hours=-3))
 
@@ -92,15 +107,53 @@ def _quando_entrou(bruto: str) -> str:
     return quando.astimezone(_FUSO_BR).strftime("%d/%m %H:%M")
 
 
-def _ainda_vale(linha) -> bool:
-    """A vaga salva ainda passa no filtro de hoje do perfil? Só reavalia
-    perfil marcado com refiltrar_historico (ver core/perfis.py) — hoje, o
-    analista. Import tardio: core.perfis arrasta os scrapers (e o
-    Playwright) e só faz falta aqui."""
+@lru_cache(maxsize=None)
+def _vale(perfil: str, titulo: str, local: str, modalidade: str, site: str, texto: str) -> bool:
+    # Cache: a mesma vaga é avaliada pela lista e por cada opção de
+    # conteúdo; com o anúncio entrando na conta, isso era 5x o trabalho.
     from core.perfis import aprovada_pelas_regras_atuais
-    return aprovada_pelas_regras_atuais(
-        linha["perfil"], linha["titulo"], linha["local"], linha["modalidade"], linha["site"]
+    return aprovada_pelas_regras_atuais(perfil, titulo, local, modalidade, site, texto_anuncio=texto)
+
+
+def _ainda_vale(linha) -> bool:
+    """A vaga salva ainda passa no filtro de hoje do perfil? Título/local só
+    é reavaliado em perfil com refiltrar_historico (ver core/perfis.py); o
+    anúncio, quando já foi capturado, em perfil com regras_anuncio (os dev).
+    Import tardio: core.perfis arrasta os scrapers (e o Playwright) e só
+    faz falta aqui."""
+    return _vale(
+        linha["perfil"] or "", linha["titulo"] or "", linha["local"] or "",
+        linha["modalidade"] or "", linha["site"] or "", linha["texto"] or "",
     )
+
+
+@lru_cache(maxsize=None)
+def _subperfil_do_historico(titulo: str, local: str, modalidade: str, site: str) -> str:
+    from core.perfis import combina_com_perfil
+    for sub in SUBPERFIS_DEV:
+        if combina_com_perfil(sub, titulo, local, modalidade, site):
+            return sub
+    return "dev"
+
+
+def _categoria(linha) -> str:
+    """Em qual opção da página a vaga aparece. É o próprio perfil, menos
+    para o histórico do "dev" original: esse vai pro primeiro subperfil
+    (Joinville, Remoto, Internacional) cuja regra de local ele passa — fica
+    "dev" só a vaga que não cabe em nenhum (aparece só no Geral)."""
+    if linha["perfil"] != "dev":
+        return linha["perfil"]
+    return _subperfil_do_historico(
+        linha["titulo"] or "", linha["local"] or "", linha["modalidade"] or "", linha["site"] or "",
+    )
+
+
+def _da_opcao(categoria: str, perfil_pagina: str) -> bool:
+    """A vaga de `categoria` entra na opção `perfil_pagina`? "dev" (Geral)
+    junta a família inteira; o resto é exato."""
+    if perfil_pagina == "dev":
+        return categoria in PERFIS_DEV
+    return categoria == perfil_pagina
 
 
 def carregar_vagas(db_path: str = "") -> list[dict]:
@@ -110,22 +163,7 @@ def carregar_vagas(db_path: str = "") -> list[dict]:
     empate de nota é comum (a escala tem 10 degraus pra centenas de
     vagas), e nesse caso o que decide é qual anúncio ainda está fresco.
     """
-    conn = sqlite3.connect(db_path or DB_PATH)
-    conn.row_factory = sqlite3.Row
-    marcadores = ",".join("?" for _ in PERFIS_NA_PAGINA)
-    try:
-        linhas = conn.execute(
-            f"""
-            SELECT titulo, empresa, local, link, site, relevancia, perfil,
-                   modalidade, publicado_em, encontrada_em
-            FROM vagas_vistas
-            WHERE perfil IN ({marcadores})
-            ORDER BY relevancia DESC, encontrada_em DESC
-            """,
-            PERFIS_NA_PAGINA,
-        ).fetchall()
-    finally:
-        conn.close()
+    linhas = _ler_linhas(db_path, PERFIS_NA_PAGINA, "v.relevancia DESC, v.encontrada_em DESC")
 
     return [
         {
@@ -135,7 +173,9 @@ def carregar_vagas(db_path: str = "") -> list[dict]:
             "u": l["link"],
             "s": l["site"],
             "r": l["relevancia"] or 0,
-            "p": l["perfil"],
+            # Categoria, não o perfil cru: histórico do "dev" original já
+            # vem classificado em Joinville/Remoto/Internacional.
+            "p": _categoria(l),
             "m": l["modalidade"] or "",
             "d": _quando_entrou(l["encontrada_em"] or ""),
             # Mesmo instante em epoch, pra página poder ORDENAR e filtrar
@@ -155,40 +195,51 @@ def carregar_vagas(db_path: str = "") -> list[dict]:
     ]
 
 
-def carregar_conteudo(db_path: str = "", perfil: str = "dev") -> tuple[list[dict], dict]:
-    """(vagas com anúncio capturado, contagem) do perfil, mais recentes
-    primeiro. Banco sem a tabela conteudo_vagas (anterior à captura) conta
+def _ler_linhas(db_path: str, perfis: tuple[str, ...], ordem: str) -> list[dict]:
+    """Vagas dos perfis com o anúncio capturado junto (status/texto, ou
+    None). Banco sem a tabela conteudo_vagas (anterior à captura) conta
     como nada capturado ainda, não como erro."""
     conn = sqlite3.connect(db_path or DB_PATH)
     conn.row_factory = sqlite3.Row
+    marcadores = ",".join("?" for _ in perfis)
+    colunas = (
+        "v.titulo, v.empresa, v.local, v.link, v.site, v.relevancia, v.perfil, v.modalidade,"
+        " v.publicado_em, v.encontrada_em"
+    )
     try:
         try:
             linhas = conn.execute(
-                """
-                SELECT v.titulo, v.empresa, v.local, v.link, v.site, v.modalidade,
-                       v.publicado_em, v.encontrada_em, v.perfil, c.status, c.texto
+                f"""
+                SELECT {colunas}, c.status AS status,
+                       CASE WHEN c.status = 'ok' THEN c.texto END AS texto
                 FROM vagas_vistas v LEFT JOIN conteudo_vagas c ON c.id = v.id
-                WHERE v.perfil = ?
-                ORDER BY v.encontrada_em DESC
+                WHERE v.perfil IN ({marcadores})
+                ORDER BY {ordem}
                 """,
-                (perfil,),
+                perfis,
             ).fetchall()
+            return [dict(l) for l in linhas]
         except sqlite3.OperationalError:
-            linhas = [
-                dict(l, status=None, texto=None)
-                for l in conn.execute(
-                    "SELECT titulo, empresa, local, link, site, modalidade, publicado_em,"
-                    " encontrada_em, perfil FROM vagas_vistas WHERE perfil = ?",
-                    (perfil,),
-                ).fetchall()
-            ]
+            linhas = conn.execute(
+                f"SELECT {colunas} FROM vagas_vistas v WHERE v.perfil IN ({marcadores}) ORDER BY {ordem}",
+                perfis,
+            ).fetchall()
+            return [dict(l, status=None, texto=None) for l in linhas]
     finally:
         conn.close()
 
+
+def carregar_conteudo(db_path: str = "", perfil: str = "dev") -> tuple[list[dict], dict]:
+    """(vagas com anúncio capturado, contagem) da opção `perfil`, mais
+    recentes primeiro. Opção da família dev lê a família inteira e recorta
+    pela categoria (ver _categoria/_da_opcao)."""
+    perfis = PERFIS_DEV if perfil in PERFIS_DEV else (perfil,)
+    linhas = _ler_linhas(db_path, perfis, "v.encontrada_em DESC")
+
     # Mesmo recorte da lista de vagas: o que saiu do filtro do perfil sai
     # também da contagem e do .txt.
-    linhas = [l for l in linhas if _ainda_vale(l)]
-    vagas = [dict(l) for l in linhas if l["status"] == "ok" and l["texto"]]
+    linhas = [l for l in linhas if _ainda_vale(l) and _da_opcao(_categoria(l), perfil)]
+    vagas = [l for l in linhas if l["status"] == "ok" and l["texto"]]
     removidas = sum(1 for l in linhas if l["status"] == "indisponivel")
     contagem = {
         "total": len(linhas),

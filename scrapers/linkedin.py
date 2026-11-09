@@ -94,8 +94,17 @@ class LinkedInScraper(BaseScraper):
         locations: list[str] | None = None,
         locations_remoto_apenas: list[str] | None = None,
         locations_cidades_presencial: list[str] | None = None,
+        paginas_remoto: int | None = None,
+        paginas_cidade: int | None = None,
     ):
+        """`paginas_remoto`/`paginas_cidade`: quantas páginas ler nas
+        passadas de remoto (f_WT=2) e por cidade. None = os padrões do
+        módulo (MAX_PAGINAS_REMOTO, MAX_PAGINAS_CIDADE), pensados pra
+        passada que é COMPLEMENTO da nacional. Perfil em que uma delas é a
+        busca principal (dev-remoto, dev-intl, dev-joinville) lê mais."""
         self.termos_busca = termos_busca
+        self.paginas_remoto = paginas_remoto
+        self.paginas_cidade = paginas_cidade or MAX_PAGINAS_CIDADE
         self.locations = locations if locations is not None else LOCATIONS_LINKEDIN
         self.locations_remoto_apenas = (
             locations_remoto_apenas
@@ -115,11 +124,13 @@ class LinkedInScraper(BaseScraper):
                 vagas.extend(self._buscar_termo(termo, location, remoto=False))
                 vagas.extend(self._buscar_termo(termo, location, remoto=True))
             for location in self.locations_remoto_apenas:
-                vagas.extend(self._buscar_termo(termo, location, remoto=True))
+                vagas.extend(self._buscar_termo(
+                    termo, location, remoto=True, max_paginas=self.paginas_remoto,
+                ))
             for location in self.locations_cidades_presencial:
                 vagas.extend(self._buscar_termo(
                     termo, location, remoto=False,
-                    max_paginas=MAX_PAGINAS_CIDADE, rotulo="cidade",
+                    max_paginas=self.paginas_cidade, rotulo="cidade",
                 ))
 
         total_mercados = (

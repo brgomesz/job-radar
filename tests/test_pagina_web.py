@@ -16,7 +16,24 @@ import sqlite3
 
 import pytest
 
+import web.gerar as gerar_mod
 from web.gerar import carregar_vagas, gerar, montar_html
+
+_VALE_REAL = gerar_mod._vale
+
+
+@pytest.fixture(autouse=True)
+def _sem_refiltro(monkeypatch):
+    """Os testes daqui são de ordenação, escape e datas, com títulos
+    inventados ("nota 9 nova") que o filtro do perfil dev — reaplicado na
+    página desde nov/2026 — descartaria. Quem testa o filtro pede
+    `filtro_real`."""
+    monkeypatch.setattr(gerar_mod, "_vale", lambda *a: True)
+
+
+@pytest.fixture
+def filtro_real(monkeypatch):
+    monkeypatch.setattr(gerar_mod, "_vale", _VALE_REAL)
 
 
 def _banco(tmp_path, linhas):
@@ -241,7 +258,7 @@ def test_rotulo_publicacao_nao_duplica_a_palavra(bruto, esperado):
     assert _rotulo_publicacao(bruto) == esperado
 
 
-def test_vaga_analista_que_saiu_do_filtro_some_da_pagina(tmp_path):
+def test_vaga_analista_que_saiu_do_filtro_some_da_pagina(tmp_path, filtro_real):
     """MEDIDO (nov/2026): 172 de 188 vagas do analista entraram só pela
     marcação "Remoto" do LinkedIn, que deixou de valer. A página reaplica o
     filtro atual do perfil (refiltrar_historico) — o banco não muda."""
@@ -255,10 +272,61 @@ def test_vaga_analista_que_saiu_do_filtro_some_da_pagina(tmp_path):
         # remoto no título: continua
         ("a3", "Analista Financeiro Pleno (Remoto)", "E", "Brazil", "https://x/3", "LinkedIn",
          "2026-11-01T10:00:00", 9, "analista", "Remoto", ""),
-        # dev não é reavaliado: fica como foi salvo
+        # dev também é reavaliado desde nov/2026: título que não é de dev sai
         ("d1", "Qualquer título antigo", "E", "Recife", "https://x/4", "LinkedIn",
          "2026-11-01T10:00:00", 7, "dev", "", ""),
     ])
     assert sorted(v["t"] for v in carregar_vagas(db)) == [
-        "Analista Financeiro Pleno (Remoto)", "Coordenador Financeiro", "Qualquer título antigo",
+        "Analista Financeiro Pleno (Remoto)", "Coordenador Financeiro",
     ]
+
+
+# ---------------------------------------------------------------------------
+# Família dev (nov/2026): Geral + Joinville + Remoto + Internacional
+# ---------------------------------------------------------------------------
+
+def _dev(id_, titulo, local, modalidade, perfil="dev", site="LinkedIn"):
+    return (id_, titulo, "E", local, f"https://x/{id_}", site, "2026-11-01T10:00:00", 8,
+            perfil, modalidade, "")
+
+
+def test_historico_dev_e_classificado_nos_subperfis(tmp_path, filtro_real):
+    """O dev original saiu do cron; o histórico dele aparece já dividido
+    entre Joinville, Remoto e Internacional pela regra de local de cada um."""
+    db = _banco(tmp_path, [
+        _dev("j", "Desenvolvedor Full Stack", "Joinville, Santa Catarina, Brazil", ""),
+        _dev("r", "Desenvolvedor Back-end Pleno", "São Paulo, São Paulo, Brazil", "Remoto"),
+        _dev("i", "Backend Engineer (Node) - Remote Work", "Recife, Pernambuco, Brazil", "Remoto"),
+        _dev("n", "Desenvolvedor React", "Não informado", "Remoto", perfil="dev-remoto", site="Gupy"),
+    ])
+    categorias = {v["t"]: v["p"] for v in carregar_vagas(db)}
+    assert categorias == {
+        "Desenvolvedor Full Stack": "dev-joinville",
+        "Desenvolvedor Back-end Pleno": "dev-remoto",
+        "Backend Engineer (Node) - Remote Work": "dev-intl",
+        "Desenvolvedor React": "dev-remoto",
+    }
+
+
+def test_vaga_dev_com_anuncio_de_outra_stack_some(tmp_path, filtro_real):
+    """Título genérico, anúncio .NET: o filtro de título deixa passar, o do
+    anúncio não — e a página esconde depois que o texto é capturado."""
+    db = _banco(tmp_path, [
+        _dev("a", "Desenvolvedor Backend Pleno", "Brazil", "Remoto", perfil="dev-remoto"),
+        _dev("b", "Desenvolvedor Back-end", "Brazil", "Remoto", perfil="dev-remoto"),
+    ])
+    with sqlite3.connect(db) as conn:
+        conn.execute("CREATE TABLE conteudo_vagas (id TEXT, texto TEXT, origem TEXT, status TEXT,"
+                     " tentativas INTEGER, atualizado_em TEXT)")
+        conn.executemany("INSERT INTO conteudo_vagas (id, texto, status) VALUES (?,?,?)", [
+            ("a", "Desenvolver APIs em C# e .NET 8 com Entity Framework.", "ok"),
+            ("b", "Node.js, NestJS e Prisma no back-end; React no front.", "ok"),
+        ])
+    assert [v["t"] for v in carregar_vagas(db)] == ["Desenvolvedor Back-end"]
+
+
+def test_pagina_tem_as_opcoes_dev(tmp_path):
+    html_ = montar_html([])
+    for valor in ("dev", "dev-joinville", "dev-remoto", "dev-intl"):
+        assert f'data-v="{valor}"' in html_
+    assert 'id="segConteudoDev"' in html_

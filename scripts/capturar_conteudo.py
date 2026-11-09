@@ -20,29 +20,15 @@ Uso:
 """
 
 import argparse
-import time
-
-from playwright.sync_api import sync_playwright
 
 from core.logger import get_logger
 from core.perfis import aprovada_pelas_regras_atuais
 from database.database import reabrir_conteudo_bloqueado, salvar_conteudo, vagas_sem_conteudo
-from scrapers.conteudo import extrair_da_pagina, parece_bloqueio, url_para_abrir
+from scrapers.conteudo import ler_anuncios, parece_bloqueio
 
 logger = get_logger()
 
 MAX_TENTATIVAS = 3
-# Entre uma vaga e outra. O endpoint guest do LinkedIn rate-limita rápido
-# vindo de IP de datacenter; o ciclo não tem pressa nenhuma aqui.
-PAUSA_SEGUNDOS = 2.0
-# Respostas 429/999 seguidas da mesma fonte: para de bater nela neste run.
-# Insistir só piora o bloqueio, e as vagas voltam na fila no próximo ciclo.
-MAX_BLOQUEIOS_SEGUIDOS = 3
-
-USER_AGENT = (
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-    "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
-)
 
 
 def capturar(perfil: str, limite: int) -> dict:
@@ -64,50 +50,13 @@ def capturar(perfil: str, limite: int) -> dict:
         return resumo
 
     logger.info(f"[conteudo] {len(fila)} vaga(s) do perfil {perfil} pra abrir.")
-    bloqueios: dict[str, int] = {}
-
-    with sync_playwright() as p:
-        navegador = p.chromium.launch(headless=True)
-        page = navegador.new_page(user_agent=USER_AGENT)
-        try:
-            for job_id, link, site, titulo in fila:
-                if bloqueios.get(site, 0) >= MAX_BLOQUEIOS_SEGUIDOS:
-                    resumo["pulada"] += 1
-                    continue
-                try:
-                    resposta = page.goto(url_para_abrir(link, site), timeout=45000)
-                    codigo = resposta.status if resposta else 0
-                    if codigo in (404, 410):
-                        salvar_conteudo(job_id, "indisponivel")
-                        resumo["indisponivel"] += 1
-                        bloqueios[site] = 0
-                        continue
-                    if codigo in (429, 999):
-                        bloqueios[site] = bloqueios.get(site, 0) + 1
-                        salvar_conteudo(job_id, "falhou")
-                        resumo["falhou"] += 1
-                        logger.warning(f"[conteudo] {site} respondeu {codigo} (bloqueio) em '{titulo}'.")
-                        continue
-                    try:
-                        page.wait_for_load_state("networkidle", timeout=10000)
-                    except Exception:
-                        pass  # página que nunca sossega: lê o que já carregou
-                    texto, origem = extrair_da_pagina(page, site)
-                except Exception as e:
-                    logger.warning(f"[conteudo] Erro abrindo '{titulo}' ({site}): {e}")
-                    texto, origem = "", ""
-
-                if texto:
-                    salvar_conteudo(job_id, "ok", texto, origem)
-                    resumo["ok"] += 1
-                    bloqueios[site] = 0
-                else:
-                    salvar_conteudo(job_id, "falhou")
-                    resumo["falhou"] += 1
-                    logger.warning(f"[conteudo] Sem texto de anúncio em '{titulo}' ({site}).")
-                time.sleep(PAUSA_SEGUNDOS)
-        finally:
-            navegador.close()
+    # Abre e lê (scrapers/conteudo.py); aqui só grava. Vaga "pulada" (fonte
+    # que bloqueou neste run) não conta tentativa — volta inteira no
+    # próximo ciclo.
+    for job_id, (status, texto, origem) in ler_anuncios(fila).items():
+        resumo[status] += 1
+        if status != "pulada":
+            salvar_conteudo(job_id, status, texto, origem)
 
     logger.info(
         f"[conteudo] Perfil {perfil}: {resumo['ok']} capturada(s), {resumo['falhou']} falha(s), "

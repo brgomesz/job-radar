@@ -44,14 +44,10 @@ from core.config_intl import (
     MERCADOS_REMOTO_ACEITOS_INTL,
     IDIOMAS_EXIGIDOS_INTL,
 )
+from core import config_dev as cd
 from core.config_dev import (
     KEYWORDS_CARGO_FORTE_DEV,
     KEYWORDS_CARGO_AMBIGUO_DEV,
-    QUALIFICADORES_STACK_DEV,
-    FERRAMENTAS_TITULO_DEV,
-    QUALIFICADORES_CARGO_DEV,
-    STACKS_EXCLUIDAS_DEV,
-    NIVEIS_EXCLUIDOS_DEV,
     CIDADES_DEV,
     MERCADOS_REMOTO_ACEITOS_DEV,
     TERMOS_BUSCA_DEV,
@@ -76,6 +72,7 @@ from core.config_analista import (
     LOCATIONS_LINKEDIN_CIDADES_ANALISTA,
     REMOTO_NO_TITULO_ANALISTA,
 )
+from core.anuncio import RegrasAnuncio, motivo_reprovacao
 from core.job import Job, RegrasFiltro
 from scrapers.catho import CathoScraper
 from scrapers.geekhunter import GeekHunterScraper
@@ -133,6 +130,11 @@ class Perfil:
     # captura de anúncios (ver aprovada_pelas_regras_atuais). Ligado quando
     # o filtro do perfil aperta e o histórico antigo deixou de servir.
     refiltrar_historico: bool = False
+    # Regra pelo TEXTO do anúncio (ver core/anuncio.py). Com isto, main.py
+    # abre o anúncio de toda vaga que iria pro Telegram ANTES de notificar,
+    # e a página esconde a vaga cujo anúncio reprova. None = só o título
+    # decide (comportamento de antes).
+    regras_anuncio: RegrasAnuncio | None = None
 
 
 # Regra primária: cidade brasileira (Nordeste) ou "Remoto" com mercado
@@ -327,38 +329,72 @@ PERFIL_INTL = Perfil(
     max_scrapers_concorrentes=3,
 )
 
-# Perfil dev full-stack (foco back-end Node/TypeScript) — ver
+# Perfis dev full-stack (foco back-end Node/TypeScript) — ver
 # core/config_dev.py pra origem de cada lista.
 #
-# Duas regras que os outros perfis não usam entram aqui (ambas opcionais em
-# RegrasFiltro, então nada muda pra brasil/internacional):
-#   - stacks_excluidas: o cargo forte deste perfil é genérico
+# Os quatro compartilham a regra de CARGO e de STACK (_regras_dev); só o
+# bloco de localização muda. Regras opcionais de RegrasFiltro que só os
+# perfis dev usam (nada muda pra brasil/internacional/analista):
+#   - stacks_excluidas / stacks_backend_excluidas: o cargo forte é genérico
 #     ("Desenvolvedor Back-end"), porque vaga real raramente traz stack no
-#     título; essa lista é o contrapeso que barra Java/.NET/PHP/mobile.
-#   - niveis_excluidos: "pleno apenas" pedido pelo usuário — júnior,
-#     estágio, sênior e liderança nem notificam. Vaga sem nível declarado
-#     continua entrando.
-#
-# Sem eixo secundário: o usuário não pediu presencial fora de Joinville, e
-# eixo desligado é o estado dos outros dois perfis também.
-_REGRAS_DEV = RegrasFiltro(
-    keywords_forte=KEYWORDS_CARGO_FORTE_DEV,
-    keywords_ambiguo=KEYWORDS_CARGO_AMBIGUO_DEV,
-    qualificadores_dados=QUALIFICADORES_STACK_DEV,
-    ferramentas_titulo=FERRAMENTAS_TITULO_DEV,
-    qualificadores_cargo=QUALIFICADORES_CARGO_DEV,
-    cidades=CIDADES_DEV,
-    mercados_remoto_aceitos=MERCADOS_REMOTO_ACEITOS_DEV,
-    stacks_excluidas=STACKS_EXCLUIDAS_DEV,
-    niveis_excluidos=NIVEIS_EXCLUIDOS_DEV,
+#     título; essas listas barram Java/.NET/PHP/Angular/mobile no título.
+#   - niveis_excluidos + titulos_excluidos: "pleno apenas" — júnior,
+#     estágio, sênior, staff, lead e liderança nem notificam. Vaga sem
+#     nível declarado continua entrando.
+#   - regras_anuncio: o contrapeso que o título não dá — vaga com título
+#     genérico cujo anúncio é Java/Kotlin/.NET (ver core/anuncio.py).
+REGRAS_ANUNCIO_DEV = RegrasAnuncio(
+    proprias_backend=cd.ANUNCIO_BACKEND_PROPRIO,
+    proprias_front=cd.ANUNCIO_FRONT_PROPRIO,
+    proprias_linguagem=cd.ANUNCIO_LINGUAGEM_PROPRIA,
+    familias_backend_alheias=cd.ANUNCIO_FAMILIAS_BACKEND_ALHEIAS,
+    alheias_front=cd.ANUNCIO_FRONT_ALHEIO,
+    alheias_mobile=cd.ANUNCIO_MOBILE,
+    marcas_full_titulo=cd.TITULO_MARCAS_FULL,
+    marcas_backend_titulo=cd.TITULO_MARCAS_BACKEND,
+    marcas_front_titulo=cd.TITULO_MARCAS_FRONT,
+    confirma_backend_titulo=cd.TITULO_CONFIRMA_BACKEND,
+    confirma_front_titulo=cd.TITULO_CONFIRMA_FRONT,
 )
+
+
+def _regras_dev(cidades: list[str], **local) -> RegrasFiltro:
+    """Cargo e stack comuns aos perfis dev + o bloco de localização de cada
+    um (`cidades` e os campos de mercado/modalidade em `local`)."""
+    return RegrasFiltro(
+        keywords_forte=cd.KEYWORDS_CARGO_FORTE_DEV,
+        keywords_ambiguo=cd.KEYWORDS_CARGO_AMBIGUO_DEV,
+        qualificadores_dados=cd.QUALIFICADORES_STACK_DEV,
+        ferramentas_titulo=cd.FERRAMENTAS_TITULO_DEV,
+        qualificadores_cargo=cd.QUALIFICADORES_CARGO_DEV,
+        cidades=cidades,
+        stacks_excluidas=cd.STACKS_EXCLUIDAS_DEV,
+        stacks_perdao=cd.STACKS_PERDAO_DEV,
+        stacks_backend_excluidas=cd.STACKS_BACKEND_EXCLUIDAS_DEV,
+        stacks_backend_perdao=cd.STACKS_BACKEND_PERDAO_DEV,
+        niveis_excluidos=cd.NIVEIS_EXCLUIDOS_DEV,
+        titulos_excluidos=cd.TITULOS_EXCLUIDOS_DEV,
+        **local,
+    )
+
+
+# --- dev: o perfil original (remoto + Joinville) -----------------------------
+#
+# SAIU do cron em nov/2026, quando foi dividido nos três perfis abaixo — que
+# juntos cobrem exatamente o que ele buscava (Joinville presencial/híbrido +
+# remoto Brasil + remoto de fora). Os quatro não podem rodar juntos: o
+# jobs.db guarda cada vaga UMA vez só (ja_vista é global, não por perfil),
+# então o primeiro a achar uma vaga a tiraria dos outros. Continua aqui:
+#   - rodável à mão (`python main.py --perfil dev --once`);
+#   - na página, como a opção "Geral" da aba Conteúdo Dev: o histórico dele
+#     (552 vagas até nov/2026) mais tudo que os três novos acharem.
+_REGRAS_DEV = _regras_dev(CIDADES_DEV, mercados_remoto_aceitos=MERCADOS_REMOTO_ACEITOS_DEV)
 
 # GeekHunter e WeWorkRemotely sobem pra FREQUENCIA_ALTA aqui (no perfil de
 # dados as duas são de baixa frequência, por rendimento medido abaixo de
 # 1%): as duas são fonte de vaga de TECNOLOGIA, que é exatamente o que este
 # perfil procura — o rendimento delas foi medido contra termo de dados/BI,
-# não contra "desenvolvedor node". Rebaixar/promover de novo quando houver
-# medição própria deste perfil.
+# não contra "desenvolvedor node".
 #
 # Catho, Sólides, 99Jobs e Senior ficam em baixa frequência: são portais
 # generalistas, mesmo custo por termo e sem sinal de que rendam mais aqui.
@@ -396,7 +432,129 @@ PERFIL_DEV = Perfil(
     termos_prioritarios=TERMOS_PRIORITARIOS_DEV,
     definicao_scrapers=_SCRAPERS_DEV,
     max_scrapers_concorrentes=4,
+    # MEDIDO (nov/2026): o filtro apertou (stack de back-end, staff/lead,
+    # anúncio) e boa parte do histórico — Java/React, .NET/React, Laravel —
+    # deixou de servir. Sem isto continuaria na página.
+    refiltrar_historico=True,
+    regras_anuncio=REGRAS_ANUNCIO_DEV,
 )
+
+# --- dev-joinville: presencial/híbrido, SÓ em Joinville -----------------------
+#
+# LinkedIn por localidade é a fonte principal: os portais (Gupy, Sólides,
+# Catho, Senior, 99Jobs) não filtram por cidade na busca — devolvem o
+# Brasil inteiro e Joinville aparece quando aparece; ficam como rede de
+# apoio (o filtro recorta a cidade). WeWorkRemotely não entra: só tem vaga
+# remota.
+PERFIL_DEV_JOINVILLE = Perfil(
+    chave="dev-joinville",
+    nome="Dev Joinville (presencial/híbrido)",
+    palavras_monitoradas=KEYWORDS_CARGO_FORTE_DEV + KEYWORDS_CARGO_AMBIGUO_DEV,
+    paises_pesquisados=None,
+    regras=_regras_dev(cd.CIDADES_DEV_JOINVILLE, excluir_remoto=True),
+    regras_eixo_secundario=None,
+    eixo_secundario_ativo=False,
+    eixo_secundario_rotulo="",
+    termos_busca=cd.TERMOS_BUSCA_DEV_JOINVILLE,
+    termos_por_ciclo=cd.TERMOS_POR_CICLO_DEV_JOINVILLE,
+    termos_prioritarios=cd.TERMOS_PRIORITARIOS_DEV_JOINVILLE,
+    definicao_scrapers=[
+        DefinicaoScraper(LinkedInScraper, FREQUENCIA_ALTA, {
+            "locations": [],
+            "locations_remoto_apenas": [],
+            "locations_cidades_presencial": cd.LOCATIONS_LINKEDIN_CIDADES_DEV_JOINVILLE,
+            "paginas_cidade": cd.PAGINAS_LINKEDIN_CIDADE_DEV_JOINVILLE,
+        }),
+        DefinicaoScraper(GupyScraper, FREQUENCIA_ALTA),
+        DefinicaoScraper(SolidesScraper, FREQUENCIA_ALTA),
+        DefinicaoScraper(CathoScraper, FREQUENCIA_BAIXA),
+        DefinicaoScraper(SeniorScraper, FREQUENCIA_BAIXA),
+        DefinicaoScraper(Jobs99Scraper, FREQUENCIA_BAIXA),
+    ],
+    max_scrapers_concorrentes=4,
+    refiltrar_historico=True,
+    regras_anuncio=REGRAS_ANUNCIO_DEV,
+)
+
+# --- dev-remoto: remoto, empresa brasileira -----------------------------------
+#
+# Vaga em inglês / de empresa de fora vai pro dev-intl (mercado_vaga): os
+# dois perfis são disjuntos, então a ordem em que rodam não importa pra
+# deduplicação.
+PERFIL_DEV_REMOTO = Perfil(
+    chave="dev-remoto",
+    nome="Dev Remoto (Brasil)",
+    palavras_monitoradas=KEYWORDS_CARGO_FORTE_DEV + KEYWORDS_CARGO_AMBIGUO_DEV,
+    paises_pesquisados=None,
+    regras=_regras_dev(
+        cd.CIDADES_DEV_REMOTO,
+        mercados_remoto_aceitos=cd.MERCADOS_REMOTO_ACEITOS_DEV_REMOTO,
+        mercado_vaga="nacional",
+    ),
+    regras_eixo_secundario=None,
+    eixo_secundario_ativo=False,
+    eixo_secundario_rotulo="",
+    termos_busca=cd.TERMOS_BUSCA_DEV_REMOTO,
+    termos_por_ciclo=cd.TERMOS_POR_CICLO_DEV_REMOTO,
+    termos_prioritarios=cd.TERMOS_PRIORITARIOS_DEV_REMOTO,
+    definicao_scrapers=[
+        DefinicaoScraper(LinkedInScraper, FREQUENCIA_ALTA, {
+            "locations": [],
+            "locations_remoto_apenas": cd.LOCATIONS_LINKEDIN_REMOTO_DEV_REMOTO,
+            "locations_cidades_presencial": [],
+            "paginas_remoto": cd.PAGINAS_LINKEDIN_REMOTO_DEV_REMOTO,
+        }),
+        DefinicaoScraper(GupyScraper, FREQUENCIA_ALTA),
+        DefinicaoScraper(GeekHunterScraper, FREQUENCIA_ALTA),
+        DefinicaoScraper(SolidesScraper, FREQUENCIA_BAIXA),
+        DefinicaoScraper(Jobs99Scraper, FREQUENCIA_BAIXA),
+        DefinicaoScraper(CathoScraper, FREQUENCIA_BAIXA),
+        DefinicaoScraper(SeniorScraper, FREQUENCIA_BAIXA),
+    ],
+    max_scrapers_concorrentes=4,
+    refiltrar_historico=True,
+    regras_anuncio=REGRAS_ANUNCIO_DEV,
+)
+
+# --- dev-intl: remoto, vaga em inglês / empresa de fora -----------------------
+#
+# "Vaga estrangeira" pra quem mora no Brasil = empresa de fora que contrata
+# remoto daqui. Ela aparece em dois lugares: no LinkedIn, com local
+# "Brazil"/cidade brasileira e título em inglês, e na WeWorkRemotely (só
+# vaga remota, quase toda de fora). Ver Job.vaga_internacional.
+PERFIL_DEV_INTL = Perfil(
+    chave="dev-intl",
+    nome="Dev Internacional (remoto)",
+    palavras_monitoradas=KEYWORDS_CARGO_FORTE_DEV + KEYWORDS_CARGO_AMBIGUO_DEV,
+    paises_pesquisados=None,
+    regras=_regras_dev(
+        cd.CIDADES_DEV_INTL,
+        mercados_remoto_aceitos=cd.MERCADOS_REMOTO_ACEITOS_DEV_INTL,
+        mercado_vaga="internacional",
+    ),
+    regras_eixo_secundario=None,
+    eixo_secundario_ativo=False,
+    eixo_secundario_rotulo="",
+    termos_busca=cd.TERMOS_BUSCA_DEV_INTL,
+    termos_por_ciclo=cd.TERMOS_POR_CICLO_DEV_INTL,
+    termos_prioritarios=cd.TERMOS_PRIORITARIOS_DEV_INTL,
+    definicao_scrapers=[
+        DefinicaoScraper(LinkedInScraper, FREQUENCIA_ALTA, {
+            "locations": [],
+            "locations_remoto_apenas": cd.LOCATIONS_LINKEDIN_REMOTO_DEV_INTL,
+            "locations_cidades_presencial": [],
+            "paginas_remoto": cd.PAGINAS_LINKEDIN_REMOTO_DEV_INTL,
+        }),
+        DefinicaoScraper(WeWorkRemotelyIntlScraper, FREQUENCIA_ALTA),
+    ],
+    max_scrapers_concorrentes=2,
+    refiltrar_historico=True,
+    regras_anuncio=REGRAS_ANUNCIO_DEV,
+)
+
+# Os três que dividem o perfil dev original — a ordem é a das opções da aba
+# Conteúdo Dev e a da classificação do histórico dev (ver web/gerar.py).
+SUBPERFIS_DEV = ("dev-joinville", "dev-remoto", "dev-intl")
 
 # Perfil Analista — ver core/config_analista.py. Coordenação/gerência/
 # supervisão adm-financeira, operações, contratos e sales ops; analista só
@@ -451,24 +609,59 @@ PERFIL_ANALISTA = Perfil(
     refiltrar_historico=True,
 )
 
-def aprovada_pelas_regras_atuais(
-    perfil_chave: str, titulo: str, local: str, modalidade: str, site: str = ""
-) -> bool:
-    """A vaga já salva ainda passa no filtro de HOJE do perfil? Só reavalia
-    perfil com refiltrar_historico; para os outros (e chave desconhecida)
-    devolve True — o histórico fica como foi salvo. Não apaga nada do
-    banco: quem chama só deixa de mostrar/abrir a vaga."""
+def _job_salvo(titulo: str, local: str, modalidade: str, site: str) -> Job:
+    return Job(titulo=titulo or "", empresa="", local=local or "", link="", site=site or "",
+               modalidade=modalidade or "")
+
+
+def anuncio_reprovado(perfil_chave: str, titulo: str, texto_anuncio: str) -> str | None:
+    """Motivo pelo qual o anúncio não serve ao perfil (ver core/anuncio.py),
+    ou None — também quando o perfil não tem regra de anúncio ou o texto
+    ainda não foi capturado."""
     perfil = PERFIS.get(perfil_chave)
-    if perfil is None or not perfil.refiltrar_historico:
+    if perfil is None or perfil.regras_anuncio is None or not texto_anuncio:
+        return None
+    return motivo_reprovacao(titulo or "", texto_anuncio, perfil.regras_anuncio)
+
+
+def aprovada_pelas_regras_atuais(
+    perfil_chave: str, titulo: str, local: str, modalidade: str, site: str = "",
+    texto_anuncio: str = "",
+) -> bool:
+    """A vaga já salva ainda passa no filtro de HOJE do perfil?
+
+    - Título/local: só reavalia perfil com refiltrar_historico; para os
+      outros o histórico fica como foi salvo.
+    - Anúncio: quando o perfil tem regras_anuncio e o texto já foi
+      capturado, o anúncio também precisa passar.
+    Chave desconhecida devolve True. Não apaga nada do banco: quem chama só
+    deixa de mostrar/abrir a vaga."""
+    perfil = PERFIS.get(perfil_chave)
+    if perfil is None:
         return True
-    job = Job(titulo=titulo or "", empresa="", local=local or "", link="", site=site or "",
-              modalidade=modalidade or "")
-    return job.combina_com(perfil.regras)
+    if perfil.refiltrar_historico and not _job_salvo(titulo, local, modalidade, site).combina_com(
+        perfil.regras
+    ):
+        return False
+    return anuncio_reprovado(perfil_chave, titulo, texto_anuncio) is None
+
+
+def combina_com_perfil(perfil_chave: str, titulo: str, local: str, modalidade: str, site: str = "") -> bool:
+    """A vaga (como está salva no banco) passa na regra de título/local do
+    perfil, independente de refiltrar_historico. Usado pra classificar o
+    histórico do perfil dev entre os subperfis (ver web/gerar.py)."""
+    perfil = PERFIS.get(perfil_chave)
+    if perfil is None:
+        return False
+    return _job_salvo(titulo, local, modalidade, site).combina_com(perfil.regras)
 
 
 PERFIS = {
     PERFIL_BR.chave: PERFIL_BR,
     PERFIL_INTL.chave: PERFIL_INTL,
     PERFIL_DEV.chave: PERFIL_DEV,
+    PERFIL_DEV_JOINVILLE.chave: PERFIL_DEV_JOINVILLE,
+    PERFIL_DEV_REMOTO.chave: PERFIL_DEV_REMOTO,
+    PERFIL_DEV_INTL.chave: PERFIL_DEV_INTL,
     PERFIL_ANALISTA.chave: PERFIL_ANALISTA,
 }

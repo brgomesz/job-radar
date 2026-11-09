@@ -19,6 +19,7 @@ texto vai direto pra uma análise. Melhor falhar e tentar no próximo ciclo.
 import html
 import json
 import re
+import time
 
 # Menos que isso não é anúncio, é casca de página (título + botão).
 MIN_CARACTERES = 150
@@ -197,3 +198,85 @@ def _extrair(page, site: str) -> tuple[str, str]:
     if texto:
         return texto, "pagina"
     return "", ""
+
+
+# --- Abrir anúncios (usado pela captura do workflow e por main.py) ---------
+
+USER_AGENT = (
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+    "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+)
+# Entre uma vaga e outra. O endpoint guest do LinkedIn rate-limita rápido
+# vindo de IP de datacenter.
+PAUSA_SEGUNDOS = 2.0
+# Respostas 429/999 seguidas da mesma fonte: para de bater nela neste run.
+# Insistir só piora o bloqueio, e as vagas voltam na fila no próximo ciclo.
+MAX_BLOQUEIOS_SEGUIDOS = 3
+
+
+def abrir_anuncio(page, link: str, site: str) -> tuple[str, str, str]:
+    """Abre UM anúncio numa página Playwright já criada.
+
+    (status, texto, origem): 'ok' com o texto; 'indisponivel' quando a
+    fonte responde 404/410 (anúncio removido); 'bloqueio' em 429/999;
+    'falhou' quando a página abriu mas não deu pra achar o anúncio. Erro de
+    rede/timeout sobe como exceção — quem chama decide."""
+    resposta = page.goto(url_para_abrir(link, site), timeout=45000)
+    codigo = resposta.status if resposta else 0
+    if codigo in (404, 410):
+        return "indisponivel", "", ""
+    if codigo in (429, 999):
+        return "bloqueio", "", ""
+    try:
+        page.wait_for_load_state("networkidle", timeout=10000)
+    except Exception:
+        pass  # página que nunca sossega: lê o que já carregou
+    texto, origem = extrair_da_pagina(page, site)
+    return ("ok", texto, origem) if texto else ("falhou", "", "")
+
+
+def ler_anuncios(itens, pausa: float = PAUSA_SEGUNDOS) -> dict[str, tuple[str, str, str]]:
+    """Abre o anúncio de cada (job_id, link, site, titulo) num navegador só.
+
+    Devolve {job_id: (status, texto, origem)} com status 'ok',
+    'indisponivel', 'falhou' (inclui bloqueio e erro de rede) ou 'pulada'
+    (fonte já bloqueou MAX_BLOQUEIOS_SEGUIDOS vezes neste lote — nem
+    tentou). Não grava nada: quem chama decide o que salvar."""
+    from playwright.sync_api import sync_playwright
+
+    from core.logger import get_logger
+
+    logger = get_logger()
+    resultado: dict[str, tuple[str, str, str]] = {}
+    if not itens:
+        return resultado
+    bloqueios: dict[str, int] = {}
+
+    with sync_playwright() as p:
+        navegador = p.chromium.launch(headless=True)
+        page = navegador.new_page(user_agent=USER_AGENT)
+        try:
+            for job_id, link, site, titulo in itens:
+                if bloqueios.get(site, 0) >= MAX_BLOQUEIOS_SEGUIDOS:
+                    resultado[job_id] = ("pulada", "", "")
+                    continue
+                try:
+                    status, texto, origem = abrir_anuncio(page, link, site)
+                except Exception as e:
+                    logger.warning(f"[conteudo] Erro abrindo '{titulo}' ({site}): {e}")
+                    status, texto, origem = "falhou", "", ""
+
+                if status == "bloqueio":
+                    bloqueios[site] = bloqueios.get(site, 0) + 1
+                    logger.warning(f"[conteudo] {site} bloqueou a leitura de '{titulo}'.")
+                    status = "falhou"
+                elif status in ("ok", "indisponivel"):
+                    bloqueios[site] = 0
+                if status == "falhou" and not texto:
+                    logger.warning(f"[conteudo] Sem texto de anúncio em '{titulo}' ({site}).")
+                resultado[job_id] = (status, texto, origem)
+                if status != "indisponivel":
+                    time.sleep(pausa)
+        finally:
+            navegador.close()
+    return resultado
