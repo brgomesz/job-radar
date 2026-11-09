@@ -12,6 +12,7 @@ from core.config import (
     INTERVALO_MINUTOS,
     LIMIAR_DIGEST_IMEDIATO,
 )
+from core.anuncio import motivo_reprovacao
 from database.database import (
     BancoVazioSuspeito,
     definir_metadado,
@@ -20,6 +21,7 @@ from database.database import (
     marcar_digest_enviado,
     obter_metadado,
     obter_vagas_pendentes_digest,
+    salvar_conteudo,
     salvar_vaga,
 )
 from notifier.telegram import (
@@ -253,6 +255,89 @@ def _enviar_digest_diario(perfil: Perfil):
         )
 
 
+def _vai_pro_telegram(vaga) -> bool:
+    """Notificação imediata: relevância no limiar e anúncio não velho (ver
+    o MEDIDO sobre publicacao_antiga em ciclo_de_busca)."""
+    return vaga.relevancia >= LIMIAR_DIGEST_IMEDIATO and not vaga.publicacao_antiga
+
+
+def _notificar_e_salvar(perfil: Perfil, vaga) -> bool:
+    """Notifica ANTES de salvar. Se salvasse primeiro e o Telegram
+    falhasse, a vaga ficava marcada como "vista" pra sempre — o próximo
+    ciclo pulava ela em ja_vista() e a vaga se perdia sem nunca ter sido
+    notificada de verdade."""
+    if not notificar_vaga(vaga, perfil.nome):
+        logger.warning(
+            f"[{perfil.nome}] Falha ao notificar '{vaga.titulo}' - não marcada "
+            "como vista, tenta de novo no próximo ciclo."
+        )
+        return False
+    salvar_vaga(vaga, perfil_chave=perfil.chave)
+    logger.info(f"[{perfil.nome}] Nova vaga: {vaga.titulo} - {vaga.empresa}")
+    return True
+
+
+# Teto de anúncios abertos antes de notificar, por perfil e por ciclo. Num
+# ciclo normal são poucas vagas acima do limiar; o teto existe pro ciclo
+# atípico (perfil recém-ligado, primeira volta do rodízio) não virar
+# centenas de páginas abertas — o excedente é notificado sem conferência,
+# como era antes, e a página ainda esconde o que reprovar depois.
+MAX_ANUNCIOS_CONFERIDOS_POR_CICLO = 30
+
+
+def _notificar_conferindo_anuncio(perfil: Perfil, vagas: list) -> None:
+    """Abre o anúncio de cada vaga que iria pro Telegram e só notifica a
+    que passa na regra de anúncio do perfil (ver core/anuncio.py).
+
+    MEDIDO (nov/2026): o usuário do perfil dev relatou que só recebia vaga
+    de Java, Kotlin e stack que nem conhecia — título genérico
+    ("Desenvolvedor Backend Pleno") com anúncio .NET/Java. O título não
+    tem como saber; o anúncio diz.
+
+    - Reprovada: salva (vista, não volta no próximo ciclo), sem notificar.
+      A página também a esconde.
+    - Anúncio não abriu (bloqueio, timeout): notifica do mesmo jeito —
+      falha de leitura não pode custar uma vaga boa. A captura do workflow
+      tenta de novo e a página esconde depois, se reprovar.
+    - Anúncio removido na fonte (404/410): salva sem notificar.
+    O texto lido vai pra conteudo_vagas — a captura do workflow não abre a
+    mesma vaga de novo."""
+    from scrapers.conteudo import ler_anuncios
+
+    lote = vagas[:MAX_ANUNCIOS_CONFERIDOS_POR_CICLO]
+    logger.info(f"[{perfil.nome}] Conferindo o anúncio de {len(lote)} vaga(s) antes de notificar.")
+    try:
+        lidos = ler_anuncios([(v.id, v.link, v.site, v.titulo) for v in lote])
+    except Exception as e:
+        logger.error(f"[{perfil.nome}] Não deu pra abrir os anúncios ({e}) - notificando sem conferir.")
+        lidos = {}
+
+    reprovadas = 0
+    for vaga in vagas:
+        if ja_vista(vaga):
+            continue
+        status, texto, origem = lidos.get(vaga.id, ("", "", ""))
+        if status in ("ok", "falhou", "indisponivel"):
+            salvar_conteudo(vaga.id, status, texto, origem)
+        if status == "indisponivel":
+            salvar_vaga(vaga, perfil_chave=perfil.chave)
+            logger.info(f"[{perfil.nome}] Anúncio já removido, não notificada: {vaga.titulo}")
+            continue
+        motivo = motivo_reprovacao(vaga.titulo, texto, perfil.regras_anuncio) if texto else None
+        if motivo:
+            salvar_vaga(vaga, perfil_chave=perfil.chave)
+            reprovadas += 1
+            logger.info(
+                f"[{perfil.nome}] Anúncio reprovado ({motivo}), não notificada: "
+                f"{vaga.titulo} - {vaga.empresa}"
+            )
+            continue
+        _notificar_e_salvar(perfil, vaga)
+
+    if reprovadas:
+        logger.info(f"[{perfil.nome}] {reprovadas} vaga(s) barrada(s) pelo anúncio neste ciclo.")
+
+
 def _deve_alertar_saude(com_problema: int, total: int) -> bool:
     """A maioria ESTRITA das fontes falhou neste ciclo?
 
@@ -291,6 +376,13 @@ def ciclo_de_busca(perfil: Perfil):
     # Existe pra medir se vale abrir a descrição dessas vagas — hoje o filtro
     # lê só o título, e vaga de BI com nome comercial escapa.
     titulo_barrou_em_cidade: list[str] = []
+    # Perfil com regra de anúncio (Perfil.regras_anuncio): a vaga que iria
+    # pro Telegram espera as buscas terminarem pra ter o anúncio aberto
+    # antes (ver _notificar_conferindo_anuncio). As chaves evitam que a
+    # mesma vaga, achada por duas fontes, entre duas vezes na fila — ela
+    # ainda não está no banco, então ja_vista() não pega.
+    a_conferir: list = []
+    chaves_a_conferir: set[str] = set()
 
     termos_do_ciclo = _proximo_bloco_termos(perfil)
     logger.info(
@@ -356,7 +448,14 @@ def ciclo_de_busca(perfil: Perfil):
 
             novas_da_fonte = 0
             for vaga in vagas_filtradas:
-                if ja_vista(vaga):
+                if ja_vista(vaga) or {vaga.id, vaga.chave_secundaria} & chaves_a_conferir:
+                    continue
+
+                if perfil.regras_anuncio is not None and _vai_pro_telegram(vaga):
+                    a_conferir.append(vaga)
+                    chaves_a_conferir.update({vaga.id, vaga.chave_secundaria})
+                    total_novas += 1
+                    novas_da_fonte += 1
                     continue
 
                 # Item 08: só notifica na hora quando a relevância passa do
@@ -377,20 +476,9 @@ def ciclo_de_busca(perfil: Perfil):
                 # sem volume novo suficiente a antiga não sai da 1ª página).
                 # Não é descartada (mesma vaga ainda pode estar aberta) — só
                 # sai do caminho "🚨 urgente" e vai pro digest em lote.
-                if vaga.relevancia >= LIMIAR_DIGEST_IMEDIATO and not vaga.publicacao_antiga:
-                    # Notifica ANTES de salvar. Se salvasse primeiro e o
-                    # Telegram falhasse, a vaga ficava marcada como "vista"
-                    # pra sempre — o próximo ciclo pulava ela em ja_vista()
-                    # e a vaga se perdia sem nunca ter sido notificada de
-                    # verdade.
-                    if not notificar_vaga(vaga, perfil.nome):
-                        logger.warning(
-                            f"[{perfil.nome}] Falha ao notificar '{vaga.titulo}' - não marcada "
-                            "como vista, tenta de novo no próximo ciclo."
-                        )
+                if _vai_pro_telegram(vaga):
+                    if not _notificar_e_salvar(perfil, vaga):
                         continue
-                    salvar_vaga(vaga, perfil_chave=perfil.chave)
-                    logger.info(f"[{perfil.nome}] Nova vaga: {vaga.titulo} - {vaga.empresa}")
                 else:
                     salvar_vaga(vaga, perfil_chave=perfil.chave, digest_pendente=True)
                     motivo_digest = "vaga antiga" if vaga.publicacao_antiga else f"relevância {vaga.relevancia}/10"
@@ -437,6 +525,9 @@ def ciclo_de_busca(perfil: Perfil):
                 f"[{perfil.nome}][{nome}] Funil: {len(vagas)} brutas → "
                 f"{len(vagas_filtradas) + len(vagas_secundarias)} filtradas → {novas_da_fonte} novas"
             )
+
+    if a_conferir:
+        _notificar_conferindo_anuncio(perfil, a_conferir)
 
     logger.info(
         f"[{perfil.nome}] Ciclo concluído: {total_brutas} brutas → {total_filtradas} filtradas → "
@@ -519,8 +610,8 @@ def main():
         nargs="+",
         choices=sorted(PERFIS.keys()),
         help=(
-            "Qual(is) mercado(s) rodar nesta execução — 'brasil', 'internacional', "
-            "ou os dois (--perfil brasil internacional)."
+            "Qual(is) perfil(is) rodar nesta execução, ex: "
+            "--perfil dev-joinville dev-remoto dev-intl analista."
         ),
     )
     parser.add_argument(

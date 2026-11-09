@@ -69,8 +69,8 @@ def banco(tmp_path, monkeypatch):
             [
                 ("a", "Dev Node Pleno", "Acme", "Joinville, SC", "https://x/a", "Gupy", "dev",
                  "Remoto", "Publicada em: 01/10/2026", "2026-10-01 12:00:00"),
-                ("b", "Back-end TS", "Beta", "Brasil", "https://x/b", "LinkedIn", "dev",
-                 "", "", "2026-10-02 12:00:00"),
+                ("b", "Desenvolvedor Back-end TS", "Beta", "Brasil", "https://x/b", "LinkedIn", "dev",
+                 "Remoto", "", "2026-10-02 12:00:00"),
                 ("c", "Coordenador Financeiro", "Gama", "Joinville", "https://x/c", "Gupy", "analista",
                  "", "", "2026-10-03 12:00:00"),
             ],
@@ -172,3 +172,26 @@ def test_texto_de_bloqueio_ja_gravado_volta_pra_fila(banco):
     db.salvar_conteudo("b", "ok", LONGO, "seletor")
     assert db.reabrir_conteudo_bloqueado("dev", parece_bloqueio) == 1
     assert [l[0] for l in db.vagas_sem_conteudo("dev", 10, 3)] == ["a"]
+
+
+def test_cada_opcao_dev_ganha_o_proprio_txt(banco, tmp_path):
+    """"Conteúdo Dev" tem quatro opções, cada uma com o próprio arquivo: o
+    Geral junta tudo, os outros só a sua parte."""
+    with sqlite3.connect(banco) as conn:
+        conn.execute(
+            "INSERT INTO vagas_vistas (id, titulo, empresa, local, link, site, perfil, modalidade,"
+            " encontrada_em) VALUES ('d', 'Desenvolvedor Full Stack', 'Delta',"
+            " 'Joinville, Santa Catarina, Brazil', 'https://x/d', 'LinkedIn', 'dev-joinville', '',"
+            " '2026-10-04 12:00:00')"
+        )
+    for id_ in ("a", "b", "d"):
+        db.salvar_conteudo(id_, "ok", LONGO, "seletor")
+    saida = tmp_path / "pub" / "index.html"
+    gerar(banco, str(saida))
+    ler = lambda p: (tmp_path / "pub" / f"conteudo-{p}.txt").read_text(encoding="utf-8")  # noqa: E731
+    geral, joinville, remoto = ler("dev"), ler("dev-joinville"), ler("dev-remoto")
+    assert "Delta" in geral and "Acme" in geral and "Beta" in geral
+    assert "Delta" in joinville and "Beta" not in joinville
+    assert "Beta" in remoto and "Delta" not in remoto
+    assert ler("dev-intl").count("===== VAGA") == 0
+    assert '"dev-joinville": {"total": 1' in saida.read_text(encoding="utf-8")

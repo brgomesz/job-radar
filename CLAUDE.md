@@ -23,22 +23,51 @@ globais da conta, em ~/.claude/CLAUDE.md — não são repetidas aqui.
   `web/template.html`.
 - Abas "Conteúdo Dev" e "Conteúdo Analista" da página: o passo "Capturar
   conteúdo dos anúncios" do workflow (`scripts/capturar_conteudo.py`) abre
-  o anúncio de cada vaga `dev` e `analista` salva (até 80 por perfil por
+  o anúncio de cada vaga dev e `analista` salva (até 80 por perfil por
   ciclo, mais recentes primeiro) e guarda o texto na tabela
   `conteudo_vagas`; `web.gerar` junta tudo em `docs/conteudo-<perfil>.txt`
   (lista em `PERFIS_CONTEUDO`), que é o que cada aba carrega. Também GERADO.
+  "Conteúdo Dev" tem 4 opções: Geral (o perfil `dev` original = a família
+  inteira), Joinville, Remoto e Internacional. O histórico do `dev`
+  original é classificado num dos três pela regra de local de cada um
+  (`_categoria` em `web/gerar.py`) — o banco não muda.
 
 ## Perfis de busca
 
 O motor (`main.py`) roda perfis selecionáveis por `--perfil`; cada perfil é
 só DADO (`core/config*.py` + `core/perfis.py`), não lógica duplicada.
 
-Dois perfis rodam em produção (cron), notificando no MESMO chat do
+Quatro perfis rodam em produção (cron), notificando no MESMO chat do
 Telegram, distinguidos pela linha `Perfil:` da notificação:
 
-- `dev` — full-stack com foco back-end Node/TypeScript, remoto ou
-  presencial/híbrido em Joinville/SC, nível pleno apenas.
+- `dev-joinville`, `dev-remoto`, `dev-intl` — Bruno (Desenvolvedor
+  Full-Stack Pleno; filtro revisado contra o currículo dele em nov/2026:
+  Node.js/TypeScript/React/Next.js, Prisma, PostgreSQL; NÃO sabe Java,
+  Kotlin, .NET, PHP, Python, Go, Angular, Vue, mobile). Mesma regra de
+  cargo/stack/nível (`_regras_dev` em `core/perfis.py`), só o local muda:
+  - `dev-joinville`: presencial ou híbrido SÓ em Joinville
+    (`excluir_remoto` barra a vaga remota cuja sede é Joinville);
+  - `dev-remoto`: remoto, empresa brasileira (`mercado_vaga="nacional"`);
+  - `dev-intl`: remoto, vaga em inglês / empresa de fora
+    (`mercado_vaga="internacional"`, ver `Job.vaga_internacional`).
+  `dev-remoto` e `dev-intl` são disjuntos de propósito: `ja_vista` é
+  global (o banco guarda cada vaga uma vez só), então dois perfis que
+  aceitem a mesma vaga brigam por ela.
+  Nível: pleno apenas (júnior, "Nível I", estágio, sênior, staff, lead,
+  principal e liderança fora). Stack de fora no título: back-end (Java,
+  .NET, PHP, Python...) só é perdoado por Node; front/mobile (Angular,
+  Vue, React Native) por Node/React/Next.
+  Filtro pelo ANÚNCIO (`core/anuncio.py`, `regras_anuncio`): vaga que iria
+  pro Telegram tem o anúncio aberto antes (`_notificar_conferindo_anuncio`
+  em `main.py`) e só notifica se o back-end for Node / o front for React;
+  a página esconde a vaga cujo anúncio reprova. MEDIDO no histórico: 87
+  das 537 vagas dev com anúncio eram Java/.NET/PHP/Python com título
+  genérico.
   Config em `core/config_dev.py`.
+- `dev` — o perfil original (remoto + Joinville). Saiu do cron em
+  nov/2026 quando foi dividido nos três acima; continua no código
+  (rodável à mão) e na página como "Dev (geral)". NÃO religar no cron
+  junto dos três: roubaria as vagas deles (ver `ja_vista`).
 - `analista` — Ana Julia (Gerente Financeira e Operacional Sênior,
   mercado imobiliário; filtro revisado contra o currículo dela em
   nov/2026). Coordenação/gerência/supervisão adm-financeira, operações,

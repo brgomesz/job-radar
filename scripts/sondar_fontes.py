@@ -25,7 +25,7 @@ import sys
 import time
 import traceback
 
-from core.perfis import PERFIL_ANALISTA, PERFIL_DEV
+from core.perfis import PERFIL_ANALISTA, PERFIL_DEV_INTL, PERFIL_DEV_JOINVILLE, PERFIL_DEV_REMOTO
 from scrapers.nacionais import CANDIDATAS
 
 # Um termo por perfil: o objetivo é saber se a fonte RESPONDE e se o
@@ -37,7 +37,8 @@ TERMOS_PADRAO = [
     "coordenador financeiro",
 ]
 
-PERFIS = [PERFIL_DEV, PERFIL_ANALISTA]
+# Os perfis do cron (ver jobradar.yml).
+PERFIS = [PERFIL_DEV_JOINVILLE, PERFIL_DEV_REMOTO, PERFIL_DEV_INTL, PERFIL_ANALISTA]
 
 
 def _amostra(vagas, n=3):
@@ -110,7 +111,7 @@ def sondar(classe, termos, dump=False) -> dict:
     for perfil in PERFIS:
         aprovadas = [v for v in vagas if v.combina_com(perfil.regras)]
         aprovadas_total += len(aprovadas)
-        print(f"      {perfil.nome:<26} {len(aprovadas):>3}")
+        print(f"      {perfil.nome:<36} {len(aprovadas):>3}")
         _amostra(aprovadas, 2)
 
     return {

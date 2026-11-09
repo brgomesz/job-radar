@@ -25,19 +25,18 @@ jobs:
     # intervalo do cron (3h), então um run truncado nunca empilha em cima
     # do próximo agendado.
     #
-    # Rodam aqui os dois perfis de pessoas reais deste fork (dev e
-    # analista; admin e agro foram removidos em nov/2026). brasil e
-    # internacional (Dados/BI, da autora original) continuam no código e
-    # rodáveis por linha de comando, mas ficam fora do cron: cada perfil a
-    # mais é tempo de ciclo somado sem retorno.
+    # Rodam aqui os perfis de pessoas reais deste fork: os três dev
+    # (dev-joinville, dev-remoto, dev-intl — o perfil dev original foi
+    # dividido neles em nov/2026) e o analista. brasil e internacional
+    # (Dados/BI, da autora original) e o dev original continuam no código e
+    # rodáveis por linha de comando, mas ficam fora do cron.
     #
     # MEDIDO: com quatro perfis (dev, admin, agro, analista) o ciclo levava
-    # ~20 min mais ~5 min de captura de anúncios — com dois, sobra folga
-    # larga dentro dos 150, mesmo com a captura dobrando pra dois perfis.
-    #
-    # Os dois são baratos perto do perfil brasil, contra o qual este
-    # número foi calibrado: ele roda 15 termos e 16 buscas de LinkedIn por
-    # termo (1 país x 2 passadas + 6 países só-remoto + 8 cidades).
+    # ~20 min mais ~5 min de captura de anúncios. Os três dev somados fazem
+    # ~1,5x as buscas do dev original (cada um lê mais páginas da SUA
+    # passada do LinkedIn, e nenhum roda as passadas dos outros), mais a
+    # abertura dos anúncios das vagas que iriam pro Telegram (teto de 30
+    # por perfil). Sobra folga larga dentro dos 150.
     timeout-minutes: 150
     steps:
       - name: Checkout do repositório
@@ -58,21 +57,28 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         # Um projeto só, com perfis selecionáveis (ver core/perfis.py).
-        # Aqui rodam os dois perfis de pessoas reais deste fork: `dev`
-        # (back-end Node/TypeScript) e `analista` (coordenação/gerência
-        # adm-financeira e analista sênior/imobiliário). Os dois notificam
-        # no MESMO chat do Telegram, distinguidos pela linha "Perfil:" da
-        # notificação (ver notificar_vaga).
+        # Os três dev dividem o que o perfil dev original buscava:
+        #   dev-joinville  presencial/híbrido só em Joinville
+        #   dev-remoto     remoto, empresa brasileira
+        #   dev-intl       remoto, vaga em inglês / empresa de fora
+        # O dev original NÃO roda junto: o banco guarda cada vaga uma vez
+        # só, e ele "roubaria" as vagas dos três (ver PERFIL_DEV). Todos
+        # notificam no MESMO chat do Telegram, distinguidos pela linha
+        # "Perfil:" da notificação (ver notificar_vaga).
         #
         # brasil e internacional são os perfis de Dados/BI da autora
         # original: continuam existindo e rodáveis à mão
         # (`python main.py --perfil brasil --once`), mas fora do cron.
-        run: python main.py --perfil dev analista --once
+        run: python main.py --perfil dev-joinville dev-remoto dev-intl analista --once
 
       # Abre o anúncio de cada vaga salva dos perfis dev e analista e
       # guarda o texto (descrição, requisitos, benefícios) no jobs.db —
-      # vira as abas "Conteúdo Dev" / "Conteúdo Analista" da página e os
-      # docs/conteudo-<perfil>.txt. Passo à parte e com continue-on-error:
+      # vira as abas "Conteúdo Dev" (com as opções Geral/Joinville/Remoto/
+      # Internacional) e "Conteúdo Analista" da página e os
+      # docs/conteudo-<perfil>.txt. O texto também alimenta o filtro pelo
+      # anúncio (core/anuncio.py): vaga cujo anúncio é Java/.NET/PHP some da
+      # página. `dev` continua na lista pra terminar de cobrir o histórico
+      # dele. Passo à parte e com continue-on-error:
       # se a fonte bloquear a leitura do anúncio, o ciclo de busca já
       # notificou o que tinha que notificar e o banco ainda é salvo no
       # passo seguinte. No máximo 80 vagas POR perfil por ciclo (2s de
@@ -80,8 +86,8 @@ jobs:
       # entra aos poucos, ver scripts/capturar_conteudo.py.
       - name: Capturar conteúdo dos anúncios (Dev e Analista)
         continue-on-error: true
-        timeout-minutes: 30
-        run: python -m scripts.capturar_conteudo --perfil dev analista --limite 80
+        timeout-minutes: 40
+        run: python -m scripts.capturar_conteudo --perfil dev-joinville dev-remoto dev-intl dev analista --limite 80
 
       - name: Salvar vagas já vistas (evita notificação duplicada)
         run: |

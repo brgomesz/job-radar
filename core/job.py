@@ -1107,11 +1107,85 @@ class RegrasFiltro:
     #
     # None = comportamento padrão (modalidade/local confirmam remoto).
     remoto_exige_titulo: list[str] | None = None
+    # O que PERDOA uma stack de `stacks_excluidas` no mesmo título. None =
+    # `ferramentas_titulo` (o comportamento de antes deste campo).
+    #
+    # MEDIDO (nov/2026, perfil dev): com o perdão vindo de
+    # ferramentas_titulo, qualquer coisa da stack do usuário salvava o
+    # título — "Desenvolvedor JavaScript/Angular" passava por causa do
+    # JavaScript, "Desenvolvedor C# SQL Server" por causa do SQL Server. A
+    # lista de perdão própria deixa só o que de fato muda a natureza da
+    # vaga (Node, React, Next...).
+    stacks_perdao: list[str] | None = None
+    # Linguagem/framework de BACK-END de outro ecossistema (Java, .NET,
+    # PHP, Python...). Separado de stacks_excluidas porque o perdão é mais
+    # estreito: só uma stack de back-end do usuário
+    # (`stacks_backend_perdao`, ex: Node) salva o título.
+    #
+    # MEDIDO (nov/2026, perfil dev): "Fullstack Java/React", "Laravel and
+    # React Developer", "Desenvolvedor Full Stack .NET/React" passavam
+    # todas, porque o React do título perdoava o Java/Laravel/.NET. Numa
+    # vaga full-stack o back-end É a outra stack — o React ali não muda
+    # isso. "Back-End Java/Node" continua passando: o Node é back-end.
+    #
+    # None/vazio = não checa nada.
+    stacks_backend_excluidas: list[str] | None = None
+    stacks_backend_perdao: list[str] | None = None
+    # Rejeita vaga REMOTA (modalidade, local ou título dizendo remoto).
+    # Existe pro perfil que só quer presencial/híbrido numa cidade (ver
+    # dev-joinville): o LinkedIn lista vaga remota com a cidade da sede no
+    # local ("TypeScript Developer - Remote Work", "Joinville, SC"), e sem
+    # isto ela entraria como se fosse presencial em Joinville.
+    excluir_remoto: bool = False
+    # "nacional" / "internacional": separa vaga de empresa brasileira de
+    # vaga em inglês/de fora (ver Job.vaga_internacional). None = não
+    # separa (aceita as duas, comportamento de antes).
+    mercado_vaga: str | None = None
 
 
 # Título que mistura remoto com outra modalidade — não é "expressamente
 # remoto" (ver remoto_exige_titulo).
 _TITULO_NAO_REMOTO = ("hibrido", "hibrida", "hybrid", "presencial", "on-site", "onsite")
+
+# Título que declara remoto (ver excluir_remoto).
+_TITULO_REMOTO = (
+    "remoto", "remota", "remote", "home office", "home-office", "work from home",
+    "teletrabalho", "anywhere",
+)
+
+
+def _padrao_stack(termo_norm: str) -> str:
+    """Regex de um termo de stack, com borda de palavra.
+
+    Diferente de _contem_termo num ponto: termo que COMEÇA com símbolo
+    (".net") não exige borda à esquerda. MEDIDO (nov/2026): "Desenvolvedor
+    Backend.NET" passou no perfil dev — em "backend.net" o ponto vem
+    depois de "d", e a borda à esquerda nunca batia."""
+    esquerda = r"(?<!\w)" if re.match(r"\w", termo_norm) else ""
+    return rf"{esquerda}{re.escape(termo_norm)}(?!\w)"
+
+
+# Fontes que só publicam vaga do mercado brasileiro e fontes que são, por
+# definição, de fora. LinkedIn (e qualquer fonte nova) é decidido pelo
+# título/escopo — ver Job.vaga_internacional.
+_SITES_INTERNACIONAIS = {"we work remotely", "linkedin internacional"}
+# Fonte cujo `local` é a sede da empresa, não o mercado da vaga.
+_SITES_LOCAL_E_SEDE = {"we work remotely"}
+_SITES_DECIDIDOS_PELO_TITULO = {"linkedin", "indeed"}
+
+# Idioma do título. Português vence: título com qualquer palavra em
+# português é de empresa que anuncia em português ("Fullstack Developer
+# Pleno - REMOTO" é vaga brasileira com cargo em inglês).
+_MARCAS_TITULO_PT = (
+    "desenvolvedor", "desenvolvedora", "programador", "programadora", "engenheiro",
+    "engenheira", "analista", "pessoa", "vaga", "pleno", "trabalho", "remoto", "remota",
+    "hibrido", "hibrida", "presencial", "sistemas", "desenvolvimento", "estagio",
+    "especialista", "tecnico", "home office", "banco de talentos",
+)
+_MARCAS_TITULO_EN = (
+    "developer", "engineer", "engineering", "software", "remote", "programmer",
+    "work from home", "mid-level", "mid level", "contractor", "position",
+)
 
 
 @dataclass
@@ -1238,6 +1312,14 @@ class Job:
         modalidade_real = _modalidade_pelo_titulo(self.titulo)
         if modalidade_real and self.modalidade == "Remoto":
             self.modalidade = modalidade_real
+        # Mesma ideia pro escopo: fonte cujo `local` é a SEDE da empresa
+        # (ver escopo_indefinido) marca isso aqui, não só no scraper.
+        # MEDIDO (nov/2026): a vaga reconstruída a partir do banco (página e
+        # captura reavaliam o histórico, ver refiltrar_historico) perdia o
+        # flag, e "Full Stack Developer" da WeWorkRemotely com local "HQ:
+        # Ireland" passava a ser barrada pelo país da sede.
+        if _normalizar(self.site) in _SITES_LOCAL_E_SEDE:
+            self.escopo_indefinido = True
 
     @property
     def id(self) -> str:
@@ -1398,30 +1480,89 @@ class Job:
 
     def _rejeitada_por_stack(self, regras: RegrasFiltro, titulo_norm: str) -> bool:
         """Título nomeia stack de outro ecossistema, sem nomear a do próprio
-        usuário junto — ver stacks_excluidas em RegrasFiltro."""
-        if not regras.stacks_excluidas:
-            return False
+        usuário junto — ver stacks_excluidas e stacks_backend_excluidas em
+        RegrasFiltro. Cada grupo tem o próprio perdão."""
+        grupos = []
+        if regras.stacks_excluidas:
+            perdao = (
+                regras.stacks_perdao if regras.stacks_perdao is not None
+                else regras.ferramentas_titulo
+            )
+            grupos.append((regras.stacks_excluidas, perdao))
+        if regras.stacks_backend_excluidas:
+            grupos.append((regras.stacks_backend_excluidas, regras.stacks_backend_perdao or []))
 
-        excluidas_no_titulo = [
-            _normalizar(s) for s in regras.stacks_excluidas
-            if _contem_termo(_normalizar(s), titulo_norm)
-        ]
-        if not excluidas_no_titulo:
+        achadas_por_grupo = []
+        for excluidas, perdao in grupos:
+            achadas = [
+                _normalizar(s) for s in excluidas
+                if re.search(_padrao_stack(_normalizar(s)), titulo_norm)
+            ]
+            achadas_por_grupo.append((achadas, perdao))
+
+        todas = [a for achadas, _ in achadas_por_grupo for a in achadas]
+        if not todas:
             return False
 
         # Tira do título o que já foi reconhecido como stack de fora, pra
         # "react" dentro de "react native" não valer como stack própria (ver
-        # o MEDIDO em stacks_excluidas).
+        # o MEDIDO em stacks_excluidas). Mais longo primeiro: "vue.js" sai
+        # inteiro antes de "vue" deixar um ".js" solto pra trás.
         titulo_restante = titulo_norm
-        for excluida in excluidas_no_titulo:
-            titulo_restante = re.sub(
-                rf"(?<!\w){re.escape(excluida)}(?!\w)", " ", titulo_restante
-            )
+        for excluida in sorted(set(todas), key=len, reverse=True):
+            titulo_restante = re.sub(_padrao_stack(excluida), " ", titulo_restante)
 
-        return not any(
-            _contem_termo(_normalizar(f), titulo_restante)
-            for f in regras.ferramentas_titulo
+        return any(
+            achadas and not any(
+                _contem_termo(_normalizar(f), titulo_restante) for f in perdao
+            )
+            for achadas, perdao in achadas_por_grupo
         )
+
+    def parece_remota(self) -> bool:
+        """Remota pela modalidade, pelo local ou pelo TÍTULO (ver
+        excluir_remoto em RegrasFiltro). Título que diz remoto E híbrido/
+        presencial ("Híbrido ou Remoto") não conta — a vaga tem as duas."""
+        if _confirma_remoto(_normalizar(self.modalidade), _normalizar(self.local)):
+            return True
+        titulo_norm = _sem_marcador_genero(_normalizar(self.titulo))
+        return any(_contem_termo(t, titulo_norm) for t in _TITULO_REMOTO) and not any(
+            _contem_termo(t, titulo_norm) for t in _TITULO_NAO_REMOTO
+        )
+
+    @property
+    def titulo_em_ingles(self) -> bool:
+        """Título escrito em inglês: nenhuma palavra em português e pelo
+        menos uma marca de cargo/modalidade em inglês."""
+        titulo_norm = _sem_marcador_genero(_normalizar(self.titulo))
+        if any(_contem_termo(m, titulo_norm, aceitar_plural=True) for m in _MARCAS_TITULO_PT):
+            return False
+        return any(_contem_termo(m, titulo_norm, aceitar_plural=True) for m in _MARCAS_TITULO_EN)
+
+    @property
+    def vaga_internacional(self) -> bool:
+        """Vaga "de fora": empresa estrangeira ou time internacional, que
+        contrata remoto quem mora no Brasil. Separa os perfis dev-remoto
+        (Brasil) e dev-intl (ver mercado_vaga em RegrasFiltro).
+
+        - Fonte que só existe fora (We Work Remotely): sempre.
+        - Portal brasileiro (Gupy, Sólides, Catho...): nunca — mesmo com
+          cargo em inglês ("Full Stack Developer II" na Gupy é empresa
+          daqui).
+        - LinkedIn/Indeed: quando o escopo declarado é de fora do Brasil
+          ("Remote - LATAM", "Latin America") ou quando o título está em
+          inglês. O LinkedIn mostra vaga de empresa estrangeira com local
+          "Brazil"/cidade brasileira, então o local sozinho não separa; o
+          idioma em que a vaga foi escrita é o melhor sinal que o card dá.
+        """
+        site = _normalizar(self.site)
+        if site in _SITES_INTERNACIONAIS:
+            return True
+        if site not in _SITES_DECIDIDOS_PELO_TITULO:
+            return False
+        if any(_normalizar(e) != "brasil" for e in self.escopo_remoto):
+            return True
+        return self.titulo_em_ingles
 
     def _rejeitada_por_nivel(self, regras: RegrasFiltro) -> bool:
         """Nível declarado no título está na lista de excluídos do perfil —
@@ -1552,6 +1693,19 @@ class Job:
             for c in regras.cidades
             if _normalizar(c) not in _FLAGS_REMOTO
         )
+
+        # Local/mercado que o perfil não quer, mesmo com a cidade batendo:
+        # vaga remota no perfil presencial (excluir_remoto) e vaga do
+        # mercado errado (mercado_vaga). Zeram os dois sinais de local pelo
+        # mesmo motivo que a rejeição de cargo zera os de cargo acima.
+        fora_do_mercado = (
+            (regras.excluir_remoto and self.parece_remota())
+            or (regras.mercado_vaga == "nacional" and self.vaga_internacional)
+            or (regras.mercado_vaga == "internacional" and not self.vaga_internacional)
+        )
+        if fora_do_mercado:
+            bate_remoto = bate_cidade = False
+            escopos = set()
 
         return _Avaliacao(
             aprovada=bate_keyword and bate_cidade,

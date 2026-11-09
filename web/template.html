@@ -128,7 +128,7 @@ li[data-hot="1"] .score{color:var(--hot)}
   grid-row:1; font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:.08em;
   text-transform:uppercase; padding:3px 8px; border-radius:999px; white-space:nowrap; align-self:start;
 }
-li[data-p="dev"] .tag{background:var(--dev-soft); color:var(--dev)}
+li[data-p^="dev"] .tag{background:var(--dev-soft); color:var(--dev)}
 li[data-p="analista"] .tag{background:var(--ana-soft); color:var(--ana)}
 .empty{padding:48px 8px; text-align:center; color:var(--muted)}
 footer{margin-top:36px; padding-top:18px; border-top:1px solid var(--line); color:var(--muted); font-size:12.5px}
@@ -224,6 +224,8 @@ li[data-enviei="1"]{border-left:3px solid var(--adm); padding-left:14px}
 .limpar:focus-visible{outline:2px solid var(--dev); outline-offset:1px}
 /* Abas: "Vagas" (a lista de sempre) e "Conteúdo Dev"/"Conteúdo Analista"
    (texto inteiro dos anúncios, pra levar pra uma análise). */
+.subperfis{margin:0 0 14px}
+.subperfis[hidden]{display:none}
 .abas{display:flex; gap:4px; border-bottom:1px solid var(--line); margin:0 0 18px}
 .abas button{
   appearance:none; border:0; background:transparent; font:inherit; font-size:14px;
@@ -286,7 +288,10 @@ li[data-enviei="1"]{border-left:3px solid var(--adm); padding-left:14px}
   <label class="field"><span>Perfil</span>
     <span class="seg" id="segPerfil">
       <button type="button" data-v="todos">Todos</button>
-      <button type="button" data-v="dev">Dev</button>
+      <button type="button" data-v="dev">Dev (geral)</button>
+      <button type="button" data-v="dev-joinville">Joinville</button>
+      <button type="button" data-v="dev-remoto">Remoto</button>
+      <button type="button" data-v="dev-intl">Internacional</button>
       <button type="button" data-v="analista">Analista</button>
     </span>
   </label>
@@ -348,6 +353,17 @@ li[data-enviei="1"]{border-left:3px solid var(--adm); padding-left:14px}
 </section>
 
 <section id="abaConteudo" role="tabpanel" hidden>
+  <!-- Só na família dev: o perfil original (Geral = tudo) e os três que o
+       dividem. Cada opção carrega o próprio conteudo-<perfil>.txt. -->
+  <div class="field subperfis" id="subperfisDev" hidden>
+    <span>Perfil</span>
+    <span class="seg" id="segConteudoDev">
+      <button type="button" data-v="dev" title="O perfil dev atual: tudo junto (Joinville + remoto + internacional)">Geral</button>
+      <button type="button" data-v="dev-joinville" title="Presencial ou híbrido, só em Joinville">Joinville</button>
+      <button type="button" data-v="dev-remoto" title="Remoto, empresa brasileira">Remoto</button>
+      <button type="button" data-v="dev-intl" title="Remoto, vaga em inglês / empresa de fora">Internacional</button>
+    </span>
+  </div>
   <p class="sub">O anúncio inteiro de cada vaga <span id="nomeConteudo">Dev</span> que o radar guardou — descrição, requisitos, diferenciais, benefícios — num texto corrido só, pronto pra colar numa IA e ver o que o mercado está pedindo. O robô abre os anúncios aos poucos, a cada ciclo, então o histórico antigo vai entrando ao longo dos próximos dias.</p>
   <div class="stats" id="statsConteudo"></div>
   <div class="acoes">
@@ -371,7 +387,15 @@ li[data-enviei="1"]{border-left:3px solid var(--adm); padding-left:14px}
 <script>
 const VAGAS = __DADOS__;
 const $ = (id) => document.getElementById(id);
-const NOMES = { dev: "Dev", analista: "Analista" };
+const NOMES = {
+  dev: "Dev", "dev-joinville": "Dev · Joinville", "dev-remoto": "Dev · Remoto",
+  "dev-intl": "Dev · Internacional", analista: "Analista",
+};
+// Nome no filtro e nas abas, onde "dev" é a família inteira.
+const NOMES_FILTRO = Object.assign({}, NOMES, { dev: "Dev (geral)" });
+// "Dev (geral)" junta a família toda (o perfil dev original e os três que
+// o dividem); o resto é exato.
+const doFiltro = (p, filtro) => filtro === "todos" || p === filtro || (filtro === "dev" && p.startsWith("dev-"));
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
 // --- Marcações do usuário -------------------------------------------------
@@ -532,14 +556,14 @@ function contarStats() {
   // Com um perfil selecionado, TODOS os números passam a ser daquele
   // perfil. Misturar "vagas do Dev" com "interessam de todo mundo" no
   // mesmo painel dava um número que não respondia pergunta nenhuma.
-  const doPerfil = (p) => estado.perfil === "todos" || p === estado.perfil;
+  const doPerfil = (p) => p !== undefined && doFiltro(p, estado.perfil);
   const vagas = VAGAS.filter((v) => doPerfil(v.p));
   const marcadas = Object.entries(marcas)
     .filter(([link]) => doPerfil(PERFIL_DO_LINK[link]))
     .map(([, m]) => m);
 
   $("stats").innerHTML = [
-    [estado.perfil === "todos" ? "Vagas guardadas" : `Vagas · ${NOMES[estado.perfil]}`, vagas.length],
+    [estado.perfil === "todos" ? "Vagas guardadas" : `Vagas · ${NOMES_FILTRO[estado.perfil]}`, vagas.length],
     ["Nota 8+", vagas.filter((v) => v.r >= 8).length],
     ["A enviar", marcadas.filter((m) => m.i === "sim" && !m.e).length],
     ["Interessam", marcadas.filter((m) => m.i === "sim").length],
@@ -558,7 +582,7 @@ function aplicar() {
     const ts = Number(li.dataset.ts);
     const pts = Number(li.dataset.pts);
     const ok =
-      (estado.perfil === "todos" || li.dataset.p === estado.perfil) &&
+      doFiltro(li.dataset.p, estado.perfil) &&
       Number(li.dataset.r) >= estado.nota &&
       (corte === null || (ts > 0 && ts >= corte)) &&
       // Vaga sem data de publicação legível (pts 0) fica fora de qualquer
@@ -654,7 +678,16 @@ aplicar();
 // linha "===== VAGA n de N =====" — o mesmo SEPARADOR_VAGA do gerador.
 const CONTEUDO = __CONTEUDO__;  // { perfil: { total, capturadas, removidas, pendentes } }
 const SEPARADOR = /^===== VAGA \d+ de \d+ =====$/m;
-const DICA_BUSCA = { dev: "filtrar: node, aws, inglês…", analista: "filtrar: excel, sap, power bi…" };
+const DICA_DEV = "filtrar: node, aws, inglês…";
+const DICA_BUSCA = {
+  dev: DICA_DEV, "dev-joinville": DICA_DEV, "dev-remoto": DICA_DEV, "dev-intl": DICA_DEV,
+  analista: "filtrar: excel, sap, power bi…",
+};
+const PERFIS_CONTEUDO = ["dev", "dev-joinville", "dev-remoto", "dev-intl", "analista"];
+// Aba (botão) de cada opção: as quatro dev vivem dentro de "Conteúdo Dev".
+const abaDe = (perfil) => (perfil.startsWith("dev") ? "dev" : perfil);
+// Última opção dev escolhida, pra "Conteúdo Dev" reabrir nela.
+let ultimoDev = "dev";
 const carregados = {};  // perfil -> { cabecalho, anuncios: [{ bruto, busca, el }] } | "carregando"
 let perfilConteudo = null;
 
@@ -724,7 +757,11 @@ function carregarConteudo(perfil) {
 
 function selecionarPerfilConteudo(perfil) {
   perfilConteudo = perfil;
-  const nome = NOMES[perfil];
+  const nome = NOMES_FILTRO[perfil];
+  const ehDev = abaDe(perfil) === "dev";
+  if (ehDev) ultimoDev = perfil;
+  $("subperfisDev").hidden = !ehDev;
+  pintarSegmento("segConteudoDev", perfil);
   const arquivo = `conteudo-${perfil}.txt`;
   const cont = CONTEUDO[perfil] || { total: 0, capturadas: 0, removidas: 0, pendentes: 0 };
   $("nomeConteudo").textContent = nome;
@@ -770,25 +807,34 @@ $("copiarConteudo").addEventListener("click", () => {
 });
 $("buscaConteudo").addEventListener("input", filtrarConteudo);
 
-// Aba escolhida fica no endereço (#conteudo-dev, #conteudo-analista), pra
-// dar pra mandar o link direto pra ela.
+// Opção escolhida fica no endereço (#conteudo-dev, #conteudo-dev-remoto,
+// #conteudo-analista...), pra dar pra mandar o link direto pra ela.
 const ABAS_CONTEUDO = Array.from(document.querySelectorAll("[data-perfil]"));
 function mostrarAba(perfil) {
   $("abaVagas").hidden = !!perfil;
   $("abaConteudo").hidden = !perfil;
   $("tabVagas").setAttribute("aria-selected", String(!perfil));
-  for (const t of ABAS_CONTEUDO) t.setAttribute("aria-selected", String(t.dataset.perfil === perfil));
+  const aba = perfil ? abaDe(perfil) : null;
+  for (const t of ABAS_CONTEUDO) t.setAttribute("aria-selected", String(t.dataset.perfil === aba));
   if (perfil) {
-    $("abaConteudo").setAttribute("aria-labelledby", ABAS_CONTEUDO.find((t) => t.dataset.perfil === perfil).id);
+    $("abaConteudo").setAttribute("aria-labelledby", ABAS_CONTEUDO.find((t) => t.dataset.perfil === aba).id);
     selecionarPerfilConteudo(perfil);
   }
 }
+function abrirConteudo(perfil) {
+  history.replaceState(null, "", `#conteudo-${perfil}`);
+  mostrarAba(perfil);
+}
 $("tabVagas").addEventListener("click", () => { history.replaceState(null, "", location.pathname + location.search); mostrarAba(null); });
 for (const t of ABAS_CONTEUDO) {
-  t.addEventListener("click", () => { history.replaceState(null, "", `#conteudo-${t.dataset.perfil}`); mostrarAba(t.dataset.perfil); });
+  t.addEventListener("click", () => abrirConteudo(t.dataset.perfil === "dev" ? ultimoDev : t.dataset.perfil));
 }
+$("segConteudoDev").addEventListener("click", (ev) => {
+  const b = ev.target.closest("button"); if (!b) return;
+  abrirConteudo(b.dataset.v);
+});
 const doEndereco = location.hash.replace("#conteudo-", "");
-mostrarAba(ABAS_CONTEUDO.some((t) => t.dataset.perfil === doEndereco) ? doEndereco : null);
+mostrarAba(PERFIS_CONTEUDO.includes(doEndereco) ? doEndereco : null);
 </script>
 </body>
 </html>
