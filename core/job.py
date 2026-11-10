@@ -493,8 +493,9 @@ _SIGLAS_UF_BRASIL = {
 }
 
 # As 6 siglas que colidem com estado americano — só nessas precisa olhar o
-# nome da cidade antes de decidir Brasil vs EUA. Sigla de UF que não colide
-# (RJ, SP, PE...) já resolve sozinha, nenhum estado americano usa essas.
+# nome da cidade (ou o separador antes da sigla) antes de decidir Brasil vs
+# EUA. Sigla de UF que não colide (RJ, SP, PE...) já resolve sozinha,
+# nenhum estado americano usa essas.
 _SIGLAS_UF_AMBIGUAS = {"al", "ma", "mt", "ms", "pa", "sc"}
 
 # MEDIDO: "CAMPINA GRANDE DO SUL - PR" era ACEITA como se fosse Campina
@@ -737,14 +738,36 @@ def extrair_escopo_remoto(texto_local: str, modalidade: str = "") -> set[str]:
     # cobertura de busca: um único ciclo do log real tinha 12 vagas
     # brasileiras (São Paulo, Pelotas, Campinas, Fortaleza, Salvador,
     # Campo Grande) descartadas só por esse motivo.
-    segmentos = [s.strip(" .") for s in re.split(r"[,\-–—]", resto)]
+    # Split com grupo de captura pra guardar QUAL separador veio antes de
+    # cada segmento: separadores[i - 1] é o que precede segmentos[i].
+    partes = re.split(r"([,\-–—])", resto)
+    segmentos = [s.strip(" .") for s in partes[0::2]]
+    separadores = partes[1::2]
     cidade = segmentos[0] if segmentos else ""
-    for seg in segmentos[1:]:
+    for i, seg in enumerate(segmentos[1:], start=1):
         # UF brasileira primeiro: só as 6 ambíguas (colidem com sigla dos
-        # EUA) precisam confirmar pela cidade — ver _SIGLAS_UF_AMBIGUAS.
-        # UF que não colide (RJ, SP, PE...) já resolve sozinha.
+        # EUA) precisam confirmar — ver _SIGLAS_UF_AMBIGUAS. UF que não
+        # colide (RJ, SP, PE...) já resolve sozinha.
+        #
+        # MEDIDO (2026-11-10): confirmar SÓ pela capital deixava de fora
+        # toda cidade do interior — "Nova Mutum - MT", "Joinville - SC" e
+        # "Chapecó - SC" (Sólides, remoto) resolviam pra Estados Unidos, e
+        # perfil sem "Estados Unidos" na lista aceita barrava a vaga
+        # brasileira. O separador resolve sem precisar de base de cidade:
+        # no jobs.db, TODO local americano com sigla ambígua vem com
+        # vírgula ("Pittsburgh, PA", "Remoto (Charleston, SC)"), e TODO
+        # local brasileiro das fontes nacionais (Gupy, Sólides, Senior) vem
+        # com hífen ("Cidade - UF"). Vale o separador logo ANTES da sigla,
+        # não qualquer hífen do texto — "Wilkes-Barre, PA" tem hífen no
+        # nome da cidade e continua EUA. Limite conhecido: cidade do
+        # interior com vírgula ("Sinop, MT") continua EUA — sem base de
+        # cidade, não há como distinguir de "Helena, MT".
         if seg in _SIGLAS_UF_BRASIL:
-            if seg not in _SIGLAS_UF_AMBIGUAS or cidade in _CAPITAIS_BRASIL:
+            if (
+                seg not in _SIGLAS_UF_AMBIGUAS
+                or cidade in _CAPITAIS_BRASIL
+                or separadores[i - 1] != ","
+            ):
                 return {"Brasil"}
         if seg in _SIGLAS_ESTADOS_EUA:
             # MEDIDO (21/08): "Remoto (Bogotá, D.C.)" resolvia pra Estados
