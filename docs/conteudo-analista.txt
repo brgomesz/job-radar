@@ -1,9 +1,64 @@
 CONTEÚDO DAS VAGAS DE ANALISTA — JobRadar
-Gerado em 09/11/2026 às 19:10 (Brasília). 21 vaga(s) com anúncio capturado, de 21 vagas Analista no radar. Mais recentes primeiro.
+Gerado em 10/11/2026 às 03:27 (Brasília). 23 vaga(s) com anúncio capturado, de 23 vagas Analista no radar. Mais recentes primeiro.
 Cada vaga traz o texto do anúncio como a fonte publicou (descrição, requisitos, diferenciais, benefícios).
 
 
-===== VAGA 1 de 21 =====
+===== VAGA 1 de 23 =====
+Título: RB00216 Analista Administrativo Financeiro (Pleno/Sênior)
+Empresa: Confidencial
+Local: Joinville
+Fonte: Catho · publicada Ontem · achada 10/11 03:20
+Link: https://www.catho.com.br/vagas/rb00216-analista-administrativo-financeiro-plenosenior/38866169
+--- Anúncio ---
+Realizar a conferência e conciliação de extratos bancários, identificando divergências e garantindo a correta classificação das movimentações financeiras;
+Executar e acompanhar as rotinas de contas a pagar e contas a receber, controlando vencimentos, pagamentos, recebimentos e pendências;
+Efetuar a conciliação de recebimentos realizados por cartões, transferências bancárias, boletos e demais meios de pagamento;
+Elaborar planilhas, relatórios financeiros e demonstrativos para acompanhamento e controle dos resultados;
+Monitorar o fluxo de caixa, contribuindo para a organização e o planejamento financeiro;
+Conferir notas fiscais, boletos, faturas e demais documentos financeiros, verificando valores, vencimentos e informações;
+Acompanhar o e-mail corporativo, atendendo às solicitações e direcionando as demandas aos responsáveis;
+Apoiar as rotinas de compras e almoxarifado, incluindo cotações, controle de estoque, conferência de mercadorias e acompanhamento de pedidos;
+Apoiar a conferência da folha de pagamento, dos cartões-ponto e das informações encaminhadas à contabilidade;
+Organizar e manter atualizados documentos, arquivos e controles administrativos e financeiros;
+Identificar inconsistências nos processos e contribuir com melhorias nos controles e procedimentos internos.Ensino Superior completo em Administração, Ciências Contábeis, Gestão Financeira ou áreas correlatas;
+Experiência na área administrativa e financeira.
+
+Diferenciais:
+Vivência com contas a pagar e receber, conciliações bancárias e fluxo de caixa;
+Experiência na elaboração de controles, planilhas e relatórios financeiros;
+Conhecimento em conferência de documentos fiscais e financeiros;
+Vivência com interface entre financeiro, contabilidade, departamento pessoal, compras e almoxarifado.
+
+
+===== VAGA 2 de 23 =====
+Título: Gerente Operacional e Comercial
+Empresa: Clínica de cirurgia plástica
+Local: Joinville
+Fonte: Catho · publicada Ontem · achada 10/11 03:20
+Link: https://www.catho.com.br/vagas/gerente-operacional-e-comercial/39197910
+--- Anúncio ---
+Gestão e acompanhamento dos processos operacionais da clínica, buscando organização, qualidade e eficiência nas atividades.
+Estruturação e acompanhamento de fluxos, procedimentos e controles internos.
+Gestão e desenvolvimento de equipes, incluindo alinhamentos, feedbacks, treinamentos e acompanhamento de desempenho.
+Acompanhamento da jornada dos pacientes, desde o primeiro contato até o pós-atendimento.
+Organização e acompanhamento da carteira de pacientes e oportunidades comerciais.
+Desenvolvimento de estratégias de relacionamento, acompanhamento de contatos e follow-up.
+Monitoramento de indicadores operacionais e comerciais, identificando oportunidades de melhoria e propondo planos de ação.
+Apoio ao desenvolvimento de práticas comerciais consultivas, alinhadas ao posicionamento e à experiência oferecida pela clínica.Requisitos e qualificações:
+Experiência anterior em gestão de equipes, operações, atendimento ou área comercial.
+Vivência com organização e estruturação de processos.
+Experiência com acompanhamento de metas, indicadores e resultados.
+Conhecimento em gestão de carteira de clientes e estratégias de relacionamento comercial.
+Boa capacidade de comunicação, organização e tomada de decisão.
+Ensino superior completo ou em andamento em Administração, Gestão, Processos, Comercial, Saúde ou áreas correlatas.
+
+Diferenciais:
+Experiência anterior em clínicas médicas, cirurgia plástica, estética ou serviços de alto padrão.
+Conhecimento em ferramentas de CRM, sistemas de gestão e indicadores.
+Experiência na implantação e melhoria de processos.
+
+
+===== VAGA 3 de 23 =====
 Título: Analista Administrativo Financeiro
 Empresa: GENTER
 Local: Joinville
@@ -45,7 +100,7 @@ Segunda a quinta-feira: das 7h30 às 11h30 e das 12h30 às 17h30;
 Sexta-feira: das 7h30 às 11h30 e das 12h30 às 16h30.
 
 
-===== VAGA 2 de 21 =====
+===== VAGA 4 de 23 =====
 Título: Pessoa Especialista de FP&A (Remoto) - 8126
 Empresa: Softplan
 Local: Não informado (Remoto)
@@ -135,7 +190,7 @@ Peru: unificamos processos judiciais com o sistema SAJ Courts, ampliando o acess
 Argentina: modernizamos a Justiça do Trabalho de Buenos Aires (PJCABA), levando mais agilidade e transparência a trabalhadores e empresas.
 
 
-===== VAGA 3 de 21 =====
+===== VAGA 5 de 23 =====
 Título: Coordenador(a) de RH I Generalista I Remoto
 Empresa: Cuattro
 Local: Não informado (Remoto)
@@ -292,7 +347,7 @@ Queremos que cada jornada na Cuattro seja uma oportunidade de desenvolvimento e 
 Muito prazer, somos a Cuattro...E por aqui, voamos juntos para conectar pessoas, ideias e oportunidades!
 
 
-===== VAGA 4 de 21 =====
+===== VAGA 6 de 23 =====
 Título: Analista Financeiro Sênior - Revenue Management | RD Station (Remoto)
 Empresa: TOTVS
 Local: Florianópolis, Santa Catarina, Brazil
@@ -339,7 +394,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 5 de 21 =====
+===== VAGA 7 de 23 =====
 Título: Coordenador de operações
 Empresa: Culture Designer
 Local: Joinville, Santa Catarina, Brazil
@@ -417,7 +472,7 @@ Employment type: Full-time
 Industries: Wholesale Import and Export
 
 
-===== VAGA 6 de 21 =====
+===== VAGA 8 de 23 =====
 Título: Analista Administrativo de Vendas
 Empresa: abler Vagas
 Local: Joinville, Santa Catarina, Brazil
@@ -464,7 +519,7 @@ Employment type: Full-time
 Industries: Technology, Information and Internet
 
 
-===== VAGA 7 de 21 =====
+===== VAGA 9 de 23 =====
 Título: Coordenador Administrativo Comercial
 Empresa: MERKEL RECURSOS HUMANOS
 Local: Joinville
@@ -487,7 +542,7 @@ Vivência em gestão administrativa multissetorial e liderança.
 Excel avançado e ERP.
 
 
-===== VAGA 8 de 21 =====
+===== VAGA 10 de 23 =====
 Título: COORDENADOR DE OPERAÇÕES*
 Empresa: Ânima Educação
 Local: Joinville, Santa Catarina, Brazil
@@ -577,7 +632,7 @@ Employment type: Full-time
 Industries: Education Administration Programs
 
 
-===== VAGA 9 de 21 =====
+===== VAGA 11 de 23 =====
 Título: Coordenador administrativo de vendas
 Empresa: MERKEL RH
 Local: Joinville, Santa Catarina, Brazil
@@ -611,7 +666,7 @@ Employment type: Full-time
 Industries: Human Resources Services
 
 
-===== VAGA 10 de 21 =====
+===== VAGA 12 de 23 =====
 Título: Coordenador(a) Administrativo(a) de Vendas
 Empresa: Grupo Krona
 Local: Joinville, Santa Catarina, Brazil
@@ -674,7 +729,7 @@ Employment type: Full-time
 Industries: Chemical Manufacturing
 
 
-===== VAGA 11 de 21 =====
+===== VAGA 13 de 23 =====
 Título: Analista Administrativo Comercial
 Empresa: Jobbol
 Local: Joinville, Santa Catarina, Brazil
@@ -713,7 +768,7 @@ Employment type: Full-time
 Industries: Technology, Information and Internet
 
 
-===== VAGA 12 de 21 =====
+===== VAGA 14 de 23 =====
 Título: Coordenador de operações
 Empresa: Par RH®️
 Local: Joinville, Santa Catarina, Brazil
@@ -753,7 +808,7 @@ Employment type: Full-time
 Industries: Business Consulting and Services
 
 
-===== VAGA 13 de 21 =====
+===== VAGA 15 de 23 =====
 Título: Gerente Administrativo Operacional –Clínica médica
 Empresa: HRL Consultoria e Projetos
 Local: Joinville, Santa Catarina, Brazil
@@ -807,7 +862,7 @@ Employment type: Full-time
 Industries: Human Resources Services
 
 
-===== VAGA 14 de 21 =====
+===== VAGA 16 de 23 =====
 Título: Analista de Planejamento Comercial - Salesforce
 Empresa: Porto Itapoa
 Local: Joinville, Santa Catarina, Brazil
@@ -858,7 +913,7 @@ Employment type: Full-time
 Industries: Data Infrastructure and Analytics
 
 
-===== VAGA 15 de 21 =====
+===== VAGA 17 de 23 =====
 Título: Gerente Financeiro
 Empresa: Jobbol
 Local: Joinville, Santa Catarina, Brazil
@@ -897,7 +952,7 @@ Employment type: Full-time
 Industries: Technology, Information and Internet
 
 
-===== VAGA 16 de 21 =====
+===== VAGA 18 de 23 =====
 Título: Analista de Planejamento de Vendas III
 Empresa: Tupy
 Local: Joinville, Santa Catarina, Brazil
@@ -973,7 +1028,7 @@ Employment type: Full-time
 Industries: Automation Machinery Manufacturing
 
 
-===== VAGA 17 de 21 =====
+===== VAGA 19 de 23 =====
 Título: Sales Operations Analyst - Remote Work
 Empresa: BairesDev
 Local: Brazil (Remoto)
@@ -1035,7 +1090,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 18 de 21 =====
+===== VAGA 20 de 23 =====
 Título: Coordenador Financeiro
 Empresa: Jobbol
 Local: Joinville, Santa Catarina, Brazil
@@ -1075,7 +1130,7 @@ Employment type: Full-time
 Industries: Technology, Information and Internet
 
 
-===== VAGA 19 de 21 =====
+===== VAGA 21 de 23 =====
 Título: Analista de Operações Comerciais
 Empresa: Rottas Vendas
 Local: Joinville, Santa Catarina, Brazil
@@ -1143,7 +1198,7 @@ Employment type: Full-time
 Industries: Civil Engineering
 
 
-===== VAGA 20 de 21 =====
+===== VAGA 22 de 23 =====
 Título: Analista Administrativo de Vendas
 Empresa: Jobbol
 Local: Joinville, Santa Catarina, Brazil
@@ -1182,7 +1237,7 @@ Employment type: Full-time
 Industries: Technology, Information and Internet
 
 
-===== VAGA 21 de 21 =====
+===== VAGA 23 de 23 =====
 Título: Analista de Operações Comerciais
 Empresa: House Rottas Vendas
 Local: Joinville - SC (Presencial)
