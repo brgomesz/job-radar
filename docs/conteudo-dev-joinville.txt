@@ -1,0 +1,419 @@
+CONTEÚDO DAS VAGAS DE DEV JOINVILLE — JobRadar
+Gerado em 10/11/2026 às 06:45 (Brasília). 6 vaga(s) com anúncio capturado, de 6 vagas Dev Joinville no radar. Mais recentes primeiro.
+Cada vaga traz o texto do anúncio como a fonte publicou (descrição, requisitos, diferenciais, benefícios).
+
+
+===== VAGA 1 de 6 =====
+Título: Desenvolvedor full stack
+Empresa: Goalfy
+Local: Joinville, Santa Catarina, Brazil
+Fonte: LinkedIn · publicada 2026-11-06 · achada 06/11 16:01
+Link: https://br.linkedin.com/jobs/view/desenvolvedor-full-stack-at-goalfy-4485891116
+--- Anúncio ---
+Desenvolvedor(a) Full Stack Pleno – React & Microserviços
+
+Sobre a Goalfy
+
+A Goalfy é uma startup em crescimento acelerado, sem dependência de investimento externo, que desenvolve soluções para aumentar a eficiência operacional de empresas por meio de automação, workflows inteligentes, dashboards e integrações.
+
+Nosso ambiente é dinâmico, colaborativo e focado em entrega rápida, aprendizado contínuo e impacto real no produto.
+
+A vaga
+
+Buscamos um(a) Desenvolvedor(a) Full Stack Pleno, com perfil hands-on, foco em Front-end com React e sólida experiência em Back-end com microserviços.
+
+Você atuará em todo o ciclo de desenvolvimento, com autonomia para propor soluções técnicas e impacto direto na evolução da plataforma.
+
+Responsabilidades
+
+Desenvolver e evoluir funcionalidades front-end e back-end
+Criar e manter microserviços escaláveis e performáticos
+Participar da definição da arquitetura técnica e boas práticas de código
+Traduzir demandas de negócio em soluções simples, eficientes e seguras
+Garantir qualidade, testes e manutenção contínua do software
+Atuar em ambientes com Docker, Kubernetes e CI/CD
+
+Requisitos
+
+Experiência sólida com React e TypeScript
+Experiência em back-end com Java, Go, Python ou Node.js
+Conhecimento em microserviços e arquitetura distribuída
+Experiência com Docker e Kubernetes
+Vivência com pipelines de CI/CD
+Experiência com Cloud (GCP, AWS ou similar)
+Perfil autônomo, colaborativo e orientado a resultados
+
+Modelo e Local de Trabalho
+
+📍 Modalidade: Presencial
+
+🏢 Local: Boa Vista - Joinville/SC
+
+💼 Contratação: PJ
+
+Por que fazer parte da Goalfy
+
+Na Goalfy, cada linha de código tem impacto direto na produtividade de centenas de empresas.
+
+Aqui você encontrará:
+
+Desafios reais
+Autonomia técnica
+Crescimento junto com o produto
+Um time comprometido com tecnologia e resultados
+
+👉 Se você gosta de construir, aprender rápido e gerar impacto real, venha transformar a vida de pessoas e empresas com a gente.
+
+🔗 https://goalfy.com.br/recruiting/
+
+Seniority level: Entry level
+Employment type: Full-time
+Industries: Software Development
+
+
+===== VAGA 2 de 6 =====
+Título: Desenvolvedor(a) Frontend Pleno
+Empresa: Orktus
+Local: Joinville, Santa Catarina, Brazil
+Fonte: LinkedIn · publicada 2026-10-07 · achada 06/10 21:27
+Link: https://br.linkedin.com/jobs/view/desenvolvedor-a-frontend-pleno-at-orktus-4474422314
+--- Anúncio ---
+Sobre a Orktus
+
+A Orktus é uma suíte de orquestração empresarial que reúne, em uma única plataforma, Service Desk, Gestão de Acessos, Documentos com IA e Operações. Desenvolvemos produtos SaaS multi-tenant em Joinville (SC) para empresas que precisam de processos com responsável, prazo e histórico.
+
+Venha fazer parte da nossa equipe! Estamos com 2 vagas para Desenvolvedor(a) Frontend Pleno.
+
+Sobre a vaga
+
+Você vai atuar na evolução dos produtos Orktus, construindo interfaces modernas, responsivas e fáceis de usar, em contato direto com produto, design e backend. Nosso time utiliza ferramentas de IA no desenvolvimento assistido, sempre com revisão crítica e validação do código gerado.
+
+Responsabilidades
+
+Desenvolver e manter aplicações em React e TypeScript.
+Construir interfaces responsivas com Tailwind CSS.
+Integrar o frontend a APIs REST.
+Trabalhar com componentes reutilizáveis, gerenciamento de estado, formulários e fluxos de autenticação.
+Garantir qualidade visual, acessibilidade e compatibilidade entre navegadores e dispositivos.
+Utilizar IA para apoiar implementação, testes, refatoração e investigação de problemas.
+Participar de code reviews e colaborar com produto, design e backend.
+
+Requisitos
+
+Experiência profissional com React e TypeScript.
+Domínio de HTML, CSS, JavaScript e design responsivo.
+Experiência com APIs REST, Git e gerenciamento de estado.
+Familiaridade com Vite, Axios e TanStack Query.
+Conhecimento de componentização e boas práticas de frontend.
+Uso prático de ferramentas como Codex, GitHub Copilot, ChatGPT ou similares.
+Capacidade de revisar e validar código gerado por IA.
+
+Diferenciais
+
+Experiência avançada com Tailwind CSS e React Router.
+Testes automatizados, acessibilidade e performance web.
+Auth0, Azure Static Web Apps e CI/CD.
+Desenvolvimento de produtos SaaS e sistemas multi-tenant.
+
+Perfil
+
+Pessoa colaborativa, atenta aos detalhes, com senso de produto, autonomia e cuidado com a experiência do usuário.
+
+Condições
+
+Contratação CLT.
+Modelo híbrido em Joinville (SC).
+
+Como se candidatar
+
+Candidate-se pelo LinkedIn ou envie seu currículo e GitHub/portfólio para rh@orktus.com.br com o assunto "Frontend Pleno".
+
+Seniority level: Entry level
+Employment type: Full-time
+Industries: Software Development
+
+
+===== VAGA 3 de 6 =====
+Título: DESENVOLVEDOR(a) NODE.JS PLENO
+Empresa: UNIBF
+Local: Joinville - SC (Presencial)
+Fonte: Solides · publicada há 1 mês · achada 24/08 20:35
+Link: https://vagas.solides.com.br/vaga/888349/desenvolvedor28a29-nodejs-pleno
+--- Anúncio ---
+Sobre a vaga
+
+Estamos buscando um(a) Desenvolvedor(a) Node.js Pleno com forte atuação em automações de processos e inteligência artificial aplicada, utilizando Node.js como base técnica. Essa pessoa irá desenvolver integrações inteligentes, pipelines de automação, APIs para consumo de modelos de IA e fluxos RAG (Retrieval-Augmented Generation) conectando dados, vetores e agentes de IA.
+
+Stack & Conhecimentos Essenciais/Node.js & Backend
+
+● Experiência sólida com Node.js
+
+● Desenvolvimento de APIs REST para integração de serviços e automações
+
+● Uso de TypeScript (diferencial, mas altamente desejável)
+
+● Integração com serviços externos via APIs, Webhooks e SDKs
+
+● Programação assíncrona, filas e processamento de eventos
+
+Automações:
+
+● Experiência prática com n8n para criação de fluxos automatizados
+
+● Construção de pipelines de automação envolvendo: APIs, Webhooks, Bancos de dados, Eventos e gatilhos
+
+● Orquestração de processos entre múltiplos sistemas
+
+● Criação de fluxos resilientes (retry, fallback, controle de erros)
+
+Inteligência Artificial Aplicada:
+
+● Experiência com integração de APIs de IA (LLMs, embeddings, speech, vision, etc.)
+
+● Implementação de RAG (Retrieval-Augmented Generation)
+
+● Criação e uso de bancos vetoriais (ex: pgvector, Pinecone, Qdrant, Weaviate ou similares)
+
+● Geração, armazenamento e consulta de embeddings
+
+● Construção de agentes de IA orientados a tarefas e automações
+
+● Contextualização de dados para respostas inteligentes
+
+Dados & Infra:
+
+● Experiência com bancos de dados relacionais (PostgreSQL, MySQL, etc.)
+
+● Experiência com bancos não relacionais (MongoDB, Redis, etc.)
+
+● Noções de performance, escalabilidade e custo em soluções de IA
+
+● Experiência com ambientes containerizados (Docker)
+
+Diferenciais:
+
+● Experiência com LLMs em produção
+
+● Vivência com Chatbots, CRMs ou automações conversacionais
+
+● Experiência com n8n self-hosted
+
+● Conhecimento em mensageria (RabbitMQ, Redis, SQS, etc.)
+
+● Familiaridade com prompt engineering e versionamento de prompts
+
+● Experiência com arquiteturas orientadas a eventos
+
+Perfil Ideal:
+
+● Curioso(a) e atualizado(a) com o ecossistema de IA
+
+● Forte capacidade de transformar processos em automações inteligentes
+
+● Consegue unir engenharia de software + lógica de negócio + IA
+
+● Autonomia para desenhar soluções do zero
+
+● Boa comunicação técnica e visão de produto
+
+Remuneração e benefícios:
+* Salário fixo compativel com a função
+* Vale refeição de R$ 30,00 por dia trabalhado sem desconto
+* Vale transporte.
+
+Após 3 meses:
+* Convênio com Cartão de Todos;
+* Desconto na KNN Idiomas;
+* Desconto de até 90% para realização de cursos na UNIBF;
+* Desconto para consultas psicológicas.
+
+*Formato de trabalho: presencial de segunda a sexta-feira
+
+
+===== VAGA 4 de 6 =====
+Título: Engenheiro de Software - BackEnd - Joinville
+Empresa: ROTAEXATA SOFTWARE LTDA
+Local: Joinville - SC (Híbrido)
+Fonte: Solides · publicada há 4 meses · achada 24/08 20:35
+Link: https://vagas.solides.com.br/vaga/831044/engenheiro-de-software-backend-joinville-
+--- Anúncio ---
+A RotaExata oferece uma oportunidade para empresas se destacarem mesmo quando o cenário financeiro e econômico não é o mais otimista. Através da gestão eficiente da frota, mostramos quanta economia pode ser gerada e quanto trabalho pode ser realizado a mais com o devido acompanhamento dos seus motoristas. A RotaExata se consolidou muito cedo no mercado como uma das mais promissoras ferramentas inteligentes para Rastreamento e Gestão de Frotas, com uma equipe de especialistas que inovam diariamente para manter a empresa líder e referência no segmento.
+
+Estamos em busca de um Engenheiro de Software Backend para integrar nossa equipe de tecnologia e desenvolver soluções inovadoras.
+
+Responsabilidades:
+
+Desenvolver e manter aplicações utilizando Nodejs
+Participar do ciclo completo de desenvolvimento de software
+Colaborar com o time para definir arquitetura e boas práticas de programação
+Realizar testes e garantir a qualidade do código
+Contribuir para a melhoria contínua dos processos de desenvolvimento
+
+Requisitos:
+Experiência com desenvolvimento de backend em Nodejs
+Conhecimento em bancos de dados relacionais e não relacionais
+Experiência com APIs RESTful
+Conhecimento em Git
+Conhecimento em boas práticas de desenvolvimento de software
+Graduação na área de Tecnologia da Informação ou áreas relacionadas
+
+
+===== VAGA 5 de 6 =====
+Título: Desenvolvedor Fullstack Pleno
+Empresa: AMBIENTAL
+Local: Joinville
+Fonte: Catho · publicada Hoje · achada 24/08 20:33
+Link: https://www.catho.com.br/vagas/desenvolvedor-fullstack-pleno/38100847
+--- Anúncio ---
+Busca de vagas
+
+Procurar vagas
+Salário
+Distância (km)
+Modalidade
+Setor
+Data
+Contrato
+PCD
+Vagas de emprego de desenvolvedor fullstack pleno
+
+2 resultados
+
+Muito mais vagas!
+
+Cadastre-se agora para visualizar todas as oportunidades e se candidatar.
+
+Cadastre-se
+
+Ordenar por:
+
+Maior Relevância
+Mais Recentes
+Publicada em 06/08 Recrutador ativo
+Desenvolvedor de Software Web Fullstack Pleno
+
+Decisão Sistemas
+
+1 vaga - Goiania
+
+R$ 5.800 + 4 benefícios
+
+Quero me candidatar
+Publicada em 03/08
+Desenvolvedor FullStack Pleno
+
+RHF Taquara
+
+1 vaga - São Paulo
+
+A Combinar
+
+Quero me candidatar
+Publicada em 06/08
+Vaga com recrutador muito ativo
+Desenvolvedor de Software Web Fullstack Pleno
+
+Decisão Sistemas
+
+1 vagas - Goiania
+
+R$ 5.800 + 4 benefícios
+
+Quero me candidatar
+
+Sobre a vaga
+
+Realizar codificação de novas features e manutenções corretivas (backend e frontend) nos softwares da empresa;
+Realizar estimativas de esforço para codificação de novas features ou manutenções corretivas;
+Realizar testes unitários e de integração nas features desenvolvidas ou corrigidas;
+Realizar documentação acerca das features desenvolvidas ou corrigidas;
+Realizar registro das atividades executadas;
+Interagir com a equipe de projetos e manutenção de software;
+Interagir com a área de produtos/requisitos;
+Interagir com a área de testes;
+Interagir com a área de atendimento ao cliente (suporte e implantação);
+Prestar contas do trabalho ao gestor imediato;
+Participar de reuniões remotas diárias para alinhamento do time;
+Participar de reuniões remotas para tomada de decisões de projetos/demandas;
+Participar de eventos remotos ou presenciais promovidos pela organização.Ensino superior na área de tecnologia (em andamento ou concluído);
+Experiência em desenvolvimento nas tecnologias adotadas;
+Ter boa comunicação oral e escrita;
+Ser proativo;
+Saber exercer liderança técnica;
+Conhecimentos consolidados nas tecnologias:
+Angular 2+
+NodeJS
+Typescript
+PostgreSql
+Conhecimentos diferenciais:
+Bootstrap
+Git
+Docker e Docker Compose
+Code review
+Padrões de projeto
+Testes automatizados
+Internet própria estável (banda larga).
+
+Tipo de contrato
+
+CLT (Efetivo)
+
+Horário de trabalho
+
+De segunda a sexta em horário comercial (8h às 18h, com intervalo de 1:15 para almoço)
+
+Salário
+
+R$ 5.800
+
+Benefícios
+
+Assistência médica / Medicina em grupo
+Convênio com farmácia
+Seguro de vida em grupo
+Tíquete alimentação
+
+Sobre a empresa
+
+Decisão Sistemas
+Cadastre-se gratuitamente para ver mais informações da empresa.
+
+Quer ter até 18 vezes mais chances de receber um contato?
+
+Experimente o Destaque Extra e apareça em destaque para o recrutador
+
+Quero o Destaque Extra
+Agora não
+
+
+===== VAGA 6 de 6 =====
+Título: Engenheiro de Software - BackEnd - Joinville
+Empresa: RotaExata
+Local: Joinville, Santa Catarina, Brazil
+Fonte: LinkedIn · publicada 2026-04-18 · achada 24/08 20:32
+Link: https://br.linkedin.com/jobs/view/engenheiro-de-software-backend-joinville-at-rotaexata-4403576280
+--- Anúncio ---
+A RotaExata oferece uma oportunidade para empresas se destacarem mesmo quando o cenário financeiro e econômico não é o mais otimista. Através da gestão eficiente da frota, mostramos quanta economia pode ser gerada e quanto trabalho pode ser realizado a mais com o devido acompanhamento dos seus motoristas. A RotaExata se consolidou muito cedo no mercado como uma das mais promissoras ferramentas inteligentes para Rastreamento e Gestão de Frotas, com uma equipe de especialistas que inovam diariamente para manter a empresa líder e referência no segmento.
+
+Estamos em busca de um Engenheiro de Software Backend para integrar nossa equipe de tecnologia e desenvolver soluções inovadoras.
+
+Responsabilidades:
+
+Desenvolver e manter aplicações utilizando Nodejs
+Participar do ciclo completo de desenvolvimento de software
+Colaborar com o time para definir arquitetura e boas práticas de programação
+Realizar testes e garantir a qualidade do código
+Contribuir para a melhoria contínua dos processos de desenvolvimento
+
+Requisitos:
+
+Experiência com desenvolvimento de backend em Nodejs
+Conhecimento em bancos de dados relacionais e não relacionais
+Experiência com APIs RESTful
+Conhecimento em Git
+Conhecimento em boas práticas de desenvolvimento de software
+Graduação na área de Tecnologia da Informação ou áreas relacionadas
+
+Seniority level: Not Applicable
+Employment type: Full-time
+Industries: Internet Publishing
