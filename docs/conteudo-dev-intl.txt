@@ -1,9 +1,151 @@
 CONTEÚDO DAS VAGAS DE DEV INTERNACIONAL — JobRadar
-Gerado em 18/11/2026 às 08:27 (Brasília). 110 vaga(s) com anúncio capturado, de 113 vagas Dev Internacional no radar. Mais recentes primeiro.
+Gerado em 18/11/2026 às 17:17 (Brasília). 112 vaga(s) com anúncio capturado, de 115 vagas Dev Internacional no radar. Mais recentes primeiro.
 Cada vaga traz o texto do anúncio como a fonte publicou (descrição, requisitos, diferenciais, benefícios).
 
 
-===== VAGA 1 de 110 =====
+===== VAGA 1 de 112 =====
+Título: Node Backend Developer - Remote Work
+Empresa: INDI Staffing Services
+Local: Guarulhos, São Paulo, Brazil (Remoto)
+Fonte: LinkedIn · publicada 2026-11-18 · achada 18/11 17:10
+Link: https://br.linkedin.com/jobs/view/node-backend-developer-remote-work-at-indi-staffing-services-4492043348
+--- Anúncio ---
+At INDI, we're passionate about empowering individuals and businesses worldwide. Our cutting-edge recruiters connect leading companies with top talent, fostering a dynamic environment where innovation thrives. Join us in shaping the future of work.
+
+Overview of the role
+
+The Node Backend Developer position focuses on being a full-time problem solver, combining experience, knowledge, and independence to tackle the most complex tasks. This role involves architecting backend systems using best practices, implementing and iterating features at a rapid pace, and working collaboratively across functional teams in a fast-paced environment while designing, extending, and implementing APIs and maintaining high engineering standards through code reviews, unit tests, and analytics.
+
+Key responsibilities
+
+- Architecting backend systems using best practices and modern development approaches.
+
+- Implementing and iterating features in a tactical manner at a rapid pace.
+
+- Working collaboratively and efficiently across functional teams in a fast-paced startup environment.
+
+- Designing, extending, and implementing APIs for robust application functionality.
+
+- Maintaining high standards of engineering quality through code reviews, unit tests, and analytics.
+
+- Creating engineering efficiencies through automation and development of tools.
+
+- Defining engineering processes for product launch and releases.
+
+- Contributing to team growth by running technical interviews and evaluating candidates.
+
+Requirements
+
+- Node Experience: 4+ years of hands-on experience with Node development.
+
+- Database Knowledge: Experience with both SQL and NoSQL databases.
+
+- Modern Architecture: Practical experience with microservices and cloud platforms.
+
+- Algorithm Proficiency: Advanced knowledge of algorithms and data structures.
+
+- Infrastructure Understanding: IT infrastructure knowledge and deployment practices.
+
+- Agile Methodologies: Intermediate-level experience with Agile methodologies and workflows.
+
+- Best Practices: Strong understanding of SOLID principles, clean code, and scalable solutions.
+
+- Design Patterns: Solid knowledge of design patterns and their applications.
+
+- Full-Stack Development: Experience developing entire applications from scratch.
+
+- Testing and CI/CD: Hands-on experience in automated tests and CI/CD pipelines.
+
+- Version Control: Strong experience with version control systems.
+
+- Language Proficiency: Advanced level of English.
+
+Benefits:
+
+- Flexibility: Choose where and how you work for enhanced creativity and innovation.
+
+- Tailored Compensation: Personalize your earnings to suit your financial goals.
+
+- Tech-Driven Tools: Access cutting-edge resources for seamless collaboration and productivity.
+
+- Autonomous Workflow: Take control of your schedule to achieve work-life balance.
+
+- Well-being: Enjoy generous leave policies for rest and rejuvenation.
+
+- Diversity & Inclusion: Thrive in a diverse and inclusive environment.
+
+- Collaboration: Engage with industry leaders for collective growth.
+
+- Development: Access mentorship and growth opportunities for continuous advancement.
+
+If you are interested in being part of a team composed of the best professionals and working 100% goal-oriented in an innovative environment, but with the structure and resources of a multinational market leader, do not hesitate to apply!
+
+Seniority level: Mid-Senior level
+Employment type: Full-time
+Industries: Staffing and Recruiting
+
+
+===== VAGA 2 de 112 =====
+Título: Software Engineer | Full Stack | Growth
+Empresa: Loft
+Local: São Paulo, São Paulo, Brazil (Remoto)
+Fonte: LinkedIn · publicada 2026-09-05 · achada 18/11 17:10
+Link: https://br.linkedin.com/jobs/view/software-engineer-full-stack-growth-at-loft-4462600740
+--- Anúncio ---
+Como o time de Engenharia constrói a Loft:
+
+O time de Growth é responsável por acelerar o crescimento sustentável da Loft, conectando estratégia, dados e tecnologia para gerar impacto real no negócio. Nossa missão é criar jornadas inteligentes que aumentem aquisição, conversão e retenção de clientes, sempre com foco em eficiência e inovação. Somos protagonistas na construção de soluções que potencializam o marketing e transformam a experiência do usuário.
+
+Os desafios que você vai encontrar:
+
+Desenvolver plataformas, fluxos de trabalho e automações que suportem a experimentação de crescimento;
+Projetar, construir e analisar testes A/B e outros experimentos para melhorar taxas de conversão em sites, campanhas e fluxos de integração;
+Colaborar com equipes de dados e produto para analisar comportamento do usuário e propor soluções técnicas para reduzir pontos de abandono;
+Implementar e integrar ferramentas de crescimento de terceiros e criar scripts de automação para aumentar eficiência operacional;
+Identificar e resolver gargalos técnicos que impactam metas de crescimento, como tempos de carregamento e performance de APIs;
+Fazer parceria com equipes de marketing, produto e dados para alinhar prioridades e executar um roadmap compartilhado de crescimento;
+Assumir responsabilidade completa pelo desenvolvimento das soluções, desde idealização até implantação e monitoramento de desempenho.
+
+O que você precisa para virar a chave?
+
+Habilidades sólidas de engenharia full-stack;
+Experiência no lançamento ou crescimento de produtos;
+Competência com ferramentas de análise e experimentação;
+Conforto para trabalhar com APIs e ferramentas de marketing/CRM;
+Abordagem orientada a resultados, com capacidade de traduzir ideias em especificações e entregar soluções de alta qualidade;
+Segurança para impulsionar decisões em ambientes ambíguos;
+Formação sólida em ciência da computação.
+
+Informações adicionais
+
+💳Caju - Mais liberdade para usar seus benefícios (Refeição, Alimentação, Mobilidade, Saúde, Home Office, Cultura e Educação);
+
+🏥Assistência Médica - Sulamerica
+
+🪥Assistência Odontológica - Sulamerica
+
+🦺Seguro de Vida - Prudential
+
+🏋️WellHub - Acesso a academias no Brasil inteiro
+
+🧘Wellz- Plataforma de Saúde Mental
+
+🏝️Férias Flexíveis - Tire suas férias a qualquer momento
+
+😴Day Off
+
+👪Licença Parental - para pais e mães
+
+🐕Guapeco - Plano de Saúde Pet com desconto
+
+🖥️Trabalho - Remoto
+
+Seniority level: Not Applicable
+Employment type: Full-time
+Industries: Technology, Information and Internet
+
+
+===== VAGA 3 de 112 =====
 Título: Software Engineer | Full Stack | Remote Work
 Empresa: Loft
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -96,7 +238,7 @@ Employment type: Full-time
 Industries: Technology, Information and Internet
 
 
-===== VAGA 2 de 110 =====
+===== VAGA 4 de 112 =====
 Título: Full Stack Developer (Next.js & AWS Lambda) - Remote Work | REF#311037
 Empresa: BairesDev
 Local: Manaus, Amazonas, Brazil (Remoto)
@@ -149,7 +291,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 3 de 110 =====
+===== VAGA 5 de 112 =====
 Título: Node Developer - Remote Work | REF#310274
 Empresa: BairesDev
 Local: Greater Rio de Janeiro (Remoto)
@@ -209,7 +351,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 4 de 110 =====
+===== VAGA 6 de 112 =====
 Título: React Frontend Developer - Remote Work | REF#307243
 Empresa: BairesDev
 Local: Greater Rio de Janeiro (Remoto)
@@ -264,7 +406,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 5 de 110 =====
+===== VAGA 7 de 112 =====
 Título: React + TypeScript Developer - Remote Work | REF#309881
 Empresa: BairesDev
 Local: Florianópolis, Santa Catarina, Brazil (Remoto)
@@ -324,7 +466,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 6 de 110 =====
+===== VAGA 8 de 112 =====
 Título: Software Engineer II - Frontend - Developer Platform
 Empresa: Kraken
 Local: Brazil (Remoto)
@@ -398,7 +540,7 @@ Employment type: Full-time
 Industries: Financial Services
 
 
-===== VAGA 7 de 110 =====
+===== VAGA 9 de 112 =====
 Título: Node Backend Developer - Remote Work | REF#307227
 Empresa: BairesDev
 Local: Greater Rio de Janeiro (Remoto)
@@ -456,7 +598,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 8 de 110 =====
+===== VAGA 10 de 112 =====
 Título: Fullstack Node + Nest + React Developer | REF#307685
 Empresa: BairesDev
 Local: Manaus, Amazonas, Brazil (Remoto)
@@ -514,7 +656,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 9 de 110 =====
+===== VAGA 11 de 112 =====
 Título: Backend Engineer (Node) - Remote Work | REF#308534
 Empresa: BairesDev
 Local: Greater Rio de Janeiro (Remoto)
@@ -568,7 +710,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 10 de 110 =====
+===== VAGA 12 de 112 =====
 Título: Backend Developer (Node.js, Java)
 Empresa: Stefanini LATAM
 Local: Brazil (Remoto)
@@ -604,7 +746,7 @@ Employment type: Full-time
 Industries: Financial Services
 
 
-===== VAGA 11 de 110 =====
+===== VAGA 13 de 112 =====
 Título: React/Next.js Developer - Remote Work | REF#308558
 Empresa: BairesDev
 Local: Greater Rio de Janeiro (Remoto)
@@ -658,7 +800,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 12 de 110 =====
+===== VAGA 14 de 112 =====
 Título: Software Engineer Backend | IT Offshore Platform US
 Empresa: BTG Pactual
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -712,7 +854,7 @@ Employment type: Full-time
 Industries: Financial Services
 
 
-===== VAGA 13 de 110 =====
+===== VAGA 15 de 112 =====
 Título: Front End Developer
 Empresa: Stefanini Manufacturing
 Local: Belo Horizonte, Minas Gerais, Brazil (Remoto)
@@ -774,7 +916,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 14 de 110 =====
+===== VAGA 16 de 112 =====
 Título: Frontend Developer — Ecommerce
 Empresa: Raicom
 Local: Brazil (Remoto)
@@ -873,7 +1015,7 @@ Employment type: Full-time
 Industries: Retail
 
 
-===== VAGA 15 de 110 =====
+===== VAGA 17 de 112 =====
 Título: Full-Stack Engineer
 Empresa: OpenTrain AI
 Local: HQ: United States (Remoto)
@@ -924,7 +1066,7 @@ About OpenTrain AI
 OpenTrain AI connects experienced professionals with paid, part-time AI training work: shaping and improving the AI systems that companies are building right now.
 
 
-===== VAGA 16 de 110 =====
+===== VAGA 18 de 112 =====
 Título: Node Backend Developer - Remote Work | REF#307228
 Empresa: BairesDev
 Local: Rio de Janeiro, Rio de Janeiro, Brazil (Remoto)
@@ -982,7 +1124,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 17 de 110 =====
+===== VAGA 19 de 112 =====
 Título: Backend NestJs Developer
 Empresa: Jobgether
 Local: Brazil (Remoto)
@@ -1055,7 +1197,7 @@ Employment type: Full-time
 Industries: Internet Marketplace Platforms
 
 
-===== VAGA 18 de 110 =====
+===== VAGA 20 de 112 =====
 Título: React/Next.js Developer - Remote Work | REF#290620
 Empresa: BairesDev
 Local: Minas Gerais, Brazil (Remoto)
@@ -1109,7 +1251,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 19 de 110 =====
+===== VAGA 21 de 112 =====
 Título: Node.js Developer - remote work | REF#307916
 Empresa: BairesDev
 Local: Recife, Pernambuco, Brazil (Remoto)
@@ -1159,7 +1301,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 20 de 110 =====
+===== VAGA 22 de 112 =====
 Título: React Frontend Developer - Remote Work | REF#307242
 Empresa: BairesDev
 Local: Greater Natal (Remoto)
@@ -1214,7 +1356,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 21 de 110 =====
+===== VAGA 23 de 112 =====
 Título: Node.js Software Engineer - Remote Work | REF#308197
 Empresa: BairesDev
 Local: Greater Rio de Janeiro (Remoto)
@@ -1266,7 +1408,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 22 de 110 =====
+===== VAGA 24 de 112 =====
 Título: Frontend Engineer (React/Next.js) - Remote Work | REF#309032
 Empresa: BairesDev
 Local: Greater Rio de Janeiro (Remoto)
@@ -1328,7 +1470,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 23 de 110 =====
+===== VAGA 25 de 112 =====
 Título: Fullstack Engineer - Payward Services - Custody
 Empresa: Kraken
 Local: Brazil (Remoto)
@@ -1411,7 +1553,7 @@ Employment type: Full-time
 Industries: Financial Services
 
 
-===== VAGA 24 de 110 =====
+===== VAGA 26 de 112 =====
 Título: Full-Stack Engineer
 Empresa: Darkroom
 Local: Brazil (Remoto)
@@ -1487,7 +1629,7 @@ Employment type: Full-time
 Industries: Advertising Services
 
 
-===== VAGA 25 de 110 =====
+===== VAGA 27 de 112 =====
 Título: Engineering | Frontend Engineer
 Empresa: Alice
 Local: Brazil (Remoto)
@@ -1558,7 +1700,7 @@ Employment type: Full-time
 Industries: Hospitals and Health Care
 
 
-===== VAGA 26 de 110 =====
+===== VAGA 28 de 112 =====
 Título: Full-Stack JavaScript Developer (AI-Native)
 Empresa: UltaHost
 Local: Brazil (Remoto)
@@ -1621,7 +1763,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting, IT System Operations and Maintenance, and Software Development
 
 
-===== VAGA 27 de 110 =====
+===== VAGA 29 de 112 =====
 Título: Mid Level Backend Developer | Node.js
 Empresa: Getnet
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -1713,7 +1855,7 @@ Employment type: Full-time
 Industries: Financial Services
 
 
-===== VAGA 28 de 110 =====
+===== VAGA 30 de 112 =====
 Título: Fullstack Software Engineer (Node.js + React)
 Empresa: Mindera
 Local: Brazil (Remoto)
@@ -1772,7 +1914,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 29 de 110 =====
+===== VAGA 31 de 112 =====
 Título: Frontend Developer
 Empresa: HiredBuddy
 Local: Rio de Janeiro, Brazil (Remoto)
@@ -1856,7 +1998,7 @@ Employment type: Full-time
 Industries: Artificial Intelligence, Software Development, and IT System Custom Software Development
 
 
-===== VAGA 30 de 110 =====
+===== VAGA 32 de 112 =====
 Título: SOFTWARE DEVELOPER ANALYST III (React) - FRAUD
 Empresa: Inter
 Local: Belo Horizonte, Minas Gerais, Brazil (Remoto)
@@ -1935,7 +2077,7 @@ Employment type: Full-time
 Industries: Financial Services
 
 
-===== VAGA 31 de 110 =====
+===== VAGA 33 de 112 =====
 Título: Frontend Software Engineer - Ag & Trading
 Empresa: Cargill
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -1973,7 +2115,7 @@ Employment type: Full-time
 Industries: Chemical Manufacturing, Food and Beverage Services, and Food and Beverage Manufacturing
 
 
-===== VAGA 32 de 110 =====
+===== VAGA 34 de 112 =====
 Título: Node.js Software Engineer - Remote Work | REF#305670
 Empresa: BairesDev
 Local: Greater Rio de Janeiro (Remoto)
@@ -2027,7 +2169,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 33 de 110 =====
+===== VAGA 35 de 112 =====
 Título: PL Software Engineer (Node.js)
 Empresa: ST-One
 Local: Brazil (Remoto)
@@ -2100,7 +2242,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 34 de 110 =====
+===== VAGA 36 de 112 =====
 Título: Software Engineer III (Frontend)
 Empresa: frete.com
 Local: Brazil (Remoto)
@@ -2208,7 +2350,7 @@ Employment type: Full-time
 Industries: Internet Marketplace Platforms
 
 
-===== VAGA 35 de 110 =====
+===== VAGA 37 de 112 =====
 Título: Software Engineer, Backend - Product Engineering (Brazil)
 Empresa: DoorDash
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -2270,7 +2412,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 36 de 110 =====
+===== VAGA 38 de 112 =====
 Título: Full-Stack E-commerce Developer with Sage X3 Experience
 Empresa: Toptal
 Local: Não informado (Remoto)
@@ -2314,7 +2456,7 @@ Nice to have:
 Manufacturing industry experience.
 
 
-===== VAGA 37 de 110 =====
+===== VAGA 39 de 112 =====
 Título: PL/SR Front-end Developer (React)
 Empresa: Jobgether
 Local: Brazil (Remoto)
@@ -2399,7 +2541,7 @@ Employment type: Full-time
 Industries: Internet Marketplace Platforms
 
 
-===== VAGA 38 de 110 =====
+===== VAGA 40 de 112 =====
 Título: Full Stack Developer
 Empresa: Typeform
 Local: HQ: Ireland (Remote) (Remoto)
@@ -2463,7 +2605,7 @@ Degree in Computer Science or a related technical field
 We are proud to be an equal-opportunity employer. We celebrate diversity and stand firmly against discrimination and harassment of any kind—whether based on race, color, ancestry, religion, sex, national origin, sexual orientation, age, citizenship, marital status, disability, gender identity or expression, or veteran status. Everyone is welcome here.
 
 
-===== VAGA 39 de 110 =====
+===== VAGA 41 de 112 =====
 Título: Backend Engineer
 Empresa: Spheric
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -2501,7 +2643,7 @@ Employment type: Full-time
 Industries: Construction
 
 
-===== VAGA 40 de 110 =====
+===== VAGA 42 de 112 =====
 Título: Forward Deployed Engineer (TypeScript + AI) - Remote - Latin America
 Empresa: FullStack
 Local: Manaus, Amazonas, Brazil (Remoto)
@@ -2614,7 +2756,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting, Computer and Network Security, and Information Services
 
 
-===== VAGA 41 de 110 =====
+===== VAGA 43 de 112 =====
 Título: Backend Engineer (Node) - Remote Work | REF#304727
 Empresa: BairesDev
 Local: Greater Rio de Janeiro (Remoto)
@@ -2670,7 +2812,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 42 de 110 =====
+===== VAGA 44 de 112 =====
 Título: AI Backend Engineer
 Empresa: Avatar Natural Foods
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -2840,7 +2982,7 @@ Employment type: Full-time
 Industries: Food and Beverage Manufacturing
 
 
-===== VAGA 43 de 110 =====
+===== VAGA 45 de 112 =====
 Título: Mid-level Full Stack Engineer ID92628
 Empresa: AgileEngine
 Local: Salvador, Bahia, Brazil (Remoto)
@@ -2890,7 +3032,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 44 de 110 =====
+===== VAGA 46 de 112 =====
 Título: SaaS Full-Stack Developer (100 % remote) (m/f/d)
 Empresa: EWOR
 Local: Odense Banegård (Odense Letbane) Odense C, Europe, 5000 Denmark (Remoto)
@@ -2918,7 +3060,7 @@ You have excellent verbal and written communication skills in English.
 Join us to build cutting-edge technology and category-defining initiatives from the ground up!
 
 
-===== VAGA 45 de 110 =====
+===== VAGA 47 de 112 =====
 Título: Forward Deployed AI Engineer (TypeScript) - Remote - Latin America
 Empresa: FullStack
 Local: Manaus, Amazonas, Brazil (Remoto)
@@ -3032,7 +3174,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting, Computer and Network Security, and Information Services
 
 
-===== VAGA 46 de 110 =====
+===== VAGA 48 de 112 =====
 Título: Frontend Developer (React)
 Empresa: Jobgether
 Local: Brazil (Remoto)
@@ -3091,7 +3233,7 @@ Employment type: Full-time
 Industries: Internet Marketplace Platforms
 
 
-===== VAGA 47 de 110 =====
+===== VAGA 49 de 112 =====
 Título: Full Stack Developer
 Empresa: Flatiron Software
 Local: Brazil (Remoto)
@@ -3146,7 +3288,7 @@ Employment type: Full-time
 Industries: Software Development, IT Services and IT Consulting, and Technology, Information and Media
 
 
-===== VAGA 48 de 110 =====
+===== VAGA 50 de 112 =====
 Título: JavaScript Frontend Developer (Remote)
 Empresa: Hire Feed
 Local: Brazil (Remoto)
@@ -3199,7 +3341,7 @@ Employment type: Full-time
 Industries: Software Development, Technology, Information and Media, and Information Services
 
 
-===== VAGA 49 de 110 =====
+===== VAGA 51 de 112 =====
 Título: Backend Engineer - Wallets (100% Remote)
 Empresa: Tether.io
 Local: Brazil (Remoto)
@@ -3266,7 +3408,7 @@ Employment type: Full-time
 Industries: Financial Services
 
 
-===== VAGA 50 de 110 =====
+===== VAGA 52 de 112 =====
 Título: Full Stack Developer (React + Node) - Remote Work
 Empresa: BairesDev
 Local: Recife, Pernambuco, Brazil (Remoto)
@@ -3346,7 +3488,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 51 de 110 =====
+===== VAGA 53 de 112 =====
 Título: Fullstack Node + Nest + React Engineer | REF#303118
 Empresa: BairesDev
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -3404,7 +3546,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 52 de 110 =====
+===== VAGA 54 de 112 =====
 Título: Backend Engineer (Node) - Remote Work | REF#289465
 Empresa: BairesDev
 Local: Brazil (Remoto)
@@ -3458,7 +3600,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 53 de 110 =====
+===== VAGA 55 de 112 =====
 Título: Node.js Software Engineer - Remote Work
 Empresa: BairesDev
 Local: Rio de Janeiro, Rio de Janeiro, Brazil (Remoto)
@@ -3526,7 +3668,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 54 de 110 =====
+===== VAGA 56 de 112 =====
 Título: Software Engineer | Back-End | Remote Work
 Empresa: Loft
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -3620,7 +3762,7 @@ Employment type: Other
 Industries: Technology, Information and Internet
 
 
-===== VAGA 55 de 110 =====
+===== VAGA 57 de 112 =====
 Título: Full stack developer
 Empresa: Gula.menu
 Local: Belo Horizonte, Minas Gerais, Brazil (Remoto)
@@ -3663,7 +3805,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 56 de 110 =====
+===== VAGA 58 de 112 =====
 Título: JavaScript Developer (CRM Platform)
 Empresa: Sigma Software
 Local: Greater São Paulo Area (Remoto)
@@ -3725,7 +3867,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 57 de 110 =====
+===== VAGA 59 de 112 =====
 Título: React Developer - Remote Work
 Empresa: INDI Staffing Services
 Local: São Paulo, Brazil (Remoto)
@@ -3789,7 +3931,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 58 de 110 =====
+===== VAGA 60 de 112 =====
 Título: Fullstack JavaScript Developer - Latin America - Remote
 Empresa: Azumo
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -3860,7 +4002,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 59 de 110 =====
+===== VAGA 61 de 112 =====
 Título: Frontend Developer
 Empresa: Bees Brasil
 Local: Campinas, São Paulo, Brazil (Remoto)
@@ -3978,7 +4120,7 @@ Employment type: Full-time
 Industries: Technology, Information and Media
 
 
-===== VAGA 60 de 110 =====
+===== VAGA 62 de 112 =====
 Título: JavaScript Developer
 Empresa: Sigma Software
 Local: Greater São Paulo Area (Remoto)
@@ -4062,7 +4204,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 61 de 110 =====
+===== VAGA 63 de 112 =====
 Título: Backend Engineer (Node) - Remote Work | REF#302640
 Empresa: BairesDev
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -4116,7 +4258,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 62 de 110 =====
+===== VAGA 64 de 112 =====
 Título: Middle Full Stack Engineer ID86300
 Empresa: AgileEngine
 Local: Florianópolis, Santa Catarina, Brazil (Remoto)
@@ -4169,7 +4311,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 63 de 110 =====
+===== VAGA 65 de 112 =====
 Título: Full Stack Engineer
 Empresa: NexaLogix
 Local: São Paulo, Brazil (Remoto)
@@ -4203,7 +4345,7 @@ Employment type: Contract
 Industries: Staffing and Recruiting
 
 
-===== VAGA 64 de 110 =====
+===== VAGA 66 de 112 =====
 Título: Front-End Developer - Remote Work | REF#170687
 Empresa: BairesDev
 Local: Natal, Rio Grande do Norte, Brazil (Remoto)
@@ -4252,7 +4394,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 65 de 110 =====
+===== VAGA 67 de 112 =====
 Título: Backend Developer (LatAm based)
 Empresa: Nabu Casa
 Local: Greater São Paulo Area (Remoto)
@@ -4355,7 +4497,7 @@ Employment type: Full-time
 Industries: Technology, Information and Internet
 
 
-===== VAGA 66 de 110 =====
+===== VAGA 68 de 112 =====
 Título: Intermediate Frontend Developer
 Empresa: BEES
 Local: Campinas, São Paulo, Brazil (Remoto)
@@ -4428,7 +4570,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 67 de 110 =====
+===== VAGA 69 de 112 =====
 Título: JavaScript Developer
 Empresa: Hired
 Local: Brazil (Remoto)
@@ -4504,7 +4646,7 @@ Employment type: Full-time
 Industries: Marketing Services, Staffing and Recruiting, and Technology, Information and Media
 
 
-===== VAGA 68 de 110 =====
+===== VAGA 70 de 112 =====
 Título: Front-End Application Developer
 Empresa: Tata Consultancy Services
 Local: São Paulo, Brazil (Remoto)
@@ -4571,7 +4713,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 69 de 110 =====
+===== VAGA 71 de 112 =====
 Título: Full Stack JavaScript/TypeScript Engineer
 Empresa: Jobgether
 Local: Brazil (Remoto)
@@ -4646,7 +4788,7 @@ Employment type: Full-time
 Industries: Internet Marketplace Platforms
 
 
-===== VAGA 70 de 110 =====
+===== VAGA 72 de 112 =====
 Título: Frontend Engineer (React/Next.js) - Remote Work
 Empresa: BairesDev
 Local: Rio de Janeiro, Brazil (Remoto)
@@ -4726,7 +4868,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 71 de 110 =====
+===== VAGA 73 de 112 =====
 Título: Full Stack Software Engineer (React + Typescript)
 Empresa: Velozient
 Local: Brazil (Remoto)
@@ -4796,7 +4938,7 @@ Employment type: Contract
 Industries: Software Development, IT Services and IT Consulting, and IT System Custom Software Development
 
 
-===== VAGA 72 de 110 =====
+===== VAGA 74 de 112 =====
 Título: AI Product Engineer, Finance Systems (Full Stack, Next.js + Supabase)
 Empresa: Koin Limited
 Local: Brazil (Remoto)
@@ -4916,7 +5058,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 73 de 110 =====
+===== VAGA 75 de 112 =====
 Título: Frontend Engineer & UI Designer (Developer Tooling)
 Empresa: SearchApi
 Local: Brazil (Remoto)
@@ -5035,7 +5177,7 @@ Employment type: Full-time
 Industries: IT System Data Services
 
 
-===== VAGA 74 de 110 =====
+===== VAGA 76 de 112 =====
 Título: Full-Stack Engineer (Remote)
 Empresa: Tempo (YC S23)
 Local: Brazil (Remoto)
@@ -5081,7 +5223,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 75 de 110 =====
+===== VAGA 77 de 112 =====
 Título: Fullstack Engineer II
 Empresa: Skeelo
 Local: Brazil (Remoto)
@@ -5156,7 +5298,7 @@ Employment type: Full-time
 Industries: Entertainment Providers
 
 
-===== VAGA 76 de 110 =====
+===== VAGA 78 de 112 =====
 Título: Fullstack Engineer, NodeJS & ReactJS | LATAM
 Empresa: Deel
 Local: Brazil (Remoto)
@@ -5284,7 +5426,7 @@ Employment type: Full-time
 Industries: Human Resources Services
 
 
-===== VAGA 77 de 110 =====
+===== VAGA 79 de 112 =====
 Título: Front-End Developer - Remote Work | REF#5830
 Empresa: BairesDev
 Local: Greater Rio de Janeiro (Remoto)
@@ -5333,7 +5475,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 78 de 110 =====
+===== VAGA 80 de 112 =====
 Título: Backend Engineer (Node.js + JavaScript) - Remote Work | REF#299136
 Empresa: BairesDev
 Local: Brazil (Remoto)
@@ -5398,7 +5540,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 79 de 110 =====
+===== VAGA 81 de 112 =====
 Título: Front-end Engineer
 Empresa: SYDLE
 Local: Belo Horizonte, Minas Gerais, Brazil (Remoto)
@@ -5483,7 +5625,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 80 de 110 =====
+===== VAGA 82 de 112 =====
 Título: [Talent Pool] Software Engineer (Frontend)
 Empresa: Azion
 Local: Greater Porto Alegre (Remoto)
@@ -5562,7 +5704,7 @@ Employment type: Full-time
 Industries: Technology, Information and Internet
 
 
-===== VAGA 81 de 110 =====
+===== VAGA 83 de 112 =====
 Título: Front-End Engineer (AI Project) - Remote Work | REF#283492
 Empresa: BairesDev
 Local: Salvador, Bahia, Brazil (Remoto)
@@ -5614,7 +5756,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 82 de 110 =====
+===== VAGA 84 de 112 =====
 Título: Front-End Engineer (AI Project) - Remote Work | REF#283493
 Empresa: BairesDev
 Local: Recife, Pernambuco, Brazil (Remoto)
@@ -5666,7 +5808,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 83 de 110 =====
+===== VAGA 85 de 112 =====
 Título: Frontend Engineer (GIS & Data Visualization)
 Empresa: Applaudo
 Local: Rio de Janeiro, Brazil (Remoto)
@@ -5732,7 +5874,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 84 de 110 =====
+===== VAGA 86 de 112 =====
 Título: Front-end Developer
 Empresa: SYDLE
 Local: Belo Horizonte, Minas Gerais, Brazil (Remoto)
@@ -5817,7 +5959,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 85 de 110 =====
+===== VAGA 87 de 112 =====
 Título: Mid-Level Full Stack Software Engineer – Cloud Applications
 Empresa: Jitterbit
 Local: Greater Rio de Janeiro (Remoto)
@@ -5890,7 +6032,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 86 de 110 =====
+===== VAGA 88 de 112 =====
 Título: TypeScript Developer - Remote Work | REF#282262
 Empresa: BairesDev
 Local: Natal, Rio Grande do Norte, Brazil (Remoto)
@@ -5946,7 +6088,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 87 de 110 =====
+===== VAGA 89 de 112 =====
 Título: [Fully Remote] Full-Stack Software Engineer (Typescript, React, Next.js, Tailwind, Postgresql)
 Empresa: Reverie
 Local: São Paulo, Brazil (Remoto)
@@ -5998,7 +6140,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 88 de 110 =====
+===== VAGA 90 de 112 =====
 Título: Front End Web Developer
 Empresa: Fluke Corporation
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -6102,7 +6244,7 @@ Employment type: Full-time
 Industries: Appliances, Electrical, and Electronics Manufacturing
 
 
-===== VAGA 89 de 110 =====
+===== VAGA 91 de 112 =====
 Título: Full Stack Engineer
 Empresa: Tata Consultancy Services
 Local: Brazil (Remoto)
@@ -6181,7 +6323,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 90 de 110 =====
+===== VAGA 92 de 112 =====
 Título: P2P Node.js Engineer (100% Remote, Worldwide)
 Empresa: Holepunch
 Local: Brazil (Remoto)
@@ -6229,7 +6371,7 @@ Employment type: Full-time
 Industries: Technology, Information and Internet
 
 
-===== VAGA 91 de 110 =====
+===== VAGA 93 de 112 =====
 Título: Frontend Software Engineer
 Empresa: TRACTIAN
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -6285,7 +6427,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 92 de 110 =====
+===== VAGA 94 de 112 =====
 Título: React Engineer - Remote, Latin America
 Empresa: Bluelight
 Local: Porto Alegre, Rio Grande do Sul, Brazil (Remoto)
@@ -6330,7 +6472,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 93 de 110 =====
+===== VAGA 95 de 112 =====
 Título: React + TypeScript Developer - Remote Work
 Empresa: BairesDev
 Local: Florianópolis, Santa Catarina, Brazil (Remoto)
@@ -6410,7 +6552,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 94 de 110 =====
+===== VAGA 96 de 112 =====
 Título: Backend Engineer (Node) - Remote Work | REF#300879
 Empresa: BairesDev
 Local: Minas Gerais, Brazil (Remoto)
@@ -6466,7 +6608,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 95 de 110 =====
+===== VAGA 97 de 112 =====
 Título: Back-end Software Engineer (Node.js 20+)
 Empresa: Velozient
 Local: Brazil (Remoto)
@@ -6533,7 +6675,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 96 de 110 =====
+===== VAGA 98 de 112 =====
 Título: TypeScript Developer - Remote
 Empresa: INDI Staffing Services
 Local: Rio de Janeiro, Rio de Janeiro, Brazil (Remoto)
@@ -6607,7 +6749,7 @@ Employment type: Full-time
 Industries: Staffing and Recruiting
 
 
-===== VAGA 97 de 110 =====
+===== VAGA 99 de 112 =====
 Título: TypeScript Developer - Remote Work | REF#281581
 Empresa: BairesDev
 Local: Santo André, São Paulo, Brazil (Remoto)
@@ -6663,7 +6805,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 98 de 110 =====
+===== VAGA 100 de 112 =====
 Título: IT Developer III (Fullstack - Node.js/Angular)
 Empresa: Santander Brasil
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -6763,7 +6905,7 @@ Employment type: Full-time
 Industries: Financial Services
 
 
-===== VAGA 99 de 110 =====
+===== VAGA 101 de 112 =====
 Título: Full Stack Developer
 Empresa: Tata Consultancy Services
 Local: São Paulo, Brazil (Remoto)
@@ -6834,7 +6976,7 @@ Employment type: Full-time
 Industries: Technology, Information and Media
 
 
-===== VAGA 100 de 110 =====
+===== VAGA 102 de 112 =====
 Título: TypeScript Developer - Remote Work | REF#282265
 Empresa: BairesDev
 Local: Duque de Caxias, Bahia, Brazil (Remoto)
@@ -6890,7 +7032,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 101 de 110 =====
+===== VAGA 103 de 112 =====
 Título: Front-End Developer - Remote Work | REF#284091
 Empresa: BairesDev
 Local: Duque de Caxias, Bahia, Brazil (Remoto)
@@ -6939,7 +7081,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 102 de 110 =====
+===== VAGA 104 de 112 =====
 Título: Full Stack Developer
 Empresa: Pantheon Inc
 Local: Curitiba, Paraná, Brazil (Remoto)
@@ -7001,7 +7143,7 @@ Employment type: Full-time
 Industries: Computer and Network Security
 
 
-===== VAGA 103 de 110 =====
+===== VAGA 105 de 112 =====
 Título: Fullstack Developer
 Empresa: PrimeIT
 Local: Brazil (Remoto)
@@ -7041,7 +7183,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 104 de 110 =====
+===== VAGA 106 de 112 =====
 Título: React Software Engineer
 Empresa: Thunes
 Local: São Paulo, São Paulo, Brazil (Remoto)
@@ -7107,7 +7249,7 @@ Employment type: Full-time
 Industries: Financial Services
 
 
-===== VAGA 105 de 110 =====
+===== VAGA 107 de 112 =====
 Título: Middle Frontend Developer
 Empresa: Sigma Software
 Local: Brasília, Federal District, Brazil (Remoto)
@@ -7171,7 +7313,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 106 de 110 =====
+===== VAGA 108 de 112 =====
 Título: Frontend Engineer
 Empresa: Liferay
 Local: Recife, Pernambuco, Brazil (Remoto)
@@ -7278,7 +7420,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 107 de 110 =====
+===== VAGA 109 de 112 =====
 Título: Software Engineer - Frontend - Payments
 Empresa: Kraken
 Local: Brazil (Remoto)
@@ -7354,7 +7496,7 @@ Employment type: Full-time
 Industries: Financial Services
 
 
-===== VAGA 108 de 110 =====
+===== VAGA 110 de 112 =====
 Título: Software Engineer II - Front End
 Empresa: Arco Educação
 Local: Brazil (Remoto)
@@ -7446,7 +7588,7 @@ Employment type: Full-time
 Industries: Primary and Secondary Education
 
 
-===== VAGA 109 de 110 =====
+===== VAGA 111 de 112 =====
 Título: Full Stack Web Developer
 Empresa: RevStar
 Local: Brasília, Federal District, Brazil (Remoto)
@@ -7531,7 +7673,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 110 de 110 =====
+===== VAGA 112 de 112 =====
 Título: FULL TIME: Software Engineer Position - React and Rest
 Empresa: Yooli
 Local: Australia (Remoto)
