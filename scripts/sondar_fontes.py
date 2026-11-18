@@ -25,8 +25,15 @@ import sys
 import time
 import traceback
 
+from core.anuncio import motivo_reprovacao
 from core.perfis import PERFIL_ANALISTA, PERFIL_DEV_INTL, PERFIL_DEV_JOINVILLE, PERFIL_DEV_REMOTO
-from scrapers.nacionais import CANDIDATAS
+from scrapers.nacionais import CANDIDATAS as CANDIDATAS_HTML
+from scrapers.remotos import CANDIDATAS_REMOTAS
+
+# HTML (portais e consultorias) e API/feed (vaga remota de fora). As de
+# API não têm padrão de link: quando voltam zero, quem explica é o
+# `diagnostico` do scraper (URL, status, início da resposta).
+CANDIDATAS = CANDIDATAS_HTML + CANDIDATAS_REMOTAS
 
 # Um termo por perfil: o objetivo é saber se a fonte RESPONDE e se o
 # extrator ACERTA, não medir volume. Termo de área diferente também expõe
@@ -67,14 +74,31 @@ def _hrefs_encontrados(scraper, n=14):
     return amostra
 
 
-def sondar(classe, termos, dump=False) -> dict:
+def _termos_da_fonte(classe, termos, termos_explicitos: bool) -> list[str]:
+    """Fonte de API com termos próprios de sonda usa esses quando ninguém
+    passou --termos (os padrões são em português); fonte que lê a
+    categoria inteira recebe um termo só, que ela ignora."""
+    fonte = classe.fonte
+    if getattr(fonte, "usa_termos", True) is False:
+        return termos[:1]
+    if not termos_explicitos and getattr(fonte, "termos_sonda", ()):
+        return list(fonte.termos_sonda)
+    return termos
+
+
+def sondar(classe, termos, dump=False, termos_explicitos=False) -> dict:
     nome = classe.fonte.nome
     print(f"\n{'=' * 62}\n{nome}\n{'=' * 62}")
     print(f"  URL: {classe.fonte.url_busca}")
+    termos = _termos_da_fonte(classe, termos, termos_explicitos)
+    if getattr(classe.fonte, "usa_termos", True) is False:
+        print("  (lê a categoria inteira numa chamada — termos não se aplicam)")
+    else:
+        print(f"  Termos: {', '.join(termos)}")
 
     inicio = time.time()
-    scraper = classe(termos_busca=termos)
     try:
+        scraper = classe(termos_busca=termos)
         vagas = scraper.buscar_vagas()
     except Exception:
         print(f"  ❌ EXCEÇÃO — a fonte nem chegou a devolver lista:")
@@ -83,6 +107,13 @@ def sondar(classe, termos, dump=False) -> dict:
 
     duracao = time.time() - inicio
     print(f"  ⏱  {duracao:.0f}s | {len(vagas)} vaga(s) bruta(s)")
+    diagnostico = getattr(scraper, "diagnostico", [])
+
+    if not vagas and not hasattr(classe.fonte, "padrao_link"):
+        print("  ❌ ZERO vagas. O que a fonte respondeu:")
+        for linha in diagnostico or ["(nenhuma chamada registrada)"]:
+            print(f"     {linha}")
+        return {"nome": nome, "brutas": 0, "erro": False}
 
     if not vagas:
         # Zero é o resultado que mais engana: pode ser bloqueio, seletor
@@ -106,12 +137,22 @@ def sondar(classe, termos, dump=False) -> dict:
     print(f"  🏢 empresa extraída: {com_empresa}/{len(vagas)} ({com_empresa / len(vagas) * 100:.0f}%)")
     _amostra(vagas)
 
+    descricoes = getattr(scraper, "descricoes", {})
     print("  Depois do filtro de cada perfil:")
     aprovadas_total = 0
     for perfil in PERFIS:
         aprovadas = [v for v in vagas if v.combina_com(perfil.regras)]
         aprovadas_total += len(aprovadas)
-        print(f"      {perfil.nome:<36} {len(aprovadas):>3}")
+        extra = ""
+        # A API já entrega o anúncio: dá pra medir aqui quantas passariam
+        # também na regra de anúncio (a que barra Java/.NET com título
+        # genérico), sem abrir página nenhuma.
+        if perfil.regras_anuncio and descricoes and aprovadas:
+            com_texto = [v for v in aprovadas if descricoes.get(v.link)]
+            passam = [v for v in com_texto
+                      if not motivo_reprovacao(v.titulo, descricoes[v.link], perfil.regras_anuncio)]
+            extra = f"   (anúncio: {len(passam)} de {len(com_texto)} com texto passam)"
+        print(f"      {perfil.nome:<36} {len(aprovadas):>3}{extra}")
         _amostra(aprovadas, 2)
 
     return {
@@ -127,7 +168,7 @@ def sondar(classe, termos, dump=False) -> dict:
 def main() -> int:
     parser = argparse.ArgumentParser(description="Sonda fontes candidatas sem tocar em produção")
     parser.add_argument("--fonte", help="Sondar só esta (nome como aparece no relatório)")
-    parser.add_argument("--termos", nargs="+", default=TERMOS_PADRAO)
+    parser.add_argument("--termos", nargs="+", default=None)
     parser.add_argument("--dump", action="store_true", help="Salvar o HTML de cada busca")
     args = parser.parse_args()
 
@@ -139,20 +180,22 @@ def main() -> int:
                   + ", ".join(c.fonte.nome for c in CANDIDATAS))
             return 1
 
-    print(f"Sondando {len(candidatas)} fonte(s) com {len(args.termos)} termo(s).")
+    termos_explicitos = args.termos is not None
+    termos = args.termos or TERMOS_PADRAO
+    print(f"Sondando {len(candidatas)} fonte(s).")
     print("Nada é gravado no banco e nada é notificado.")
 
-    resultados = [sondar(c, args.termos, args.dump) for c in candidatas]
+    resultados = [sondar(c, termos, args.dump, termos_explicitos) for c in candidatas]
 
     print(f"\n{'=' * 62}\nRESUMO\n{'=' * 62}")
-    print(f"  {'fonte':<18}{'brutas':>8}{'aprovadas':>11}{'local %':>9}{'seg':>6}")
+    print(f"  {'fonte':<22}{'brutas':>8}{'aprovadas':>11}{'local %':>9}{'seg':>6}")
     for r in resultados:
         if r.get("erro"):
-            print(f"  {r['nome']:<18}{'ERRO':>8}")
+            print(f"  {r['nome']:<22}{'ERRO':>8}")
         elif not r["brutas"]:
-            print(f"  {r['nome']:<18}{0:>8}")
+            print(f"  {r['nome']:<22}{0:>8}")
         else:
-            print(f"  {r['nome']:<18}{r['brutas']:>8}{r['aprovadas']:>11}"
+            print(f"  {r['nome']:<22}{r['brutas']:>8}{r['aprovadas']:>11}"
                   f"{r['local_pct']:>8.0f}%{r['segundos']:>6.0f}")
 
     boas = [r for r in resultados if r.get("brutas")]

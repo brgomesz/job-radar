@@ -77,9 +77,55 @@ class BneScraper(ScraperGenerico):
     )
 
 
+# --- Consultorias de recrutamento (perfil analista) ---------------------------
+#
+# Michael Page e Robert Half recrutam justamente gerência e coordenação
+# financeira/operacional de média e alta senioridade — o nível da Ana Julia,
+# que nos portais generalistas fica afogado em vaga de assistente. Entram
+# pelo perfil analista; volume é baixo, rendimento é o que a bancada mede.
+#
+# O card dessas duas costuma trazer só a cidade, sem UF ("Joinville"), e o
+# extrator por "Cidade - UF" deixaria a vaga sem local — `local_sem_uf`
+# liga o reconhecimento de cidade conhecida (ver ScraperGenerico).
+#
+# Os padrões abaixo vêm do formato público de cada site, não de inspeção
+# ao vivo (a sessão de desenvolvimento não alcança os sites). Se o padrão
+# de link errar, a bancada mostra os hrefs reais da página.
+
+class MichaelPageScraper(ScraperGenerico):
+    fonte = FonteHTML(
+        nome="Michael Page",
+        base_url="https://www.michaelpage.com.br",
+        url_busca="https://www.michaelpage.com.br/jobs/{termo}",
+        # /job-detail/gerente-financeiro/ref/jn-112026-1234567
+        padrao_link=r"/job-detail/[^/]+/ref/",
+        slug="hifen",
+        seletor_espera="a[href*='/job-detail/']",
+        max_paginas=1,
+        local_sem_uf=True,
+    )
+
+
+class RobertHalfScraper(ScraperGenerico):
+    fonte = FonteHTML(
+        nome="Robert Half",
+        base_url="https://www.roberthalf.com",
+        url_busca="https://www.roberthalf.com/br/pt/jobs?query={termo}",
+        # /br/pt/job/joinville-sc/gerente-financeiro/12345-0001234567-ptbr
+        padrao_link=r"/br/pt/(?:job|vaga)s?/[^?#]+\d{5,}",
+        slug="query",
+        seletor_espera="a[href*='/br/pt/job']",
+        max_paginas=1,
+        espera_extra_s=4.0,
+        local_sem_uf=True,
+    )
+
+
 # Ordem da sonda: da mais promissora pra menos, pra quem estiver lendo o
 # log parar de ler quando já tiver a resposta.
 CANDIDATAS = [
+    MichaelPageScraper,
+    RobertHalfScraper,
     VagasComScraper,
     InfoJobsScraper,
     TrabalhaBrasilScraper,

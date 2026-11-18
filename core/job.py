@@ -1168,7 +1168,12 @@ def _padrao_stack(termo_norm: str) -> str:
 # Fontes que só publicam vaga do mercado brasileiro e fontes que são, por
 # definição, de fora. LinkedIn (e qualquer fonte nova) é decidido pelo
 # título/escopo — ver Job.vaga_internacional.
-_SITES_INTERNACIONAIS = {"we work remotely", "linkedin internacional"}
+_SITES_INTERNACIONAIS = {
+    "we work remotely", "linkedin internacional",
+    # Candidatas de scrapers/remotos.py — só vaga remota, quase toda de fora.
+    # Sem elas aqui a bancada contaria zero aprovada no dev-intl.
+    "himalayas", "remotive", "remote ok", "we work remotely rss",
+}
 # Fonte cujo `local` é a sede da empresa, não o mercado da vaga.
 _SITES_LOCAL_E_SEDE = {"we work remotely"}
 _SITES_DECIDIDOS_PELO_TITULO = {"linkedin", "indeed"}
@@ -1871,4 +1876,4 @@ class Job:
         escopos_norm = {_normalizar(e) for e in escopos}
         if escopos_norm & mercados_aceitos_norm:
             return None
-        return escopos
+        return escopos

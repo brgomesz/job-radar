@@ -36,7 +36,7 @@ from urllib.parse import urljoin
 
 from playwright.sync_api import sync_playwright
 
-from core.job import Job, _e_remoto, _normalizar, extrair_data_publicacao, _SIGLAS_UF_BRASIL
+from core.job import Job, _e_remoto, _normalizar, extrair_data_publicacao, _SIGLAS_UF_BRASIL, _UF_DA_CIDADE
 from core.logger import get_logger
 from scrapers.base import BaseScraper
 
@@ -80,6 +80,11 @@ class FonteHTML:
     param_pagina: str = ""  # ex: "&page={pagina}" — vazio = não pagina
     espera_extra_s: float = 2.0
     cabecalhos_ignorados: tuple = ()
+    # Card que traz só a cidade ("Joinville"), sem UF: quando o padrão
+    # "Cidade - UF" não acha nada, reconhece cidade conhecida pelo nome
+    # (ver extrair_cidade_conhecida). Desligado por padrão — nos portais
+    # que escrevem a UF, nome solto no card é mais vezes empresa ou bairro.
+    local_sem_uf: bool = False
 
 
 def formatar_termo(termo: str, estilo: str) -> str:
@@ -104,6 +109,19 @@ def extrair_local(texto: str) -> str:
             cidade_limpa = re.split(r"[|•·\n]", cidade_limpa)[-1].strip()
             if cidade_limpa:
                 return f"{cidade_limpa} - {uf.upper()}"
+    return ""
+
+
+def extrair_cidade_conhecida(texto: str) -> str:
+    """Cidade que o projeto conhece (ver _UF_DA_CIDADE em core/job.py)
+    escrita sem UF -> "Cidade - UF". "" se nenhuma aparecer.
+
+    Só as cidades do mapa: nome de cidade qualquer, sem UF, não dá pra
+    distinguir de nome de empresa ou de bairro."""
+    norm = _normalizar(texto or "")
+    for cidade, uf in _UF_DA_CIDADE.items():
+        if re.search(rf"(?<!\w){re.escape(cidade)}(?!\w)", norm):
+            return f"{cidade.title()} - {uf.upper()}"
     return ""
 
 
@@ -299,6 +317,8 @@ class ScraperGenerico(BaseScraper):
 
             texto = caixa if len(caixa) > len(titulo) else titulo
             local = extrair_local(texto)
+            if not local and self.fonte.local_sem_uf:
+                local = extrair_cidade_conhecida(texto)
             vagas.append(Job(
                 titulo=titulo,
                 empresa=extrair_empresa(texto, titulo, local),
