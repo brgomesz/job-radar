@@ -266,7 +266,7 @@ li[data-enviei="1"]{border-left:3px solid var(--adm); padding-left:14px}
 <body>
 <div class="wrap">
 <header>
-  <p class="eyebrow">JobRadar &middot; atualizado 19/11/2026 às 17:16</p>
+  <p class="eyebrow">JobRadar &middot; atualizado 19/11/2026 às 23:20</p>
   <h1>Radar de Vagas</h1>
   <p class="sub">Tudo que os radares já acharam, do mais relevante pro menos. A página se regenera a cada ciclo do robô — o Telegram avisa o que é urgente, aqui fica o histórico inteiro.</p>
 </header>
@@ -676,7 +676,7 @@ aplicar();
 // só é baixado quando a aba abre: são centenas de KB que quem só olha a
 // lista de vagas nunca usa. A lista é montada dividindo o arquivo pela
 // linha "===== VAGA n de N =====" — o mesmo SEPARADOR_VAGA do gerador.
-const CONTEUDO = {"dev": {"total": 435, "capturadas": 421, "removidas": 9, "pendentes": 5}, "dev-joinville": {"total": 6, "capturadas": 6, "removidas": 0, "pendentes": 0}, "dev-remoto": {"total": 312, "capturadas": 301, "removidas": 9, "pendentes": 2}, "dev-intl": {"total": 116, "capturadas": 113, "removidas": 0, "pendentes": 3}, "analista": {"total": 27, "capturadas": 27, "removidas": 0, "pendentes": 0}};  // { perfil: { total, capturadas, removidas, pendentes } }
+const CONTEUDO = {"dev": {"total": 435, "capturadas": 422, "removidas": 9, "pendentes": 4}, "dev-joinville": {"total": 6, "capturadas": 6, "removidas": 0, "pendentes": 0}, "dev-remoto": {"total": 312, "capturadas": 302, "removidas": 9, "pendentes": 1}, "dev-intl": {"total": 116, "capturadas": 113, "removidas": 0, "pendentes": 3}, "analista": {"total": 27, "capturadas": 27, "removidas": 0, "pendentes": 0}};  // { perfil: { total, capturadas, removidas, pendentes } }
 const SEPARADOR = /^===== VAGA \d+ de \d+ =====$/m;
 const DICA_DEV = "filtrar: node, aws, inglês…";
 const DICA_BUSCA = {
