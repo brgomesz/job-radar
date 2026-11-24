@@ -1,9 +1,65 @@
 CONTEÚDO DAS VAGAS DE ANALISTA — JobRadar
-Gerado em 23/11/2026 às 20:42 (Brasília). 27 vaga(s) com anúncio capturado, de 27 vagas Analista no radar. Mais recentes primeiro.
+Gerado em 24/11/2026 às 06:01 (Brasília). 28 vaga(s) com anúncio capturado, de 28 vagas Analista no radar. Mais recentes primeiro.
 Cada vaga traz o texto do anúncio como a fonte publicou (descrição, requisitos, diferenciais, benefícios).
 
 
-===== VAGA 1 de 27 =====
+===== VAGA 1 de 28 =====
+Título: Gerente Operacional
+Empresa: EMBRASP - Segurança Patrimonial
+Local: Joinville, Santa Catarina, Brazil
+Fonte: LinkedIn · publicada 2026-11-24 · achada 24/11 05:57
+Link: https://br.linkedin.com/jobs/view/gerente-operacional-at-embrasp-seguran%C3%A7a-patrimonial-4494309441
+--- Anúncio ---
+Gerenciar e coordenar as operações de segurança patrimonial, central de monitoramento e pronto atendimento, garantindo a eficiência e a qualidade dos serviços prestados;Supervisionar e orientar coordenadores, supervisores e demais lideranças operacionais, acompanhando o desempenho das equipes e o cumprimento das diretrizes da empresa;Planejar, organizar e controlar as atividades operacionais, assegurando o cumprimento dos contratos, procedimentos internos e níveis de serviço estabelecidos com os clientes;Acompanhar a execução dos serviços nos postos de trabalho, identificando necessidades operacionais e implementando ações corretivas e preventivas;Gerenciar as atividades da central de monitoramento, assegurando a qualidade dos processos de monitoramento eletrônico, atendimento de alarmes, tratativas de ocorrências e acionamentos;Coordenar os processos de pronto atendimento, garantindo agilidade na resposta às ocorrências, direcionamento adequado das equipes e cumprimento dos protocolos de atendimento;Monitorar indicadores de desempenho (KPIs), produtividade, qualidade e custos operacionais, elaborando relatórios gerenciais e planos de ação;Gerenciar o dimensionamento de equipes, escalas de trabalho, cobertura de postos e alocação de recursos, buscando eficiência operacional;Acompanhar a gestão dos contratos e o relacionamento com clientes, atuando na resolução de demandas, tratativas de não conformidades e melhoria da satisfação;Desenvolver e implementar procedimentos operacionais, políticas e estratégias para padronização e melhoria contínua dos serviços;Identificar riscos operacionais, avaliar situações críticas e tomar decisões estratégicas para garantir a continuidade das operações;Planejar e acompanhar o orçamento operacional, controlando custos, recursos e oportunidades de otimização;Atuar de forma integrada com os demais setores da empresa, promovendo alinhamento entre as áreas e cumprimento dos objetivos organizacionais;Desenvolver as lideranças e promover uma cultura de responsabilidade, comprometimento, segurança e excelência operacional.
+
+Cargo: Gerente Operacional
+
+Benefícios: Vale alimentação;
+
+Vale transporte;
+
+Seguro de vida;
+
+Convênio odontológico;
+
+Auxílio academia;
+
+Convênio com Universidades;
+
+Convênio SESC.
+
+Requisitos: Experiências e qualificações:
+
+Ensino superior completo em Administração, Gestão de Segurança Privada, Gestão de Processos ou áreas correlatas;
+
+Experiência comprovada em gestão operacional no segmento de segurança privada e/ou facilities;
+
+Experiência na gestão de equipes operacionais, supervisores e coordenadores;
+
+Vivência na gestão de contratos, postos de serviços e operações terceirizadas;
+
+Conhecimento em segurança patrimonial, monitoramento eletrônico, CFTV, alarmes e gestão de ocorrências;
+
+Experiência em gestão de indicadores de desempenho (KPIs), planejamento operacional e análise de resultados;
+
+Conhecimento em gestão de custos, dimensionamento de equipes e controle de escalas;
+
+Conhecimento da legislação aplicável à segurança privada;
+
+Capacidade de liderança, tomada de decisão e gestão de situações críticas;
+
+CNH categoria AB.
+
+Outros Requisitos
+
+Carteira nacional de habilitação: AB
+
+Seniority level: Not Applicable
+Employment type: Full-time
+Industries: Security and Investigations
+
+
+===== VAGA 2 de 28 =====
 Título: Sales Operations Analyst - Remote Work | REF#310726
 Empresa: BairesDev
 Local: Brazil
@@ -54,7 +110,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 2 de 27 =====
+===== VAGA 3 de 28 =====
 Título: Analista Administrativo Pleno
 Empresa: Supers
 Local: Joinville, Santa Catarina, Brazil
@@ -99,7 +155,7 @@ Employment type: Full-time
 Industries: Marketing Services
 
 
-===== VAGA 3 de 27 =====
+===== VAGA 4 de 28 =====
 Título: Coordenador Financeiro | Contas a Receber
 Empresa: Tupy
 Local: Joinville - SC (Presencial)
@@ -226,7 +282,7 @@ Venha fazer parte da Tupy!
 ﻿A TUPY não cobra nenhum valor em nenhuma etapa do processo seletivo. Em caso de dúvidas ou informações adicionais, consulte sempre nossos canais oficiais.
 
 
-===== VAGA 4 de 27 =====
+===== VAGA 5 de 28 =====
 Título: Coordenador(a) de Operações
 Empresa: Empresa Confidencial
 Local: Joinville, Santa Catarina, Brazil
@@ -255,7 +311,7 @@ Employment type: Full-time
 Industries: Industrial Machinery Manufacturing and Operations Consulting
 
 
-===== VAGA 5 de 27 =====
+===== VAGA 6 de 28 =====
 Título: RB00216 Analista Administrativo Financeiro (Pleno/Sênior)
 Empresa: Confidencial
 Local: Joinville
@@ -282,7 +338,7 @@ Conhecimento em conferência de documentos fiscais e financeiros;
 Vivência com interface entre financeiro, contabilidade, departamento pessoal, compras e almoxarifado.
 
 
-===== VAGA 6 de 27 =====
+===== VAGA 7 de 28 =====
 Título: Gerente Operacional e Comercial
 Empresa: Clínica de cirurgia plástica
 Local: Joinville
@@ -310,7 +366,7 @@ Conhecimento em ferramentas de CRM, sistemas de gestão e indicadores.
 Experiência na implantação e melhoria de processos.
 
 
-===== VAGA 7 de 27 =====
+===== VAGA 8 de 28 =====
 Título: Analista Administrativo Financeiro
 Empresa: GENTER
 Local: Joinville
@@ -352,7 +408,7 @@ Segunda a quinta-feira: das 7h30 às 11h30 e das 12h30 às 17h30;
 Sexta-feira: das 7h30 às 11h30 e das 12h30 às 16h30.
 
 
-===== VAGA 8 de 27 =====
+===== VAGA 9 de 28 =====
 Título: Pessoa Especialista de FP&A (Remoto) - 8126
 Empresa: Softplan
 Local: Não informado (Remoto)
@@ -442,7 +498,7 @@ Peru: unificamos processos judiciais com o sistema SAJ Courts, ampliando o acess
 Argentina: modernizamos a Justiça do Trabalho de Buenos Aires (PJCABA), levando mais agilidade e transparência a trabalhadores e empresas.
 
 
-===== VAGA 9 de 27 =====
+===== VAGA 10 de 28 =====
 Título: Coordenador(a) de RH I Generalista I Remoto
 Empresa: Cuattro
 Local: Não informado (Remoto)
@@ -599,7 +655,7 @@ Queremos que cada jornada na Cuattro seja uma oportunidade de desenvolvimento e 
 Muito prazer, somos a Cuattro...E por aqui, voamos juntos para conectar pessoas, ideias e oportunidades!
 
 
-===== VAGA 10 de 27 =====
+===== VAGA 11 de 28 =====
 Título: Analista Financeiro Sênior - Revenue Management | RD Station (Remoto)
 Empresa: TOTVS
 Local: Florianópolis, Santa Catarina, Brazil
@@ -646,7 +702,7 @@ Employment type: Full-time
 Industries: Software Development
 
 
-===== VAGA 11 de 27 =====
+===== VAGA 12 de 28 =====
 Título: Coordenador de operações
 Empresa: Culture Designer
 Local: Joinville, Santa Catarina, Brazil
@@ -724,7 +780,7 @@ Employment type: Full-time
 Industries: Wholesale Import and Export
 
 
-===== VAGA 12 de 27 =====
+===== VAGA 13 de 28 =====
 Título: Analista Administrativo de Vendas
 Empresa: abler Vagas
 Local: Joinville, Santa Catarina, Brazil
@@ -771,7 +827,7 @@ Employment type: Full-time
 Industries: Technology, Information and Internet
 
 
-===== VAGA 13 de 27 =====
+===== VAGA 14 de 28 =====
 Título: Coordenador Administrativo Comercial
 Empresa: MERKEL RECURSOS HUMANOS
 Local: Joinville
@@ -794,7 +850,7 @@ Vivência em gestão administrativa multissetorial e liderança.
 Excel avançado e ERP.
 
 
-===== VAGA 14 de 27 =====
+===== VAGA 15 de 28 =====
 Título: COORDENADOR DE OPERAÇÕES*
 Empresa: Ânima Educação
 Local: Joinville, Santa Catarina, Brazil
@@ -884,7 +940,7 @@ Employment type: Full-time
 Industries: Education Administration Programs
 
 
-===== VAGA 15 de 27 =====
+===== VAGA 16 de 28 =====
 Título: Coordenador administrativo de vendas
 Empresa: MERKEL RH
 Local: Joinville, Santa Catarina, Brazil
@@ -918,7 +974,7 @@ Employment type: Full-time
 Industries: Human Resources Services
 
 
-===== VAGA 16 de 27 =====
+===== VAGA 17 de 28 =====
 Título: Coordenador(a) Administrativo(a) de Vendas
 Empresa: Grupo Krona
 Local: Joinville, Santa Catarina, Brazil
@@ -981,7 +1037,7 @@ Employment type: Full-time
 Industries: Chemical Manufacturing
 
 
-===== VAGA 17 de 27 =====
+===== VAGA 18 de 28 =====
 Título: Analista Administrativo Comercial
 Empresa: Jobbol
 Local: Joinville, Santa Catarina, Brazil
@@ -1020,7 +1076,7 @@ Employment type: Full-time
 Industries: Technology, Information and Internet
 
 
-===== VAGA 18 de 27 =====
+===== VAGA 19 de 28 =====
 Título: Coordenador de operações
 Empresa: Par RH®️
 Local: Joinville, Santa Catarina, Brazil
@@ -1060,7 +1116,7 @@ Employment type: Full-time
 Industries: Business Consulting and Services
 
 
-===== VAGA 19 de 27 =====
+===== VAGA 20 de 28 =====
 Título: Gerente Administrativo Operacional –Clínica médica
 Empresa: HRL Consultoria e Projetos
 Local: Joinville, Santa Catarina, Brazil
@@ -1114,7 +1170,7 @@ Employment type: Full-time
 Industries: Human Resources Services
 
 
-===== VAGA 20 de 27 =====
+===== VAGA 21 de 28 =====
 Título: Analista de Planejamento Comercial - Salesforce
 Empresa: Porto Itapoa
 Local: Joinville, Santa Catarina, Brazil
@@ -1165,7 +1221,7 @@ Employment type: Full-time
 Industries: Data Infrastructure and Analytics
 
 
-===== VAGA 21 de 27 =====
+===== VAGA 22 de 28 =====
 Título: Gerente Financeiro
 Empresa: Jobbol
 Local: Joinville, Santa Catarina, Brazil
@@ -1204,7 +1260,7 @@ Employment type: Full-time
 Industries: Technology, Information and Internet
 
 
-===== VAGA 22 de 27 =====
+===== VAGA 23 de 28 =====
 Título: Analista de Planejamento de Vendas III
 Empresa: Tupy
 Local: Joinville, Santa Catarina, Brazil
@@ -1280,7 +1336,7 @@ Employment type: Full-time
 Industries: Automation Machinery Manufacturing
 
 
-===== VAGA 23 de 27 =====
+===== VAGA 24 de 28 =====
 Título: Sales Operations Analyst - Remote Work
 Empresa: BairesDev
 Local: Brazil (Remoto)
@@ -1342,7 +1398,7 @@ Employment type: Full-time
 Industries: IT Services and IT Consulting
 
 
-===== VAGA 24 de 27 =====
+===== VAGA 25 de 28 =====
 Título: Coordenador Financeiro
 Empresa: Jobbol
 Local: Joinville, Santa Catarina, Brazil
@@ -1382,7 +1438,7 @@ Employment type: Full-time
 Industries: Technology, Information and Internet
 
 
-===== VAGA 25 de 27 =====
+===== VAGA 26 de 28 =====
 Título: Analista de Operações Comerciais
 Empresa: Rottas Vendas
 Local: Joinville, Santa Catarina, Brazil
@@ -1450,7 +1506,7 @@ Employment type: Full-time
 Industries: Civil Engineering
 
 
-===== VAGA 26 de 27 =====
+===== VAGA 27 de 28 =====
 Título: Analista Administrativo de Vendas
 Empresa: Jobbol
 Local: Joinville, Santa Catarina, Brazil
@@ -1489,7 +1545,7 @@ Employment type: Full-time
 Industries: Technology, Information and Internet
 
 
-===== VAGA 27 de 27 =====
+===== VAGA 28 de 28 =====
 Título: Analista de Operações Comerciais
 Empresa: House Rottas Vendas
 Local: Joinville - SC (Presencial)
